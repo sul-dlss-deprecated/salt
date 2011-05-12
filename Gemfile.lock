@@ -1,5 +1,5 @@
 PATH
-  remote: ../blacklight
+  remote: vendor/gems/blacklight
   specs:
     blacklight (3.0pre1)
       marc
