@@ -1,0 +1,34 @@
+	<% @page_title = application_name + " Search Results" %>
+
+        <% extra_head_content << render_opensearch_response_metadata.html_safe %>
+
+	<%= render :partial => 'search_form' %>
+	
+	<%= render :partial => 'did_you_mean' %>
+
+	<%= render 'constraints', :localized_params=>params %>
+  
+  <div class="pageEntriesInfo">
+    <%= (page_entries_info @response.docs, :entry_name=>'item').html_safe %>
+    <%=link_to "start over", catalog_index_path, :id=>"startOverLink" %>
+  </div>
+  
+	<%= render 'sort_and_per_page' %>
+  <%= render 'list_gallery_toggle'%>
+	
+
+  <%= render 'results_pagination' %>
+  
+  <div id="documents" class="<% index_results_class %>">
+  	<%= index_results_box %>
+	</div>
+
+
+	<% sidebar_items << capture do %>
+	  <%= render :partial=>'facets' %>
+	<% end %>
+
+  <%= render 'results_pagination' %>
+
+  <%= render :partial=>'solr_request' %>
+

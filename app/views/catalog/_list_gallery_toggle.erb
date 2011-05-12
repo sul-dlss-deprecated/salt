@@ -1,0 +1,12 @@
+<div class="list_gallery_toggle">
+    <%=
+      link_to_unless(params[:view] == 'list', 'List', params.merge({:view => 'list'}), {:class => 'list_toggle'}) do |name|
+        content_tag(:span, name, {:class => 'list_toggle'})
+      end
+    %>
+    <%=
+      link_to_unless(params[:view].blank?, 'Gallery', params.merge({:view => nil}), {:class => 'gallery_toggle'}) do |name|
+        content_tag(:span, name, {:class => 'gallery_toggle'})
+      end
+    %>
+</div>

@@ -1,0 +1,58 @@
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:z="http://www.zotero.org/namespaces/export#"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:bib="http://purl.org/net/biblio#"
+ xmlns:dcterms="http://purl.org/dc/terms/">
+    <bib:Report rdf:about="https://saltworks.stanford.edu/documents/druid:ff241yc8373/downloads?download_id=document.pdf">
+        <z:itemType>report</z:itemType>
+        <dc:publisher>
+            <foaf:Organization>
+               <foaf:name>Stanford Heuristic Programming Project</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bruce Buchanan</foaf:surname>
+                        <foaf:givenname></foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Reid Smith</foaf:surname>
+                        <foaf:givenname></foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Tom Mitchell</foaf:surname>
+                        <foaf:givenname></foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>R. Shestek</foaf:surname>
+                        <foaf:givenname></foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:subject>InProgress</dc:subject>
+        <dc:subject>Machine Learning</dc:subject>
+        <dc:title>A Model for Learning Systems</dc:title>
+        <dc:date>1977-03</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:ff241yc8373/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 36, Folder: 15, Title: HPP Papers, Various Authors (1 of 2)1970 -
+      1979</dc:coverage>
+        <dc:subject>
+           <dcterms:LCC><rdf:value>00009059</rdf:value></dcterms:LCC>
+        </dc:subject>
+    </bib:Report>
+</rdf:RDF>

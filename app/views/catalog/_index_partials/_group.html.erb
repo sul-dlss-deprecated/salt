@@ -1,0 +1,18 @@
+<h3><%=h facet_value if facet_value %> <em><%= grouped_result_count(@response, facet_name, facet_value) %></em></h3>
+
+<% if view_type == 'list' %>
+   	<table><tr>
+       <th class='date'>Date</th>
+       <th class='title'>Title</th>
+       <th class='loc'>Location</th>
+     </tr>
+  	 <%= render(:partial => 'catalog/_index_partials/list_document', :collection => docs, :as => :document) %>
+		</table>
+<% else %>
+	
+	 <div class="thumbnail-grid">
+			 <%= render(:partial => 'catalog/_index_partials/gallery_document', :collection => docs, :as => :document) %>
+	 </div>
+	
+<% end%>
+
