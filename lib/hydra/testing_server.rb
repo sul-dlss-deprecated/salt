@@ -20,7 +20,7 @@ class Hydra::TestingServer
   require 'singleton'
   include Singleton
   require 'win32/process' if RUBY_PLATFORM =~ /mswin32/
-  attr_accessor :port, :jetty_home, :solr_home, :quiet, :fedora_home
+  attr_accessor :port, :jetty_home, :solr_home, :quiet, :fedora_home, :startup_wait
 
   # configure the singleton with some defaults
   def initialize(params = {})
@@ -40,6 +40,7 @@ class Hydra::TestingServer
       hydra_server.solr_home = params[:solr_home]  || File.join( hydra_server.jetty_home, "solr")
       hydra_server.fedora_home = params[:fedora_home] || File.join( hydra_server.jetty_home, "fedora","default")
       hydra_server.port = params[:jetty_port] || 8888
+      hydra_server.startup_wait =  params[:startup_wait] || 5
       return hydra_server
     end
     
@@ -89,6 +90,8 @@ class Hydra::TestingServer
     rescue Errno::ENOENT, Errno::EACCES
       f = File.new(File.join(Rails.root,'tmp',pid_file),"w")
     end
+    puts "sleeping #{@startup_wait}"
+     sleep(@startup_wait.to_i)
     f.puts "#{@pid}"
     f.close
   end

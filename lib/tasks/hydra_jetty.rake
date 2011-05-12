@@ -12,7 +12,9 @@ JETTY_PARAMS = {
   :jetty_home => ENV['HYDRA_JETTY_HOME'],
   :jetty_port => 8983,
   :solr_home => ENV['HYDRA_SOLR_HOME'],
-  :fedora_home => ENV['HYDRA_SOLR_HOME']
+  :fedora_home => ENV['HYDRA_SOLR_HOME'],
+  :startup_wait => 10
+  
 }
 
 #:jetty_port => ENV['HYDRA_JETTY_PORT'],
