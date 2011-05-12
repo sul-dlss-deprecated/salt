@@ -5,7 +5,7 @@ gem 'rails', '3.0.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'sqlite3-ruby', '1.2.5'
 gem 'blacklight', :path => "vendor/gems/blacklight"
 gem 'devise'
 gem 'rack-webauth'
@@ -47,6 +47,5 @@ group :development, :test do
   gem 'gherkin'
   gem 'factory_girl'
   gem 'markup_validity'
-  gem 'jettywrapper'
 	gem 'fakeweb'
 end
