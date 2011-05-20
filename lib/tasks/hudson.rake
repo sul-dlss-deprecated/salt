@@ -1,6 +1,7 @@
   desc "Hudson build"
   task :hudson do
-    
+     Rake::Task["db:migrate"].invoke
+     
       Rake::Task["hydra:jetty:start"].invoke
         Rake::Task["salt:index"].invoke
         Rake::Task["rcov:all"].invoke

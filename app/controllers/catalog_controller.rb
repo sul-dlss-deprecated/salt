@@ -1,9 +1,14 @@
 require 'blacklight/catalog'
 
 class CatalogController < ApplicationController  
-
+ 
+  layout "salt"
   include Blacklight::Catalog
   include SaltHelper
+  include AuthenticationHelper
+  
+  before_filter :add_styles
+
 
    # get search results from the solr index
     def index
@@ -14,10 +19,17 @@ class CatalogController < ApplicationController
       extra_head_content << view_context.auto_discovery_link_tag(:atom, url_for(params.merge(:format => 'atom')), :title => "Atom for results")
       extra_head_content << view_context.auto_discovery_link_tag(:unapi, unapi_url, {:type => 'application/xml',  :rel => 'unapi-server', :title => 'unAPI' })
       
-      if user_signed_in?  
-        (@response, @document_list) = get_search_results(:qt => "authed_search") 
-      else 
+      if user_signed_in? and params[:qt] == "fulltext"
+        self.solr_search_params_logic << :show_authenticated_fulltext_records
         (@response, @document_list) = get_search_results
+      elsif user_signed_in? and  params[:qt] != "fulltext"
+        self.solr_search_params_logic << :show_authenticated_records
+        (@response, @document_list) = get_search_results  
+      elsif !user_signed_in? and params[:qt] == "fulltext"
+        self.solr_search_params_logic << :show_fulltext_records
+        (@response, @document_list) = get_search_results(:qt => "fulltext") 
+      else  
+        (@response, @document_list) = get_search_results 
       end
       
       @filters = params[:f] || []
@@ -37,7 +49,7 @@ class CatalogController < ApplicationController
      
       extra_head_content << view_context.auto_discovery_link_tag(:unapi, unapi_url, {:type => 'application/xml',  :rel => 'unapi-server', :title => 'unAPI' })
       
-      user_signed_in? ? ( @response, @document = get_solr_response_for_doc_id(params[:id], :qt => "authed_document") ) : (@response, @document = get_solr_response_for_doc_id(params[:id]) )
+      user_signed_in? ? ( @response, @document = get_solr_response_for_doc_id(params[:id], :qt => "authed_document") ) : (@response, @document = get_solr_response_for_doc_id(params[:id], :qt => "document") )
          
       respond_to do |format|
         format.html {setup_next_and_previous_documents}
@@ -55,5 +67,11 @@ class CatalogController < ApplicationController
       flash[:notice]= "You do not have sufficient access privileges to read this document, which has been marked private."
       redirect_to(:action => 'index', :q => nil , :f => nil) and return false
     end
+
+private
+
+  def add_styles
+    extra_head_content << view_context.stylesheet_link_tag("salt")
+  end
 
 end 

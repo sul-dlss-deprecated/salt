@@ -1,0 +1,70 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title><%= h(@page_title || application_name) %></title>
+    <link href="<%= opensearch_catalog_path %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
+ 
+    <%= raw(render_head_content) %>
+    
+    
+  </head>
+  <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
+  <body onload="$('input#q').focus();" class="<%= render_body_class %>">
+    <% else %>
+  <body class="<%= render_body_class.html_safe %>">
+    <% end %>
+		  <div class="sul-banner">
+	      <a href="http://library.stanford.edu" title="SULAIR Home"><%= image_tag("sulair_logo.jpg", :border=>0, :alt=>'SULAIR', :id => 'banner-logo') %></a>
+	      <span class="banner-links" id="su-banner">
+	      <a href="http://socrates.stanford.edu">SOCRATES (SU CATALOG)</a> | 
+	      <a href="http://library.stanford.edu/ejournals">E-JOURNALS</a> | 
+	      <a href="http://library.stanford.edu/sulapp/databases/index.jsp">DATABASES</a> | 
+	      <a href="http://library.stanford.edu/cgi-bin/tellus.cgi ">ASK US</a>
+	      </span>
+	    </div>
+      <div id="doc2" class="yui-t2">
+	
+	    <div id="hd">
+        <div class="yui-g">
+          <div class="yui-u first">
+            	<%= link_to image_tag("saltworks.png", :alt=>'',:id=>'searchworks-img'), root_path %>
+          	 <% if params[:controller] == 'catalog' and params[:action] == 'index' %>
+						    <%= render 'search_form', :localized_params=>params %>
+						  <% else  %>  
+						    <%= render 'search_form', :localized_params=>session[:search] %>
+						  <% end %>
+					</div>
+					<div class="yui-u">
+					  <div style="clear:both;">&nbsp;</div>
+					</div>
+					
+          <div id="util_links">
+            
+						<%= render 'constraints', :localized_params=>params %>
+						<%= render :partial=>'/user_util_links' %>
+					
+          </div>
+        </div>
+      </div>
+	    
+	    <div id="bd">
+      	
+      	<div id="yui-main">
+          <div class="yui-b" id="mid_content">
+            <%= render :partial=>'/flash_msg' %>
+            <%= yield %>
+          </div>
+        </div>
+        
+        <div class="yui-b sidebar"><%= sidebar_items.join('').html_safe %></div>
+        
+	    </div>
+	    <div id="ft"><%= raw(@footer) %></div>
+	  </div>
+    </body>
+    
+    </html>

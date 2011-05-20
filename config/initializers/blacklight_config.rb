@@ -98,21 +98,13 @@ Blacklight.configure(:shared) do |config|
   config[:index_fields] = {
     :field_names => [
       "text",
-      "title_facet",
-      "title_t",
-      "date_t",
-      "series_facet",
-      "box_facet",
-      "folder_facet"
+      "title_display",
+      "date_display",
     ],
       :labels => {
         "text" => "Text:",
-        "title_t" => "Title:",
-        "title_facet" => "Extracted Title:",
-        "date_t" => "Date:",
-        "series_facet" => "Series",
-        "box_facet" => "Box",
-        "folder_facet" => "Folder"
+        "title_display" => "Title:",
+        "date_display" => "Date: "
       }
   }
 
@@ -120,20 +112,21 @@ Blacklight.configure(:shared) do |config|
   #   The ordering of the field names is the order of the display 
   config[:show_fields] = {
     :field_names => [
-      "text",
-      "title_facet",
-      "date_t",
-      "location_t",
-      "rights_t",
-      "access_t"
+      "access_display",
+      "series_display",
+      "subseries_display",
+      "box_display",
+      "folder_display",
+      "id"
     ],
     :labels => {
-      "text" => "Text:",
-      "title_facet" => "Title:",
-      "date_t" => "Date:",
-      "location_t" => "Location:",
-      "rights_t"  => "Copyright:",
-      "access_t" => "Access:"
+      "access_display" => "Access:",
+      "series_display" => "Series:",
+      "subseries_display"  => "Subseries:",
+      "box_display" => "Box:",
+      "folder_display" => "Folder:",
+      "id" => "ID:"
+      
     }
   }
 
@@ -161,29 +154,13 @@ Blacklight.configure(:shared) do |config|
     :display_label => 'All Fields'   
   }
 
-  # Now we see how to over-ride Solr request handler defaults, in this
-  # case for a BL "search field", which is really a dismax aggregate
-  # of Solr search fields. 
-  config[:search_fields] << {
-    :key => 'title',     
-    # solr_parameters hash are sent to Solr as ordinary url query params. 
-    :solr_parameters => {
-      :"spellcheck.dictionary" => "title"
-    },
-    # :solr_local_parameters will be sent using Solr LocalParams
-    # syntax, as eg {! qf=$title_qf }. This is neccesary to use
-    # Solr parameter de-referencing like $title_qf.
-    # See: http://wiki.apache.org/solr/LocalParams
-    :solr_local_parameters => {
-      :qf => "$title_qf",
-      :pf => "$title_pf"
-    }
-  }
   
   config[:search_fields] << {
     :key => "fulltext",
     :display_label => "Descriptions and Fulltext",
-    :qt => "fulltext_search"
+    :solr_parameters => {
+      :qt => "fulltext"
+    }
   }
   
   
@@ -237,4 +214,5 @@ Blacklight.configure(:shared) do |config|
     'oai_dc_xml' => { :content_type => 'text/xml' } 
   }
 end
+
 

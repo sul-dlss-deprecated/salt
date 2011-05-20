@@ -32,7 +32,7 @@ a:hover {color: #029;}
 #hd {margin: 0em 2em 0 2em; padding: 2em 0 2em 0; }
 #hd .yui-g {text-align: right;}
 #hd .yui-g .first {text-align: left;}
-#doc, #doc2, #doc3, #doc4 {background: #fff url('../images/blacklight/border.png') repeat-x top left; border-bottom: 2px solid #555; margin: 0px auto;}
+/* #doc, #doc2, #doc3, #doc4 {background: #fff url('../images/blacklight/border.png') repeat-x top left; border-bottom: 2px solid #555; margin: 0px auto;} */
 /* border-top: 10px solid #548cd8; -moz-border-top-colors: #548cd8 #5188d3 #4e84d0 #4b81cd #497dc9 #457ac6 #4376c2 #4173be #3e71bc #3d6fba; */
 
 /* Body Container Layout */
@@ -50,7 +50,7 @@ h1.site_title a:link, h1.site_title a:visited, h1.site_title a:hover, h1.site_ti
 h2.search {margin:0; display:inline;}
 
 /* Search Box */
-#search  {
+/* #search  {
   text-align: left; 
   font-size: 120%;
   border: 1px solid #AAAAAA;
@@ -58,10 +58,10 @@ h2.search {margin:0; display:inline;}
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   padding: 0.66em;
-}
-#search #q {width: 200px;}
-#search .submit {padding: 0px 0.25em; margin: 0 0.5em; text-transform: capitalize;}
-#search h2 {display: none;}
+} 
+#search #q {width: 200px;} */
+#search .submit {padding: 0px 0.25em; margin: 0 0.5em; text-transform: capitalize;} 
+/* #search h2 {display: none;} */
 #search hr {display: none; margin:1em 0; margin-top: 2em;}
 
 
@@ -214,7 +214,7 @@ font-weight:bold;
 
 #startOverLink{display:block; position:absolute; top:50%; right:0.66em; margin-top:-12px; padding:0 7px 3px 12px; line-height:22px; text-decoration:none; color:#fff; background:url(../images/blacklight/start_over.gif) no-repeat center center; border-bottom: none;}
 
-
+/*
 #sortAndPerPage {
   background-color: #F0F0F0;
   padding: 0.66em;
@@ -222,9 +222,12 @@ font-weight:bold;
   border-color: #AAAAAA;
   border-width: 0 1px 1px 1px;
 }
+*/
+
 #sortAndPerPage label {
   font-weight: normal;
 }
+
 
 #previousNextDocument { /* on item detail page, under paging info */
   padding: 0.66em;
@@ -257,9 +260,9 @@ label.toggle_folder { min-width: 6em; }
 label.checked { font-weight: bold; }
 
 
-/* Search Results */
+/* Search Results 
 .document {padding: 0.5em 0 0 0; background-color: #fff; border-bottom: 1px dotted #ccc; clear: both;}
-
+*/
 #documents {background-color: #eee; color: #333; margin-top: 1.5em; margin-bottom: 1.5em; }
 #documents .documentHeader {background-color: #fff; padding: 0px;}
 

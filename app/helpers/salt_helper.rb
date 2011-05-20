@@ -65,6 +65,23 @@ module SaltHelper
      pluralize(count, 'document')
    end
   
+  # returns image tag for an asset thumbnail
+  def thumb_tag(id)
+    id.gsub!("druid:", "")
+    "<img src=#{url_for(:action => 'show', :controller => 'asset', :id => id, :format => :jpg )} alt=\"druid:#{id}\"/>".html_safe
+    
+  end
   
+ # returns "This document refers to" if it's a show action, "Limit Your Search" if its index
+ def facets_display_heading()
+   action_name == "show" ? "This Document Refers To" : "Limit Your Search"
+ end
+  
+ def facets_toggle()
+   if action_name == "show"
+     javascript_includes << "facet_toggle.js"
+   end
+   return nil 
+ end
   
 end

@@ -1,12 +1,12 @@
 <%# default partial to display solr document fields in catalog index view -%>
 <tr class="document <%= cycle("even","odd")%>">
   <td>
-    <%= document.get(:date_t) %>
+    <%= "#{document.get(:date_display)}" %>
   </td>
   <td>
     <%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
   </td>
   <td>
-    <%= "#{document.get(:series_facet)}, #{document.get(:box_facet)}, #{document.get(:folder_facet)}" %>
+    <%= "Series: #{document.get(:series_display)}, Subseries: #{document.get(:subseries_display)},  Box: #{document.get(:box_display)}, Folder: #{document.get(:folder_display)}" %>
   </td>
 </tr>

@@ -1,7 +1,7 @@
-<div class="document thumbnail">  
-  <%= link_to_document(document, :label => image_tag("booga", :alt=>"thumbnail"), :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+<div class="document thumbnail"> 
+  <%= link_to_document(document, :label => thumb_tag(document['id']), :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
   <% if document.get(Blacklight.config[:show][:heading]) %>
     <%= link_to_document(document, :label => truncate(document.get(Blacklight.config[:show][:heading]), :length => 35, :omission => "..."), :counter => (document_counter + 1 + @response.params[:start].to_i),:title=>document.get(Blacklight.config[:show][:heading])) -%>
   <% end -%>
-  <%= document['date_t'] %>
+  <%= document['date_display'] %>
 </div>

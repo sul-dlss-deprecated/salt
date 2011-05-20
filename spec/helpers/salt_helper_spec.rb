@@ -148,6 +148,10 @@ describe SaltHelper do
     
   end
   
-  
+  describe "#thumbtag" do
+    it "should return an img tag with the proper src pointing to an assets thumbnail" do
+      helper.thumb_tag("druid:123").should == "<img src=/assets/123.jpg alt=\"druid:123\"/>"
+    end
+  end
   
 end

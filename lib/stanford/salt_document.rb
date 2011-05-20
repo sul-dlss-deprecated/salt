@@ -56,8 +56,24 @@ module Stanford
         end #if
       end
       
+      fulltext_to_solr
       
       return @solr_document
+    end
+    
+    # this method updates the solr document with values from the OCR text. 
+    #
+    def fulltext_to_solr
+      asset_dir = @pid.gsub("druid:","")
+      Dir.glob("/home/lyberadmin/assets/#{asset_dir}/#{asset_dir}_*.xml").each do |file|
+        @solr_document["text"] ||= []
+        text = ""
+        xml = Nokogiri::XML(open(file))
+        xml.search("//String").each {|s| text << "#{s} "}
+        @solr_document["text"] << text
+      end
+      
+      
     end
     
     # this method takes the @datastream["extracted_entities"], processes it, merges it with the @solr_document and returns @solr_document. 
@@ -85,47 +101,63 @@ module Stanford
       xml = Nokogiri::XML(@datastreams["zotero"])
       
       xml.search("//z:itemType").each do |node|
-        ["itemType_facet", "itemType_s", "itemType_display"].each {|i| zotero_hash[i] ||= []; zotero_hash[i] << node.content.strip }
+        ["itemType_facet", "itemType_s", "itemType_display", "itemType_t"].each {|i| zotero_hash[i] ||= []; zotero_hash[i] << node.content.strip }
       end
       
       xml.search("//dc:title").each do |title|
-        ["title_s", "title_display"].each {|k| zotero_hash[k] ||= []; zotero_hash[k] << title.content.strip }
+        ["title_s", "title_display", "title_t"].each {|k| zotero_hash[k] ||= []; zotero_hash[k] << title.content.strip }
       end
       
       xml.search("//bib:authors/rdf:Seq/rdf:li/foaf:person").each do |person|
-        ["person_facet", "person_s"].each {|p| zotero_hash[p] ||= [];  zotero_hash[p] << person.content.strip }
+        ["person_facet", "person_s", "person_t"].each {|p| zotero_hash[p] ||= [];  zotero_hash[p] << person.content.strip }
       end
       
       xml.search("//foaf:Organization").each do |org|
         zotero_hash["organization_facet"] ||= []
         zotero_hash["organization_facet"] << org.content.strip
+        zotero_hash["organization_t"] ||= []
+        zotero_hash["organization_t"] << org.content.strip
       end
       
       # currently, we are using the subjects to mark the public/private status of the document
+       zotero_hash["access_display"] ||= ["Private"]
+       zotero_hash["access_facet"] ||= ["Private"]
+       
       xml.search("//dc:subject[not(dcterms:LCC)]").each do |sub|
         if sub.content.upcase == "PUBLIC"
           zotero_hash["public_b"] = ['true'] 
-        else  
-          ["_facet", "_s"].each {|v| zotero_hash["donor_tags_#{v}"] ||= [];  zotero_hash["donor_tags_#{v}"] << sub.content.strip }
+          zotero_hash["access_display"] = ["Public"]
+           zotero_hash["access_facet"] = ["Public"]
+        else   
+          ["facet", "s", "t"].each {|v| zotero_hash["donor_tags_#{v}"] ||= [];  zotero_hash["donor_tags_#{v}"] << sub.content.strip }
         end
       end
       
       xml.search("//dcterms:LCC").each do |id|
         zotero_hash["identifiers_s"] ||= []
         zotero_hash["identifiers_s"] << id.content.strip
+         zotero_hash["identifiers_t"] ||= []
+          zotero_hash["identifiers_t"] << id.content.strip
       end
       
+      # if the identifier has SC340 present, it's part of the 1986 Accession, otherwise it's part of the 2005 accession. 
+      series = "Accession 2005-101"
+      zotero_hash["identifiers_s"].each do |id|
+         if id.include?("SC340_1986") 
+           series = "Accession 1986-052"
+         end
+      end
+      ["facet", "display", "s", "t"].each {|v| zotero_hash["series_#{v}"] ||= [];  zotero_hash["series_#{v}"] << series }
+      
       xml.search("//dc:date").each do |date|
-          zotero_hash["date_s"] ||= [] 
-          zotero_hash["date_s"] << date.content.strip
           format_date(date.content.strip).each do |key,vals|
-            ["_facet", "_sort", "_s"].each {|v| zotero_hash["#{key}#{v}"] ||= [];  zotero_hash["#{key}#{v}"] << vals }
+            ["facet", "sort", "s", "display", "t"].each {|v| zotero_hash["#{key}_#{v}"] ||= [];  zotero_hash["#{key}_#{v}"] << vals }
           end
       end
       
       xml.search("//dc:coverage").each do |cov|   
         format_coverage(cov.content.strip).each do |key,vals|
-          ["_facet", "_sort", "_s"].each {|v| zotero_hash["#{key}#{v}"] ||= [];  zotero_hash["#{key}#{v}"] << vals }
+          ["facet", "sort", "s", "display", "t"].each {|v| zotero_hash["#{key}_#{v}"] ||= [];  zotero_hash["#{key}_#{v}"] << vals }
         end
       end
       
@@ -149,23 +181,28 @@ private
       @solr_document.each_value {|v| v.uniq! }
     end
    
-    # takes a string and returns a hash with { year => 1992, month => 12, day => 01}
+    # takes a string and returns a hash with { year => 1992, month => 12, day => 01, date=> 1992-12-01 }
     def format_date(date_string)
         date_hash = {}
         year, month, day = date_string.split("-").map {|x| x.to_i}
         
+        date = ""
         if !year.nil? && year.to_s.length == 4
           date_hash["year"] = year.to_s
+          date << date_hash["year"]
         end
         
         if !month.nil? && 0 < month && month < 13
           date_hash["month"] =  month.to_s.rjust(2, '0')
+          date << "-#{date_hash["month"]}"
         end
         
         if !day.nil? && 0 < day && day < 32   
            date_hash["day"] = day.to_s.rjust(2, '0')
+           date << "-#{date_hash["day"]}"
         end
         
+        date_hash["date"] = date
         date_hash
     end
     
