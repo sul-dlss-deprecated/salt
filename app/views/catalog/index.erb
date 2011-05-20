@@ -3,10 +3,10 @@
         <% extra_head_content << render_opensearch_response_metadata.html_safe %>
   
 <div class="pagination">
-	<%= render 'results_pagination' %>
+
 		<%= render 'sort_and_per_page' %>
 				 <%= render 'list_gallery_toggle'%>
-			
+				<%= render 'prev_next' %>
 </div>
 
   <div id="documents" class="<% index_results_class %>">
