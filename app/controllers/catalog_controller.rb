@@ -19,13 +19,13 @@ class CatalogController < ApplicationController
       extra_head_content << view_context.auto_discovery_link_tag(:atom, url_for(params.merge(:format => 'atom')), :title => "Atom for results")
       extra_head_content << view_context.auto_discovery_link_tag(:unapi, unapi_url, {:type => 'application/xml',  :rel => 'unapi-server', :title => 'unAPI' })
       
-      if user_signed_in? and params[:qt] == "fulltext"
+      if user_signed_in? and params[:search_field] == "fulltext"
         self.solr_search_params_logic << :show_authenticated_fulltext_records
         (@response, @document_list) = get_search_results
-      elsif user_signed_in? and  params[:qt] != "fulltext"
+      elsif user_signed_in? and  params[:search_field] != "fulltext"
         self.solr_search_params_logic << :show_authenticated_records
         (@response, @document_list) = get_search_results  
-      elsif !user_signed_in? and params[:qt] == "fulltext"
+      elsif !user_signed_in? and params[:search_field] == "fulltext"
         self.solr_search_params_logic << :show_fulltext_records
         (@response, @document_list) = get_search_results(:qt => "fulltext") 
       else  

@@ -11,5 +11,6 @@
     <facet id="16422" type="person">Palo Alto</facet>
     <facet id="27" type="provinceorstate">California</facet>
     <facet id="46" type="provinceorstate">Delaware</facet>
+		<facet type="organization" id="7035">Mechanical Engineering Faculty</facet>
   </facets>
 </document>

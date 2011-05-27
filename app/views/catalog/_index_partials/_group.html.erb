@@ -1,4 +1,5 @@
-<h3><%=h facet_value if facet_value %> <em><%= grouped_result_count(@response, facet_name, facet_value) %></em></h3>
+<%= display_group_heading( facet_name, facet_value) %>
+
 
 <% if view_type == 'list' %>
    	<table><tr>

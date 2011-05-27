@@ -105,7 +105,7 @@ module Stanford
       end
       
       xml.search("//dc:title").each do |title|
-        ["title_s", "title_display", "title_t"].each {|k| zotero_hash[k] ||= []; zotero_hash[k] << title.content.strip }
+        ["title_s", "title_display", "title_t", "title_sort"].each {|k| zotero_hash[k] ||= []; zotero_hash[k] << title.content.strip }
       end
       
       xml.search("//bib:authors/rdf:Seq/rdf:li/foaf:person").each do |person|
@@ -147,7 +147,7 @@ module Stanford
            series = "Accession 1986-052"
          end
       end
-      ["facet", "display", "s", "t"].each {|v| zotero_hash["series_#{v}"] ||= [];  zotero_hash["series_#{v}"] << series }
+      ["facet", "display", "s", "t", "sort"].each {|v| zotero_hash["series_#{v}"] ||= [];  zotero_hash["series_#{v}"] << series }
       
       xml.search("//dc:date").each do |date|
           format_date(date.content.strip).each do |key,vals|

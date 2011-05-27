@@ -10,11 +10,19 @@ module SaltHelper
 
   # this groups the documents by facet and displays them in the box.
   def index_grouped_results(facet_name)
-    @response.docs.group_by {|d| d.get(facet_name)}.each do |grouping|
-      render_partial('catalog/_index_partials/group', {:docs => grouping[1], :facet_name => facet_name, :facet_value => grouping[0].to_s, :view_type => viewing_context } )
-    end 
+   html = ""
+   groupings = @response.docs.group_by {|d| d.get(facet_name, { :sep => nil, :default=> nil})[1] }
+   groupings.each do |key, value|   
+     unless value.nil?
+       html <<  render_partial('catalog/_index_partials/group',  {:docs => value, :facet_name => facet_name, :facet_value => key, :view_type => viewing_context } )
+      end
+    end
+     return html.html_safe
   end
   
+  def group_partial(docs, facet_name, facet_value)
+    render_partial('catalog/_index_partials/group',  {:docs => value, :facet_name => facet_name, :facet_value => key, :view_type => viewing_context } )
+  end
   
   
   # returns the results ungrouped
@@ -48,7 +56,7 @@ module SaltHelper
     when fields['date +']
       'year_facet'
     when fields['location']
-      'series_facet'
+      'subseries_facet'
     else
       nil
     end
@@ -58,12 +66,19 @@ module SaltHelper
      if facet_name && facet_value
        facet = response.facets.detect {|f| f.name == facet_name}
        facet_item = facet.items.detect {|i| i.value == facet_value} if facet
-       count = facet_item ? facet_item.hits : 0
+       count = facet_item ? facet_item.hits : 50
      else
        count = response.docs.total
      end
      pluralize(count, 'document')
    end
+  
+  # takes two strings and returns HTML for the group heading. 
+  def display_group_heading(facet_name=nil, facet_value=nil)
+    html = "<h3>#{facet_value.html_safe if facet_value}<em>&nbsp;&nbsp;&nbsp;#{ grouped_result_count(@response, facet_name, facet_value)}</em></h3>".html_safe
+    puts html
+    html
+  end
   
   # returns image tag for an asset thumbnail
   def thumb_tag(id)

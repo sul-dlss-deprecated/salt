@@ -43,7 +43,7 @@ module Stanford
 =end
     # This method gets druids for processing from fedora and returns them as an array. It will only return a maximum set of 50,000.  
     def initialize_queue
-       uri = URI.parse(@base + "/risearch?type=tuples&lang=itql&format=CSV&query=select+%24object+from+<%23ri>+where+%24object+<fedora-model%3AhasModel>+<info%3Afedora%2Ffedora-system%3AFedoraObject-3.0>")
+       uri = URI.parse(@base + "/risearch?type=tuples&lang=itql&format=CSV&query=#{CGI.unescapeHTML("select+%24object+from+<%23ri>+where+%24object+<fedora-model%3AhasModel>+<info%3Afedora%2Ffedora-system%3AFedoraObject-3.0>")}")
        pids = []
        open(uri).each_line do |l| 
          if l.include?("druid:")
