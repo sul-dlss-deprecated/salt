@@ -105,7 +105,9 @@ module Stanford
       end
       
       xml.search("//dc:title").each do |title|
-        ["title_s", "title_display", "title_t", "title_sort"].each {|k| zotero_hash[k] ||= []; zotero_hash[k] << title.content.strip }
+        ["title_s", "title_display", "title_t"].each {|k| zotero_hash[k] ||= []; zotero_hash[k] << title.content.strip }
+        zotero_hash["title_sort"] ||= []
+        zotero_hash["title_sort"] << title.gsub(/(\W)*/,'') #for the sort we only want alpha-num characters
       end
       
       xml.search("//bib:authors/rdf:Seq/rdf:li/foaf:person").each do |person|
@@ -157,7 +159,8 @@ module Stanford
       
       xml.search("//dc:coverage").each do |cov|   
         format_coverage(cov.content.strip).each do |key,vals|
-          ["facet", "sort", "s", "display", "t"].each {|v| zotero_hash["#{key}_#{v}"] ||= [];  zotero_hash["#{key}_#{v}"] << vals }
+          ["facet",  "s", "display", "t"].each {|v| zotero_hash["#{key}_#{v}"] ||= [];  zotero_hash["#{key}_#{v}"] << vals }
+          ["sort"].each {|s| zotero_hash["#{key}_#{s}"] ||= [];  zotero_hash["#{key}_#{s}"] << vals.gsub(/(\W)*/,'')    } 
         end
       end
       
