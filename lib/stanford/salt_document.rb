@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rsolr'
 require 'rsolr-ext'
+require 'lib/stanford/alto_parser'
 require 'lib/stanford/repository'
 
 module Stanford
@@ -67,10 +68,10 @@ module Stanford
       asset_dir = @pid.gsub("druid:","")
       Dir.glob("/home/lyberadmin/assets/#{asset_dir}/#{asset_dir}_*.xml").each do |file|
         @solr_document["text"] ||= []
-        text = ""
-        xml = Nokogiri::XML(open(file))
-        xml.search("//String").each {|s| text << "#{s} "}
-        @solr_document["text"] << text
+        alto = Stanford::AltoParser.new
+        parser = Nokogiri::XML::SAX::Parser.new(alto)
+        parser.parse(File.read(file))
+        @solr_document["text"] << alto.text
       end
       
       
