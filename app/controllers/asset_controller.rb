@@ -3,6 +3,7 @@ require 'blacklight/catalog'
 class AssetController < ApplicationController  
 
    include Blacklight::Catalog
+   include AssetHelper
   
   
   def show
@@ -13,9 +14,12 @@ class AssetController < ApplicationController
     @asset = Asset.new(params[:id])
     
     respond_to do |format|
-      format.html {send_data(@asset.get_pdf, :type => 'application/pdf')}
+      format.html {render :layout => false}
       format.pdf   {send_data(@asset.get_pdf, :type => 'application/pdf')}
       format.jpg  {send_data(@asset.get_thumbnail, :type => :jpg, :disposition => 'inline')}
+      format.flipbook { send_data(@asset.get_flipbook, :disposition => 'inline', :type => 'text/html') }
+      format.json { send_data(@asset.get_json, :type => 'application/json') }
+      format.jp2 { send_data(@asset.get_page_jp2, :type => 'image/jp2')} 
     end
   rescue Blacklight::Exceptions::InvalidSolrID
       flash[:notice]= "You do not have sufficient access privileges to see this asset, which has been marked private."
@@ -35,5 +39,15 @@ class AssetController < ApplicationController
       flash[:notice]= "You do not have sufficient access privileges to see this asset, which has been marked private."
       redirect_to(:controller => 'catalog', :action => 'index', :q => nil , :f => nil) and return false  
   end
+
+  def get_flipbook_asset
+    respond_to do |format|
+      format.css { send_data(Asset.get_flipbook_asset(params[:file], '.css'), :type => 'text/css', :disposition => 'inline')}
+      format.js { send_data(Asset.get_flipbook_asset(params[:file], '.js'), :type => 'application/x-javascript', :disposition => 'inline') }
+      format.html { send_data(Asset.get_flipbook_asset(params[:file], '.js'), :type => 'application/x-javascript', :disposition => 'inline') }
+      format.png { send_data(Asset.get_flipbook_asset(params[:file], '.png'), :type => 'image/png', :disposition => 'inline') }
+    end
+  end
+
 
 end 

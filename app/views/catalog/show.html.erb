@@ -30,8 +30,13 @@
     <div class="tools"><%= render :partial => 'show_tools' %></div>
     <div class="document">
       <%= render_document_partial @document, :show %>
-    </div>
-      <%= render_document_unapi_microformat @document %>
+      	<div class="document_viewer" id="cover_container">
+					<div id="embedded_viewer"></div>
+					<%= flipbook_tag(@document[:id]) %>				
+					<span id="downloads"></span>
+				</div>
+		</div>
+      <%# render_document_unapi_microformat @document %>
   </div>
 </div>
 

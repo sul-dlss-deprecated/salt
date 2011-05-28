@@ -42,6 +42,11 @@ module Stanford
       return nil
     end
     
+    def get_json( druid )
+       uri = URI.parse("#{@base}/#{druid}/flipbook.json")
+       return Stanford::AssetRepository.http(uri) 
+    end
+    
     # gets a page jp2000 from the asset repo. JP2000s are named {druid}/{druid}_{page number}.jp2. Page numbers are 5 digit format (00004). 
     def get_page_jp2(druid, page_number)
       uri = URI.parse(@base + "/" + druid + "/#{druid}_#{page_number}.jp2")
