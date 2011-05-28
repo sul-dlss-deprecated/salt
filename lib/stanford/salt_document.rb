@@ -1,7 +1,11 @@
 require 'rubygems'
 require 'rsolr'
 require 'rsolr-ext'
+<<<<<<< HEAD
 require 'lib/stanford/alto_parser'
+=======
+require 'alto_parser'
+>>>>>>> fb9562ede65236814b656f40aee5b23dbbc3dcb5
 require 'lib/stanford/repository'
 
 module Stanford
