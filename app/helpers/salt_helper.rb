@@ -80,6 +80,11 @@ module SaltHelper
     html
   end
   
+  # takes string and returns id without druid: prefix
+  def remove_druid_prefix(druid)
+    return druid.gsub("druid:", "")
+  end
+  
   # returns image tag for an asset thumbnail
   def thumb_tag(id)
     id.gsub!("druid:", "")
@@ -95,6 +100,7 @@ module SaltHelper
  def facets_toggle()
    if action_name == "show"
      javascript_includes << "facet_toggle.js"
+      javascript_includes << "flipbook.js"
    end
    return nil 
  end

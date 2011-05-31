@@ -7,11 +7,15 @@ class AssetController < ApplicationController
   
   
   def show
-    
-   
-    (  @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}"))  if !user_signed_in?  
-  
-    @asset = Asset.new(params[:id])
+
+
+    if !user_signed_in? 
+       unless  request.env["REMOTE_ADDR"] == FLIPBOOK_IP
+      	(  @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}"))  
+       end
+    end 
+ 
+    @asset = Asset.new(params[:id], params[:page])
     
     respond_to do |format|
       format.html {render :layout => false}
@@ -19,7 +23,7 @@ class AssetController < ApplicationController
       format.jpg  {send_data(@asset.get_thumbnail, :type => :jpg, :disposition => 'inline')}
       format.flipbook { send_data(@asset.get_flipbook, :disposition => 'inline', :type => 'text/html') }
       format.json { send_data(@asset.get_json, :type => 'application/json') }
-      format.jp2 { send_data(@asset.get_page_jp2, :type => 'image/jp2')} 
+      format.jp2 { send_data(@asset.get_page_jp2, :type => 'image/jp2', :disposition => 'inline')} 
     end
   rescue Blacklight::Exceptions::InvalidSolrID
       flash[:notice]= "You do not have sufficient access privileges to see this asset, which has been marked private."
@@ -27,7 +31,13 @@ class AssetController < ApplicationController
   end
   
   def show_page
-    (  @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}"))  if !user_signed_in?  
+    if !user_signed_in?
+       unless  request.env["REMOTE_ADDR"] == FLIPBOOK_IP            
+        (  @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}"))
+       end
+    end
+     
+
      @asset = Asset.new(params[:id], params[:page] )
      
      respond_to do |format|

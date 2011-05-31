@@ -595,6 +595,15 @@ div#searchMods label, div#searchMods h2 {
 	max-width: 49%;
 	float: left;
 }
+
+#embedded_viewer {
+  display: none;
+}
+
+#embedded_viewer img {
+  display: none;
+}
+
 .fl-theme-mist {
 	background:transparent;
 }
