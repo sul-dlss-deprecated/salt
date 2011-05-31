@@ -46,6 +46,6 @@ group :development, :test do
   gem 'capybara'
   gem 'gherkin'
   gem 'factory_girl'
-  gem 'markup_validity'
+ # gem 'markup_validity'
 	gem 'fakeweb'
 end
