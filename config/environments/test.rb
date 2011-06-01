@@ -41,3 +41,6 @@ FEDORA_PASSWORD = "fedoraAdmin"
 ASSET_SERVER_URI = "http://stanford.edu/~cfitz"
 ASSET_SERVER_USER = "fedoraAdmin"
 ASSET_SERVER_PASSWORD = "fedoraAdmin"
+
+FLIPBOOK_URL = "http://reader.stanford.edu/flipbook_salt/"
+FLIPBOOK_IP = "171.67.34.129"

@@ -51,7 +51,7 @@ describe CatalogController do
        
        it "should  allow users not logged in to see public documents" do
            sign_out @user
-           get :show, :id=>"druid:ff241yc8370"
+           get :show, :id=>"druid:pt839dg9461"
            response.should_not redirect_to('/')
            response.should be_success
         end

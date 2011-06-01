@@ -11,7 +11,9 @@ module SaltHelper
   # this groups the documents by facet and displays them in the box.
   def index_grouped_results(facet_name)
    html = ""
-   groupings = @response.docs.group_by {|d| d.get(facet_name, { :sep => nil, :default=> nil})[1] }
+  
+   groupings = @response.docs.group_by {|d| d.get(facet_name, { :sep => nil});  }
+    File.open("/tmp/log.txt", "w") {|f| f << groupings.inspect}
    groupings.each do |key, value|   
      unless value.nil?
        html <<  render_partial('catalog/_index_partials/group',  {:docs => value, :facet_name => facet_name, :facet_value => key, :view_type => viewing_context } )
@@ -75,6 +77,7 @@ module SaltHelper
   
   # takes two strings and returns HTML for the group heading. 
   def display_group_heading(facet_name=nil, facet_value=nil)
+    facet_value.is_a?(Array) ? facet_value = facet_value.first : facet_value = facet_value
     html = "<h3>#{facet_value.html_safe if facet_value}<em>&nbsp;&nbsp;&nbsp;#{ grouped_result_count(@response, facet_name, facet_value)}</em></h3>".html_safe
     puts html
     html
@@ -104,5 +107,18 @@ module SaltHelper
    end
    return nil 
  end
-  
+ 
+ # returns the donor notes as unescaped html 
+ def display_donor_notes
+     solr_fname = "note_display"
+     result = "<dt class='blacklight-#{solr_fname.parameterize}'>#{render_document_show_field_label :field => solr_fname}</dt>"
+     result << "<dd class='blacklight-#{ solr_fname.parameterize }'>"
+     notes = @document.get(solr_fname, :sep =>nil)
+     unless notes.nil?
+       notes.each { |n| result << n + "<br/>" }
+     end
+     return result.html_safe
+ end
+ 
+ 
 end

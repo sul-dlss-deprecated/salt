@@ -51,8 +51,10 @@ Blacklight.configure(:shared) do |config|
         "year_facet",
         "state_facet",
         "series_facet",
+        "subseries_facet",
         "box_facet",
-        "folder_facet"]),
+        "folder_facet",
+        "donor_tags_facet"]),
     :labels => {
       "collection_facet" => "Collection",
       "technology_facet" => "Technology",
@@ -63,6 +65,7 @@ Blacklight.configure(:shared) do |config|
       "year_facet" => "Year",
       "state_facet" => "State",
       "series_facet" => "Series",
+      "subseries_facet" => "Subseries",
       "box_facet" => "Box",
       "folder_facet" => "Folder",
       "donor_tags_facet" => "Tagged by Donor",
@@ -117,7 +120,9 @@ Blacklight.configure(:shared) do |config|
       "subseries_display",
       "box_display",
       "folder_display",
-      "id"
+      "id", 
+      "donor_tags_s",
+      "note_display"
     ],
     :labels => {
       "access_display" => "Access:",
@@ -125,8 +130,9 @@ Blacklight.configure(:shared) do |config|
       "subseries_display"  => "Subseries:",
       "box_display" => "Box:",
       "folder_display" => "Folder:",
-      "id" => "ID:"
-      
+      "id" => "ID:",
+      "donor_tags_s" => "Tagged By Donor:",
+      "note_display" => "Donor Notes:"
     }
   }
 
@@ -200,7 +206,7 @@ Blacklight.configure(:shared) do |config|
   config[:sort_fields] << ['date -', 'year_sort desc, month_sort asc, day_sort asc, title_sort asc']
   config[:sort_fields] << ['date +', 'year_sort asc, month_sort asc, day_sort asc, title_sort asc']
   config[:sort_fields] << ['title', 'title_sort asc, year_sort desc, month_sort asc']
-  config[:sort_fields] << ['location', 'series_sort asc, box_sort asc, folder_sort asc, year_sort desc, month_sort asc, title_sort asc']
+  # config[:sort_fields] << ['location', 'series_sort asc, subseries_sort asc, box_sort asc, folder_sort asc, year_sort desc, month_sort asc, title_sort asc']
   
   # If there are more than this many search results, no spelling ("did you 
   # mean") suggestion is offered.

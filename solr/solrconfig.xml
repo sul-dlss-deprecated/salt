@@ -377,8 +377,8 @@
       <str name="facet.mincount">1</str>
 	<str name="echoParams">explicit</str>
      <float name="tie">0.01</float>
-  <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
-   <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
+  <str name="qf">id^0.8 id_t^0.8 note_t^0.5 donor_tags_t^0.5 format text^0.3</str>
+   <str name="pf">id^0.9  id_t^0.9 note_t^0.5 donor_tags_t^0.5 text^0.5</str>
       <str name="fl">
         id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,has_model_s
      </str>
@@ -408,8 +408,8 @@
       <str name="facet.mincount">1</str>
       <str name="echoParams">explicit</str>
       <float name="tie">0.01</float>
-      <str name="qf">id^0.8 id_t^0.8 title_t^0.8 subseries_t^0.6  format text^0.3</str>
-      <str name="pf">id^0.8 id_t^0.8 title_t^0.8 subseries_t^0.6  format text^0.3</str>
+      <str name="qf">id^0.8 id_t^0.8 title_t^0.8 note_t^0.5 donor_tags_t^0.5 subseries_t^0.6  format text^0.3</str>
+      <str name="pf">id^0.8 id_t^0.8 title_t^0.8 note_t^0.5 donor_tags_t^0.5 subseries_t^0.6  format text^0.3</str>
       <str name="fl">
         id,text,title_display,date_display,year_facet,month_facet,medium_display,access_display, coverage_display,   series_display, subseries_display, box_display,folder_display,has_model_s
       </str>
@@ -437,8 +437,8 @@
       <str name="facet.mincount">1</str> 
      <str name="echoParams">explicit</str>
       <float name="tie">0.01</float>
-      <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
-       <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
+      <str name="qf">id^0.8 id_t^0.8 note_t^0.5 donor_tags_t^0.5 format text^0.3</str>
+       <str name="pf">id^0.9  id_t^0.9 note_t^0.5 donor_tags_t^0.5 text^0.5</str>
      <str name="fl">
         id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet
      </str>
@@ -466,8 +466,8 @@
       <str name="facet.mincount">1</str> 
      <str name="echoParams">explicit</str>
       <float name="tie">0.01</float>
-      <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
-       <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
+      <str name="qf">id^0.8 id_t^0.8 note_t^0.5 donor_tags_t^0.5 format text^0.3</str>
+       <str name="pf">id^0.9  id_t^0.9 note_t^0.5 donor_tags_t^0.5 text^0.5</str>
      <str name="fl">
         id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet
      </str>

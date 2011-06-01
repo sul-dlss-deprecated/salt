@@ -32,7 +32,7 @@ describe AssetController do
       
       it "should allow users not logged in to see public documents" do 
         sign_out @user
-         get :show, :id=>"ff241yc8370"
+         get :show, :id=>"pt839dg9461"
          response.should_not redirect_to('/')
          response.should be_success
         
@@ -61,7 +61,7 @@ describe AssetController do
     
      it "should allow users not logged in to see public documents" do 
         sign_out @user
-         get :show, :id=>"ff241yc8370", :page => "00001"
+         get :show, :id=>"pt839dg9461", :page => "00001"
          response.should_not redirect_to('/')
          response.should be_success
         
