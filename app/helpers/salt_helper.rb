@@ -11,7 +11,6 @@ module SaltHelper
   # this groups the documents by facet and displays them in the box.
   def index_grouped_results(facet_name)
    html = ""
-  
    groupings = @response.docs.group_by {|d| d.get(facet_name, { :sep => nil});  }
     File.open("/tmp/log.txt", "w") {|f| f << groupings.inspect}
    groupings.each do |key, value|   
