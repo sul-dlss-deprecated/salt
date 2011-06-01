@@ -1,11 +1,7 @@
 require 'rubygems'
 require 'rsolr'
 require 'rsolr-ext'
-<<<<<<< HEAD
 require 'lib/stanford/alto_parser'
-=======
-require 'alto_parser'
->>>>>>> fb9562ede65236814b656f40aee5b23dbbc3dcb5
 require 'lib/stanford/repository'
 
 module Stanford
@@ -15,6 +11,7 @@ module Stanford
     
     attr_accessor :solr_document
     attr_accessor :repository
+    attr_accessor :asset_repo
     attr_accessor :datastreams
     attr_accessor :pid
     attr_accessor :warnings
@@ -32,6 +29,12 @@ module Stanford
            @repository = Stanford::Repository.new()
         else
            @repository = options[:repository]
+        end
+        
+        if options[:asset_repo].nil? 
+           @asset_repo = Stanford::AssetRepository.new()
+        else
+           @asset_repo = options[:asset_repo]
         end
         
         if options[:warnings] == true
@@ -69,17 +72,37 @@ module Stanford
     # this method updates the solr document with values from the OCR text. 
     #
     def fulltext_to_solr
-      asset_dir = @pid.gsub("druid:","")
-      Dir.glob("/home/lyberadmin/assets/#{asset_dir}/#{asset_dir}_*.xml").each do |file|
-        @solr_document["text"] ||= []
-        alto = Stanford::AltoParser.new
-        parser = Nokogiri::XML::SAX::Parser.new(alto)
-        parser.parse(File.read(file))
-        @solr_document["text"] << alto.text
+      @solr_document["text"] ||= []
+      json = get_json
+      unless json.nil?
+        i = 1
+        json["pages"].each do |p|
+          xml = get_alto(i.to_s)
+          unless xml.nil?
+             alto = Stanford::AltoParser.new
+             parser = Nokogiri::XML::SAX::Parser.new(alto)
+             parser.parse(xml)
+             @solr_document["text"] << alto.text
+             i += 1
+          end
+        end
       end
-      
-      
     end
+    
+    #this method gets the json from the asset repository
+    def get_json
+      return JSON(@asset_repo.get_json(@pid.gsub("druid:", "")))
+    rescue => e
+      return nil
+    end
+    
+    #this method takes a page string and returns the alto XML.
+    def get_alto(page)
+      return @asset_repo.get_page_xml(@pid.gsub("druid:", ""), page.rjust(5, "0"))
+    rescue => e
+      return nil
+    end
+    
     
     # this method takes the @datastream["extracted_entities"], processes it, merges it with the @solr_document and returns @solr_document. 
     # extracted entities are only applied as facets. facet values we want from this ds: technology, company, person, organization, city, state
@@ -140,11 +163,11 @@ module Stanford
         end
       end
       
-      xml.search("//dcterms:LCC").each do |id|
-        zotero_hash["identifiers_s"] ||= []
+      zotero_hash["identifiers_s"] ||= [@pid]
+      zotero_hash["identifiers_t"] ||= [@pid]
+      xml.search("//dcterms:LCC").each do |id| 
         zotero_hash["identifiers_s"] << id.content.strip
-         zotero_hash["identifiers_t"] ||= []
-          zotero_hash["identifiers_t"] << id.content.strip
+        zotero_hash["identifiers_t"] << id.content.strip
       end
       
       # if the identifier has SC340 present, it's part of the 1986 Accession, otherwise it's part of the 2005 accession. 
@@ -168,6 +191,10 @@ module Stanford
           ["sort"].each {|s| zotero_hash["#{key}_#{s}"] ||= [];  zotero_hash["#{key}_#{s}"] << vals.gsub(/(\W)*/,'')    } 
         end
       end
+      
+      xml.search("//bib:Memo").each do |memo|
+        ["display", "t",  ].each {|v| zotero_hash["note_#{v}"] ||= []; zotero_hash["note_#{v}"] << memo.content.strip }
+      end 
       
       update_solr_document(zotero_hash)
       return @solr_document

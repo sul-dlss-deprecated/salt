@@ -56,7 +56,8 @@ describe Stanford::SaltDocument do
     it "should return a hash and store it in @solr_document" do
       salt_doc = Stanford::SaltDocument.new("druid:123")
       solr_doc = salt_doc.to_solr
-      solr_doc.should == {"id" => ["druid:123"]}
+      solr_doc["id"].should ==  ["druid:123"]
+      solr_doc.should ==   {"access_display"=>["Private"], "identifiers_t"=>["druid:123"], "series_s"=>["Accession 2005-101"], "series_t"=>["Accession 2005-101"], "text"=>[], "series_display"=>["Accession 2005-101"], "id"=>["druid:123"], "access_facet"=>["Private"], "series_facet"=>["Accession 2005-101"], "series_sort"=>["Accession 2005-101"], "identifiers_s"=>["druid:123"]}
       solr_doc.should == salt_doc.solr_document
     end
       
@@ -91,13 +92,12 @@ describe Stanford::SaltDocument do
     
     it "#extracted_entities_to_solr should update the @solr_document hash with proper values mapped from the extracted_entities datastream" do
       @salt_doc.extracted_entities_to_solr
-      @salt_doc.solr_document.should == {"id" => ["druid:123"], "company_facet"=>["KNOWLEDGE SYSTEMS LABORATORY", "Bayesian Belief Networks", "MITRE Corp", "E.I. DuPont de Nemours & Company"], "provinceorstate_facet"=>["California", "Delaware"], "city_facet"=>["Wilmington"], "person_facet"=>["EDWARD FEIGENBAUM", "Paul Morawski", "Ed", "Palo Alto"]}
+      @salt_doc.solr_document.should == {"company_facet"=>["KNOWLEDGE SYSTEMS LABORATORY", "Bayesian Belief Networks", "MITRE Corp", "E.I. DuPont de Nemours & Company"], "provinceorstate_facet"=>["California", "Delaware"], "organization_facet"=>["Mechanical Engineering Faculty"], "city_facet"=>["Wilmington"], "id"=>["druid:123"], "person_facet"=>["EDWARD FEIGENBAUM", "Paul Morawski", "Ed", "Palo Alto"]}
     end
     
     it "#zotero_to_solr should update the @solr_document hash with proper values mapped from the datastream" do
       @salt_doc.zotero_to_solr
-      @salt_doc.solr_document.should ==   {"month_s"=>["03"], "box_s"=>["36"], "subseries_s"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "year_facet"=>["1977"], "organization_facet"=>["Stanford Heuristic Programming Project"], "year_sort"=>["1977"], "subseries_facet"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "title_s"=>["A Model for Learning Systems"], "box_facet"=>["36"], "date_s"=>["1977-03"], "month_facet"=>["03"], "folder_sort"=>["15"], "folder_s"=>["15"], "itemType_s"=>["report"], "donor_tags__facet"=>["InProgress", "Machine Learning"], "donor_tags__s"=>["InProgress", "Machine Learning"], "id"=>["druid:123"], "year_s"=>["1977"], "itemType_facet"=>["report"], "box_sort"=>["36"], "subseries_sort"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "itemType_display"=>["report"], "title_display"=>["A Model for Learning Systems"], "month_sort"=>["03"], "identifiers_s"=>["00009059"], "folder_facet"=>["15"]}
-      
+      @salt_doc.solr_document.should ==  {"access_display"=>["Private"], "identifiers_t"=>["druid:123", "00009059"], "series_s"=>["Accession 2005-101"], "month_s"=>["03"], "year_display"=>["1977"], "box_s"=>["36"], "subseries_s"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "organization_t"=>["Stanford Heuristic Programming Project"], "donor_tags_facet"=>["InProgress", "Machine Learning"], "series_t"=>["Accession 2005-101"], "month_t"=>["03"], "year_facet"=>["1977"], "subseries_t"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "organization_facet"=>["Stanford Heuristic Programming Project"], "year_sort"=>["1977"], "box_t"=>["36"], "subseries_facet"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "title_s"=>["A Model for Learning Systems"], "box_facet"=>["36"], "title_t"=>["A Model for Learning Systems"], "series_display"=>["Accession 2005-101"], "month_facet"=>["03"], "date_s"=>["1977-03"], "folder_s"=>["15"], "folder_sort"=>["15"], "itemType_s"=>["report"], "month_display"=>["03"], "date_t"=>["1977-03"], "box_display"=>["36"], "folder_t"=>["15"], "id"=>["druid:123"], "itemType_t"=>["report"], "access_facet"=>["Private"], "donor_tags_s"=>["InProgress", "Machine Learning"], "series_facet"=>["Accession 2005-101"], "date_sort"=>["1977-03"], "year_s"=>["1977"], "subseries_display"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "folder_display"=>["15"], "itemType_facet"=>["report"], "title_sort"=>["AModelforLearningSystems"], "donor_tags_t"=>["InProgress", "Machine Learning"], "year_t"=>["1977"], "box_sort"=>["36"], "series_sort"=>["Accession 2005-101"], "subseries_sort"=>["HPPPapersVariousAuthors1of219701979"], "itemType_display"=>["report"], "title_display"=>["A Model for Learning Systems"], "month_sort"=>["03"], "identifiers_s"=>["druid:123", "00009059"], "date_facet"=>["1977-03"], "date_display"=>["1977-03"], "folder_facet"=>["15"]}
     end
     
   end

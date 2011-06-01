@@ -2,11 +2,8 @@ require 'rubygems'
 require 'nokogiri'
 
 module Stanford
-<<<<<<< HEAD
+
   class AltoParser < Nokogiri::XML::SAX::Document
-=======
-  class AtloParser < Nokogiri::XML::SAX::Document
->>>>>>> fb9562ede65236814b656f40aee5b23dbbc3dcb5
     
     attr_accessor :text
     
