@@ -138,7 +138,7 @@ GEM
     ruby-debug-base (0.10.4)
       linecache (>= 0.3)
     rubyzip (0.9.4)
-    selenium-webdriver (0.2.0)
+    selenium-webdriver (0.2.1)
       childprocess (>= 0.1.7)
       ffi (>= 1.0.7)
       json_pure

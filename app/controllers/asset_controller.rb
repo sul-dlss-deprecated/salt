@@ -25,6 +25,7 @@ class AssetController < ApplicationController
       format.json { send_data(@asset.get_json, :type => 'application/json') }
       format.jp2 { send_data(@asset.get_page_jp2, :type => 'image/jp2', :disposition => 'inline')} 
     end
+    
   rescue Blacklight::Exceptions::InvalidSolrID
       flash[:notice]= "You do not have sufficient access privileges to see this asset, which has been marked private."
       redirect_to(:controller => 'catalog', :action => 'index', :q => nil , :f => nil) and return false      
@@ -45,6 +46,7 @@ class AssetController < ApplicationController
        format.xml { send_data(@asset.get_page_xml, :type => 'application/xml', :disposition => 'inline')}
        format.jp2 { send_data(@asset.get_page_jp2, :type => 'image/jp2',  :disposition => 'inline')}       
      end
+     
   rescue Blacklight::Exceptions::InvalidSolrID
       flash[:notice]= "You do not have sufficient access privileges to see this asset, which has been marked private."
       redirect_to(:controller => 'catalog', :action => 'index', :q => nil , :f => nil) and return false  

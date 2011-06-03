@@ -20,12 +20,7 @@ module SaltHelper
     end
      return html.html_safe
   end
-  
-  def group_partial(docs, facet_name, facet_value)
-    render_partial('catalog/_index_partials/group',  {:docs => value, :facet_name => facet_name, :facet_value => key, :view_type => viewing_context } )
-  end
-  
-  
+
   # returns the results ungrouped
   def index_ungrouped_results
     render_partial('catalog/_index_partials/group', {:docs => @response.docs, :facet_name => nil, :facet_value => nil, :view_type => viewing_context } )
@@ -56,8 +51,8 @@ module SaltHelper
       'year_facet'
     when fields['date +']
       'year_facet'
-    when fields['location']
-      'subseries_facet'
+  #  when fields['location']
+  #    'subseries_facet'
     else
       nil
     end
@@ -77,9 +72,8 @@ module SaltHelper
   # takes two strings and returns HTML for the group heading. 
   def display_group_heading(facet_name=nil, facet_value=nil)
     facet_value.is_a?(Array) ? facet_value = facet_value.first : facet_value = facet_value
-    html = "<h3>#{facet_value.html_safe if facet_value}<em>&nbsp;&nbsp;&nbsp;#{ grouped_result_count(@response, facet_name, facet_value)}</em></h3>".html_safe
-    puts html
-    html
+    html =  "<h3>#{facet_value.html_safe if facet_value}<em>&nbsp;&nbsp;&nbsp;#{ grouped_result_count(@response, facet_name, facet_value)}</em></h3>".html_safe
+    return html
   end
   
   # takes string and returns id without druid: prefix
@@ -99,12 +93,12 @@ module SaltHelper
    action_name == "show" ? "This Document Refers To" : "Limit Your Search"
  end
   
- def facets_toggle()
+ def facets_toggle
    if action_name == "show"
      javascript_includes << "facet_toggle.js"
       javascript_includes << "flipbook.js"
    end
-   return nil 
+   return javascript_includes 
  end
  
  # returns the donor notes as unescaped html 

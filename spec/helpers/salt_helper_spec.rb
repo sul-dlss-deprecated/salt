@@ -1,8 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 include SaltHelper
 
+   
 
 describe SaltHelper do
+  include SaltHelper
+  
+
   
   describe "#index_results_box" do
     it "should call index_group_results if there's a grouping facet" do
@@ -83,6 +87,8 @@ describe SaltHelper do
       end  
   end
   
+  
+  
   describe "#grouping_facet" do
     
    
@@ -107,12 +113,15 @@ describe SaltHelper do
         helper.grouping_facet.should ==  'year_facet'
      end
       
-    it "should return the proper values " do
-        pending
-        helper.stubs(:params).returns({:sort => 'series_sort asc, box_sort asc, folder_sort asc, year_sort desc, month_sort asc, title_sort asc'})
-        helper.grouping_facet.should ==  'series_facet'
-    end
+    #it "should return the proper values " do
+        #pending
+        # not sure we want to use the series sort. 
+        #helper.stubs(:params).returns({:sort => 'series_sort asc, box_sort asc, folder_sort asc, year_sort desc, month_sort asc, title_sort asc'})
+        #helper.grouping_facet.should ==  'series_facet'
+    #end
   end
+  
+  
   
   describe "#grouped_result_count" do 
     it "should return the count and the correct pluziation of document when there are no facets" do
@@ -149,10 +158,82 @@ describe SaltHelper do
     
   end
   
+  describe "#display_group_heading" do
+   
+      
+    it "should return the proper html when give the facet_name and facet_value strings" do
+      helper.expects(:grouped_result_count).returns("99 foofoos")
+      helper.display_group_heading("foo", "bar").should ==  "<h3>bar<em>&nbsp;&nbsp;&nbsp;99 foofoos</em></h3>"
+    end
+    
+    it "should return the proper html when given the facet_name but not facet_value" do
+      helper.expects(:grouped_result_count).returns("107 foofoos")
+      helper.display_group_heading("foo").should == "<h3><em>&nbsp;&nbsp;&nbsp;107 foofoos</em></h3>"
+    end
+    
+    it "should return the proper htm when given the facet_name string and facet_value as an array" do
+      helper.expects(:grouped_result_count).returns("2 foofoos")
+      helper.display_group_heading("foo", ["bar", "jar"]).should ==  "<h3>bar<em>&nbsp;&nbsp;&nbsp;2 foofoos</em></h3>"
+    end
+  end 
+  
+  describe "#remove_druid_prefix" do 
+    it "should return the string with the druid: prefix removed" do
+      helper.remove_druid_prefix("druid:foo").should == "foo"
+    end
+    
+    it "should return the string if there is not druid: prefix" do 
+      helper.remove_druid_prefix("foo").should == "foo"
+    end
+  end
+  
   describe "#thumbtag" do
     it "should return an img tag with the proper src pointing to an assets thumbnail" do
       helper.thumb_tag("druid:123").should == "<img src=/assets/123.jpg alt=\"druid:123\"/>"
     end
   end
+  
+  
+   describe "#facets_display_heading" do 
+      it "should return the proper text when in the show context" do
+        helper.expects(:action_name).returns("show")
+        helper.facets_display_heading.should == "This Document Refers To"
+      end
+
+       it "should return the proper text when in the any other context" do
+          helper.expects(:action_name).returns("index")
+          helper.facets_display_heading.should ==  "Limit Your Search"
+        end
+
+    end
+    
+    describe "#facets_toggle" do 
+     
+      it "should add the proper javascript files to the includes when in the show context" do
+        helper.expects(:javascript_includes).at_least_once.returns([])
+        helper.expects(:action_name).returns("show")
+        helper.facets_toggle.should == ["facet_toggle.js", "flipbook.js"]
+      end
+      
+      it "should return nil and keep the javascript includes as is if not in the show context" do
+        helper.expects(:javascript_includes).once.returns([])    
+        helper.expects(:action_name).returns("index")
+        helper.facets_toggle.should == [] 
+      end
+      
+    end
+    
+    describe "#display_notes" do
+      
+      it "should return the html in the correct format" do 
+          @document = mock("SolrDocuments")
+          @document.expects(:get).once.returns(["this is the story", "of a three hour tour"])
+          helper.display_donor_notes.should == "<dt class='blacklight-note_display'>Donor Notes:</dt><dd class='blacklight-note_display'>this is the story<br/>of a three hour tour<br/>"
+      end
+      
+      
+      
+    end
+  
   
 end

@@ -61,11 +61,36 @@ describe AssetController do
     
      it "should allow users not logged in to see public documents" do 
         sign_out @user
-         get :show, :id=>"pt839dg9461", :page => "00001"
+         get :show_page, :id=>"pt839dg9461", :page => "00001"
          response.should_not redirect_to('/')
          response.should be_success
         
       end
+     
+  end
+  
+  describe "#get_flipbook_asset" do
+    
+    #http://salt-app-dev.stanford.edu/assets/js/GnuBook/GnuBook.js   
+    it "should pass through requests for javascript for the embedded flipbook " do
+          get :get_flipbook_asset, :file=> "GnuBook/GnuBook.js"
+          response.should_not redirect_to('/')
+          response.should be_success
+    end
+  
+    #http://salt-app-dev.stanford.edu/assets/css/GnuBookEmbed.css
+    it "should pass through requests for css for the embedded flipbook " do
+          get :get_flipbook_asset, :file=> "GnuBookEmbed.css", :format => :css
+          response.should_not redirect_to('/')
+          response.should be_success
+    end
+      
+    #http://salt-app-dev.stanford.edu/assets/images/toolbar_bg.png  
+    it "should pass through requests for css for the embedded flipbook " do
+          get :get_flipbook_asset, :file=> "toolbar_bg.png", :format => :png
+          response.should_not redirect_to('/')
+          response.should be_success
+    end  
      
   end
   

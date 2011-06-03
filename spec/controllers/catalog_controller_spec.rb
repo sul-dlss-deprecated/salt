@@ -21,13 +21,27 @@ describe CatalogController do
        response.should_not redirect_to('/')
        response.should be_success
      end
+     
+    it "should allow logged in users to index documents" do
+      get :index, { :search_field => "fulltext"}
+      response.should_not redirect_to('/')
+      response.should be_success
+    end
+    
    
-     it "should not allow users to index documents" do
+     it "should  allow users to index documents" do
         sign_out @user
         get :index
         response.should_not redirect_to('/')
         response.should be_success
      end
+     
+     it "should allow logged in users to index documents" do
+        sign_out @user
+        get :index, { :search_field => "fulltext"}
+        response.should_not redirect_to('/')
+        response.should be_success
+      end
      
    end
    
@@ -41,6 +55,15 @@ describe CatalogController do
          response.should_not redirect_to('/')
          response.should be_success
        end
+       
+       #this is a temporary solution until stanford webauth is added
+       it "should  allow not authorized users to see private documents" do
+         @user.approved = false  
+         get :show, :id=>"druid:bb047vy0535"
+         response.should_not redirect_to('/')
+         response.should be_success
+       end
+
 
        it "should not allow users not logged in to see private documents" do
           sign_out @user

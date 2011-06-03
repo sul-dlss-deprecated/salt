@@ -44,7 +44,7 @@ class Asset
   end
   
   def self.get_flipbook_asset(file, mime)
-    file.include?(mime) ? file = File.basename(file,mime) : file = file
+    file.include?(mime) ? file.chomp!(mime) : file = file
     if mime == ".css"
       uri = URI.parse("#{FLIPBOOK_URL}/css/#{file}#{mime}")
     elsif mime == ".js"
@@ -52,11 +52,7 @@ class Asset
     elsif mime == ".png"
       uri = URI.parse("#{FLIPBOOK_URL}/images/#{file}#{mime}")
     end
-    if uri
-      return Asset.http(uri)
-    else
-      return "Cannot find #{file}#{mime}"
-    end
+    return Asset.http(uri)
   end
   
   

@@ -47,7 +47,21 @@ describe Asset do
       end
   
   
+  describe "#get_json" do
+    it "should get the json from the repo" do 
+      @mock_repo.expects(:get_json).with("ff241yc8370")
+      @asset.get_json
+    end
+  end
   
+  describe "#get_flipbook" do 
+    it "should return the flipbook html" do
+      Asset.expects(:http).once.returns("<html:flipbook/>")
+      @asset.get_flipbook.should == "<html:flipbook/>"
+    end
+  end
+  
+   
   
   
 end

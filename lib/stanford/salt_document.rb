@@ -74,15 +74,17 @@ module Stanford
     def fulltext_to_solr
       @solr_document["text"] ||= []
       json = get_json
+      
       unless json.nil?
         i = 1
         json["pages"].each do |p|
+         
           xml = get_alto(i.to_s)
           unless xml.nil?
              alto = Stanford::AltoParser.new
              parser = Nokogiri::XML::SAX::Parser.new(alto)
              parser.parse(xml)
-             @solr_document["text"] << alto.text
+             @solr_document["text"] << alto.text.strip
              i += 1
           end
         end
@@ -138,7 +140,7 @@ module Stanford
         zotero_hash["title_sort"] << title.content.strip.gsub(/(\W)*/,'') #for the sort we only want alpha-num characters
       end
       
-      xml.search("//bib:authors/rdf:Seq/rdf:li/foaf:person").each do |person|
+      xml.search("//bib:authors/rdf:Seq/rdf:li/foaf:Person").each do |person|
         ["person_facet", "person_s", "person_t"].each {|p| zotero_hash[p] ||= [];  zotero_hash[p] << person.content.strip }
       end
       
