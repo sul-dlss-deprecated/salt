@@ -81,11 +81,31 @@ module Stanford
         return nil     
     end
     
+    # this method takes  pid, dsID, payload, and mime strings and updates the coresponding fedora datastream with the 
+    # provided XML
+    def update_datastream(pid, dsID, data, mime='application/xml' )
+          uri = URI.parse(@base + '/objects/' + pid + '/datastreams/' + dsID )
+          request = Net::HTTP::Put.new(uri.request_uri)
+          request.basic_auth @username, @password
+          request.body = data
+          request.content_type = mime
+          response = Net::HTTP.start(uri.host, uri.port) {|http| http.request(request)}
+          case response
+          when Net::HTTPSuccess 
+              return response.body
+          else
+              raise response.error!
+          end
+          rescue Exception => e
+              raise e
+    end
+    
   private
   
     def Repository.http(uri)
       request = Net::HTTP::Get.new(uri.request_uri) 
       request.basic_auth @username, @password
+      
       response = Net::HTTP.start(uri.host, uri.port) {|http| http.request(request)}
       case response
       when Net::HTTPSuccess 

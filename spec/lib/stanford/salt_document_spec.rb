@@ -55,6 +55,7 @@ describe Stanford::SaltDocument do
   
   describe "#to_solr" do 
     before(:each) do 
+       File.open("/tmp/zotero.xml", "w") { |f| f << '<rdf:RDF xmlns:bib="http://purl.org/net/biblio#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:link="http://purl.org/rss/1.0/modules/link/" xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:vcard="http://nwalsh.com/rdf/vCard#" xmlns:z="http://www.zotero.org/namespaces/export#"/>' }
        @mock_salt_doc_repo = mock("Stanford::Repository")
        # adding all the namespaces that it expects with the Zotero XML 
        @mock_salt_doc_repo.stubs(:get_datastream).returns('<rdf:RDF xmlns:bib="http://purl.org/net/biblio#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:link="http://purl.org/rss/1.0/modules/link/" xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:vcard="http://nwalsh.com/rdf/vCard#" xmlns:z="http://www.zotero.org/namespaces/export#"/>')
@@ -64,9 +65,10 @@ describe Stanford::SaltDocument do
     
     it "should return a hash and store it in @solr_document" do
       salt_doc = Stanford::SaltDocument.new("druid:123")
-      solr_doc = salt_doc.to_solr
+      salt_doc.to_solr
+      solr_doc = salt_doc.solr_document
       solr_doc["id"].should ==  ["druid:123"]
-      solr_doc.should ==   {"access_display"=>["Private"], "identifiers_t"=>["druid:123"], "series_s"=>["Accession 2005-101"], "series_t"=>["Accession 2005-101"], "text"=>[], "series_display"=>["Accession 2005-101"], "id"=>["druid:123"], "access_facet"=>["Private"], "series_facet"=>["Accession 2005-101"], "series_sort"=>["Accession 2005-101"], "identifiers_s"=>["druid:123"]}
+      solr_doc.should ==    {"access_display"=>["Private"], "identifiers_t"=>["druid:123"], "series_s"=>["Accession 2005-101"], "containingWork_t"=>[""], "abstract_s"=>[""], "series_t"=>["Accession 2005-101"], "documentSubType_facet"=>[""], "extent_s"=>[""], "abstract_t"=>[""], "corporateEntity_facet"=>[""], "extent_t"=>[""], "EAFHardDriveFileName_display"=>[""], "title_s"=>[""], "documentSubType_s"=>[""], "text"=>[], "series_display"=>["Accession 2005-101"], "title_t"=>[""], "date_s"=>[""], "documentType_facet"=>[""], "documentSubType_t"=>[""], "containingWork_display"=>[""], "extent_display"=>[""], "date_t"=>[""], "containingWork_facet"=>[""], "language_s"=>[""], "EAFHardDriveFileName_s"=>[""], "id"=>["druid:123"], "access_facet"=>["Private"], "series_facet"=>["Accession 2005-101"], "date_sort"=>[""], "documentType_display"=>[""], "documentSubType_display"=>[""], "language_t"=>[""], "EAFHardDriveFileName_t"=>[""], "originator_s"=>[], "language_display"=>[""], "series_sort"=>["Accession 2005-101"], "originator_t"=>[], "title_display"=>[""], "originator_facet"=>[], "documentType_s"=>[""], "corporateEntity_t"=>[""], "language_facet"=>[""], "abstract_display"=>[""], "identifiers_s"=>["druid:123"], "date_facet"=>[""], "date_display"=>[""], "documentType_t"=>[""], "containingWork_s"=>[""]}
       solr_doc.should == salt_doc.solr_document
     end
       
@@ -125,12 +127,11 @@ describe Stanford::SaltDocument do
   describe "#*_to_solr" do
     before(:each) do 
        @mock_salt_doc_repo = mock("Stanford::Repository")
-       @mock_salt_doc_repo.stubs(:get_datastream).with("druid:123", "extracted_entities").returns(fixture("extracted_entities_ds.xml"))
-       @mock_salt_doc_repo.stubs(:get_datastream).with("druid:123", "zotero").returns(fixture("zotero_ds.xml"))
+       @mock_salt_doc_repo.stubs(:get_datastream).with("druid:123", "extracted_entities").returns(IO.read(fixture("extracted_entities_ds.xml").path))
+       @mock_salt_doc_repo.stubs(:get_datastream).with("druid:123", "zotero").returns(IO.read(fixture("zotero_ds.xml").path))
        
        Stanford::Repository.expects(:new).returns(@mock_salt_doc_repo)
        @salt_doc = Stanford::SaltDocument.new("druid:123")
-        @salt_doc.solr_document.should == {"id" => ["druid:123"] }
     end
     
     it "#extracted_entities_to_solr should update the @solr_document hash with proper values mapped from the extracted_entities datastream" do
@@ -140,7 +141,7 @@ describe Stanford::SaltDocument do
     
     it "#zotero_to_solr should update the @solr_document hash with proper values mapped from the datastream" do
       @salt_doc.zotero_to_solr
-      @salt_doc.solr_document.should ==  {"person_s"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "access_display"=>["Private"], "identifiers_t"=>["druid:123", "00009059"], "series_s"=>["Accession 2005-101"], "month_s"=>["03"], "year_display"=>["1977"], "box_s"=>["36"], "subseries_s"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "person_t"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "organization_t"=>["Stanford Heuristic Programming Project"], "donor_tags_facet"=>["InProgress", "Machine Learning"], "series_t"=>["Accession 2005-101"], "month_t"=>["03"], "year_facet"=>["1977"], "subseries_t"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "organization_facet"=>["Stanford Heuristic Programming Project"], "year_sort"=>["1977"], "box_t"=>["36"], "subseries_facet"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "title_s"=>["A Model for Learning Systems"], "box_facet"=>["36"], "title_t"=>["A Model for Learning Systems"], "series_display"=>["Accession 2005-101"], "month_facet"=>["03"], "date_s"=>["1977-03"], "folder_s"=>["15"], "folder_sort"=>["15"], "itemType_s"=>["report"], "month_display"=>["03"], "date_t"=>["1977-03"], "box_display"=>["36"], "folder_t"=>["15"], "id"=>["druid:123"], "itemType_t"=>["report"], "person_facet"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "access_facet"=>["Private"], "donor_tags_s"=>["InProgress", "Machine Learning"], "series_facet"=>["Accession 2005-101"], "date_sort"=>["1977-03"], "year_s"=>["1977"], "subseries_display"=>["HPP Papers, Various Authors (1 of 2)1970 -\n      1979"], "folder_display"=>["15"], "itemType_facet"=>["report"], "title_sort"=>["AModelforLearningSystems"], "donor_tags_t"=>["InProgress", "Machine Learning"], "year_t"=>["1977"], "box_sort"=>["36"], "series_sort"=>["Accession 2005-101"], "subseries_sort"=>["HPPPapersVariousAuthors1of219701979"], "itemType_display"=>["report"], "title_display"=>["A Model for Learning Systems"], "month_sort"=>["03"], "identifiers_s"=>["druid:123", "00009059"], "date_facet"=>["1977-03"], "date_display"=>["1977-03"], "folder_facet"=>["15"]}
+      @salt_doc.solr_document.should ==   {"access_display"=>["Private"], "identifiers_t"=>["druid:123", "00009059"], "series_s"=>["Accession 2005-101"], "month_s"=>["03"], "year_display"=>["1977"], "containingWork_t"=>[""], "abstract_s"=>[""], "series_t"=>["Accession 2005-101"], "month_t"=>["03"], "year_facet"=>["1977"], "documentSubType_facet"=>[""], "extent_s"=>[""], "abstract_t"=>[""], "donor_tags_facet"=>["InProgress", "Machine Learning"], "year_sort"=>["1977"], "corporateEntity_facet"=>["Stanford Heuristic Programming Project"], "extent_t"=>[""], "EAFHardDriveFileName_display"=>["00009059"], "title_s"=>["A Model for Learning Systems"], "documentSubType_s"=>[""], "series_display"=>["Accession 2005-101"], "title_t"=>["A Model for Learning Systems"], "month_facet"=>["03"], "date_s"=>["1977-03"], "documentType_facet"=>["report"], "documentSubType_t"=>[""], "containingWork_display"=>[""], "extent_display"=>[""], "month_display"=>["03"], "date_t"=>["1977-03"], "containingWork_facet"=>[""], "language_s"=>[""], "EAFHardDriveFileName_s"=>["00009059"], "id"=>["druid:123"], "access_facet"=>["Private"], "series_facet"=>["Accession 2005-101"], "date_sort"=>["1977-03"], "year_s"=>["1977"], "documentType_display"=>["report"], "documentSubType_display"=>[""], "language_t"=>[""], "EAFHardDriveFileName_t"=>["00009059"], "donor_tags_s"=>["InProgress", "Machine Learning"], "originator_s"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "year_t"=>["1977"], "language_display"=>[""], "donor_tags_t"=>["InProgress", "Machine Learning"], "series_sort"=>["Accession 2005-101"], "originator_t"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "title_display"=>["A Model for Learning Systems"], "originator_facet"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "month_sort"=>["03"], "documentType_s"=>["report"], "corporateEntity_t"=>["Stanford Heuristic Programming Project"], "language_facet"=>[""], "abstract_display"=>[""], "identifiers_s"=>["druid:123", "00009059"], "date_facet"=>["1977-03"], "date_display"=>["1977-03"], "documentType_t"=>["report"], "containingWork_s"=>[""]}
     end
   end
   
