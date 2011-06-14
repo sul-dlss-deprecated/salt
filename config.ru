@@ -2,5 +2,6 @@
 
 require ::File.expand_path('../config/environment',  __FILE__)
 use(Rack::Webauth)
+include Rack::Webauth::Helpers 
 
 run Salt::Application

@@ -39,7 +39,7 @@ abstract <dcterms:abstract>
 druid?    top level attribute "rdf:about" e.g., <rdf:Description rdf:about="https://saltworks.stanford.edu/documents/druid:cm484yg4038/downloads?download_id=document.pdf">
 *********/
 $crecords = array();
-$NOTED_LEFT = 0;
+$NOTES_LEFT = 0;
 $big_string = '';
 foreach ($xml as $record) {
   

@@ -42,5 +42,12 @@ ASSET_SERVER_URI = "http://stanford.edu/~cfitz"
 ASSET_SERVER_USER = "fedoraAdmin"
 ASSET_SERVER_PASSWORD = "fedoraAdmin"
 
-FLIPBOOK_URL = "http://reader.stanford.edu/flipbook_salt/"
+FLIPBOOK_URL = "http://reader.stanford.edu/flipbook_salt"
 FLIPBOOK_IP = "171.67.34.129"
+
+# These are used to configure the Zotero Ingest Directory watcher.
+
+DIRECTORY_WATCHER_DIR = File.join(Dir.tmpdir,  Time.now.strftime("%s"))
+FileUtils.mkdir(DIRECTORY_WATCHER_DIR) #for testing, we need to make a new directory in the systems's temp direct @ startup.
+DIRECTORY_WATCHER_INTERVAL = 1
+DIRECTORY_WATCHER_STABLE = 1
