@@ -1,0 +1,352 @@
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:z="http://www.zotero.org/namespaces/export#"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:dcterms="http://purl.org/dc/terms/"
+ xmlns:bib="http://purl.org/net/biblio#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/"
+ xmlns:vcard="http://nwalsh.com/rdf/vCard#">
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:hj767gj7040/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:hj767gj7040/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B07_F54_i0003</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:ct387fp8134/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:ct387fp8134/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B08_F25_i0012</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:hz028mg0337/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:hz028mg0337/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B23_F16_i0008_GB</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:hb418kk4493/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>' FRANKLIN, PROF. H. BRUCE</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:hb418kk4493/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 46, Folder: 37, Title: Franklin, Professor H. Bruce</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B46_F37_i0001</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:nk200gh8620/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>" IjLwSMooo L</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:nk200gh8620/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 46, Folder: 22, Title: Uher Tape Recorder</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B46_F22_i0004</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:fm819nj1172/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>! V>i/iL</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:fm819nj1172/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 33, Folder: 4, Title: META-DENDRAL</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B33_F04_i0004</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:jm578wz6662/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>!j5(/AC</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:jm578wz6662/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 1, Folder: 4, Title: SUMEX</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B01_F04_i0007</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:mv412pd8153/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Heuristic Program for Solving a Scientific Inference Problem: Summary of Motivation
+      and Implementation" by J. Lederberg, G.L.Sutherland, B. Buchanan, E.A.Feigenbaum. Nov 1969,
+      Stanford Artificial Intelligence Project</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:mv412pd8153/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 30, Folder: 24, Title: "A Heuristic Program for Solving a Scientific Inference
+      Problem: Summary of Motivation and Implementation" by J. Lederberg, G.L.Sutherland, B.
+      Buchanan, E.A.Feigenbaum. Nov 1969, Stanford Artificial Intelligence Project</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B30_F24_i0001</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:pr167xx0885/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Review of Decision-Making Processes in Pattern Recognition," for Computing Reviews
+      (Mimeo).</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:pr167xx0885/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 36, Folder: 35, Title: "A Review of Decision-Making Processes in Pattern
+      Recognition," for Computing Reviews (Mimeo).</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B36_F35_i0001</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:sd434rn4024/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Review of Decision-Making Processes in Pattern Recognition," for Computing Reviews
+      (Mimeo).</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:sd434rn4024/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 36, Folder: 35, Title: "A Review of Decision-Making Processes in Pattern
+      Recognition," for Computing Reviews (Mimeo).</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B36_F35_i0002</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:zr411yp3088/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Survey of Artificial Intelligence in Computer-Assisted Instruction" by Avron Barr
+      [several copies annotated by different readers] 1976</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:zr411yp3088/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 48, Folder: 6, Title: "A Survey of Artificial Intelligence in
+      Computer-Assisted Instruction" by Avron Barr [several copies annotated by different readers]
+      1976</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B48_F06_i0001</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:bm787mm1459/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Survey of Artificial Intelligence in Computer-Assisted Instruction" by Avron Barr
+      [several copies annotated by different readers] 1976</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:bm787mm1459/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 48, Folder: 6, Title: "A Survey of Artificial Intelligence in
+      Computer-Assisted Instruction" by Avron Barr [several copies annotated by different readers]
+      1976</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B48_F06_i0002</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:qy667ss3724/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Survey of Artificial Intelligence in Computer-Assisted Instruction" by Avron Barr
+      [several copies annotated by different readers] 1976</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:qy667ss3724/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 48, Folder: 6, Title: "A Survey of Artificial Intelligence in
+      Computer-Assisted Instruction" by Avron Barr [several copies annotated by different readers]
+      1976</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B48_F06_i0003</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:mb241kk1947/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Survey of Artificial Intelligence in Computer-Assisted Instruction" by Avron Barr
+      [several copies annotated by different readers] 1976</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:mb241kk1947/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 48, Folder: 6, Title: "A Survey of Artificial Intelligence in
+      Computer-Assisted Instruction" by Avron Barr [several copies annotated by different readers]
+      1976</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B48_F06_i0004</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:nr848zp8256/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Survey of Artificial Intelligence in Computer-Assisted Instruction" by Avron Barr
+      [several copies annotated by different readers] 1976</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:nr848zp8256/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 48, Folder: 6, Title: "A Survey of Artificial Intelligence in
+      Computer-Assisted Instruction" by Avron Barr [several copies annotated by different readers]
+      1976</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B48_F06_i0005</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:zq962gx1610/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Survey of Artificial Intelligence in Computer-Assisted Instruction" by Avron Barr
+      [several copies annotated by different readers] 1976</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:zq962gx1610/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 48, Folder: 6, Title: "A Survey of Artificial Intelligence in
+      Computer-Assisted Instruction" by Avron Barr [several copies annotated by different readers]
+      1976</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B48_F06_i0006</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:cn312nm5544/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Survey of Artificial Intelligence in Computer-Assisted Instruction" by Avron Barr
+      [several copies annotated by different readers] 1976</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:cn312nm5544/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 48, Folder: 6, Title: "A Survey of Artificial Intelligence in
+      Computer-Assisted Instruction" by Avron Barr [several copies annotated by different readers]
+      1976</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B48_F06_i0007</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+    <bib:Report rdf:about="https://saltworks.stanford.edu/documents/druid:dn211xc8708/downloads?download_id=document.pdf">
+        <z:itemType>report</z:itemType>
+        <dc:publisher>
+            <foaf:Organization>
+               <foaf:name>RAND Corporation</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Edward Feigenbaum</foaf:surname>
+                        <foaf:givenname></foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Herbert Simon</foaf:surname>
+                        <foaf:givenname></foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_6"/>
+        <dc:subject>Done</dc:subject>
+        <dc:subject>EPAM I</dc:subject>
+        <dc:subject>psychology</dc:subject>
+        <dc:title>"A Theory of the Serial Position Effect" by E. A. Feigenbaum and Herbert A. Simon
+      1961</dc:title>
+        <prism:number>P-2375</prism:number>
+        <dc:date>1961</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:dn211xc8708/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 50, Folder: 32, Title: "A Theory of the Serial Position Effect" by E. A.
+      Feigenbaum and Herbert A. Simon 1961</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B50_F32_i0003</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Report>
+    <bib:Memo rdf:about="#item_6">
+        <rdf:value>&lt;p>This is the RAND Report of the only published paper on EPAM I&lt;/p></rdf:value>
+    </bib:Memo>
+    <bib:Manuscript rdf:about="https://saltworks.stanford.edu/documents/druid:fx599zj8952/downloads?download_id=document.pdf">
+        <z:itemType>manuscript</z:itemType>
+        <dc:title>"A Theory of the Serial Position Effect" by E. A. Feigenbaum and Herbert A. Simon
+      1961</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:fx599zj8952/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 50, Folder: 32, Title: "A Theory of the Serial Position Effect" by E. A.
+      Feigenbaum and Herbert A. Simon 1961</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B50_F32_i0001</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Manuscript>
+</rdf:RDF>

@@ -10,7 +10,9 @@ gem 'sqlite3-ruby', '1.2.5'
 gem 'blacklight', :path => "vendor/gems/blacklight"
 gem 'devise'
 gem 'rack-webauth'
-
+gem 'directory_watcher'
+gem 'eventmachine'
+gem 'rest-client'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -50,4 +52,5 @@ group :development, :test do
 #  gem 'markup_validity'
 	gem 'fakeweb'
 	gem 'jettywrapper'
+	gem 'equivalent-xml'
 end

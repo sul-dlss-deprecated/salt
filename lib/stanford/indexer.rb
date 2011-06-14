@@ -8,21 +8,27 @@ module Stanford
     attr_accessor :repository
     attr_accessor :solr
     
-    def initialize      
+    # takes a list of druids. If empty, it gets all the druids from the repository. 
+    def initialize(druids=[])      
       @solr = SolrDocument.connection
       @repository = Stanford::Repository.new()
-      @queue = @repository.initialize_queue
+      
+      druids.length < 1 ? @queue = @repository.initialize_queue : @queue = druids
+  
     end #def initalize
     
     # This method processes a queue of items
     def process_queue
+      log_message("Processing Queue")
       @queue.each do |pid|
         process_item(pid)
       end
+      log_message("Queue processing completed.")
     end
     
     # This method processes a single item.
     def process_item(pid)
+      log_message("Processing item #{pid}")
       salt_doc = Stanford::SaltDocument.new(pid, { :repository => @repository })
       index(salt_doc)
     end
@@ -35,6 +41,12 @@ private
        @solr.update :data => '<commit/>'
     end
   
+
+     def log_message(msg)
+       if  defined?(Rails) == "constant" 
+         Rails.logger.info "Stanford::Indexer : #{msg} "  
+       end
+     end
     
   end #class
 end #module

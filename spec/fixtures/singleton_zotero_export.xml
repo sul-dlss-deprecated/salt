@@ -1,0 +1,58 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:bib="http://purl.org/net/biblio#"
+    xmlns:z="http://www.zotero.org/namespaces/export#"
+    xmlns:link="http://purl.org/rss/1.0/modules/link/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:vcard="http://nwalsh.com/rdf/vCard#"
+    xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/">
+    <bib:Report rdf:about="https://saltworks.stanford.edu/documents/druid:dn211xc8708/downloads?download_id=document.pdf">
+        <z:itemType>report</z:itemType>
+        <dc:publisher>
+            <foaf:Organization>
+               <foaf:name>RAND Corporation</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Edward Feigenbaum</foaf:surname>
+                        <foaf:givenname></foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Herbert Simon</foaf:surname>
+                        <foaf:givenname></foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_6"/>
+        <dc:subject>Done</dc:subject>
+        <dc:subject>EPAM I</dc:subject>
+        <dc:subject>psychology</dc:subject>
+        <dc:title>"A Theory of the Serial Position Effect" by E. A. Feigenbaum and Herbert A. Simon
+      1961</dc:title>
+        <prism:number>P-2375</prism:number>
+        <dc:date>1961</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://saltworks.stanford.edu/documents/druid:dn211xc8708/downloads?download_id=document.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:coverage>Box: 50, Folder: 32, Title: "A Theory of the Serial Position Effect" by E. A.
+      Feigenbaum and Herbert A. Simon 1961</dc:coverage>
+        <dc:subject>
+            <dcterms:LCC>
+               <rdf:value>SC340_1986-052_B50_F32_i0003</rdf:value>
+            </dcterms:LCC>
+        </dc:subject>
+    </bib:Report>
+    <bib:Memo rdf:about="#item_6">
+        <rdf:value>&lt;p>This is the RAND Report of the only published paper on EPAM I&lt;/p></rdf:value>
+    </bib:Memo>
+</rdf:RDF>

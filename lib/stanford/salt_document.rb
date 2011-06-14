@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rsolr'
 require 'rsolr-ext'
+require 'json'
 require 'lib/stanford/alto_parser'
 require 'lib/stanford/repository'
 
@@ -124,9 +125,64 @@ module Stanford
     end
     
     
+    def zotero_to_solr
+    
+      
+      zotero_hash = generate_zotero_defaults
+      json = generate_hash
+      
+      
+      ["title_s", "title_display", "title_t"].each { |k| zotero_hash[k] ||= []; zotero_hash[k] << json["title"] } 
+      ["originator_facet", "originator_s", "originator_t"].each {|p|  zotero_hash[p] = []; json["originator"].collect { |o| zotero_hash[p] << o } }
+      
+      format_date(json["date"]).each do |key,vals|
+        ["facet", "sort", "s", "display", "t"].each {|v| zotero_hash["#{key}_#{v}"] ||= [];  zotero_hash["#{key}_#{v}"] << vals }
+      end 
+      ["documentType_facet", "documentType_s", "documentType_display", "documentType_t"].each {|i|  zotero_hash[i] ||= []; zotero_hash[i] << json["document_type"]  }
+      ["documentSubType_facet", "documentSubType_s", "documentSubType_display", "documentSubType_t"].each {|i|  zotero_hash[i] ||= []; zotero_hash[i] << json["document_subtype"]  }
+      ["containingWork_facet", "containingWork_s", "containingWork_display", "containingWork_t"].each {|c| zotero_hash[c] ||= []; zotero_hash[c] << json["containing_work"]}
+      ["corporateEntity_facet", "corporateEntity_t"].each { |c| zotero_hash[c] ||= []; zotero_hash[c] << json["corporate_entity"]}
+      ["extent_s", "extent_t", "extent_display"].each {|e| zotero_hash[e] ||= []; zotero_hash[e] << json["extent"]}
+      ["language_facet", "language_s", "language_display", "language_t"].each {|l| zotero_hash[l] ||= []; zotero_hash[l] << json["language"]}
+      ["abstract_s", "abstract_t", "abstract_display"].each {|a| zotero_hash[a] ||= []; zotero_hash[a] << json["abstract"]}
+      ["EAFHardDriveFileName_display", "EAFHardDriveFileName_t", "EAFHardDriveFileName_s"].each {|f| zotero_hash[f] ||= []; zotero_hash[f] << json["EAF_hard_drive_file_name"]}
+      
+      
+         
+     
+      
+      json["tags"].each do |tag|
+        if tag.upcase == "PUBLIC"
+          zotero_hash["public_b"] = ['true'] 
+          zotero_hash["access_display"] = ["Public"]
+          zotero_hash["access_facet"] = ["Public"]
+        else
+          ["facet", "s", "t"].each {|v| zotero_hash["donor_tags_#{v}"] ||= [];  zotero_hash["donor_tags_#{v}"] << tag.strip }
+        end
+      end
+      
+      unless json["notes"].nil?
+        json["notes"].each do |note|
+          ["notes_s", "notes_t", "notes_display"].each {|n| zotero_hash["notes_#{n}"] ||= []; zotero_hash["notes_#{n}"] << note }
+        end
+      end
+      
+      update_solr_document(zotero_hash)      
+      return @solr_document
+    end
+    
+ 
+    
+    
+    
+    
+    
+    # this is depricated. It takes the Zotero XML and convert it to the salt solr document. However, now we use the PHP script 
+    # to convert the XML to a JSON hash. 
     # this method takes the @datastream["zotero"], processes it, merges it with the @solr_document and returns @solr_document. 
     # values we want from this ds: itemType, dc:title, bib:authors, foaf:organizations, dc:subject, dcterms:LCC, dc:date, dc:coverage (which has values pulled from the EAD ), 
-    def zotero_to_solr
+=begin
+    def zotero_xml_to_solr
       zotero_hash = {}
       xml = Nokogiri::XML(@datastreams["zotero"])
       
@@ -201,7 +257,7 @@ module Stanford
       update_solr_document(zotero_hash)
       return @solr_document
     end
-    
+=end    
     
 private
     
@@ -256,6 +312,54 @@ private
       coverage_hash
     end
     
+    
+    # this method generates the hash from JSON using the PHP script and ensures key values are present
+     def generate_hash
+       File.open("/tmp/zotero.xml", "w") { |f| f << @datastreams["zotero"] }
+       json = JSON(`/usr/bin/env php lib/stanford/zotero_to_json.php /tmp/zotero.xml`)
+       json.is_a?(Array) ? json = json.first : json = json
+       
+       if json.nil? or json.is_a?(String)
+          json = {}
+        end
+       
+       
+       ["druid", "title", "originator", "date", "document_type", "document_subtype",
+          "containing_work", "corporate_entity", "extent", "language", "abstract", 
+          "EAF_hard_drive_file_name", "tags", "notes"].each {|k| json[k] ||= "" }
+       return json
+
+     end
+    
+    
+    # this method take the Zotero XML datastream and returns the series information for the salt document
+    def generate_zotero_defaults
+      xml  = Nokogiri::XML(@datastreams["zotero"])      
+      id_hash = {}
+       # currently, we are using the subjects to mark the public/private status of the document      
+      id_hash["access_display"] ||= ["Private"]
+      id_hash["access_facet"] ||= ["Private"]
+      id_hash["identifiers_s"] ||= [@pid]
+      id_hash["identifiers_t"] ||= [@pid]
+      
+      xml.search("//dcterms:LCC").each do |id| 
+            id_hash["identifiers_s"] << id.content.strip
+            id_hash["identifiers_t"] << id.content.strip
+      end
+      
+      series = "Accession 2005-101"
+      id_hash["identifiers_s"].each do |id|
+           if id.include?("SC340_1986") 
+             series = "Accession 1986-052"
+           end
+      end
+      
+      ["facet", "display", "s", "t", "sort"].each {|v| id_hash["series_#{v}"] ||= [];  id_hash["series_#{v}"] << series }
+      return id_hash
+      
+      
+    end
+      
      
   end
 end
