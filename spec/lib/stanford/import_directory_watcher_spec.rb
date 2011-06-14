@@ -1,6 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 require 'lib/stanford/import_directory_watcher'
-require 'Tmpdir'
 
 describe Stanford::ImportDirectoryWatcher do 
   
