@@ -2,14 +2,19 @@
 <html>
 <head>
   <title>Salt</title>
-  <%= stylesheet_link_tag :all %>
- <%= stylesheet_link_tag 'styles', :media=>'all' %>
-  <%= javascript_include_tag :defaults %>
+  <%# stylesheet_link_tag :all %>
+ <%# stylesheet_link_tag 'styles', :media=>'all' %>
+  <%# javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
 <%= yield %>
-
+<div id="ft">
+  <br/>
+  <hr width="150"/>
+  © <a href="http://www.stanford.edu">Stanford University</a>. Stanford, California 94305. (650) 725-1064. <span class="TermsOfUse"><a href="http://library.stanford.edu/about_sulair/termsofuse.html">Terms of Use</a> | <a href="http://stanford.edu/site/copyright.html">Copyright Complaints</a></span>
+    <% # @footer -%>
+  </div>
 </body>
 </html>

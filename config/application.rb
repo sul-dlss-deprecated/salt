@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'rack-webauth'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -41,8 +40,7 @@ module Salt
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
-    config.middleware.use(Rack::Webauth)
-    
+   
     # Run the Directory watcher
     config.after_initialize do
       dw = Stanford::ImportDirectoryWatcher.new(DIRECTORY_WATCHER_DIR, DIRECTORY_WATCHER_INTERVAL, DIRECTORY_WATCHER_STABLE)

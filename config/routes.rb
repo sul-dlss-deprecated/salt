@@ -8,8 +8,7 @@ Salt::Application.routes.draw do
   match '/assets/:id' => 'asset#show'
   match '/assets/:id/:page' => 'asset#show_page'
   
-  
-  
+  match 'login' => "webauth_sessions#new"
   
   
   # The priority is based upon order of creation:

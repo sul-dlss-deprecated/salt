@@ -46,7 +46,7 @@ describe CatalogController do
    end
    
    
-    describe "#show" do
+    describe "#show logged-in" do
 
        login_user
 
@@ -55,25 +55,17 @@ describe CatalogController do
          response.should_not redirect_to('/')
          response.should be_success
        end
-       
-       #this is a temporary solution until stanford webauth is added
-       it "should  allow not authorized users to see private documents" do
-         @user.approved = false  
-         get :show, :id=>"druid:bb047vy0535"
-         response.should_not redirect_to('/')
-         response.should be_success
-       end
+     end    
+   
 
-
+    describe "#show not logged-in" do
        it "should not allow users not logged in to see private documents" do
-          sign_out @user
           get :show, :id=>"druid:bb047vy0535"
           response.should redirect_to('/')
           response.should_not be_success
        end
        
        it "should  allow users not logged in to see public documents" do
-           sign_out @user
            get :show, :id=>"druid:pt839dg9461"
            response.should_not redirect_to('/')
            response.should be_success
