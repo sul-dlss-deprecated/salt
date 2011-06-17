@@ -13,7 +13,7 @@ describe AssetController do
    end
    
    
-   describe "#show" do
+   describe "#show private logged in" do
  
       login_user
     
@@ -22,26 +22,27 @@ describe AssetController do
         response.should_not redirect_to('/')
         response.should be_success
       end
+   end
     
-      it "should not allow users not logged in to see private documents" do
-         sign_out @user
+    
+    # have to put this in another describe block to clear ot the session. 
+    describe "#show private not allowed" do 
+      it "should not allow users not logged in to see private documents" do     
          get :show, :id=>"bb047vy0535"
          response.should redirect_to('/')
          response.should_not be_success
       end
       
       it "should allow users not logged in to see public documents" do 
-        sign_out @user
          get :show, :id=>"pt839dg9461"
          response.should_not redirect_to('/')
          response.should be_success
-        
       end
     
     
    end 
   
-  describe "#show_page" do
+  describe "#show_page logged_in private" do
     
     login_user
     
@@ -51,21 +52,21 @@ describe AssetController do
         response.should_not redirect_to('/')
         response.should be_success
     end
-    
-   it "should not allow users not logged in to see private documents" do
-       sign_out @user
+  end
+ 
+  describe "#show_page not logged_in private" do
+ 
+    it "should not allow users not logged in to see private documents" do
        get :show_page, :id=>"bb047vy0535", :page => "00001"
        response.should redirect_to('/')
        response.should_not be_success
     end
     
-     it "should allow users not logged in to see public documents" do 
-        sign_out @user
+    it "should allow users not logged in to see public documents" do 
          get :show_page, :id=>"pt839dg9461", :page => "00001"
          response.should_not redirect_to('/')
          response.should be_success
-        
-      end
+    end
      
   end
   

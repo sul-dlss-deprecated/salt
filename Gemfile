@@ -9,7 +9,6 @@ gem 'rails', '3.0.6'
 gem 'sqlite3-ruby', '1.2.5'
 gem 'blacklight', :path => "vendor/gems/blacklight"
 gem 'devise'
-gem 'rack-webauth'
 gem 'directory_watcher'
 gem 'eventmachine'
 gem 'rest-client'

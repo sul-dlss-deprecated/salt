@@ -8,9 +8,8 @@ class AssetController < ApplicationController
   
   def show
 
-
-    if !user_signed_in? 
-       unless  request.env["REMOTE_ADDR"] == FLIPBOOK_IP
+    unless user_signed_in?
+       unless  request.env["REMOTE_ADDR"] == FLIPBOOK_IP  or  request.env["REMOTE_ADDR"] == DJATOKA_IP
       	(  @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}"))  
        end
     end 
@@ -32,8 +31,9 @@ class AssetController < ApplicationController
   end
   
   def show_page
-    if !user_signed_in?
-       unless  request.env["REMOTE_ADDR"] == FLIPBOOK_IP            
+    
+    unless user_signed_in?
+       unless  request.env["REMOTE_ADDR"] == FLIPBOOK_IP  or  request.env["REMOTE_ADDR"] == DJATOKA_IP           
         (  @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}"))
        end
     end
