@@ -92,12 +92,12 @@ module Stanford
           response = Net::HTTP.start(uri.host, uri.port) {|http| http.request(request)}
           case response
           when Net::HTTPSuccess 
-              return response.body
+              return Net::HTTPSuccess
           else
-              raise response.error!
+              return response.error!
           end
-          rescue Exception => e
-              raise e
+    rescue Exception => e
+              return e
     end
     
   private

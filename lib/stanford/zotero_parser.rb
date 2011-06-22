@@ -74,13 +74,16 @@ EOF
         druid = xml.search("//rdf:RDF/*[@rdf:about]").first["about"].gsub("https://saltworks.stanford.edu/documents/","").gsub("/downloads?download_id=document.pdf","")
         unless druid.nil?
              log_message("Updating #{druid} at #{@repository.base}")
-             @repository.update_datastream(druid, "zotero", xml.to_xml)
-             @processed_druids << druid
+             response = @repository.update_datastream(druid, "zotero", xml.to_xml)
+             
+             response == Net::HTTPSuccess ?  @processed_druids << druid : log_message(response)
+               
         end
       end
     end
      
       private
+
 
       def log_message(msg)
         if  defined?(Rails) == "constant" 

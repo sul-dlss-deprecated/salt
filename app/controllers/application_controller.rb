@@ -20,7 +20,7 @@ protected
   end
   
   def set_current_user
-    if current_user.nil? or request.env['WEBAUTH_USER'].blank?
+    if current_user.nil? and !request.env['WEBAUTH_USER'].blank?
         user = User.find_by_username(request.env['WEBAUTH_USER'])
         !user.nil? ? sign_in(user) : nil 
     end
