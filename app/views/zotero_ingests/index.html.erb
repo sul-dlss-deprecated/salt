@@ -1,0 +1,26 @@
+<h1>Listing zotero_ingests</h1>
+
+<table>
+  <tr>
+    <th>Start date</th>
+    <th>Finish date</th>
+    <th>Message</th>
+    <th>Filename</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @zotero_ingests.each do |zotero_ingest| %>
+  <tr>
+    <td><%= zotero_ingest.start_date %></td>
+    <td><%= zotero_ingest.finish_date %></td>
+    <td><%= zotero_ingest.message %></td>
+    <td><%= zotero_ingest.filename %></td>
+    <td><%= link_to 'Show', zotero_ingest %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

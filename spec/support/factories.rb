@@ -5,4 +5,10 @@ Factory.define :user do |u|
   u.approved true
 end
 
+Factory.define :zotero_ingest do |z|
+    z.start_date Time.now
+    z.message  "MyText"
+    z.filename  "Filename"
+end
+
 

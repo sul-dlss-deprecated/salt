@@ -1,0 +1,33 @@
+<%= form_for(@zotero_ingest) do |f| %>
+  <% if @zotero_ingest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@zotero_ingest.errors.count, "error") %> prohibited this zotero_ingest from being saved:</h2>
+
+      <ul>
+      <% @zotero_ingest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.datetime_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :finish_date %><br />
+    <%= f.datetime_select :finish_date %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br />
+    <%= f.text_area :message %>
+  </div>
+  <div class="field">
+    <%= f.label :filename %><br />
+    <%= f.text_field :filename %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
