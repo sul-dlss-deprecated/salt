@@ -1,0 +1,28 @@
+<h1>Users</h1>
+<%= link_to("See All Users", :action => "index") %>
+<%= link_to("See Users awaiting approval", :action => "index", :approved => "false")%>
+<%= link_to("Edit This User", edit_user_path(@user))%>
+
+<p class="notice"><%= notice %></p>
+ 
+<p>
+  <b>Name:</b>
+  <%= @user.username %>
+</p>
+ 
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+ 
+<p>
+  <b>Approved?:</b>
+  <%= @user.approved %>
+</p>
+
+<p>
+  <b>Admin?:</b>
+  <%= @user.admin %>
+</p>
+
+

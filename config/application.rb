@@ -41,10 +41,7 @@ module Salt
     config.filter_parameters += [:password]
     
    
-    # Run the Directory watcher
-    config.after_initialize do
-      dw = Stanford::ImportDirectoryWatcher.new(DIRECTORY_WATCHER_DIR, DIRECTORY_WATCHER_INTERVAL, DIRECTORY_WATCHER_STABLE)
-    end
+  
     
   end
 end

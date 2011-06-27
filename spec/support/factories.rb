@@ -5,6 +5,14 @@ Factory.define :user do |u|
   u.approved true
 end
 
+
+Factory.define :admin, :class => User do |u|
+  u.email "mrbossman@stanford.edu"
+  u.password "foobar"
+  u.approved true
+  u.admin true
+end
+
 Factory.define :zotero_ingest do |z|
     z.start_date Time.now
     z.message  "MyText"

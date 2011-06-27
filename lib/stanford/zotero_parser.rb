@@ -11,8 +11,10 @@ module Stanford
     attr_accessor :xmlfile
     attr_accessor :repository
     attr_accessor :processed_druids
+    attr_accessor :zotero_ingest
     
-    def initialize(file)
+    # intalialize with a string pointing to a file to be processed and optionally a ZoteroIngest object for logging
+    def initialize(file, zotero_ingest = nil)
       
       @repository = Stanford::Repository.new()
       @processed_druids = []
@@ -21,6 +23,11 @@ module Stanford
       else 
         raise "Need to provide xml file to process"
       end
+      
+      unless zotero_ingest.nil?
+        @zotero_ingest = zotero_ingest
+      end
+      
     end
    
    def process_document
@@ -76,7 +83,7 @@ EOF
              log_message("Updating #{druid} at #{@repository.base}")
              response = @repository.update_datastream(druid, "zotero", xml.to_xml)
              
-             response == Net::HTTPSuccess ?  @processed_druids << druid : log_message(response)
+             response == Net::HTTPSuccess ?  @processed_druids << druid : log_message("#{druid} -- #{response}")
                
         end
       end
@@ -88,6 +95,9 @@ EOF
       def log_message(msg)
         if  defined?(Rails) == "constant" 
           Rails.logger.info msg    
+          unless @zotero_ingest.nil? 
+            ZoteroIngest.update(zotero_ingest.id, { :message => zotero_ingest.message << "[#{Time.now.strftime("%Y-%m-%d_%H-%M-%s")}] : #{msg}\n"  } )
+          end
         end
       end
   

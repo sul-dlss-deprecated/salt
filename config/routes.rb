@@ -1,12 +1,18 @@
 Salt::Application.routes.draw do
+  resources :zotero_ingests
+
   root :to => "catalog#index"
   devise_for :users
-
+  resources :users 
+  
+  
   match '/assets/css/:file' => 'asset#get_flipbook_asset'
   match '/assets/js/:file(.:format)' => 'asset#get_flipbook_asset', :constraints => { :file => /.+?/ }
   match '/assets/images/:file' => 'asset#get_flipbook_asset'
   match '/assets/:id' => 'asset#show'
   match '/assets/:id/:page' => 'asset#show_page'
+  
+  match '/zotero' => 'zotero_ingests#index'
   
   match 'login' => "webauth_sessions#new"
   

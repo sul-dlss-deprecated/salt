@@ -12,6 +12,7 @@ gem 'devise'
 gem 'directory_watcher'
 gem 'eventmachine'
 gem 'rest-client'
+gem 'daemonz'
 
 # Use unicorn as the web server
 # gem 'unicorn'
