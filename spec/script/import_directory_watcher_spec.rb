@@ -11,13 +11,9 @@ describe Stanford::ImportDirectoryWatcher do
   describe "#new" do
     
  
-    it "should make the directories needed to process document when itialized" do
-      File.exists?(File.join(@directory, "inprocess")).should be_true
-      File.exists?(File.join(@directory, "completed")).should be_true
-      File.exists?(File.join(@directory, "error")).should be_true
-    end
-    
+ 
     it "should raise an error if the directory does not exists" do
+      pending
       lambda { Stanford::ImportDirectoryWatcher.new("/some/fake/path")}.should raise_exception
     end
   end

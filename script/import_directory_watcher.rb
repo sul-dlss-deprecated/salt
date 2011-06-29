@@ -1,16 +1,18 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'directory_watcher'
+require 'fssm'
 require 'logger'
 
 module Stanford
   
-  class ImportDirectoryWatcher
+
+  
+  
+  class FileObject
     
-    attr_accessor :remote_directoy
+    attr_accessor :remote_file
     attr_accessor :local_directory  
-    attr_accessor :dw
     attr_accessor :logger
    
     
@@ -20,63 +22,77 @@ module Stanford
     # this script is written to move files form the AFS space into the application's local directory space for processing. 
     # It should be run as a user with access ot the AFS space (i.e. lyberadmin) and not as as the rails user (apache).
     
-    def initialize(remote_directory='/afs/ir/group/salt_project/zotero_dropoff', local_directory="/tmp",  interval=5, stable=2 )
-      
-      if File.exists?(remote_directory) and File.exists?(local_directory)
-         
-         @remote_directory = remote_directory
+    def initialize(remote_file, local_directory="/tmp")
+        
+ 
+         @remote_file = remote_file
          @local_directory = local_directory
          @logger = Logger.new(STDOUT)
-                    
-         @dw = DirectoryWatcher.new @remote_directory, :glob => '*.xml', :persist => "/tmp/watcher.log"
-         @dw.interval = interval
-         @dw.stable = stable
-       
-        @dw.add_observer do |*args| 
-          args.each  do |event| 
-            puts event
-            if event.type == :stable
               
-              log_message("#{event.path} is now #{event.type}.")
-              FileUtils.mv(event.path, @local_directory)
-            
-              log_message("#{event.path} moved to #{@local_directory}")
-            end   
-          end 
-        end
-             
-       
-      else
-        raise "You need to ensure that the remote and local directories exists."
-      end
     end
     
-   
  
-   # convience method to generate timestamp directory names
-   def self.render_now
-     return Time.now.strftime("%Y-%m-%d_%H-%M-%s")  
+
+   def updated
+     log_message("Updated -- #{@remote_file}")
+     FileUtils.mv(@remote_file, @local_directory)
    end
-
-   def start
-      @dw.start
-      gets
-    end
-
-   private
    
+    def deleted
+      log_message("Deleted -- #{@remote_file}")
+    end
+   
+   # when a file is created, it needs to be sure that it is copied completely over.
+   def created 
+     log_message("Created -- #{@remote_file}")  
+     sleep(5)
+     FileUtils.touch(@remote_file) #this should trigger an update. 
+   end
+   
+  protected
    
    def log_message(msg)
-      @logger << msg
+      @logger << "[#{Time.now.strftime("%Y-%m-%d_%H-%M-%s") }] : #{msg}\n"
    end
    
   end
+  
+  class ImportDirectoryWatcher
+      attr_accessor :remote_directoy
+      attr_accessor :dw
+      
+      def initialize(remote_directory='/afs/ir/group/salt_project/zotero_dropoff')
+        File.exists?(remote_directory) ?  @remote_directory = remote_directory : raise {"You need to ensure that your remote directory exists."}
+      rescue => e
+       p e.inspect
+       
+      end  
+      
+      def run
+          FSSM::monitor(@remote_directory, '**/*') do 
+               update { |base, relative| Stanford::FileObject.new(File.join(base, relative)).updated }
+               delete { |base, relative| Stanford::FileObject.new(File.join(base, relative)).deleted } 
+               create { |base, relative| Stanford::FileObject.new(File.join(base, relative)).created }  
+          end
+      end
+    
+      def stop
+        @dw.stop
+      end
+    
+  end
+  
+  
+  
 end
+
+
+
 
 
 # This is the equivalent of a java main method
 if __FILE__ == $0
   dw = Stanford::ImportDirectoryWatcher.new
-  dw.start
+  dw.run
 end
 

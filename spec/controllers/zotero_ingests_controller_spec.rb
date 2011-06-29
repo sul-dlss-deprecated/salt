@@ -27,15 +27,30 @@ describe ZoteroIngestsController do
     {}
   end
 
-  describe "GET index" do
+  describe "GET index as admin" do
+    login_admin
+    
     it "assigns all zotero_ingests as @zotero_ingests" do
       zotero_ingest = ZoteroIngest.create! valid_attributes
       get :index
       assigns(:zotero_ingests).should eq([zotero_ingest])
     end
   end
+  
+  describe "GET index as not as admin" do
+     login_user
 
-  describe "GET show" do
+     it "assigns all zotero_ingests as @zotero_ingests" do
+       zotero_ingest = ZoteroIngest.create! valid_attributes
+       get :index
+       response.should redirect_to('/')
+       response.should_not be_success
+     end
+   end
+
+  describe "GET show as admin" do
+    login_admin
+    
     it "assigns the requested zotero_ingest as @zotero_ingest" do
       zotero_ingest = ZoteroIngest.create! valid_attributes
       get :show, :id => zotero_ingest.id.to_s
@@ -43,6 +58,14 @@ describe ZoteroIngestsController do
     end
   end
 
- 
+  describe "GET show not as admin" do
+    login_user
+    
+    it "assigns the requested zotero_ingest as @zotero_ingest" do
+      zotero_ingest = ZoteroIngest.create! valid_attributes
+      get :show, :id => zotero_ingest.id.to_s
+        response.should redirect_to('/')
+         response.should_not be_success    end
+  end
 
 end

@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   protected
   
   def enforce_permissions
-    unless current_user.admin?
+    unless current_user && current_user.admin?
       redirect_to("/", :notice => "You currently do not have permissions to view this section. If this is an error, please contact the system administrator.")
     end
   end

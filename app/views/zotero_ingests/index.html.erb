@@ -2,21 +2,27 @@
 
 <table>
   <tr>
-    <th>Start date</th>
-    <th>Finish date</th>
-    <th>Message</th>
     <th>Filename</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Ingest Start</th>
+    <th>Ingest Finish</th>
+    <th>Index State</th>
+    <th>Index Finish</th>
+    <th>Check Start</th>
+    <th>Check Finish</th>
+		<th>Message</th>
   </tr>
 
 <% @zotero_ingests.each do |zotero_ingest| %>
   <tr>
-    <td><%= zotero_ingest.start_date %></td>
-    <td><%= zotero_ingest.finish_date %></td>
+	  <td><%= zotero_ingest.filename %></td>
+    <td><%= zotero_ingest.ingest_start %></td>
+    <td><%= zotero_ingest.ingest_end %></td>
+    <td><%= zotero_ingest.index_start %></td>
+    <td><%= zotero_ingest.index_end %></td>
+    <td><%= zotero_ingest.check_start %></td>
+    <td><%= zotero_ingest.check_end %></td>
     <td><%= zotero_ingest.message %></td>
-    <td><%= zotero_ingest.filename %></td>
+  
     <td><%= link_to 'Show', zotero_ingest %></td>
   </tr>
 <% end %>

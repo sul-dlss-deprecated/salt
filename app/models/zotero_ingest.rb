@@ -25,21 +25,22 @@ end
 
 def process_file
   unless self.filename.nil?
-    self.save!
-    self.start_date = render_now
     
-    
-    log_message("[#{self.start_date}] - Starting Zotero Ingest. ")
-    log_message("Process file at #{self.filename}")
+    self.save #we need to first save to ensure we have a proper obj ID. 
     
     timestamp = render_now
+    
+    log_message("[#{timestamp}] - Starting Zotero Ingest. ")
+    log_message("Process file at #{self.filename}")
+    
     
     @processing_file = File.join(@inprocess_directory, "#{File.basename(self.filename,".rdf")}-#{timestamp}.rdf" )
     FileUtils.mv(self.filename,  @processing_file)
 
     log_message("Moving #{file} to  #{@processing_file}")
     log_message("Starting ZoteroParser")
-
+   
+    
     zotero_parser = Stanford::ZoteroParser.new(@processing_file, self)
     zotero_parser.process_document
 
@@ -48,13 +49,13 @@ def process_file
     FileUtils.mv(@processing_file, outdir )
 
     log_message("Parser completed. Moving #{@processing_file} to #{File.join(outdir, filename )}")
-    self.finish_date = render_now
+   
     
     update_index(zotero_parser.processed_druids)
     
     log_message(zotero_parser.processed_druids.join(" , "))
     
-    self.save!
+    self.save! 
   end
 
 rescue => e
@@ -91,9 +92,8 @@ private
 
   def log_message(msg)
     logger.info msg
-    ZoteroIngest.update(self.id, { :message => self.message << "[#{render_now}] : #{msg}\n"  } )
-    self.reload
   end
 
+  
 
 end

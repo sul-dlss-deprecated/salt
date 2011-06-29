@@ -16,9 +16,9 @@ module Stanford
       
       druids.length < 1 ? @queue = @repository.initialize_queue : @queue = druids
   
-       unless zotero_ingest.nil?
+      unless zotero_ingest.nil?
           @zotero_ingest = zotero_ingest
-        end
+      end
       
   
     end #def initalize
@@ -26,10 +26,14 @@ module Stanford
     # This method processes a queue of items
     def process_queue
       log_message("Processing Queue")
-      @queue.each do |pid|
+      update_record(:index_start, Time.now)
+      
+       @queue.each do |pid|
         process_item(pid)
       end
       log_message("Queue processing completed.")
+      update_record(:index_end, Time.now)
+      
     end
     
     # This method processes a single item.
@@ -51,11 +55,14 @@ private
      def log_message(msg)
        if  defined?(Rails) == "constant" 
          Rails.logger.info "Stanford::Indexer : #{msg} "  
-         unless @zotero_ingest.nil? 
-           ZoteroIngest.update(zotero_ingest.id, { :message => zotero_ingest.message << "[#{Time.now.strftime("%Y-%m-%d_%H-%M-%s")}] : #{msg}\n"  } )
-         end
        end
      end
+     
+       def update_record(field, msg)
+         unless @zotero_ingest.nil?
+            ZoteroIngest.update(@zotero_ingest.id, { field.to_sym => msg  } )
+         end
+       end
     
   end #class
 end #module
