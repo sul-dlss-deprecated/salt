@@ -31,6 +31,7 @@ module Stanford
     end
    
    def process_document
+     update_record(:ingest_start, Time.now)
      xml = Nokogiri::XML(open(@xmlfile))
      nodes =  xml.search("//rdf:RDF/*")
      previous = nil
@@ -38,6 +39,7 @@ module Stanford
         previous =  process_node(node, previous)
      end
      update_fedora(previous)  #make sure the last node in the XML document was updated
+     update_record(:ingest_end, Time.now)
      return true
    end
    
@@ -96,11 +98,16 @@ EOF
         if  defined?(Rails) == "constant" 
           Rails.logger.info msg    
           unless @zotero_ingest.nil? 
-            ZoteroIngest.update(zotero_ingest.id, { :message => zotero_ingest.message << "[#{Time.now.strftime("%Y-%m-%d_%H-%M-%s")}] : #{msg}\n"  } )
+       #     ZoteroIngest.update(zotero_ingest.id, { :message => zotero_ingest.message << "[#{Time.now.strftime("%Y-%m-%d_%H-%M-%s")}] : #{msg}\n"  } )
           end
         end
       end
   
+      def update_record(field, msg)
+        unless @zotero_ingest.nil?
+           ZoteroIngest.update(@zotero_ingest.id, { field.to_sym => msg  } )
+        end
+      end
     
   end
 end

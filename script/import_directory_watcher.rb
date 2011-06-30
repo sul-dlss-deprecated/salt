@@ -27,8 +27,10 @@ module Stanford
  
          @remote_file = remote_file
          @local_directory = local_directory
-         @logger = Logger.new(STDOUT)
-              
+         @logger = Logger.new('logfile.log')
+
+         
+         @logger.level = Logger::INFO      
     end
     
  
@@ -52,7 +54,7 @@ module Stanford
   protected
    
    def log_message(msg)
-      @logger << "[#{Time.now.strftime("%Y-%m-%d_%H-%M-%s") }] : #{msg}\n"
+      @logger.info "#{msg}\n"
    end
    
   end
@@ -92,7 +94,7 @@ end
 
 # This is the equivalent of a java main method
 if __FILE__ == $0
-  dw = Stanford::ImportDirectoryWatcher.new
+ dw = Stanford::ImportDirectoryWatcher.new
   dw.run
 end
 
