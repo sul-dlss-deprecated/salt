@@ -98,8 +98,11 @@ private
     end
     
     
-    def check_values( field, zotero_value ="", solr_value=[])
-        zotero_value.is_a?(String) ? zotero_value = [zotero_value] : zotero_value ||= []
+    def check_values( field, zotero_value =[], solr_value=[])
+        zotero_value ||= []
+        if zotero_value.is_a?(String)  
+          zotero_value = [zotero_value] 
+        end
         solr_value ||= []
         unless zotero_value == solr_value
             raise ArgumentError.new("Mismatch in #{field}. zotero: #{zotero_value} solr: #{solr_value}") 

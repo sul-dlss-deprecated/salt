@@ -82,8 +82,8 @@ end
    index.process_queue
  end
 
- def check_data(zotero_xml_file)
-   checkr = Stanford::SolrCheckr.new(zotero_xml_file, self)
+ def check_data
+   checkr = Stanford::SolrCheckr.new(@processing_file, self)
    checkr.check_documents
  end
 
