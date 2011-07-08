@@ -12,7 +12,6 @@ module SaltHelper
   def index_grouped_results(facet_name)
    html = ""
    groupings = @response.docs.group_by {|d| d.get(facet_name, { :sep => nil});  }
-    File.open("/tmp/log.txt", "w") {|f| f << groupings.inspect}
    groupings.each do |key, value|   
      unless value.nil?
        html <<  render_partial('catalog/_index_partials/group',  {:docs => value, :facet_name => facet_name, :facet_value => key, :view_type => viewing_context } )

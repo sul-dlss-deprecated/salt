@@ -190,6 +190,9 @@ div.aboutLinks .noLink{
 	text-align: left;
 	width:85%;
 }
+#logged-in a {
+  margin: 5px;
+}
 #control_links a {	/* start over link */
 	display:inline;
  	 float:left;

@@ -13,7 +13,7 @@ gem 'directory_watcher'
 gem 'eventmachine'
 gem 'rest-client'
 gem 'daemonz'
-gem 'fssm'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
