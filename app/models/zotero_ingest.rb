@@ -23,6 +23,8 @@ def after_initialize
     make_directories    
 end
 
+#
+# This method is used by the zotero_ingest background daemon to process new files for ingest. 
 def process_file
   unless self.filename.nil?
     
@@ -52,6 +54,8 @@ def process_file
    
     
     update_index(zotero_parser.processed_druids)
+    check_data(File.join(outdir, @processing_file ))
+    
     
     log_message(zotero_parser.processed_druids.join(" , "))
     
@@ -94,6 +98,10 @@ private
     logger.info msg
   end
 
+  def check_data(zotero_xml_file)
+    checkr = Stanford::SolrCheckr.new(zotero_xml_file, self)
+    checkr.check_documents
+  end
   
 
 end
