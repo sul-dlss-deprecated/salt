@@ -422,13 +422,18 @@ div.windowed_links {
 	opacity: .9;
 }
 
-div.windowed_links a, div.windowed_links span {
+
+.page_links .next_page, .page_links .previous_page {
+    display: none;
+}
+
+div.windowed_links a, div.windowed_links span, div.windowed_links em {
 	background-color:white;
 	border:1px solid #9BAFB8;
 	padding:0 8px 2px;
 }
 
-div.windowed_links .current {
+div.windowed_links em {
 	background-color:#9BAFB8;
 	color:white;
 }
