@@ -27,7 +27,7 @@ class AssetController < ApplicationController
     
   rescue Blacklight::Exceptions::InvalidSolrID
       flash[:notice]= "You do not have sufficient access privileges to see this asset, which has been marked private."
-      redirect_to(:controller => 'catalog', :action => 'index', :q => nil , :f => nil) and return false      
+      redirect_to("/") and return false
   end
   
   def show_page
@@ -49,7 +49,7 @@ class AssetController < ApplicationController
      
   rescue Blacklight::Exceptions::InvalidSolrID
       flash[:notice]= "You do not have sufficient access privileges to see this asset, which has been marked private."
-      redirect_to(:controller => 'catalog', :action => 'index', :q => nil , :f => nil) and return false  
+      redirect_to("/") and return false
   end
 
   def get_flipbook_asset

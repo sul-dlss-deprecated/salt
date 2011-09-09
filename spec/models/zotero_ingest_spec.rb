@@ -33,7 +33,12 @@ describe ZoteroIngest do
       zp = mock("ZoteroParser")
       zp.expects(:process_document).once
       zp.expects(:processed_druids).twice.returns(["test:druid"])
+      
+      sc = mock("SolrCheckr")
+      sc.expects(:check_documents).once
+      
       Stanford::ZoteroParser.expects(:new).with(@inprocess_file, @zi).returns(zp)
+      Stanford::SolrCheckr.expects(:new).with(@inprocess_file, @zi).returns(sc)
       
       FileUtils.expects(:mv).with(@file, @inprocess_file ).once
       FileUtils.expects(:mv).with(@inprocess_file , @completed_directory ).once

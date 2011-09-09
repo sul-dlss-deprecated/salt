@@ -49,6 +49,10 @@ private
     def index(salt_doc)
        @solr.add(salt_doc.to_solr)
        @solr.update :data => '<commit/>'
+    rescue Errno::EHOSTUNREACH, SocketError
+        log_message(SocketError.inspect)
+    rescue Exception => e
+               log_message(e.inspect)
     end
   
 

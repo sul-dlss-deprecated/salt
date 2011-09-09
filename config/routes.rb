@@ -1,7 +1,11 @@
 Salt::Application.routes.draw do
-  resources :zotero_ingests
-
+  Blacklight.add_routes(self)
+  resources :catalog
   root :to => "catalog#index"
+  resources :zotero_ingests
+  
+
+
   devise_for :users
   resources :users 
   

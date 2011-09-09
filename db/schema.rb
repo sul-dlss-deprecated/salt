@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110622190731) do
+ActiveRecord::Schema.define(:version => 20110629184527) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -53,12 +53,16 @@ ActiveRecord::Schema.define(:version => 20110622190731) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "zotero_ingests", :force => true do |t|
-    t.datetime "start_date"
-    t.datetime "finish_date"
     t.text     "message"
     t.string   "filename"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "ingest_start"
+    t.datetime "ingest_end"
+    t.datetime "index_start"
+    t.datetime "index_end"
+    t.datetime "check_start"
+    t.datetime "check_end"
   end
 
 end

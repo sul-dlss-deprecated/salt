@@ -1,17 +1,22 @@
 module SaltHelper
   
   
+  def pagination_numbers
+    html = "booyah"
+    return html.html_safe
+  end 
+ 
   # we have 4 different scenerios: 1. gallery (no grouping), 2. gallery (with facet grouping), 3. list (no grouping) 4. list (w/ facet grouping)
   def index_results_box
       facet_name = grouping_facet
       facet_name.nil? ? index_ungrouped_results : index_grouped_results(facet_name)
   end
-
-
+ 
+ 
   # this groups the documents by facet and displays them in the box.
   def index_grouped_results(facet_name)
    html = ""
-   groupings = @response.docs.group_by {|d| d.get(facet_name, { :sep => nil});  }
+   groupings = @response.docs.group_by {|d| d[facet_name];  }
    groupings.each do |key, value|   
      unless value.nil?
        html <<  render_partial('catalog/_index_partials/group',  {:docs => value, :facet_name => facet_name, :facet_value => key, :view_type => viewing_context } )
@@ -63,7 +68,7 @@ module SaltHelper
        facet_item = facet.items.detect {|i| i.value == facet_value} if facet
        count = facet_item ? facet_item.hits : 50
      else
-       count = response.docs.total
+       count = response.docs.length
      end
      pluralize(count, 'document')
    end
@@ -105,12 +110,79 @@ module SaltHelper
      solr_fname = "note_display"
      result = "<dt class='blacklight-#{solr_fname.parameterize}'>#{render_document_show_field_label :field => solr_fname}</dt>"
      result << "<dd class='blacklight-#{ solr_fname.parameterize }'>"
-     notes = @document.get(solr_fname, :sep =>nil)
+     @document[solr_fname] ? notes = @document[solr_fname].join("<br/>") : notes = ""
+     puts notes.inspect
      unless notes.nil?
-       notes.each { |n| result << n + "<br/>" }
+       notes.each { |n| result << n  }
      end
      return result.html_safe
  end
+ 
+ #
+ # Pass in an RSolr::Response. Displays the "showing X through Y of N" message. 
+  def render_salt_pagination_info(response, options = {})
+      start = response.start + 1
+      per_page = response.rows
+      current_page = (response.start / per_page).ceil + 1
+      num_pages = (response.total / per_page.to_f).ceil
+      total_hits = response.total
+
+      start_num = format_num(start)
+      end_num = format_num(start + response.docs.length - 1)
+      total_num = format_num(total_hits)
+
+      entry_name = options[:entry_name] ||
+        (response.empty?? 'entry' : response.docs.first.class.name.underscore.sub('_', ' '))
+
+      if num_pages < 2
+        case response.docs.length
+        when 0; "No #{h(entry_name.pluralize)} found".html_safe
+        when 1; "Displaying <b>1</b> #{h(entry_name)}".html_safe
+        else;   "Displaying <b>all #{total_num}</b> #{entry_name.pluralize}".html_safe
+        end
+      else
+        "<span id='salt_pagination_info'><b>#{start_num} - #{end_num}</b> of <b>#{total_num}</b></span>".html_safe
+      end
+  end
+ 
+ #
+ # Takes a solr document and returns documents that are in the document's folder. 
+ def find_folder_siblings(document=@document, search_handler = "search")
+    folder_search_params = {:qt => search_handler }
+    if document[:series_facet] && document[:box_facet] && document[:folder_facet]
+      folder_search_params[:rows] = "1000"
+      folder_search_params[:fq] = ["series_facet:\"#{document[:series_facet].first}\""]
+      if document[:box_facet]
+        folder_search_params[:fq] << "box_facet:\"#{document[:box_facet].first}\""
+        if document[:folder_facet]
+          folder_search_params[:fq] << "folder_facet:\"#{document[:folder_facet].first}\""
+        end
+      end
+      @folder_siblings = Blacklight.solr.find folder_search_params
+    else 
+      @folder_siblings = nil
+    end
+  end
+ 
+ 
+  # Takes a SOLR facet and turns it into a link to be added to the document folder box. 
+  def link_to_multifacet( facet, prefix, args={} )
+     unless facet.nil? 
+       facet_params = {}
+       options = {}
+       args.each_pair do |k,v|
+         if k == :options
+           options = v
+         else
+           facet_params[:f] ||= {}
+           facet_params[:f][k] ||= []
+           v = v.instance_of?(Array) ? v.first : v
+           facet_params[:f][k].push(v)
+         end
+       end
+       link_to("#{prefix}#{facet}", catalog_index_path(facet_params), options).html_safe
+     end
+   end
  
  
 end

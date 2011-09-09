@@ -2,7 +2,8 @@
 
 module RenderConstraintsHelper
  
-  require_dependency 'vendor/gems/blacklight/app/helpers/render_constraints_helper'
+  require "#{Blacklight.root}/app/helpers/render_constraints_helper"
+ 
   
   def render_constraints_query(localized_params = params)
     # So simple don't need a view template, we can just do it here.
