@@ -14,7 +14,7 @@ module Stanford
 
        base = ASSET_SERVER_URI if base.nil?
        username = ASSET_SERVER_USER if username.nil?
-       password = ASSET_SERVER_PASSWORD if username.nil?
+       password = ASSET_SERVER_PASSWORD if password.nil?
        
       #puts "Initializing Repository at #{base}" 
       base.chop! if /\/$/.match(base)

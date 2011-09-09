@@ -14,7 +14,7 @@ Factory.define :admin, :class => User do |u|
 end
 
 Factory.define :zotero_ingest do |z|
-    z.start_date Time.now
+    z.ingest_start Time.now
     z.message  "MyText"
     z.filename  "Filename"
 end

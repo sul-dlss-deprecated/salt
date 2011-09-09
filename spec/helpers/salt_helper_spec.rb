@@ -127,7 +127,7 @@ describe SaltHelper do
     it "should return the count and the correct pluziation of document when there are no facets" do
       response = mock("SolrResponse")
       docs = mock("SolrDocuments")
-      docs.expects(:total).returns(3)
+      docs.expects(:length).returns(3)
       response.expects(:docs).returns(docs).once
       
       helper.grouped_result_count(response).should == "3 documents"
@@ -136,7 +136,7 @@ describe SaltHelper do
     it "should return the count and the correct pluziation of document when there are no facets" do
       response = mock("SolrResponse")
       docs = mock("SolrDocuments")
-      docs.expects(:total).returns(1)
+      docs.expects(:length).returns(1)
       response.expects(:docs).returns(docs).once
 
       helper.grouped_result_count(response).should == "1 document"
@@ -226,9 +226,8 @@ describe SaltHelper do
     describe "#display_notes" do
       
       it "should return the html in the correct format" do 
-          @document = mock("SolrDocuments")
-          @document.expects(:get).once.returns(["this is the story", "of a three hour tour"])
-          helper.display_donor_notes.should == "<dt class='blacklight-note_display'>Donor Notes:</dt><dd class='blacklight-note_display'>this is the story<br/>of a three hour tour<br/>"
+          @document = { "note_display" => ["this is the story", "of a three hour tour"] }       
+          helper.display_donor_notes.should == "<dt class='blacklight-note_display'>Donor Notes:</dt><dd class='blacklight-note_display'>this is the story<br/>of a three hour tour"
       end
       
       

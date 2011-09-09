@@ -322,11 +322,19 @@ private
        if json.nil? or json.is_a?(String)
           json = {}
         end
-       
+
+      # this is really stupid, but it's a quick fix to get the coverage data.
+      xml = Nokogiri::XML(open("/tmp/zotero.xml"))
+      xml.search("//dc:coverage").each do |cov|   
+        format_coverage(cov.content.strip).each do |key,vals|
+          json["#{key}"] ||= []  
+          json["#{key}"] << vals
+        end
+      end
        
        ["druid", "title", "originator", "date", "document_type", "document_subtype",
           "containing_work", "corporate_entity", "extent", "language", "abstract", 
-          "EAF_hard_drive_file_name", "tags", "notes"].each {|k| json[k] ||= "" }
+          "EAF_hard_drive_file_name", "tags", "notes", "box", "folder", "subseries"].each {|k| json[k] ||= "" }
        return json
 
      end

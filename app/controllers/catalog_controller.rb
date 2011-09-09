@@ -1,8 +1,10 @@
+# -*- encoding : utf-8 -*-
 require 'blacklight/catalog'
 
 class CatalogController < ApplicationController  
- 
+  
   layout "salt"
+  include Blacklight::SolrHelper
   include Blacklight::Catalog
   include SaltHelper
   include AuthenticationHelper
@@ -17,7 +19,6 @@ class CatalogController < ApplicationController
       
       extra_head_content << view_context.auto_discovery_link_tag(:rss, url_for(params.merge(:format => 'rss')), :title => "RSS for results")
       extra_head_content << view_context.auto_discovery_link_tag(:atom, url_for(params.merge(:format => 'atom')), :title => "Atom for results")
-      extra_head_content << view_context.auto_discovery_link_tag(:unapi, unapi_url, {:type => 'application/xml',  :rel => 'unapi-server', :title => 'unAPI' })
       
       if user_signed_in? and params[:search_field] == "fulltext"
         self.solr_search_params_logic << :show_authenticated_fulltext_records
@@ -47,10 +48,9 @@ class CatalogController < ApplicationController
     # get single document from the solr index
     def show
      
-      extra_head_content << view_context.auto_discovery_link_tag(:unapi, unapi_url, {:type => 'application/xml',  :rel => 'unapi-server', :title => 'unAPI' })
       
-      user_signed_in? ? ( @response, @document = get_solr_response_for_doc_id(params[:id], :qt => "authed_document") ) : (@response, @document = get_solr_response_for_doc_id(params[:id], :qt => "document") )
-         
+      user_signed_in? ? ( @response, @document = get_solr_response_for_doc_id(params[:id], :qt => "authed_document"); find_folder_siblings(@document, "authed_search") ) : (@response, @document = get_solr_response_for_doc_id(params[:id], :qt => "document"); find_folder_siblings(@document) )
+  
       respond_to do |format|
         format.html {setup_next_and_previous_documents}
 
@@ -65,7 +65,7 @@ class CatalogController < ApplicationController
       end
     rescue Blacklight::Exceptions::InvalidSolrID
       flash[:notice]= "You do not have sufficient access privileges to read this document, which has been marked private."
-      redirect_to(:action => 'index', :q => nil , :f => nil) and return false
+      redirect_to("/") and return false
     end
 
 private
@@ -73,5 +73,33 @@ private
   def add_styles
     extra_head_content << view_context.stylesheet_link_tag("salt")
   end
+
+
+ 
+   
+   # gets a document based on its position within a resultset  
+   def setup_document_by_counter(counter)
+     
+     return if counter < 1 || session[:search].blank?
+     search = session[:search] || {}
+     if user_signed_in? and params[:search_field] == "fulltext"
+         self.solr_search_params_logic = [:show_authenticated_fulltext_records]
+         search[:qt] = "authed_search"
+     elsif user_signed_in? and params[:search_field] != "fulltext"
+            self.solr_search_params_logic = [:show_authenticated_records]
+            search[:qt] =  "authed_search"
+     elsif user_signed_in? 
+            self.solr_search_params_logic = [:show_authenticated_records]
+            search[:qt] =  "authed_search"  
+      elsif !user_signed_in? and params[:search_field] == "fulltext"
+            self.solr_search_params_logic = [:show_fulltext_records]
+            search[:qt] =  "fulltext"
+      else
+             search[:qt] =  "search"
+     end 
+     search[:qt] ||= validate_auth_search
+     get_single_doc_via_search(counter, search)
+   end
+   
 
 end 

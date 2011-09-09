@@ -7,12 +7,13 @@ gem 'rails', '3.0.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', '1.2.5'
-gem 'blacklight', :path => "vendor/gems/blacklight"
+gem 'blacklight'
 gem 'devise'
 gem 'directory_watcher'
 gem 'eventmachine'
 gem 'rest-client'
 gem 'daemonz'
+gem "will_paginate", "~> 3.0.pre4"
 
 
 # Use unicorn as the web server

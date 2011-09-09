@@ -42,8 +42,9 @@ ASSET_SERVER_URI = "http://stanford.edu/~cfitz"
 ASSET_SERVER_USER = "fedoraAdmin"
 ASSET_SERVER_PASSWORD = "fedoraAdmin"
 
-FLIPBOOK_URL = "http://reader.stanford.edu/flipbook_salt"
-FLIPBOOK_IP = "171.67.34.129"
+FLIPBOOK_URL = "http://salt-dev.stanford.edu:8080/flipbook_salt/"
+FLIPBOOK_IP = "171.67.34.68"
+DJATOKA_IP = "171.67.34.129"
 
 # These are used to configure the Zotero Ingest Directory watcher.
 

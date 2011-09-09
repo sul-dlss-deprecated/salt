@@ -8,14 +8,14 @@ describe Stanford::AssetRepository do
     @page = "000001" 
     #thumbnail
     
-    FakeWeb.register_uri(:get,"http://example.com/#{@druid}/thumb.jpg" , :body => "A thumbnail") 
+    FakeWeb.register_uri(:get,"http://fedoraAdmin:fedoraAdmin@example.com/#{@druid}/thumb.jpg" , :body => "A thumbnail") 
     #pdf
-    pdf = "http://example.com/ff12345/ff12345.pdf"
+    pdf = "http://fedoraAdmin:fedoraAdmin@example.com/ff12345/ff12345.pdf"
     FakeWeb.register_uri(:get, pdf , :body => "A pdf") 
     #a page jp2000
-    FakeWeb.register_uri(:get, "http://example.com/#{@druid}/#{@druid}_#{@page}.jp2", :body => "A jp2000") 
+    FakeWeb.register_uri(:get, "http://fedoraAdmin:fedoraAdmin@example.com/#{@druid}/#{@druid}_#{@page}.jp2", :body => "A jp2000") 
     #a page ALTO XML OCR Text file
-    FakeWeb.register_uri(:get, "http://example.com/#{@druid}/#{@druid}_#{@page}.xml", :body => "An alto file") 
+    FakeWeb.register_uri(:get, "http://fedoraAdmin:fedoraAdmin@example.com/#{@druid}/#{@druid}_#{@page}.xml", :body => "An alto file") 
     
     
     
@@ -27,7 +27,8 @@ describe Stanford::AssetRepository do
   end
   
   it "should get the thumbnail for an asset but return nil for one that doesn't exist" do
-    @asset_repo.get_thumbnail(@druid).should == "A thumbnail"
+     
+     @asset_repo.get_thumbnail(@druid).should == "A thumbnail"
      @asset_repo.get_thumbnail("bs").should be_nil
   end
   

@@ -33,8 +33,8 @@ module Stanford
     def check_documents
       log_message("Starting data check from #{zotero_xml}")
       update_record(:check_start, Time.now)
-      zotero_docs = generate_zotero_hash
-      zotero_docs.each do |zotero_doc|
+      zotero_hashes = generate_zotero_hashes
+      zotero_hashes.each do |zotero_doc|
         solr_response = get_solr_doc(zotero_doc["druid"])
         if solr_response and solr_response["response"]["docs"] and solr_response["response"]["docs"].first
           check_document( zotero_doc, solr_response["response"]["docs"].first )
@@ -73,10 +73,11 @@ module Stanford
         
 private
 
-  # this method generates the hash from JSON using the PHP script and ensures key values are present
-    def generate_zotero_hash
+  # this method generates an array of hashes from JSON using the PHP script and ensures key values are present
+    def generate_zotero_hashes
       json = JSON(`/usr/bin/env php lib/stanford/zotero_to_json.php #{@zotero_xml}`)
-      return json
+      json.is_a?(Array) ? zotero_hashes = json : zotero_hashes = [json]
+      return zotero_hashes
     end
     
     def get_solr_doc(druid, count=0)
@@ -104,9 +105,26 @@ private
           zotero_value = [zotero_value] 
         end
         solr_value ||= []
+        
+        solr_value = clean_values(solr_value)
+        zotero_value = clean_values(zotero_value)
+        
         unless zotero_value == solr_value
             raise ArgumentError.new("Mismatch in #{field}. zotero: #{zotero_value} solr: #{solr_value}") 
         end 
+    end
+    
+    
+    # this is a simple convenince method to strip out unneeded whitespace and replace empty strings with nil
+    def clean_values(an_array)
+      an_array.compact!
+      an_array.map! do |a|
+        a.strip!
+        unless a.empty?
+          a
+        end
+      end
+      return an_array
     end
     
     def log_message(msg)
