@@ -1,0 +1,24 @@
+	<% @page_title = application_name + " Search Results" %>
+
+      
+  
+<div class="pagination">
+
+		<%= render 'sort_and_per_page' %>
+		<%= render 'list_gallery_toggle'%>
+		<%= render 'prev_next' %>
+</div>
+
+  <div id="documents" class="<% index_results_class %>">
+  	<%= index_results_box %>
+	</div>
+
+
+	<% sidebar_items << capture do %>
+	  <%= render :partial=>'catalog/_index_partials/index_collection_box' %>
+	  <%= render :partial=>'facets' %>
+	<% end %>
+
+  <%= render 'results_pagination' %>
+
+

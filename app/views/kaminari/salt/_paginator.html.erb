@@ -1,0 +1,19 @@
+<%# The container tag
+  - available local variables
+    current_page:  a page object for the currently displayed page
+    num_pages:     total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+    paginator:     the paginator that renders the pagination tags inside
+-%>
+<%= render_salt_pagination_info(@response, { :entry_name => "document" }) %>
+
+<%= paginator.render do -%>
+  <div class="pagination-container">
+    <%= prev_page_tag %>
+    <%= next_page_tag  %>
+    <div class="page_links">
+  
+  </div>
+  </div>
+<% end -%>

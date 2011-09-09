@@ -5,7 +5,7 @@
       end
     %>
     <%=
-      link_to_unless(params[:view].blank?, 'Gallery', params.merge({:view => nil}), {:class => 'gallery_toggle'}) do |name|
+      link_to_unless(params[:view] != 'list', 'Gallery', params.merge({:view => nil}), {:class => 'gallery_toggle'}) do |name|
         content_tag(:span, name, {:class => 'gallery_toggle'})
       end
     %>

@@ -63,11 +63,12 @@ a.addval, a.addval:active, a.addval:focus {
 }
 
 .yui-t1 #yui-main, .yui-t2 #yui-main, .yui-t3 #yui-main {
-	width: 77%;
+	width: 80%;
 	float: right;
 }
 
 .yui-t2 #yui-main .yui-b {
+  border-left: none;
 	max-width: none;
 }
 
@@ -196,12 +197,17 @@ div.aboutLinks .noLink{
 #control_links a {	/* start over link */
 	display:inline;
  	 float:left;
+ 	 
 }
 
+#start_over a { 
+  margin: 4px 0px;
+  }
+
 #control_links .constraints {
-	margin:0 0 0 10%;
+	margin:0 0 0 7%;
 	font-weight:normal;
-	padding: 1px 3px;
+	/* padding: 1px 3px; */
 	color: #4D606A;
 	width: 90%;
 }
@@ -228,7 +234,6 @@ div.aboutLinks .noLink{
 /* search */
 #search #q {
 	width:325px;
-	margin-left:-63px;
 }
 #search form h2.search label {
 	font-size:15px;
@@ -382,22 +387,33 @@ ul.toc {
 #splash_text h2 {
 	margin-top: 7px;
 }
+
+
+span#salt_pagination_info {
+  margin-left: 7em;
+}
+
 .pagination {
 	background-color: #ffffff;
 	border:1px solid #d4e4ea;
 	height:2em;
-	margin:0;
+	margin:-1px 0;
 	padding:5px 0 0;
-	text-align:right;
 }
+
 
 .pagination a {
 	text-decoration:underline;
 }
 
 
+
 div.pagination h2, #results_text {
 	top:-999px;
+}
+
+div.pagination-container {
+  display: inline;
 }
 
 div.prev_next_links {
@@ -407,6 +423,17 @@ div.prev_next_links {
 div.prev_next_links {
 	margin-top: 0px;
 }
+
+div#docPreviousNextDocument {
+  float: right;
+  
+}
+
+span.doc_back_to_cat {
+  float: left;
+  padding: 0 5px;
+}
+
 
 div.windowed_links {
 	background-color:#D4E4EA;
@@ -427,11 +454,14 @@ div.windowed_links {
     display: none;
 }
 
-div.windowed_links a, div.windowed_links span, div.windowed_links em {
+div.windowed_links span, div.windowed_links em {
 	background-color:white;
 	border:1px solid #9BAFB8;
 	padding:0 8px 2px;
 }
+
+
+
 
 div.windowed_links em {
 	background-color:#9BAFB8;
@@ -493,7 +523,7 @@ form.sort label {
 	border:1px solid #9bafb8;
 	padding:0.5em;
 	margin-right: 10px;
-	margin-top:1px;
+	/*margin-top:1px; */
 }
 
 #collection-id-box .title {
@@ -574,7 +604,11 @@ div#searchMods label, div#searchMods h2 {
 }
 
 #previousNextDocument { 
-	display:inline; 
+	display:inline;
+	background-color: #FFFFFF;
+  border: none;
+  padding: 5px 5px 0;
+  text-align: left; 
 }
 
 .previous {
@@ -947,6 +981,8 @@ dl dd.help_text, span.help_text {
 	padding:15px 0 5px;
 }
 
+
+
 #facets h3 {
 	cursor: pointer;
 	background-position:left center;
@@ -956,7 +992,7 @@ dl dd.help_text, span.help_text {
 	font-size: 1.1em;
 	background-image:url('/images/facet_closed.png');
 }
-#facets h3.facet_selected {
+#facets h3.twiddle-open {
 	background-image:url('/images/facet_open.png');
 }
 #facets ul {

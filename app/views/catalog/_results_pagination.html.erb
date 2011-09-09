@@ -1,9 +1,12 @@
-  <% if @response.docs.total_pages > 1 %>
+<% if paginate_params(@response).num_pages > 1 %>
     <div class="windowed_links">
       <% # will_paginate is called oddly because we want next/prev together
          # at left for screen reader accessibility. We use CSS to restore
          # a more conventional next-on-right. 
       %>
-      <%= will_paginate @response.docs, :next_label => '', :previous_label => '', :class => "page_links", :renderer => Blacklight::CommaLinkRenderer %>
+ 			<%= paginate_rsolr_response(@response, :outer_window => 4, :theme => 'salt_window') %>
+   
     </div>
   <% end %>
+
+

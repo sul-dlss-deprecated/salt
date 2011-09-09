@@ -1,0 +1,27 @@
+<div id="collection-id-box" class="location-browse">
+  <h2 class="title">Edward A. Feigenbaum Papers</h2>
+  <ul class="containers horizontal">
+    <li class="first"> 
+      <%= link_to_multifacet(@document["series_facet"], "Series: ",  "series_facet" => @document["series_facet"])  %> 
+    </li>
+    <li>
+       <%= link_to_multifacet(@document['box_facet'], " > ",  "series_facet" => @document["series_facet"], "box_facet" => @document["box_facet"]) %>
+    </li>
+    <li>
+      <%= link_to_multifacet( @document['folder_facet'], " > ",   "series_facet" => @document["series_facet"], "box_facet" => @document["box_facet"], "folder_facet" => @document["folder_facet"]) %>
+    </li>
+		<% if @folder_siblings %>
+    <li>(<%= @folder_siblings.total %> Documents)</li>
+    <% end %>
+  </ul>
+	 <ul class="folder_siblings">
+		    <% if @folder_siblings %>
+        <%= render(:partial=>"catalog/_show_partials/show_folder_sibling", :collection=>@folder_siblings.docs, :as => :document) %>
+				<% end %>
+   </ul>
+ 	<ul class="links horizontal">
+     <%# <li> link_to("Collection Home", collection_path("1")) </li> %>
+    <li><%= link_to("Finding Aid", "http://www.oac.cdlib.org/findaid/ark:/13030/kt0j49r6m6") %></li>
+    <li><%= link_to("Access", "http://searchworks.stanford.edu/view/4085637") %></li>
+  </ul>
+</div>
