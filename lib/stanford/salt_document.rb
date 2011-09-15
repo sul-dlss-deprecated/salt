@@ -148,7 +148,11 @@ module Stanford
       ["EAFHardDriveFileName_display", "EAFHardDriveFileName_t", "EAFHardDriveFileName_s"].each {|f| zotero_hash[f] ||= []; zotero_hash[f] << json["EAF_hard_drive_file_name"]}
       
       
-         
+       
+      ["box_facet", "box_t", "box_s", "box_t", "box_display"].each {|b| zotero_hash[b] ||= []; zotero_hash[b] << json["box"].first}
+      ["folder_facet", "folder_t", "folder_s", "folder_t", "folder_display"].each {|f| zotero_hash[f] ||= []; zotero_hash[f] << json["folder"].first}
+      ["subseries_facet", "subseries_t", "subseries_s", "subseries_t", "subseries_display"].each {|s| zotero_hash[s] ||= []; zotero_hash[s] << json["subseries"].first}
+             
      
       
       json["tags"].each do |tag|
@@ -309,6 +313,8 @@ private
       parts = coverage_string.split(",")
       coverage_hash["box"] = parts.shift.gsub("Box:", '').strip
       coverage_hash["folder"] =  parts.shift.gsub("Folder:", '').strip
+      puts coverage_hash.inspect
+      puts "$$$$"
       coverage_hash
     end
     
@@ -328,10 +334,9 @@ private
       xml.search("//dc:coverage").each do |cov|   
         format_coverage(cov.content.strip).each do |key,vals|
           json["#{key}"] ||= []  
-          json["#{key}"] << vals
+          json["#{key}"] << vals.first
         end
       end
-       
        ["druid", "title", "originator", "date", "document_type", "document_subtype",
           "containing_work", "corporate_entity", "extent", "language", "abstract", 
           "EAF_hard_drive_file_name", "tags", "notes", "box", "folder", "subseries"].each {|k| json[k] ||= "" }
