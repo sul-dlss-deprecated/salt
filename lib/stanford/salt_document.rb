@@ -210,10 +210,10 @@ private
     # title in this case is the section unittitel from the EAD. 
     def format_coverage(coverage_string)
       coverage_string.gsub!("\n", "")
-      coverage_hash = { "subseries" => coverage_string.split("Title:")[1].to_s.strip }
+      coverage_hash = { "subseries" => [coverage_string.split("Title:")[1].to_s.strip] }
       parts = coverage_string.split(",")
-      coverage_hash["box"] = parts.shift.gsub("Box:", '').to_s.strip
-      coverage_hash["folder"] =  parts.shift.gsub("Folder:", '').to_s.strip
+      coverage_hash["box"] = [parts.shift.gsub("Box:", '').to_s.strip]
+      coverage_hash["folder"] =  [parts.shift.gsub("Folder:", '').to_s.strip]
       coverage_hash
     end
     
