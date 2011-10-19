@@ -38,7 +38,7 @@ gem 'json'
 #   gem 'webrat'
 # end
 group :production do
-   gem "mysql"
+   gem "mysql2", '0.2.13'
 end
 
 group :development, :test do

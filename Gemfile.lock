@@ -102,7 +102,7 @@ GEM
     mime-types (1.16)
     mocha (0.10.0)
       metaclass (~> 0.0.1)
-    mysql (2.8.1)
+    mysql2 (0.2.13)
     nokogiri (1.5.0)
     orm_adapter (0.0.5)
     polyglot (0.3.2)
@@ -191,7 +191,7 @@ DEPENDENCIES
   jettywrapper
   json
   mocha
-  mysql
+  mysql2 (= 0.2.13)
   rails (= 3.0.6)
   rake (~> 0.8.7)
   rcov
