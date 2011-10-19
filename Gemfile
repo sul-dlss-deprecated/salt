@@ -6,7 +6,6 @@ gem 'rails', '3.0.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', '1.2.5'
 gem 'blacklight'
 gem 'devise'
 gem 'directory_watcher'
@@ -38,7 +37,12 @@ gem 'json'
 # group :development, :test do
 #   gem 'webrat'
 # end
+group :production do
+   gem "mysql"
+end
+
 group :development, :test do
+  gem 'sqlite3-ruby', '1.2.5'
   gem 'rcov'
   gem 'ruby-debug'
   gem 'ruby-debug-base'
