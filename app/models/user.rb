@@ -27,20 +27,22 @@ class User < ActiveRecord::Base
   end
   
   protected
-   
-   def make_admin
-     self.update_attribute :admin, true
-   end
+  
+  # I don't think this is being used. 
+  #def make_admin
+  #   self.update_attribute :admin, true
+  # end
    
    def password_required? 
      false 
    end
-   
-   def self.find_for_database_authentication(warden_conditions)
-     conditions = warden_conditions.dup
-     login = conditions.delete(:login)
-     where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-   end
+  
+  # this was for email or user id login, but we're no longer using this. We're using email only. 
+  #def self.find_for_database_authentication(warden_conditions)
+  #   conditions = warden_conditions.dup
+  #   login = conditions.delete(:login)
+  #   where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+  # end
    
   
   

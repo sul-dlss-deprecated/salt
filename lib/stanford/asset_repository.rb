@@ -16,7 +16,6 @@ module Stanford
        username = ASSET_SERVER_USER if username.nil?
        password = ASSET_SERVER_PASSWORD if password.nil?
        
-      #puts "Initializing Repository at #{base}" 
       base.chop! if /\/$/.match(base)
       @base = base
       @username = username

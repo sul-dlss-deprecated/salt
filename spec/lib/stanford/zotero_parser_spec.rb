@@ -20,7 +20,9 @@ describe Stanford::ZoteroParser do
   
   describe "#process_document" do
     before(:each) do
-        @zp = Stanford::ZoteroParser.new(fixture("zotero_export.xml").path)
+        @zi = ZoteroIngest.new
+        @zi.save
+        @zp = Stanford::ZoteroParser.new(fixture("zotero_export.xml").path, @zi)
     end
     
     it "should run the process_node and update_fedora methods for each node" do
@@ -30,6 +32,14 @@ describe Stanford::ZoteroParser do
       @zp.expects(:update_fedora).once
       @zp.process_document
     end
+    
+    it "should update the record for the ActiveRecord/ZoteroIngest object" do
+      
+      
+      
+    end
+    
+    
   end
   
   
@@ -123,6 +133,10 @@ describe Stanford::ZoteroParser do
        @zp.update_fedora(xml) 
      end
   end
+  
+  
+   
+  
   
  
   

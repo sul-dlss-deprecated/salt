@@ -52,7 +52,7 @@ private
     rescue Errno::EHOSTUNREACH, SocketError
         log_message(SocketError.inspect)
     rescue Exception => e
-               log_message(e.inspect)
+        log_message(e.message)
     end
   
 

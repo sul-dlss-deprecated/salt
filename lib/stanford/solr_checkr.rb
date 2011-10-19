@@ -16,15 +16,11 @@ module Stanford
     attr_accessor :report
     
     def initialize(zotero_xml, zotero_ingest = nil)
-        if File.exists?(zotero_xml)
-          @zotero_xml = zotero_xml
-        else 
-          log_message("#{zotero_xml} not found")
-          
-          raise "Need to provide xml file to process. #{zotero_xml} does not exists."
-        end
         
-        zotero_ingest ?    @zotero_ingest = zotero_ingest : @zotero_ingest = nil
+        raise ArgumentError.new("Need to provide xml file to process") if !File.exists?(zotero_xml)
+        
+        @zotero_xml = zotero_xml
+        zotero_ingest.is_a?(ZoteroIngest) ? @zotero_ingest = zotero_ingest : @zotero_ingest = nil
             
         @solr = SolrDocument.connection
         @report = File.open("log/data_check_#{Time.now}.txt", "w")
@@ -54,21 +50,17 @@ module Stanford
          ["title_s", "title_display", "title_t"].each { |v| check_values(v, zotero_doc["title"], solr_doc[v] ) }
          ["originator_facet", "originator_s", "originator_t"].each {|v| check_values(v, zotero_doc["originator"], solr_doc[v] )   }
          ["documentType_facet", "documentType_s", "documentType_display", "documentType_t"].each {|v|  check_values(v, zotero_doc["document_type"], solr_doc[v] ) }
-         ["documentSubType_facet", "documentSubType_s", "documentSubType_display", "documentSubType_t"].each {|v| check_values(v, zotero_doc["document_subtype"], solr_doc[v] )  }
-         ["containingWork_facet", "containingWork_s", "containingWork_display", "containingWork_t"].each {|v| check_values(v, zotero_doc["containing_work"], solr_doc[v] ) }
+       #  ["documentSubType_facet", "documentSubType_s", "documentSubType_display", "documentSubType_t"].each {|v| check_values(v, zotero_doc["document_subtype"], solr_doc[v] )  }
+       #  ["containingWork_facet", "containingWork_s", "containingWork_display", "containingWork_t"].each {|v| check_values(v, zotero_doc["containing_work"], solr_doc[v] ) }
          ["corporateEntity_facet", "corporateEntity_t"].each { |v|  check_values(v, zotero_doc["corporate_entity"], solr_doc[v] )  }
-         ["extent_s", "extent_t", "extent_display"].each {|v| check_values(v, zotero_doc["extent"], solr_doc[v] )  }
-         ["language_facet", "language_s", "language_display", "language_t"].each {|v| check_values(v, zotero_doc["language"], solr_doc[v] )  }
-         ["abstract_s", "abstract_t", "abstract_display"].each {|v| check_values(v, zotero_doc["abstract"], solr_doc[v] )  }
+      #   ["extent_s", "extent_t", "extent_display"].each {|v| check_values(v, zotero_doc["extent"], solr_doc[v] )  }
+       #  ["language_facet", "language_s", "language_display", "language_t"].each {|v| check_values(v, zotero_doc["language"], solr_doc[v] )  }
+      #   ["abstract_s", "abstract_t", "abstract_display"].each {|v| check_values(v, zotero_doc["abstract"], solr_doc[v] )  }
          ["EAFHardDriveFileName_display", "EAFHardDriveFileName_t", "EAFHardDriveFileName_s"].each {|v| check_values(v, zotero_doc["EAF_hard_drive_file_name"], solr_doc[v] )  }
 
        @report << "\n"
     rescue ArgumentError => e
-       puts e
        @report << "#{e}\t"
-    rescue Timeout::Error => e
-      @report << "#{e}\t"
-      sleep 10
     end
         
 private

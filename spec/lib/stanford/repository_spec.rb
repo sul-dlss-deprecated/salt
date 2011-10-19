@@ -11,6 +11,8 @@ describe Stanford::Repository do
     FakeWeb.register_uri(:get,"http://127.0.0.1:8983/fedora/objects/fake:druid/datastreams?format=xml", :body => "<object><datastream dsid='first'/><datastream dsid='another'/></object>")
     # get datastream
     FakeWeb.register_uri(:get,"http://127.0.0.1:8983/fedora/objects/fake:druid/datastreams/fakeStream/content", :body => "Some content")
+    FakeWeb.register_uri(:put, %r|http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora/objects/fake:druid/datastreams/fakeStream|, :query => "<xml/>")
+    FakeWeb.register_uri(:put, %r|http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora/objects/druid:fail/datastreams/fakeStream|, :query => "<xml/>",  :body => "Unauthorized", :status => ["401", "Unauthorized"])
     
   end
   
@@ -31,6 +33,15 @@ describe Stanford::Repository do
   it "should get the datastream content from an object based on the dsid from fedora" do
     @repo.get_datastream("fake:druid", "fakeStream").should == "Some content"
     @repo.get_datastream("bs:druid", "bsStream").should be_nil
+  end
+  
+  it "#update_datastream" do
+    @repo.update_datastream("fake:druid", "fakeStream", "<xml/>").should ==  Net::HTTPSuccess
+  end
+  
+  
+  it "should give an error if there's a problem" do
+    @repo.update_datastream("druid:fail", "fakeStream", "<xml/>" ).message.should == "401 \"Unauthorized\""
   end
   
 end

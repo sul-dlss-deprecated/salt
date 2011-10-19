@@ -16,12 +16,13 @@ class UsersController < ApplicationController
   
   
   def index
-    
+   if current_user.admin?  
     if params[:approved] == "false"
       @users = User.find_all_by_approved(false)
     else
       @users = User.all
     end
+   end
   end
   
   def edit
@@ -32,18 +33,11 @@ class UsersController < ApplicationController
     
   def update
    @user = User.find(params[:id])
- 
-   
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user,
-                      :notice => 'User was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors,
-                      :status => :unprocessable_entity }
-      end
+   if @user.update_attributes(params[:user])
+         flash[:notice] = "Successfully updated User."
+         redirect_to root_path
+    else
+         render :action => 'edit'
     end
   end
   

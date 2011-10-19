@@ -10,14 +10,13 @@ class ApplicationController < ActionController::Base
   # these methods in order to perform user specific actions. 
   
   protect_from_forgery
-   before_filter [:set_current_user]
-  
- 
+  before_filter :set_current_user, :store_bounce
+   
 
 
 protected 
   
-  def store_bounce 
+  def store_bounce
      session[:bounce]=params[:bounce]
   end
   

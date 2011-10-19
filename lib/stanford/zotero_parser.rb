@@ -16,18 +16,21 @@ module Stanford
     # intalialize with a string pointing to a file to be processed and optionally a ZoteroIngest object for logging
     def initialize(file, zotero_ingest = nil)
       
+      raise ArgumentError.new("Need to provide xml file to process") if !File.exists?(file)
+      
+      @xmlfile = file
       @repository = Stanford::Repository.new()
       @processed_druids = []
-      if File.exists?(file)
-        @xmlfile = file
-      else 
-        raise "Need to provide xml file to process"
+      
+      
+      case zotero_ingest
+      when ZoteroIngest
+          @zotero_ingest = zotero_ingest
+      else
+          ArgumentError.new("The zotero_ingest parameter needs to be a ZoteroIngest object.")
       end
       
-      unless zotero_ingest.nil?
-        @zotero_ingest = zotero_ingest
-      end
-      
+   
     end
    
    def process_document
@@ -51,7 +54,7 @@ module Stanford
      if node.name == "Memo"
         previous.root << node
         return previous
-      else
+     else
         
         unless previous.nil?
           update_fedora(previous) #update Fedora with the pervious node and move on
@@ -74,8 +77,9 @@ EOF
 
         rdf = Nokogiri::XML(string)
         return rdf
-      end
-    end
+     end
+   end
+      
     
     # takes XML nokogiri object and updates it to fedora
     def update_fedora(xml)
@@ -108,6 +112,6 @@ EOF
            ZoteroIngest.update(@zotero_ingest.id, { field.to_sym => msg  } )
         end
       end
-    
-  end
+   end
+ 
 end

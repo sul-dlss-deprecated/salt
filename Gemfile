@@ -12,9 +12,9 @@ gem 'devise'
 gem 'directory_watcher'
 gem 'eventmachine'
 gem 'rest-client'
-gem 'daemonz'
-gem "will_paginate", "~> 3.0.pre4"
-
+gem 'simple-daemon'
+gem "will_paginate",  '~> 3.0.2'
+gem 'json'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -51,7 +51,6 @@ group :development, :test do
   gem 'capybara'
   gem 'gherkin'
   gem 'factory_girl'
-#  gem 'markup_validity'
 	gem 'fakeweb'
 	gem 'jettywrapper'
 	gem 'equivalent-xml'

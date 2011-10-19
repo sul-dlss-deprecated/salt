@@ -26,7 +26,6 @@ module Stanford
         password = FEDORA_PASSWORD
       end
       
-      #puts "Initializing Repository at #{base}" 
       base.chop! if /\/$/.match(base)
       @base = base
       @username = username

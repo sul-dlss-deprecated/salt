@@ -65,7 +65,6 @@ def process_file
   end
 
 rescue => e
-  puts "Errors: #{e.inspect} #{e.backtrace.join('\n')}"
   log_message("Zotero Import Error -- File: #{File.join(@inprocess_directory, filename)}")
   log_message("Errors: #{e.inspect} #{e.backtrace.join('\n')}")
   

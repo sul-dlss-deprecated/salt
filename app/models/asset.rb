@@ -67,16 +67,16 @@ private
 
 
   def self.http(uri, limit = 10)
-    request = Net::HTTP::Get.new(uri.request_uri) 
-    request.basic_auth @username, @password
-    response = Net::HTTP.start(uri.host, uri.port) {|http| http.request(request)}
-    case response
-    when Net::HTTPSuccess then response.body
-    when Net::HTTPRedirection then Stanford::AssetRepository.http(response['location'], limit - 1)
-    else
-      raise response.error!
-    end
-    rescue Exception => e
+      raise ArgumentError, 'HTTP redirect too deep' if limit == 0
+      request = Net::HTTP::Get.new(uri.request_uri) 
+      response = Net::HTTP.start(uri.host, uri.port) { |http| http.request(request) }
+      case response
+      when Net::HTTPSuccess then response.body
+      when Net::HTTPRedirection then Asset.http(URI.parse(response['location']), limit - 1)
+      else
+        raise response.error!
+      end
+  rescue Exception => e
           raise e
   end #rescue 
 

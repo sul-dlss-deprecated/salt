@@ -76,7 +76,8 @@ private
 
 
  
-   
+=begin
+   # this isn't be used anywhere it seems....   
    # gets a document based on its position within a resultset  
    def setup_document_by_counter(counter)
      
@@ -100,6 +101,7 @@ private
      search[:qt] ||= validate_auth_search
      get_single_doc_via_search(counter, search)
    end
+=end
    
 
 end 

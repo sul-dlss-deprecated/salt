@@ -2,6 +2,9 @@
 <p>If you already have an account on Saltworks and have a Stanford SUNet ID, please log in 
 <%= link_to "Here", login_path(:bounce => request.url)%></p>
 <br/>
+<% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end -%>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <p><%= f.label :login %><br />
   <%= f.email_field :login %></p>

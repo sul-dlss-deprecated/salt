@@ -58,9 +58,22 @@ describe ZoteroIngest do
       @zi.process_file
     end
     
-    
   end
   
+  
+  describe "#update_index" do
+    
+    it "should update the index when given an array of druids" do
+      @zi = ZoteroIngest.new()
+      druids = ["foo:bar", "bar:foo", "bar:bar", "foo:foo"]
+      mock_indexer = mock("Stanford::Indexer")
+      mock_indexer.expects(:process_queue).returns(true)
+      Stanford::Indexer.expects(:new).with(druids, @zi).returns(mock_indexer)  
+      
+      @zi.update_index(druids).should be_true 
+    end
+    
+  end
   
   
 end

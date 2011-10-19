@@ -61,7 +61,24 @@ describe Asset do
     end
   end
   
-   
+  describe "http errors" do
+      
+    it "should eventually return an error after atempting to follow redirection 10 times" do
+      response =  Net::HTTPRedirection.new('1.1', '302', 'Found')
+      response['location'] = "http://salt-dev.stanford.edu:8080/flipbook_salt"
+      FakeWeb.register_uri(:get, %r|http://salt-dev.stanford.edu:8080/flipbook_salt|, :location => "http://salt-dev.stanford.edu", :response => response, :status => ["301", "Moved Permanently"])
+      lambda { @asset.get_flipbook }.should raise_error(ArgumentError)
+    end
+    
+    it "should raise error if there's a problem" do 
+      FakeWeb.clean_registry
+      response = Net::HTTPError.new("123", "123")
+      FakeWeb.register_uri(:get, %r|http://salt-dev.stanford.edu:8080/flipbook_salt|, :body => "Unauthorized", :status => ["401", "Unauthorized"])
+      lambda {   @asset.get_flipbook }.should raise_error(Net::HTTPServerException)
+    end
+    
+  end
+     
   
   
 end

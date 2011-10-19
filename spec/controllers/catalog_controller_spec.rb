@@ -70,9 +70,11 @@ describe CatalogController do
            response.should_not redirect_to('/')
            response.should be_success
         end
-       
-
     end
+    
+    
+    
+    
   
   
 end

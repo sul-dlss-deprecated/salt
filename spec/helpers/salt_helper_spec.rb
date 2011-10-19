@@ -226,11 +226,145 @@ describe SaltHelper do
     describe "#display_notes" do
       
       it "should return the html in the correct format" do 
-          @document = { "note_display" => ["this is the story", "of a three hour tour"] }       
-          helper.display_donor_notes.should == "<dt class='blacklight-note_display'>Donor Notes:</dt><dd class='blacklight-note_display'>this is the story<br/>of a three hour tour"
+          @document = { "notes_display" => ["this is the story", "of a three hour tour"] }       
+          helper.display_donor_notes.should == "<dt class='blacklight-notes_display'>Donor Notes:</dt><dd class='blacklight-notes_display'>this is the story<br/><br/>of a three hour tour"
+      end
+    end
+    
+    describe "#render_salt_pagination_info" do
+      
+       it "should return the proper html given a solr response with no docs" do
+          @solr_response = mock("SolrResponse")
+          docs = mock("SolrDocuments")
+          docs.expects(:length).twice.returns(0)
+          docs.expects(:first).never
+          
+          @solr_response.expects(:empty?).returns(true)
+          @solr_response.expects(:docs).at_least(1).returns(docs)
+          @solr_response.expects(:start).twice.returns(0)
+          @solr_response.expects(:rows).at_least(1).returns(0)
+          @solr_response.expects(:total).twice.returns(0)
+
+          helper.render_salt_pagination_info(@solr_response).should ==  "No entries found"
+
+       end
+      
+       it "should return the proper html given a solr response with 1 docs" do
+          @solr_response = mock("SolrResponse")
+          docs = mock("SolrDocuments")
+          docs.expects(:length).twice.returns(1)
+
+          first = mock("SolrDoc")
+          docs.expects(:first).returns(first)
+
+          @solr_response.expects(:empty?).returns(false)
+          @solr_response.expects(:docs).at_least(1).returns(docs)
+          @solr_response.expects(:start).twice.returns(0)
+          @solr_response.expects(:rows).at_least(1).returns(0)
+          @solr_response.expects(:total).twice.returns(1)
+
+          helper.render_salt_pagination_info(@solr_response).should == "Displaying <b>1</b> mocha/mock"
+        end
+        
+        it "should return the proper html given a solr response with multiple docs but not paginated" do
+            @solr_response = mock("SolrResponse")
+            docs = mock("SolrDocuments")
+            docs.expects(:length).twice.returns(5)
+
+            first = mock("SolrDoc")
+            docs.expects(:first).returns(first)
+
+            @solr_response.expects(:empty?).returns(false)
+            @solr_response.expects(:docs).at_least(1).returns(docs)
+            @solr_response.expects(:start).twice.returns(0)
+            @solr_response.expects(:rows).at_least(1).returns(10)
+            @solr_response.expects(:total).twice.returns(5)
+
+            helper.render_salt_pagination_info(@solr_response).should == "Displaying <b>all 5</b> mocha/mocks"
+          end
+        
+      
+         it "should return the proper html given a solr response with many docs paginated" do
+            @solr_response = mock("SolrResponse")
+            docs = mock("SolrDocuments")
+            docs.expects(:length).once.returns(100000000)
+
+            first = mock("SolrDoc")
+            docs.expects(:first).returns(first)
+
+            @solr_response.expects(:empty?).returns(false)
+            @solr_response.expects(:docs).at_least(1).returns(docs)
+            @solr_response.expects(:start).twice.returns(2)
+            @solr_response.expects(:rows).at_least(1).returns(0)
+            @solr_response.expects(:total).twice.returns(100000000)
+
+            helper.render_salt_pagination_info(@solr_response).should == "<span id='salt_pagination_info'><b>3 - 100,000,002</b> of <b>100,000,000</b></span>" 
+          end
+    end
+    
+    
+    describe "#find_folder_siblings" do
+      
+      it "should return nil if box, folder, and series are not given" do
+        @document = {}
+        helper.find_folder_siblings(@document).should be_nil
       end
       
+      it "should query Blacklight if series is given" do
+        solr = mock("Solr")
+        solr.expects(:find).with(:fq =>  ["series_facet:\"Big Box O' Porn\""], :qt => 'search', :rows => '1000').returns("The Results")
+        Blacklight.expects(:solr).returns(solr)
+        
+        @document = {:series_facet => "Big Box O' Porn"}
+        helper.find_folder_siblings(@document).should == "The Results"
+      end
       
+        it "should query Blacklight if series and box is given" do
+          solr = mock("Solr")
+          solr.expects(:find).with(:fq =>  ["series_facet:\"Big Box O' Porn\"", "box_facet:\"78\""], :qt => 'search', :rows => '1000').returns("The Results")
+          Blacklight.expects(:solr).returns(solr)
+
+          @document = {:series_facet => "Big Box O' Porn", :box_facet => "78"}
+          helper.find_folder_siblings(@document).should == "The Results"
+        end
+      
+      
+       it "should query Blacklight if series and box and folder are given" do
+          solr = mock("Solr")
+          solr.expects(:find).with(:fq =>  ["series_facet:\"Big Box O' Porn\"", "box_facet:\"78\"", "folder_facet:\"11\""], :qt => 'search', :rows => '1000').returns("The Results")
+          Blacklight.expects(:solr).returns(solr)
+
+          @document = {:series_facet => "Big Box O' Porn", :box_facet => "78", :folder_facet => "11"}
+          helper.find_folder_siblings(@document).should == "The Results"
+        end
+            
+       it "shouldn't do anything if no series is given" do
+          Blacklight.expects(:solr).never
+          @document = {:folder_facet => "11", :box_facet => "78"}
+          helper.find_folder_siblings(@document).should == nil
+        end
+    end
+    
+    describe "#link_to_multifacet" do
+      # <%= link_to_multifacet(@document["series_facet"], "Series: ",  "series_facet" => @document["series_facet"])  %> 
+      
+      it "should return nil if facet is nil" do
+        helper.link_to_multifacet(nil, "prefix").should be_nil  
+      end
+      
+      it "should return a value if a facet is given" do
+        helper.link_to_multifacet("Big Box O' Porn", "Series:", "series_facet" => "Big Box O' Porn").should == 
+           "<a href=\"/catalog?f[series_facet][]=Big+Box+O%27+Porn\">Series:Big Box O' Porn</a>"
+        
+        
+      end
+      
+        it "should return a value if a facet is given and options too" do
+          helper.link_to_multifacet("Big Box O' Porn", "Series:", "series_facet" => "Big Box O' Porn", :options => { :confirm => "booyah?"}).should == 
+           "<a href=\"/catalog?f[series_facet][]=Big+Box+O%27+Porn\" data-confirm=\"booyah?\">Series:Big Box O' Porn</a>"
+
+
+        end
       
     end
   

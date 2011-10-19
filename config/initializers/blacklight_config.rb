@@ -121,6 +121,7 @@ Blacklight.configure(:shared) do |config|
   #   The ordering of the field names is the order of the display 
   config[:show_fields] = {
     :field_names => [
+      "originator_s",
       "access_display",
       "series_display",
       "subseries_display",
@@ -128,9 +129,10 @@ Blacklight.configure(:shared) do |config|
       "folder_display",
       "id", 
       "donor_tags_s",
-      "note_display"
+      "notes_display"
     ],
     :labels => {
+      "originator_s" => "Author:",
       "access_display" => "Access:",
       "series_display" => "Series:",
       "subseries_display"  => "Subseries:",
@@ -138,7 +140,7 @@ Blacklight.configure(:shared) do |config|
       "folder_display" => "Folder:",
       "id" => "ID:",
       "donor_tags_s" => "Tagged By Donor:",
-      "note_display" => "Donor Notes:"
+      "notes_display" => "Donor Notes:"
     }
   }
 

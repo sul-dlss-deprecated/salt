@@ -1,11 +1,6 @@
 module SaltHelper
   
-  
-  def pagination_numbers
-    html = "booyah"
-    return html.html_safe
-  end 
- 
+   
   # we have 4 different scenerios: 1. gallery (no grouping), 2. gallery (with facet grouping), 3. list (no grouping) 4. list (w/ facet grouping)
   def index_results_box
       facet_name = grouping_facet
@@ -107,11 +102,10 @@ module SaltHelper
  
  # returns the donor notes as unescaped html 
  def display_donor_notes
-     solr_fname = "note_display"
+     solr_fname = "notes_display"
      result = "<dt class='blacklight-#{solr_fname.parameterize}'>#{render_document_show_field_label :field => solr_fname}</dt>"
      result << "<dd class='blacklight-#{ solr_fname.parameterize }'>"
-     @document[solr_fname] ? notes = @document[solr_fname].join("<br/>") : notes = ""
-     puts notes.inspect
+     @document[solr_fname] ? notes = @document[solr_fname].join("<br/><br/>") : notes = ""
      unless notes.nil?
        notes.each { |n| result << n  }
      end
@@ -121,10 +115,10 @@ module SaltHelper
  #
  # Pass in an RSolr::Response. Displays the "showing X through Y of N" message. 
   def render_salt_pagination_info(response, options = {})
-      start = response.start + 1
-      per_page = response.rows
-      current_page = (response.start / per_page).ceil + 1
-      num_pages = (response.total / per_page.to_f).ceil
+      start = response.start + 1    
+      response.rows != 0 ? per_page = response.rows : per_page = 1  
+      current_page = (response.start.to_f / per_page.to_f ).ceil + 1
+      num_pages = (response.total.to_f / per_page.to_f).ceil
       total_hits = response.total
 
       start_num = format_num(start)
@@ -149,13 +143,13 @@ module SaltHelper
  # Takes a solr document and returns documents that are in the document's folder. 
  def find_folder_siblings(document=@document, search_handler = "search")
     folder_search_params = {:qt => search_handler }
-    if document[:series_facet] && document[:box_facet] && document[:folder_facet]
+    if document[:series_facet]   
       folder_search_params[:rows] = "1000"
-      folder_search_params[:fq] = ["series_facet:\"#{document[:series_facet].first}\""]
+      folder_search_params[:fq] = ["series_facet:\"#{return_first(document[:series_facet])}\""]
       if document[:box_facet]
-        folder_search_params[:fq] << "box_facet:\"#{document[:box_facet].first}\""
+        folder_search_params[:fq] << "box_facet:\"#{return_first(document[:box_facet])}\""
         if document[:folder_facet]
-          folder_search_params[:fq] << "folder_facet:\"#{document[:folder_facet].first}\""
+          folder_search_params[:fq] << "folder_facet:\"#{return_first(document[:folder_facet])}\""
         end
       end
       @folder_siblings = Blacklight.solr.find folder_search_params
@@ -164,6 +158,12 @@ module SaltHelper
     end
   end
  
+ #convenience method for returning first value of a facet
+ def return_first(a_facet=[])
+   value = nil
+   a_facet.is_a?(Array) ? value = a_facet.first : value = a_facet
+   return value
+ end
  
   # Takes a SOLR facet and turns it into a link to be added to the document folder box. 
   def link_to_multifacet( facet, prefix, args={} )
@@ -183,6 +183,9 @@ module SaltHelper
        link_to("#{prefix}#{facet}", catalog_index_path(facet_params), options).html_safe
      end
    end
+   
+   
+   
  
  
 end

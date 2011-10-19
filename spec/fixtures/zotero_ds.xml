@@ -42,6 +42,7 @@
         </bib:authors>
         <dc:subject>InProgress</dc:subject>
         <dc:subject>Machine Learning</dc:subject>
+				<dc:subject>public</dc:subject>
         <dc:title>A Model for Learning Systems</dc:title>
         <dc:date>1977-03</dc:date>
         <dc:identifier>
@@ -52,7 +53,7 @@
         <dc:coverage>Box: 36, Folder: 15, Title: HPP Papers, Various Authors (1 of 2)1970 -
       1979</dc:coverage>
         <dc:subject>
-           <dcterms:LCC><rdf:value>00009059</rdf:value></dcterms:LCC>
+           <dcterms:LCC><rdf:value>SC340_1986</rdf:value></dcterms:LCC>
         </dc:subject>
     </bib:Report>
 </rdf:RDF>
