@@ -23,7 +23,7 @@ protected
   def set_current_user
     if current_user.nil? and !request.env['WEBAUTH_USER'].blank?
         user = User.find_by_username(request.env['WEBAUTH_USER'])
-        !user.nil? ? sign_in(user) : nil 
+        !user.nil? ? sign_in(user) :  redirect_to("/users/sign_up", :notice => "Hello #{request.env['WEBAUTH_USER']}. You must first request a user account to access the content.") 
     end
   end
   

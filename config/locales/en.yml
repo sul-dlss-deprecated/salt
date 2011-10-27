@@ -5,5 +5,5 @@ en:
   activerecord:
       attributes:
         user:  
-          login: "Email"
+          login: "Username"
   

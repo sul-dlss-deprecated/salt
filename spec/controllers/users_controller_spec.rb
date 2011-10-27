@@ -126,7 +126,8 @@ describe UsersController do
        User.expects(:find_by_username).with("mrbossman").returns(nil)
        get :show, :id => 1
        response.should_not be_success 
-       response.should redirect_to('/')
+       response.should redirect_to('/users/sign_up')
+       flash[:notice].should ==  "Hello mrbossman. You must first request a user account to access the content." 
      end
      
    end
