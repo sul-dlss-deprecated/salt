@@ -5,5 +5,5 @@ en:
   activerecord:
       attributes:
         user:  
-          login: "Username"
+          login: "Username (Use your SUNET ID if you want to authenticate with Stanford WebAuth)"
   

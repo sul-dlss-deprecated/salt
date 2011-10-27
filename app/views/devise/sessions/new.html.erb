@@ -6,7 +6,7 @@
     <%= content_tag :div, msg, :id => "flash_#{name}" %>
 <% end -%>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :login %><br />
+  <p><%= f.label :username %><br />
   <%= f.email_field :login %></p>
 
   <p><%= f.label :password %><br />
