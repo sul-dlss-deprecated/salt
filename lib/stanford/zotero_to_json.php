@@ -71,8 +71,10 @@ foreach ($xml as $record) {
   if (isset($record->{'bib'.$r1.'editors'})) $authors_stem = $record->{'bib'.$r1.'editorss'}->{'rdf'.$r1.'Seq'};
   if (isset($record->{'z'.$r1.'programmers'})) $authors_stem = $record->{'z'.$r1.'programmers'}->{'rdf'.$r1.'Seq'};
   $a_arr = array();
-  for ($i = 0; $i < count($authors_stem->{'rdf'.$r1.'li'}); $i++) {
-    $a_arr []= get_author_from_li($authors_stem->{'rdf'.$r1.'li'}[$i]);
+  if (isset($authors_stem)) {
+    for ($i = 0; $i < count($authors_stem->{'rdf'.$r1.'li'}); $i++) {
+      $a_arr []= get_author_from_li($authors_stem->{'rdf'.$r1.'li'}[$i]);
+    }
   }
   //$crecord['originator'] = implode("|",$a_arr);
   $crecord['originator'] = $a_arr;
