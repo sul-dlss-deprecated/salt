@@ -12,6 +12,14 @@ Salt::Application.configure do
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
+  # Don't care if the mailer can't send
+   config.action_mailer.perform_deliveries = true
+   config.action_mailer.delivery_method = :sendmail #:smtp
+
+   config.action_mailer.raise_delivery_errors = true
+   config.action_mailer.default_url_options = { :host => 'salt-app-dev.stanford.edu' }
+
+
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 

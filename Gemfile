@@ -46,7 +46,7 @@ group :development, :test do
   gem 'rcov'
   gem 'ruby-debug'
   gem 'ruby-debug-base'
-  gem 'rspec'
+  gem 'rspec', '=2.6.0'
   gem 'rspec-rails'
   gem 'mocha'
   gem 'cucumber', '>=0.8.5'

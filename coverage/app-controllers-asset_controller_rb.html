@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-asset_controller_rb.html">app/controllers/asset_controller.rb</a></td>
-            <td class='right_align'><tt>39</tt></td>
-            <td class='right_align'><tt>28</tt></td>
+            <td class='right_align'><tt>65</tt></td>
+            <td class='right_align'><tt>48</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -86,8 +86,8 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line6">6</a>   </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>    include AssetHelper</pre></td>
           </tr>
         
           
@@ -98,200 +98,356 @@
         
           
           
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a>   </pre></td>
+          </tr>
+        
+          
+          
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   def show</pre></td>
+            <td><pre><a name="line9">9</a>   def show</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>     </pre></td>
+            <td><pre><a name="line10">10</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     unless user_signed_in?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>        unless  request.env[&quot;REMOTE_ADDR&quot;] == FLIPBOOK_IP  or  request.env[&quot;REMOTE_ADDR&quot;] == DJATOKA_IP</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>       	(  @response, @document = get_solr_response_for_doc_id(&quot;druid:#{params[:id]}&quot;))  </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>    </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     (  @response, @document = get_solr_response_for_doc_id(&quot;druid:#{params[:id]}&quot;))  if !user_signed_in?  </pre></td>
+            <td><pre><a name="line14">14</a>        end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>     @asset = Asset.new(params[:id])</pre></td>
+            <td><pre><a name="line15">15</a>     end </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     </pre></td>
+            <td><pre><a name="line16">16</a>  </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     respond_to do |format|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>       format.html {send_data(@asset.get_pdf, :type =&gt; 'application/pdf')}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>       format.pdf   {send_data(@asset.get_pdf, :type =&gt; 'application/pdf')}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>       format.jpg  {send_data(@asset.get_thumbnail, :type =&gt; :jpg, :disposition =&gt; 'inline')}</pre></td>
+            <td><pre><a name="line17">17</a>     @asset = Asset.new(params[:id], params[:page])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>     end</pre></td>
+            <td><pre><a name="line18">18</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       format.html {render :layout =&gt; false}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       format.pdf   {send_data(@asset.get_pdf, :type =&gt; 'application/pdf')}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       format.jpg  {send_data(@asset.get_thumbnail, :type =&gt; :jpg, :disposition =&gt; 'inline')}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       format.flipbook { send_data(@asset.get_flipbook, :disposition =&gt; 'inline', :type =&gt; 'text/html') }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>       format.json { send_data(@asset.get_json, :type =&gt; 'application/json') }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       format.jp2 { send_data(@asset.get_page_jp2, :type =&gt; 'image/jp2', :disposition =&gt; 'inline')} </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   rescue Blacklight::Exceptions::InvalidSolrID</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>       flash[:notice]= &quot;You do not have sufficient access privileges to see this asset, which has been marked private.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>       redirect_to(:controller =&gt; 'catalog', :action =&gt; 'index', :q =&gt; nil , :f =&gt; nil) and return false      </pre></td>
+            <td><pre><a name="line26">26</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>   end</pre></td>
+            <td><pre><a name="line27">27</a>     </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>   </pre></td>
+            <td><pre><a name="line28">28</a>   rescue Blacklight::Exceptions::InvalidSolrID</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>   def show_page</pre></td>
+            <td><pre><a name="line29">29</a>       flash[:notice]= &quot;You do not have sufficient access privileges to see this asset, which has been marked private.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>     (  @response, @document = get_solr_response_for_doc_id(&quot;druid:#{params[:id]}&quot;))  if !user_signed_in?  </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>      @asset = Asset.new(params[:id], params[:page] )</pre></td>
+            <td><pre><a name="line30">30</a>       redirect_to(&quot;/&quot;) and return false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>      </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>      respond_to do |format|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>        format.html { send_data(@asset.get_page_jp2, :type =&gt; 'image/jp2', :disposition =&gt; 'inline')} # don't know why. just send jp2000. </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>        format.xml { send_data(@asset.get_page_xml, :type =&gt; 'application/xml', :disposition =&gt; 'inline')}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>        format.jp2 { send_data(@asset.get_page_jp2, :type =&gt; 'image/jp2',  :disposition =&gt; 'inline')}       </pre></td>
+            <td><pre><a name="line31">31</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>      end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line34">34</a>   rescue Blacklight::Exceptions::InvalidSolrID</pre></td>
+            <td><pre><a name="line32">32</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>       flash[:notice]= &quot;You do not have sufficient access privileges to see this asset, which has been marked private.&quot;</pre></td>
+            <td><pre><a name="line33">33</a>   def show_page</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line34">34</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>       redirect_to(:controller =&gt; 'catalog', :action =&gt; 'index', :q =&gt; nil , :f =&gt; nil) and return false  </pre></td>
+            <td><pre><a name="line35">35</a>     unless user_signed_in?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>        unless  request.env[&quot;REMOTE_ADDR&quot;] == FLIPBOOK_IP  or  request.env[&quot;REMOTE_ADDR&quot;] == DJATOKA_IP           </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>         (  @response, @document = get_solr_response_for_doc_id(&quot;druid:#{params[:id]}&quot;))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>   end</pre></td>
+            <td><pre><a name="line38">38</a>        end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a> </pre></td>
+            <td><pre><a name="line39">39</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a> end </pre></td>
+            <td><pre><a name="line40">40</a>      </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>      @asset = Asset.new(params[:id], params[:page] )</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line43">43</a>      </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>      respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>        format.html { send_data(@asset.get_page_jp2, :type =&gt; 'image/jp2', :disposition =&gt; 'inline')} # don't know why. just send jp2000. </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>        format.xml { send_data(@asset.get_page_xml, :type =&gt; 'application/xml', :disposition =&gt; 'inline')}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>        format.jp2 { send_data(@asset.get_page_jp2, :type =&gt; 'image/jp2',  :disposition =&gt; 'inline')}       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line48">48</a>      end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line49">49</a>      </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line50">50</a>   rescue Blacklight::Exceptions::InvalidSolrID</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>       flash[:notice]= &quot;You do not have sufficient access privileges to see this asset, which has been marked private.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>       redirect_to(&quot;/&quot;) and return false</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line53">53</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line54">54</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>   def get_flipbook_asset</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>       format.css { send_data(Asset.get_flipbook_asset(params[:file], '.css'), :type =&gt; 'text/css', :disposition =&gt; 'inline')}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>       format.js { send_data(Asset.get_flipbook_asset(params[:file], '.js'), :type =&gt; 'application/x-javascript', :disposition =&gt; 'inline') }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>       format.html { send_data(Asset.get_flipbook_asset(params[:file], '.js'), :type =&gt; 'application/x-javascript', :disposition =&gt; 'inline') }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>       format.png { send_data(Asset.get_flipbook_asset(params[:file], '.png'), :type =&gt; 'image/png', :disposition =&gt; 'inline') }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line61">61</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line62">62</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line63">63</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line64">64</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a> end </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu May 12 14:23:00 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Oct 27 11:49:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.11</a></p>
 
   </body>
 </html>

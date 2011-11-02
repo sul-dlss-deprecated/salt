@@ -15,7 +15,11 @@ Salt::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+   config.action_mailer.perform_deliveries = true
+   config.action_mailer.delivery_method = :sendmail #:smtp
+
+   config.action_mailer.raise_delivery_errors = false
+   config.action_mailer.default_url_options = { :host => 'salt-app-dev.stanford.edu' }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -24,7 +28,7 @@ Salt::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 end
 
-FEDORA_URI = "http://127.0.0.1:8983/fedora"
+FEDORA_URI = "http://salt-dev.stanford.edu/fedora"
 FEDORA_USER = "fedoraAdmin"
 FEDORA_PASSWORD = "fedoraAdmin"
 
