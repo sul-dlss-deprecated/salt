@@ -17,11 +17,9 @@ describe RegistrationsController do
     
     mailer = mock("UserMailer")
     mailer.expects(:deliver).once
-    
     UserMailer.expects(:notification_email).once.returns(mailer)
+    
     post :create
-    
-    
   end
   
   

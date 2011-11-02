@@ -8,10 +8,10 @@ describe UserMailer do
   include EmailSpec::Matchers
   
   
-  describe ".notication_email" do
+  describe ".notification_email" do
     
     before(:all) do
-       @email = UserMailer.notication_email("jojo@yahoo.com")
+       @email = UserMailer.notification_email("jojo@yahoo.com")
   
     end
      
