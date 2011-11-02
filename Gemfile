@@ -48,6 +48,7 @@ group :development, :test do
   gem 'ruby-debug-base'
   gem 'rspec', '=2.6.0'
   gem 'rspec-rails'
+  gem 'email_spec'
   gem 'mocha'
   gem 'cucumber', '>=0.8.5'
   gem 'cucumber-rails', '>0.4.0' 
