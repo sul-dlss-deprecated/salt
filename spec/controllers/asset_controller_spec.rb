@@ -22,6 +22,13 @@ describe AssetController do
         response.should_not redirect_to('/')
         response.should be_success
       end
+      
+      # id's with 'druid:' prefix should redirect properly
+      it "should redirect if id has a druid: prefix" do
+        get :show, :id=> 'druid:bb047vy0535'
+        response.should redirect_to(:action=> 'show', :id => 'bb047vy0535')
+      end
+      
    end
     
     
@@ -33,10 +40,23 @@ describe AssetController do
          response.should_not be_success
       end
       
+        # id's with 'druid:' prefix should redirect when not logged in just like when logged in.
+        it "should redirect if id has a druid: prefix" do
+          get :show, :id=> 'druid:bb047vy0535'
+          response.should redirect_to(:action=> 'show', :id => 'bb047vy0535')
+        end
+      
+      
       it "should allow users not logged in to see public documents" do 
          get :show, :id=>"pt839dg9461"
          response.should_not redirect_to('/')
          response.should be_success
+      end
+      
+      # id's with 'druid:' prefix should redirect just like one without the prefix
+      it "should redirect if id has a druid: prefix" do
+          get :show, :id=> 'druid:pt839dg9461'
+          response.should redirect_to(:action=> 'show', :id => 'pt839dg9461')
       end
     
     

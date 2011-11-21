@@ -62,7 +62,7 @@ foreach ($xml as $record) {
   if (!$crecord['druid']) continue; // its a note
 
   //TITLE
-  if (isset($record->{'dc'.$r1.'title'})) $crecord['title'] = (String)$record->{'dc'.$r1.'title'};
+  if (isset($record->{'dc'.$r1.'title'})) $crecord['title'] = replace_html_tags(str_replace($r1,$s1,(String)$record->{'dc'.$r1.'title'}));
   else $crecord['title'] = '';
 
   //AUTHORS <bib:authors> <bib:editors> <z.programmers> --> <rdf:Seq>  array(<rdf:li> <foaf:Person>	[<foaf:givenname> + " " +] <foaf:surname>
@@ -184,6 +184,15 @@ $json = json_encode($output[0]);
 }
 echo $json;
 // file_put_contents($out_file, $json );
+
+
+function replace_html_tags($str) {
+  $str = preg_replace("/\s+/"," ",$str);
+  $str = preg_replace("/<\/p>\s*|<br\s*\/>\s*/","\n",$str);
+  $str = preg_replace("/<\/[a-zA-Z]+>|<[a-zA-Z]>/","",$str);
+
+  return $str;
+}
 
 
 function get_author_from_li($stem) {

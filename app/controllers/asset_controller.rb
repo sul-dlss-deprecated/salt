@@ -7,7 +7,12 @@ class AssetController < ApplicationController
   
   
   def show
-
+    # some zotero urls still have druids in the druid name. 
+    if params[:id].include?("druid:")
+        redirect_to :action => 'show', :id => params[:id].gsub("druid:", ''), :format => request[:format] and return true
+    end  
+      
+    
     unless user_signed_in?
        unless  request.env["REMOTE_ADDR"] == FLIPBOOK_IP  or  request.env["REMOTE_ADDR"] == DJATOKA_IP
       	(  @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}"))  

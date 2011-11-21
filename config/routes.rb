@@ -16,6 +16,8 @@ Salt::Application.routes.draw do
   match '/assets/:id' => 'asset#show'
   match '/assets/:id/:page' => 'asset#show_page'
   
+  match '/documents/:id/downloads' => redirect("/assets/%{id}.pdf")
+  
   match '/zotero' => 'zotero_ingests#index'
   
   match 'login' => "webauth_sessions#new"
