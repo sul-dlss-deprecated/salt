@@ -2,6 +2,7 @@ require 'rubygems'
 require 'rsolr'
 require 'rsolr-ext'
 require 'json'
+require 'yaml'
 require 'lib/stanford/alto_parser'
 require 'lib/stanford/repository'
 
@@ -15,13 +16,21 @@ module Stanford
     attr_accessor :asset_repo
     attr_accessor :datastreams
     attr_accessor :pid
-    
+    attr_accessor :term_authority
     
     def initialize(pid, options = {})
       if !pid.is_a?(String) || pid.empty?
         raise ArgumentError.new("Must have a PID for the salt document")
       end
-     
+      
+  
+      # this is Yaml file produced by Google Refine to match values to a common authority term. 
+      if File.exists?(File.join(Rails.root, "lib/stanford/term_authority.yaml"))
+        @term_authority = YAML::load_file(File.join(Rails.root, "lib/stanford/term_authority.yaml"))
+      else
+        @term_authority = {}
+      end
+      
       @pid = pid
       @solr_document ||= {"id" => [@pid]}
       
@@ -99,18 +108,16 @@ module Stanford
     
     
     # this method takes the @datastream["extracted_entities"], processes it, merges it with the @solr_document and returns @solr_document. 
-    # extracted entities are only applied as facets. facet values we want from this ds: technology, company, person, organization, city, state
-    
+    # extracted entities are only applied as facets. facet values we want from this ds: technology, company, person, organization, city, state  
     def extracted_entities_to_solr()
         ee_hash = {}
         xml  = Nokogiri::XML(@datastreams["extracted_entities"])  
         xml.search("//facet").each do |facet|
           ee_hash["#{facet['type']}_facet"] ||= []
-          ee_hash["#{facet['type']}_facet"] << facet.content
+          ee_hash["#{facet['type']}_facet"] << authorize_term("#{facet['type']}_facet", facet.content)
         end
         update_solr_document(ee_hash)
-        
-        
+         
         return @solr_document
         
     end
@@ -124,7 +131,7 @@ module Stanford
       
       
       ["title_s", "title_display", "title_t"].each { |k| zotero_hash[k] ||= []; zotero_hash[k] << json["title"] } 
-      ["originator_facet", "originator_s", "originator_t"].each {|p|  zotero_hash[p] = []; json["originator"].collect { |o| zotero_hash[p] << o } }
+      ["originator_facet", "originator_s", "originator_t"].each {|p|  zotero_hash[p] = []; json["originator"].collect { |o| zotero_hash[p] = zotero_hash[p] + authorize_term(p, o); } }
       
       format_date(json["date"]).each do |key,vals|
         ["facet", "sort", "s", "display", "t"].each {|v| zotero_hash["#{key}_#{v}"] ||= [];  zotero_hash["#{key}_#{v}"] << vals }
@@ -268,11 +275,36 @@ private
       
       ["facet", "display", "s", "t", "sort"].each {|v| id_hash["series_#{v}"] ||= [];  id_hash["series_#{v}"] << series }
       return id_hash
-      
-      
     end
+    
+    # this method is to check values against the authorized_term.yaml file. It take a solr field label (string), a term (string) and returns an array.
+    # if the solr field is a _facet or _display field, only the cononical values are returns. If it's a search field, both the dirty and cononical values are returned.
+    def authorize_term(field, term)
+      authorized_terms = []
+      if field.include?("_facet") or field.include?("_display")
+          authorized_terms << check_term(field.split("_")[0], term) # the .split is b/c "originator_display" would be under the "originator" values in the yaml file
+      else
+          authorized_terms << term
+          authorized_terms << check_term(field.split("_")[0], term)
+      end
       
-   
+      return authorized_terms.uniq
+  
+    end
+    
+    #convenince method to check auth file
+    def check_term(term_type, term)      
+        if !@term_authority[term_type]
+           authorized_term  = term
+        elsif !@term_authority[term_type][term].nil?
+           @term_authority[term_type][term] == "REMOVE" ? authorized_term = "" : authorized_term = @term_authority[term_type][term]
+        else
+           authorized_term  = term
+        end
+        
+       return authorized_term
+        
+    end
      
   end
 end

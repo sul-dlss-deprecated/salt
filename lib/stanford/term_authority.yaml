@@ -1,0 +1,380 @@
+originator:
+     A. Newell and F. M. Tonge,: Allen Newell
+     Bert F. Green, Jr.: null
+     Brown,: null
+     Cyert, Richard: Richard Cyert
+     Davis, Randall: Randall Davis
+     Dreyfus, Hubert: Hubert Dreyfus
+     Evans, David: David C. Evans
+     Feibelman, Anne: null
+     Feigenbaum, Edward: Edward Feigenbaum
+     Feldman, Julian: Julian Feldman
+     Frijda, Nico: Nico Frijda
+     Therese Groden: null
+     Hanna, Joe: Joe Hanna
+     Victor Lesser: null
+     Lynn, Richard: Richard Lynn
+     March, James G.: James G. March
+     Nilsson, Nils: Nils Nilsson
+     Simon, Herbert: Herbert Simon
+     Edward E. Smith: null
+     White, Bill: Bill White
+     Allan Bond: null
+     Allen Newell: Allen Newell
+     Andreus Bechtolscheim: null
+     Authors: REMOVE
+     Avron Barr: Avron Barr
+     Bailey: null
+     Balderston: null
+     Barr: Avron Barr
+     Barsalou: Lawrence W. Barsalou
+     Bertram Raphael: Bertram Raphael
+     Bobrow: null
+     Bower: null
+     Brian P. McCune: null
+     Bruce Buchanan: Bruce Buchanan
+     Bruce G. Buchanan: Bruce G. Buchanan
+     Bryan Bremmer: null
+     Buchanan: Bruce Buchanan
+     C. Gorden Green: null
+     C. West Churchman: C. West Churchman
+     C.W. Churchman: C. West Churchman
+     Chandrasakaran: null
+     Chuck Rieger: null
+     D. A. Waterman: null
+     Daniel Bobrow: Daniel G. Bobrow
+     Daniel G. Bobrow: Daniel G Bobrow
+     David E. Rumelhart: David E Rumelhart
+     Davis: null
+     Djerassi: Carl Djerassi
+     Donald A. Norman: Donald Norman
+     Donald Michie: Donald Michie
+     Dorothy P. Simon: null
+     Dorothy Sweitzer: null
+     Douglas B. Lenat: Douglas Lenat
+     Douglas Brutlag: Douglas L. Brutlag
+     Douglas Hintzman: null
+     Douglas Lenat: Douglas Lenat
+     Earl Hunt: Earl Hunt
+     Edmund C. Berkeley: Edmund C. Berkeley
+     Edward Feigenbaum: Edward Feigenbaum
+     Edward Shortliffe: Edward H. Shortliffe
+     Eleanor J. Gibson: Eleanor J Gibson
+     Eleanor Sheldon: null
+     Ellie Engelmore: null
+     George W. Ernst: null
+     Feiganbaum: Edward Feigenbaum
+     Feigenbaum: Edward Feigenbaum
+     Fikes: Richard Fikes
+     Forest Baskett: Forest Baskett
+     Frank Marzocco: null
+     Fred M. Tonge: null
+     George W. Ernst: null
+     George E. Forsythe: George Forsythe
+     George W. Ernst: null
+     George H. Mealy: null
+     George W. Ernst: null
+     Georgia Sutherland: null
+     Gordon Pask: Gordon Pask
+     Greeno: James G. Greeno
+     Gunnar Richwell: null
+     Herbert Simon: Herbert Simon
+     Howard Richman: Howard Richman
+     J. Daly: null
+     J. Osborne: null
+     J.M. Schlesinger: null
+     Jack Carroll: null
+     James Greeno: James G. Greeno
+     Jim Horning: Jim Horning
+     John A. N. Lee: null
+     John D. Bain: null
+     John Kunz: John Kunze
+     John L. Hennessy: John L. Hennessy
+     John McCarthy: John McCarthy
+     John Pfeiffer: John Pfeiffer
+     Jonathan King: null
+     Joseph D. Becker: null
+     Joseph Hanna: Joseph Hanna
+     Joshua Lederberg: Joshua Lederberg
+     Julian Feldman: Julian Feldman
+     KENNETH COLBY: Kenneth Colby
+     Karl H. Pribram: Karl H. Pribram
+     Kathryn T. Spoehr: null
+     Keiko Shiozawa: null
+     Ken Siler: null
+     Kenneth Laughery: null
+     Kevin Gilmartin: Kevin Gilmartin
+     Klahr: David Klahr
+     LEDERBERG: Joshua Lederberg
+     Laurence H. Kedes: null
+     Lawrence Fagan: Lawrence Fagan
+     Lazere: null
+     Lee W. Gregg: null
+     Lee W. Gregg: null
+     Lester Earnest: null
+     Lindsay: null
+     March: null
+     Marvin Minsky: Marvin Minsky
+     Mary Long: null
+     Mary Long Burke: null
+     Max Allen: Max Allen
+     Michael Genesereth: Michael Genesereth
+     Mike Rychener: null
+     Minsky: Marvin Minsky
+     Murdock: null
+     Newell: Allen Newell
+     Nicholas Zvegintzov: null
+     Nicholas Zvegintzov: null
+     Nico Frijda: Nico-Henri Frijda
+     Nico H. Frijda: Nico-Henri Frijda
+     Nils Nilsson: Nils Nilsson
+     Norman: null
+     Osborne: null
+     P.M. Kelly: null
+     Paul Armer: Paul Armer
+     Pearl Paulson: Pearl R. Paulson
+     Perry Thorndyke: null
+     Peter Lachenbruch: null
+     R. D. Joseph: null
+     R. Sherman: null
+     R. Shestek: null
+     RAND: RAND
+     Ran Banerji: null
+     Randall Davis: Randall Davis
+     Randy Davis: Randall Davis
+     Reid Smith: Reid Smith
+     Reitman: null
+     Richard H. Sherman: null
+     Richard Johnson: null
+     Richard Watson: null
+     Richard Weyrauch: null
+     Robert Anderson: null
+     Robert C. Joyner: null
+     Rumelhart: David Rumelhart
+     S. Levine: null
+     S. Russel: null
+     STAFFAN PERSSON: null
+     Shapiro: null
+     Shasha: Shashi Kapoor
+     Simon: Herbert Simon
+     Sridharan: Ramaiyengar Sridharan
+     Steffan Persson: null
+     Stephen Westfold: Stephen Westfold
+     Sue Irvine: null
+     The RAND Corporation: RAND
+     Thomas Standish: Thomas A. Standish
+     Tom Mitchell: null
+     W. F. Miller: null
+     W. G. Bickley: W. G. Bickley
+     W. Wilner: null
+     Walter Makous: null
+     Waterman: null
+     Wilkins: null
+     William F. Miller: William F. Miller
+     William G. Chase: null
+     Zenon W. Pylyshyn: Zenon W. Pylyshyn
+     et al.: REMOVE
+     feigenbaum: Edward Feigenbaum
+     unknown: REMOVE
+person:
+     EDWARD FEIGENBAUM: Edward Feigenbaum
+     Palo Alto: REMOVE
+     Ellie Engelmore: null
+     PAMELA MCCORDUCK: Pamela McCorduck
+     John McCarthy: John McCarthy
+     BRUCE G. BUCHANAN: Bruce G. Buchanan
+     Penny Nii: Penny Nii
+     A. FEIGENBAUM: Edward Feigenbaum
+     Herbert Simon: Herbert Simon
+     ALLEN NEWELL: Allen Newell
+     Sue Irvine: null
+     JOSHUA LEDERBERG: Joshua Lederberg
+     EDWARD H. SHORTLIFFE: Edward H. Shortliffe
+     Sue Irvine: null
+     A. Feigenbaum: Edward Feigenbaum
+     CARL DJERASSI: Carl Djerassi
+     Raj Reddy: Raj Reddy
+     Ellie Engelmore: null
+     MARVIN MINSKY: Marvin Minsky
+     Stanford University: REMOVE
+     Nils Nilsson: Nils Nilsson
+     Ed Feigenbaum: Edward Feigenbaum
+     Peter Friedland: Peter Friedlander
+     Douglas Lenat: Douglas Lenat
+     Harold Brown: Harold Brown
+     Avron Barr: Avron Barr
+     Donald Michie: Donald Michie
+     V: REMOVE
+     Thomas Rindfleisch: null
+     Randall Davis: Randall Davis
+     Edward A. Feigenbaum Professor: Edward Feigenbaum
+     Grace Smith: Grace Smith
+     Artificial intelligence: REMOVE
+     Richard Fikes: Richard Fikes
+     Terry Winograd: Terry Winograd
+     Bob Engelmore: null
+     Barbara Hayes-Roth: null
+     Carolyn Tajnai: null
+     Doug Lenat: Douglas Lenat
+     Paul Harmon: Paul Harmon
+     Saul Amarel: Saul Amarel
+     Paul Cohen: Paul Cohen
+     Stanford Heuristic: REMOVE
+     John McDermott: null
+     Kazuhiro Fuchi: null
+     Robert Engelmore: null
+     Tom Gruber: null
+     Mark Stefik: null
+     Gordon Bell: null
+     Donald A. B. Lindberg: Donald A. B. Lindberg
+     Donald Knuth: Donald Knuth
+     Randy Davis: null
+     Alan Turing: Alan Turing
+     Bruce Delagi: null
+     Douglas L. Brutlag: Douglas L. Brutlag
+     Richard O. Duda: null
+     Yumi Iwasaki: null
+     Reid Smith: null
+     Stanford Artificial Intelligence Laboratory: REMOVE
+     Bob Kahn: null
+     Gene Golub: Gene H. Golub
+     Georgia Sutherland: null
+     Larry Kedes: null
+     Peter Hart: null
+     Roger Schank: Roger Schank
+     Feedback: REMOVE
+     Addison Wesley: REMOVE
+     Betty Scott: null
+     E. A. Feigenbaum: Edward Feigenbaum
+     Hamilton: null
+     Douglas B. Lenat: null
+     Michael Genesereth: Michael Genesereth
+     Tom Mitchell: null
+     Bill Miller: null
+     Harold Cohen: null
+     Mike Genesereth: null
+     Anne Feibelman: null
+     Eric Schoen: null
+     Frederick Hayes-Roth: null
+     John Seely Brown: null
+     Michael R. Genesereth: null
+     Alan Kay: Alan Kay
+     Fuchi: null
+     William F. Miller: null
+     Dean Royden: null
+     John Wiley: null
+     Johnson: null
+     Ken Lindsay: null
+     Mac: null
+     William J. Clancey: null
+     Bob Joy: null
+     Donald Lindberg: Donald A. B. Lindberg
+     James Rice: null
+     Patrick Winston: null
+     Sayuri Nishimura: null
+     Shozo Hibino: null
+     Thomas E. Piemme: null
+     William Clancey: null
+     Ernst: null
+     Herbert Schorr: null
+city:
+     Palo Alto: Palo Alto
+     Stanford: Stanford
+     New York: New York City
+     Washington: Washington, D.C.
+     San Francisco: San Francisco
+     Tokyo: Tokyo
+     Cambridge: Cambridge
+     STANFORD: Stanford
+     Carnegie Mellon University: Pittsburgh
+     D.C.: Washington, D.C.
+     London: London
+     Berkeley: Berkeley
+     Austin: Austin
+     Boston: Boston
+     DC: Washington, D.C.
+     Los Angeles: Los Angeles
+     Chicago: Chicago
+     Knowledge: null
+     Paris: Paris
+     Amsterdam: Amsterdam
+     San Diego: San Diego
+     Mountain View: Mountain View
+     Menlo Park: Menlo Park
+     San Jose: San Jose
+     Dallas: Dallas
+     Reading: Reading
+     WASHINGTON: Washington, D.C.
+     Arlington: Arlington
+     Kyoto: Kyoto
+     Philadelphia: Philadelphia
+     Seattle: Seattle
+     Houston: Houston
+     Computer: REMOVE
+     Rule: REMOVE
+     Los Altos: Los Altos
+     New York City: New York City
+     Rome: Rome
+     Bethesda: Bethesda
+     NEW YORK: New York City
+     Toronto: Toronto
+     Beijing: Beijing
+     Berlin: Berlin
+     Nagoya: Nagoya
+     Ann Arbor: Ann Arbor
+     Detroit: Detroit
+     Minneapolis: Minneapolis
+     Osaka: Osaka
+     Oxford: Oxford
+     St. Louis: St. Louis
+     Sunnyvale: Sunnyvale
+     Santa Clara: Santa Clara
+     Atlanta: Atlanta
+     Baltimore: Baltimore
+     Milan: Milan
+     Princeton: Princeton
+     Vancouver: Vancouver
+     Orlando: Orlando
+     Birmingham: Birmingham
+     Oakland: Oakland
+     Brussels: Brussels
+     PALO ALTO: Palo Alto
+     Santa Monica: Santa Monica
+     Stockholm: Stockholm
+     Sydney: Sydney
+     Urbana: Urbana
+     Columbus: Columbus
+     Denver: Denver
+     Durham: Durham
+     Indianapolis: Indianapolis
+     Rochester: Rochester
+     Washington DC: Washington, D.C.
+     Cupertino: Cupertino
+     Hong Kong: Hong Kong
+     Pasadena: Pasadena
+     AUSTIN: Austin
+     Anaheim: Anaheim
+     Cleveland: Cleveland
+     D. C.: Washington, D.C.
+     Montreal: Montreal
+     Buffalo: Buffalo
+     Phoenix: Phoenix
+     Englewood Cliffs: Englewood Cliffs
+     Model: REMOVE
+     Zurich: Zürich
+     McLean: McLean
+     Rockville: Rockville
+     Elsevier: REMOVE
+     Hyderabad: Hyderabad
+     Moscow: Moscow
+     TOKYO: Tokyo
+     Santa Cruz: Santa Cruz
+     Springfield: Springfield
+     St. Paul: St. Paul
+     Bruce G. Buchanan: REMOVE
+     Munich: Munich
+     SAN FRANCISCO: San Francisco
+     Hillsdale: Hillsdale
+     Lincoln: Lincoln
+     Manchester: Manchester
+     Salt Lake City: Salt Lake City
