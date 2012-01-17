@@ -114,7 +114,7 @@ module Stanford
         xml  = Nokogiri::XML(@datastreams["extracted_entities"])  
         xml.search("//facet").each do |facet|
           ee_hash["#{facet['type']}_facet"] ||= []
-          ee_hash["#{facet['type']}_facet"] << authorize_term("#{facet['type']}_facet", facet.content)
+          ee_hash["#{facet['type']}_facet"] = ee_hash["#{facet['type']}_facet"] + authorize_term("#{facet['type']}_facet", facet.content)
         end
         update_solr_document(ee_hash)
          

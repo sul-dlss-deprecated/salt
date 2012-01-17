@@ -1,380 +1,632 @@
 originator:
-     A. Newell and F. M. Tonge,: Allen Newell
-     Bert F. Green, Jr.: null
-     Brown,: null
-     Cyert, Richard: Richard Cyert
-     Davis, Randall: Randall Davis
-     Dreyfus, Hubert: Hubert Dreyfus
-     Evans, David: David C. Evans
-     Feibelman, Anne: null
-     Feigenbaum, Edward: Edward Feigenbaum
-     Feldman, Julian: Julian Feldman
-     Frijda, Nico: Nico Frijda
-     Therese Groden: null
-     Hanna, Joe: Joe Hanna
-     Victor Lesser: null
-     Lynn, Richard: Richard Lynn
-     March, James G.: James G. March
-     Nilsson, Nils: Nils Nilsson
-     Simon, Herbert: Herbert Simon
-     Edward E. Smith: null
-     White, Bill: Bill White
-     Allan Bond: null
-     Allen Newell: Allen Newell
-     Andreus Bechtolscheim: null
-     Authors: REMOVE
-     Avron Barr: Avron Barr
-     Bailey: null
-     Balderston: null
-     Barr: Avron Barr
-     Barsalou: Lawrence W. Barsalou
-     Bertram Raphael: Bertram Raphael
-     Bobrow: null
-     Bower: null
-     Brian P. McCune: null
-     Bruce Buchanan: Bruce Buchanan
-     Bruce G. Buchanan: Bruce G. Buchanan
-     Bryan Bremmer: null
-     Buchanan: Bruce Buchanan
-     C. Gorden Green: null
-     C. West Churchman: C. West Churchman
-     C.W. Churchman: C. West Churchman
-     Chandrasakaran: null
-     Chuck Rieger: null
-     D. A. Waterman: null
-     Daniel Bobrow: Daniel G. Bobrow
-     Daniel G. Bobrow: Daniel G Bobrow
-     David E. Rumelhart: David E Rumelhart
-     Davis: null
-     Djerassi: Carl Djerassi
-     Donald A. Norman: Donald Norman
-     Donald Michie: Donald Michie
-     Dorothy P. Simon: null
-     Dorothy Sweitzer: null
-     Douglas B. Lenat: Douglas Lenat
-     Douglas Brutlag: Douglas L. Brutlag
-     Douglas Hintzman: null
-     Douglas Lenat: Douglas Lenat
-     Earl Hunt: Earl Hunt
-     Edmund C. Berkeley: Edmund C. Berkeley
-     Edward Feigenbaum: Edward Feigenbaum
-     Edward Shortliffe: Edward H. Shortliffe
-     Eleanor J. Gibson: Eleanor J Gibson
-     Eleanor Sheldon: null
-     Ellie Engelmore: null
-     George W. Ernst: null
-     Feiganbaum: Edward Feigenbaum
-     Feigenbaum: Edward Feigenbaum
-     Fikes: Richard Fikes
-     Forest Baskett: Forest Baskett
-     Frank Marzocco: null
-     Fred M. Tonge: null
-     George W. Ernst: null
-     George E. Forsythe: George Forsythe
-     George W. Ernst: null
-     George H. Mealy: null
-     George W. Ernst: null
-     Georgia Sutherland: null
-     Gordon Pask: Gordon Pask
-     Greeno: James G. Greeno
-     Gunnar Richwell: null
-     Herbert Simon: Herbert Simon
-     Howard Richman: Howard Richman
-     J. Daly: null
-     J. Osborne: null
-     J.M. Schlesinger: null
-     Jack Carroll: null
-     James Greeno: James G. Greeno
-     Jim Horning: Jim Horning
-     John A. N. Lee: null
-     John D. Bain: null
-     John Kunz: John Kunze
-     John L. Hennessy: John L. Hennessy
-     John McCarthy: John McCarthy
-     John Pfeiffer: John Pfeiffer
-     Jonathan King: null
-     Joseph D. Becker: null
-     Joseph Hanna: Joseph Hanna
-     Joshua Lederberg: Joshua Lederberg
-     Julian Feldman: Julian Feldman
-     KENNETH COLBY: Kenneth Colby
-     Karl H. Pribram: Karl H. Pribram
-     Kathryn T. Spoehr: null
-     Keiko Shiozawa: null
-     Ken Siler: null
-     Kenneth Laughery: null
-     Kevin Gilmartin: Kevin Gilmartin
-     Klahr: David Klahr
-     LEDERBERG: Joshua Lederberg
-     Laurence H. Kedes: null
-     Lawrence Fagan: Lawrence Fagan
-     Lazere: null
-     Lee W. Gregg: null
-     Lee W. Gregg: null
-     Lester Earnest: null
-     Lindsay: null
-     March: null
-     Marvin Minsky: Marvin Minsky
-     Mary Long: null
-     Mary Long Burke: null
-     Max Allen: Max Allen
-     Michael Genesereth: Michael Genesereth
-     Mike Rychener: null
-     Minsky: Marvin Minsky
-     Murdock: null
-     Newell: Allen Newell
-     Nicholas Zvegintzov: null
-     Nicholas Zvegintzov: null
-     Nico Frijda: Nico-Henri Frijda
-     Nico H. Frijda: Nico-Henri Frijda
-     Nils Nilsson: Nils Nilsson
-     Norman: null
-     Osborne: null
-     P.M. Kelly: null
-     Paul Armer: Paul Armer
-     Pearl Paulson: Pearl R. Paulson
-     Perry Thorndyke: null
-     Peter Lachenbruch: null
-     R. D. Joseph: null
-     R. Sherman: null
-     R. Shestek: null
-     RAND: RAND
-     Ran Banerji: null
-     Randall Davis: Randall Davis
-     Randy Davis: Randall Davis
-     Reid Smith: Reid Smith
-     Reitman: null
-     Richard H. Sherman: null
-     Richard Johnson: null
-     Richard Watson: null
-     Richard Weyrauch: null
-     Robert Anderson: null
-     Robert C. Joyner: null
-     Rumelhart: David Rumelhart
-     S. Levine: null
-     S. Russel: null
-     STAFFAN PERSSON: null
-     Shapiro: null
-     Shasha: Shashi Kapoor
-     Simon: Herbert Simon
-     Sridharan: Ramaiyengar Sridharan
-     Steffan Persson: null
-     Stephen Westfold: Stephen Westfold
-     Sue Irvine: null
-     The RAND Corporation: RAND
-     Thomas Standish: Thomas A. Standish
-     Tom Mitchell: null
-     W. F. Miller: null
-     W. G. Bickley: W. G. Bickley
-     W. Wilner: null
-     Walter Makous: null
-     Waterman: null
-     Wilkins: null
-     William F. Miller: William F. Miller
-     William G. Chase: null
-     Zenon W. Pylyshyn: Zenon W. Pylyshyn
-     et al.: REMOVE
-     feigenbaum: Edward Feigenbaum
-     unknown: REMOVE
+    A. Newell and F. M. Tonge,: Allen Newell
+    Bert F. Green, Jr.: null
+    Brown,: null
+    Cyert, Richard: Richard Cyert
+    Davis, Randall: Randall Davis
+    Dreyfus, Hubert: Hubert Dreyfus
+    Evans, David: David C. Evans
+    Feibelman, Anne: null
+    Feigenbaum, Edward: Edward Feigenbaum
+    Feldman, Julian: Julian Feldman
+    Frijda, Nico: Nico Frijda
+    Therese Groden: null
+    Hanna, Joe: Joe Hanna
+    Victor Lesser: null
+    Lynn, Richard: Richard Lynn
+    March, James G.: James G. March
+    Nilsson, Nils: Nils Nilsson
+    Simon, Herbert: Herbert Simon
+    Edward E. Smith: null
+    White, Bill: Bill White
+    Allan Bond: null
+    Allen Newell: Allen Newell
+    Andreus Bechtolscheim: null
+    Authors: REMOVE
+    Avron Barr: Avron Barr
+    Bailey: null
+    Balderston: null
+    Barr: Avron Barr
+    Barsalou: Lawrence W. Barsalou
+    Bertram Raphael: Bertram Raphael
+    Bobrow: null
+    Bower: null
+    Brian P. McCune: null
+    Bruce Buchanan: Bruce Buchanan
+    Bruce G. Buchanan: Bruce G. Buchanan
+    Bryan Bremmer: null
+    Buchanan: Bruce Buchanan
+    C. Gorden Green: null
+    C. West Churchman: C. West Churchman
+    C.W. Churchman: C. West Churchman
+    Chandrasakaran: null
+    Chuck Rieger: null
+    D. A. Waterman: null
+    Daniel Bobrow: Daniel G. Bobrow
+    Daniel G. Bobrow: Daniel G Bobrow
+    David E. Rumelhart: David E Rumelhart
+    Davis: null
+    Djerassi: Carl Djerassi
+    Donald A. Norman: Donald Norman
+    Donald Michie: Donald Michie
+    Dorothy P. Simon: null
+    Dorothy Sweitzer: null
+    Douglas B. Lenat: Douglas Lenat
+    Douglas Brutlag: Douglas L. Brutlag
+    Douglas Hintzman: null
+    Douglas Lenat: Douglas Lenat
+    Earl Hunt: Earl Hunt
+    Edmund C. Berkeley: Edmund C. Berkeley
+    Edward Feigenbaum: Edward Feigenbaum
+    Edward Shortliffe: Edward H. Shortliffe
+    Eleanor J. Gibson: Eleanor J Gibson
+    Eleanor Sheldon: null
+    Ellie Engelmore: null
+    George W. Ernst: null
+    Feiganbaum: Edward Feigenbaum
+    Feigenbaum: Edward Feigenbaum
+    Fikes: Richard Fikes
+    Forest Baskett: Forest Baskett
+    Frank Marzocco: null
+    Fred M. Tonge: null
+    George W. Ernst: null
+    George E. Forsythe: George Forsythe
+    George W. Ernst: null
+    George H. Mealy: null
+    George W. Ernst: null
+    Georgia Sutherland: null
+    Gordon Pask: Gordon Pask
+    Greeno: James G. Greeno
+    Gunnar Richwell: null
+    Herbert Simon: Herbert Simon
+    Howard Richman: Howard Richman
+    J. Daly: null
+    J. Osborne: null
+    J.M. Schlesinger: null
+    Jack Carroll: null
+    James Greeno: James G. Greeno
+    Jim Horning: Jim Horning
+    John A. N. Lee: null
+    John D. Bain: null
+    John Kunz: John Kunze
+    John L. Hennessy: John L. Hennessy
+    John McCarthy: John McCarthy
+    John Pfeiffer: John Pfeiffer
+    Jonathan King: null
+    Joseph D. Becker: null
+    Joseph Hanna: Joseph Hanna
+    Joshua Lederberg: Joshua Lederberg
+    Julian Feldman: Julian Feldman
+    KENNETH COLBY: Kenneth Colby
+    Karl H. Pribram: Karl H. Pribram
+    Kathryn T. Spoehr: null
+    Keiko Shiozawa: null
+    Ken Siler: null
+    Kenneth Laughery: null
+    Kevin Gilmartin: Kevin Gilmartin
+    Klahr: David Klahr
+    LEDERBERG: Joshua Lederberg
+    Laurence H. Kedes: null
+    Lawrence Fagan: Lawrence Fagan
+    Lazere: null
+    Lee W. Gregg: null
+    Lee W. Gregg: null
+    Lester Earnest: null
+    Lindsay: null
+    March: null
+    Marvin Minsky: Marvin Minsky
+    Mary Long: null
+    Mary Long Burke: null
+    Max Allen: Max Allen
+    Michael Genesereth: Michael Genesereth
+    Mike Rychener: null
+    Minsky: Marvin Minsky
+    Murdock: null
+    Newell: Allen Newell
+    Nicholas Zvegintzov: null
+    Nicholas Zvegintzov: null
+    Nico Frijda: Nico-Henri Frijda
+    Nico H. Frijda: Nico-Henri Frijda
+    Nils Nilsson: Nils Nilsson
+    Norman: null
+    Osborne: null
+    P.M. Kelly: null
+    Paul Armer: Paul Armer
+    Pearl Paulson: Pearl R. Paulson
+    Perry Thorndyke: null
+    Peter Lachenbruch: null
+    R. D. Joseph: null
+    R. Sherman: null
+    R. Shestek: null
+    RAND: RAND
+    Ran Banerji: null
+    Randall Davis: Randall Davis
+    Randy Davis: Randall Davis
+    Reid Smith: Reid Smith
+    Reitman: null
+    Richard H. Sherman: null
+    Richard Johnson: null
+    Richard Watson: null
+    Richard Weyrauch: null
+    Robert Anderson: null
+    Robert C. Joyner: null
+    Rumelhart: David Rumelhart
+    S. Levine: null
+    S. Russel: null
+    STAFFAN PERSSON: null
+    Shapiro: null
+    Shasha: Shashi Kapoor
+    Simon: Herbert Simon
+    Sridharan: Ramaiyengar Sridharan
+    Steffan Persson: null
+    Stephen Westfold: Stephen Westfold
+    Sue Irvine: null
+    The RAND Corporation: RAND
+    Thomas Standish: Thomas A. Standish
+    Tom Mitchell: null
+    W. F. Miller: null
+    W. G. Bickley: W. G. Bickley
+    W. Wilner: null
+    Walter Makous: null
+    Waterman: null
+    Wilkins: null
+    William F. Miller: William F. Miller
+    William G. Chase: null
+    Zenon W. Pylyshyn: Zenon W. Pylyshyn
+    et al.: REMOVE
+    feigenbaum: Edward Feigenbaum
+    unknown: REMOVE
 person:
-     EDWARD FEIGENBAUM: Edward Feigenbaum
-     Palo Alto: REMOVE
-     Ellie Engelmore: null
-     PAMELA MCCORDUCK: Pamela McCorduck
-     John McCarthy: John McCarthy
-     BRUCE G. BUCHANAN: Bruce G. Buchanan
-     Penny Nii: Penny Nii
-     A. FEIGENBAUM: Edward Feigenbaum
-     Herbert Simon: Herbert Simon
-     ALLEN NEWELL: Allen Newell
-     Sue Irvine: null
-     JOSHUA LEDERBERG: Joshua Lederberg
-     EDWARD H. SHORTLIFFE: Edward H. Shortliffe
-     Sue Irvine: null
-     A. Feigenbaum: Edward Feigenbaum
-     CARL DJERASSI: Carl Djerassi
-     Raj Reddy: Raj Reddy
-     Ellie Engelmore: null
-     MARVIN MINSKY: Marvin Minsky
-     Stanford University: REMOVE
-     Nils Nilsson: Nils Nilsson
-     Ed Feigenbaum: Edward Feigenbaum
-     Peter Friedland: Peter Friedlander
-     Douglas Lenat: Douglas Lenat
-     Harold Brown: Harold Brown
-     Avron Barr: Avron Barr
-     Donald Michie: Donald Michie
-     V: REMOVE
-     Thomas Rindfleisch: null
-     Randall Davis: Randall Davis
-     Edward A. Feigenbaum Professor: Edward Feigenbaum
-     Grace Smith: Grace Smith
-     Artificial intelligence: REMOVE
-     Richard Fikes: Richard Fikes
-     Terry Winograd: Terry Winograd
-     Bob Engelmore: null
-     Barbara Hayes-Roth: null
-     Carolyn Tajnai: null
-     Doug Lenat: Douglas Lenat
-     Paul Harmon: Paul Harmon
-     Saul Amarel: Saul Amarel
-     Paul Cohen: Paul Cohen
-     Stanford Heuristic: REMOVE
-     John McDermott: null
-     Kazuhiro Fuchi: null
-     Robert Engelmore: null
-     Tom Gruber: null
-     Mark Stefik: null
-     Gordon Bell: null
-     Donald A. B. Lindberg: Donald A. B. Lindberg
-     Donald Knuth: Donald Knuth
-     Randy Davis: null
-     Alan Turing: Alan Turing
-     Bruce Delagi: null
-     Douglas L. Brutlag: Douglas L. Brutlag
-     Richard O. Duda: null
-     Yumi Iwasaki: null
-     Reid Smith: null
-     Stanford Artificial Intelligence Laboratory: REMOVE
-     Bob Kahn: null
-     Gene Golub: Gene H. Golub
-     Georgia Sutherland: null
-     Larry Kedes: null
-     Peter Hart: null
-     Roger Schank: Roger Schank
-     Feedback: REMOVE
-     Addison Wesley: REMOVE
-     Betty Scott: null
-     E. A. Feigenbaum: Edward Feigenbaum
-     Hamilton: null
-     Douglas B. Lenat: null
-     Michael Genesereth: Michael Genesereth
-     Tom Mitchell: null
-     Bill Miller: null
-     Harold Cohen: null
-     Mike Genesereth: null
-     Anne Feibelman: null
-     Eric Schoen: null
-     Frederick Hayes-Roth: null
-     John Seely Brown: null
-     Michael R. Genesereth: null
-     Alan Kay: Alan Kay
-     Fuchi: null
-     William F. Miller: null
-     Dean Royden: null
-     John Wiley: null
-     Johnson: null
-     Ken Lindsay: null
-     Mac: null
-     William J. Clancey: null
-     Bob Joy: null
-     Donald Lindberg: Donald A. B. Lindberg
-     James Rice: null
-     Patrick Winston: null
-     Sayuri Nishimura: null
-     Shozo Hibino: null
-     Thomas E. Piemme: null
-     William Clancey: null
-     Ernst: null
-     Herbert Schorr: null
+    EDWARD FEIGENBAUM: Edward Feigenbaum
+    ELLIE ENGELMORE: Ellie Engelmore
+    Palo Alto: REMOVE
+    Ellie Engelmore: null
+    PAMELA MCCORDUCK: Pamela McCorduck
+    John McCarthy: John McCarthy
+    BRUCE G. BUCHANAN: Bruce G. Buchanan
+    Penny Nii: Penny Nii
+    A. FEIGENBAUM: Edward Feigenbaum
+    Herbert Simon: Herbert Simon
+    ALLEN NEWELL: Allen Newell
+    Sue Irvine: null
+    JOSHUA LEDERBERG: Joshua Lederberg
+    EDWARD H. SHORTLIFFE: Edward H. Shortliffe
+    Sue Irvine: null
+    A. Feigenbaum: Edward Feigenbaum
+    CARL DJERASSI: Carl Djerassi
+    Raj Reddy: Raj Reddy
+    Ellie Engelmore: null
+    MARVIN MINSKY: Marvin Minsky
+    Stanford University: REMOVE
+    Nils Nilsson: Nils Nilsson
+    Ed Feigenbaum: Edward Feigenbaum
+    Peter Friedland: Peter Friedlander
+    Douglas Lenat: Douglas Lenat
+    Harold Brown: Harold Brown
+    Avron Barr: Avron Barr
+    Donald Michie: Donald Michie
+    V: REMOVE
+    Thomas Rindfleisch: null
+    Randall Davis: Randall Davis
+    Edward A. Feigenbaum Professor: Edward Feigenbaum
+    Grace Smith: Grace Smith
+    Artificial intelligence: REMOVE
+    Richard Fikes: Richard Fikes
+    Terry Winograd: Terry Winograd
+    Bob Engelmore: null
+    Barbara Hayes-Roth: null
+    Carolyn Tajnai: null
+    Doug Lenat: Douglas Lenat
+    Paul Harmon: Paul Harmon
+    Saul Amarel: Saul Amarel
+    Paul Cohen: Paul Cohen
+    Stanford Heuristic: REMOVE
+    John McDermott: null
+    Kazuhiro Fuchi: null
+    Robert Engelmore: null
+    Tom Gruber: null
+    Mark Stefik: null
+    Gordon Bell: null
+    Donald A. B. Lindberg: Donald A. B. Lindberg
+    Donald Knuth: Donald Knuth
+    Randy Davis: null
+    Alan Turing: Alan Turing
+    Bruce Delagi: null
+    Douglas L. Brutlag: Douglas L. Brutlag
+    Richard O. Duda: null
+    Yumi Iwasaki: null
+    Reid Smith: null
+    Stanford Artificial Intelligence Laboratory: REMOVE
+    Bob Kahn: null
+    Gene Golub: Gene H. Golub
+    Georgia Sutherland: null
+    Larry Kedes: null
+    Peter Hart: null
+    Roger Schank: Roger Schank
+    Feedback: REMOVE
+    Addison Wesley: REMOVE
+    Betty Scott: null
+    E. A. Feigenbaum: Edward Feigenbaum
+    Hamilton: null
+    Douglas B. Lenat: null
+    Michael Genesereth: Michael Genesereth
+    Tom Mitchell: null
+    Bill Miller: null
+    Harold Cohen: null
+    Mike Genesereth: null
+    Anne Feibelman: null
+    Eric Schoen: null
+    Frederick Hayes-Roth: null
+    John Seely Brown: null
+    Michael R. Genesereth: null
+    Alan Kay: Alan Kay
+    Fuchi: null
+    William F. Miller: null
+    Dean Royden: null
+    John Wiley: null
+    Johnson: null
+    Ken Lindsay: null
+    Mac: null
+    William J. Clancey: null
+    Bob Joy: null
+    Donald Lindberg: Donald A. B. Lindberg
+    James Rice: null
+    Patrick Winston: null
+    Sayuri Nishimura: null
+    Shozo Hibino: null
+    Thomas E. Piemme: null
+    William Clancey: null
+    Ernst: null
+    Herbert Schorr: null
+    Cherry Propeller: REMOVE
+    Cherry Shaft: REMOVE
+    Iris Propeller: REMOVE
+    Grant No: REMOVE
+    Reagan: Ronald Reagan
+    Gordon Bell Digital: Gordon Bell
 city:
-     Palo Alto: Palo Alto
-     Stanford: Stanford
-     New York: New York City
-     Washington: Washington, D.C.
-     San Francisco: San Francisco
-     Tokyo: Tokyo
-     Cambridge: Cambridge
-     STANFORD: Stanford
-     Carnegie Mellon University: Pittsburgh
-     D.C.: Washington, D.C.
-     London: London
-     Berkeley: Berkeley
-     Austin: Austin
-     Boston: Boston
-     DC: Washington, D.C.
-     Los Angeles: Los Angeles
-     Chicago: Chicago
-     Knowledge: null
-     Paris: Paris
-     Amsterdam: Amsterdam
-     San Diego: San Diego
-     Mountain View: Mountain View
-     Menlo Park: Menlo Park
-     San Jose: San Jose
-     Dallas: Dallas
-     Reading: Reading
-     WASHINGTON: Washington, D.C.
-     Arlington: Arlington
-     Kyoto: Kyoto
-     Philadelphia: Philadelphia
-     Seattle: Seattle
-     Houston: Houston
-     Computer: REMOVE
-     Rule: REMOVE
-     Los Altos: Los Altos
-     New York City: New York City
-     Rome: Rome
-     Bethesda: Bethesda
-     NEW YORK: New York City
-     Toronto: Toronto
-     Beijing: Beijing
-     Berlin: Berlin
-     Nagoya: Nagoya
-     Ann Arbor: Ann Arbor
-     Detroit: Detroit
-     Minneapolis: Minneapolis
-     Osaka: Osaka
-     Oxford: Oxford
-     St. Louis: St. Louis
-     Sunnyvale: Sunnyvale
-     Santa Clara: Santa Clara
-     Atlanta: Atlanta
-     Baltimore: Baltimore
-     Milan: Milan
-     Princeton: Princeton
-     Vancouver: Vancouver
-     Orlando: Orlando
-     Birmingham: Birmingham
-     Oakland: Oakland
-     Brussels: Brussels
-     PALO ALTO: Palo Alto
-     Santa Monica: Santa Monica
-     Stockholm: Stockholm
-     Sydney: Sydney
-     Urbana: Urbana
-     Columbus: Columbus
-     Denver: Denver
-     Durham: Durham
-     Indianapolis: Indianapolis
-     Rochester: Rochester
-     Washington DC: Washington, D.C.
-     Cupertino: Cupertino
-     Hong Kong: Hong Kong
-     Pasadena: Pasadena
-     AUSTIN: Austin
-     Anaheim: Anaheim
-     Cleveland: Cleveland
-     D. C.: Washington, D.C.
-     Montreal: Montreal
-     Buffalo: Buffalo
-     Phoenix: Phoenix
-     Englewood Cliffs: Englewood Cliffs
-     Model: REMOVE
-     Zurich: Zürich
-     McLean: McLean
-     Rockville: Rockville
-     Elsevier: REMOVE
-     Hyderabad: Hyderabad
-     Moscow: Moscow
-     TOKYO: Tokyo
-     Santa Cruz: Santa Cruz
-     Springfield: Springfield
-     St. Paul: St. Paul
-     Bruce G. Buchanan: REMOVE
-     Munich: Munich
-     SAN FRANCISCO: San Francisco
-     Hillsdale: Hillsdale
-     Lincoln: Lincoln
-     Manchester: Manchester
-     Salt Lake City: Salt Lake City
+    Palo Alto: Palo Alto
+    Stanford: Stanford
+    New York: New York City
+    Washington: Washington, D.C.
+    San Francisco: San Francisco
+    Tokyo: Tokyo
+    Cambridge: Cambridge
+    STANFORD: Stanford
+    Carnegie Mellon University: Pittsburgh
+    D.C.: Washington, D.C.
+    London: London
+    Berkeley: Berkeley
+    Austin: Austin
+    Boston: Boston
+    DC: Washington, D.C.
+    Los Angeles: Los Angeles
+    Chicago: Chicago
+    Knowledge: null
+    Paris: Paris
+    Amsterdam: Amsterdam
+    San Diego: San Diego
+    Mountain View: Mountain View
+    Menlo Park: Menlo Park
+    San Jose: San Jose
+    Dallas: Dallas
+    Reading: Reading
+    WASHINGTON: Washington, D.C.
+    Arlington: Arlington
+    Kyoto: Kyoto
+    Philadelphia: Philadelphia
+    Seattle: Seattle
+    Houston: Houston
+    Computer: REMOVE
+    Rule: REMOVE
+    Los Altos: Los Altos
+    New York City: New York City
+    Rome: Rome
+    Bethesda: Bethesda
+    NEW YORK: New York City
+    Toronto: Toronto
+    Beijing: Beijing
+    Berlin: Berlin
+    Nagoya: Nagoya
+    Ann Arbor: Ann Arbor
+    Detroit: Detroit
+    Minneapolis: Minneapolis
+    Osaka: Osaka
+    Oxford: Oxford
+    St. Louis: St. Louis
+    Sunnyvale: Sunnyvale
+    Santa Clara: Santa Clara
+    Atlanta: Atlanta
+    Baltimore: Baltimore
+    Milan: Milan
+    Princeton: Princeton
+    Vancouver: Vancouver
+    Orlando: Orlando
+    Birmingham: Birmingham
+    Oakland: Oakland
+    Brussels: Brussels
+    PALO ALTO: Palo Alto
+    Santa Monica: Santa Monica
+    Stockholm: Stockholm
+    Sydney: Sydney
+    Urbana: Urbana
+    Columbus: Columbus
+    Denver: Denver
+    Durham: Durham
+    Indianapolis: Indianapolis
+    Rochester: Rochester
+    Washington DC: Washington, D.C.
+    Cupertino: Cupertino
+    Hong Kong: Hong Kong
+    Pasadena: Pasadena
+    AUSTIN: Austin
+    Anaheim: Anaheim
+    Cleveland: Cleveland
+    D. C.: Washington, D.C.
+    Montreal: Montreal
+    Buffalo: Buffalo
+    Phoenix: Phoenix
+    Englewood Cliffs: Englewood Cliffs
+    Model: REMOVE
+    Zurich: Zürich
+    McLean: McLean
+    Rockville: Rockville
+    Elsevier: REMOVE
+    Hyderabad: Hyderabad
+    Moscow: Moscow
+    TOKYO: Tokyo
+    Santa Cruz: Santa Cruz
+    Springfield: Springfield
+    St. Paul: St. Paul
+    Bruce G. Buchanan: REMOVE
+    Munich: Munich
+    SAN FRANCISCO: San Francisco
+    Hillsdale: Hillsdale
+    Lincoln: Lincoln
+    Manchester: Manchester
+    Salt Lake City: Salt Lake City
+organization:
+    STANFORD UNIVERSITY: Stanford University
+    Stanford: Stanford University
+    Linda Kohler Film Library Los Alamos Scientific Laboratory: Los Alamos Scientific Laboratory
+    Heuristic Programming Project: null
+    MASSACHUSETTS INSTITUTE OF TECHNOLOGY: Massachusetts Institute of Technology
+    Department of Computer Science: Stanford Computer Science
+    Computer Science Department: null
+    CARNEGIE MELLON UNIVERSITY: Carnegie Mellon University
+    Edward Feigenbaum: REMOVE
+    National Science Foundation: National Science Foundation
+    Department of Defense: United States Department of Defense
+    Congress: United States Congress
+    National Aeronautics and Space Administration: NASA
+    National Institute of Health: National Institutes of Health
+    University of California: University of California
+    Machine Intelligence: REMOVE
+    Knowledge Systems Laboratory: null
+    Air Force: United States Air Force
+    Harvard: Harvard University
+    Graduate School: REMOVE
+    Pentagon: United States Department of Defense
+    National Academy of Engineering: National Academy of Engineering
+    Defense Advanced Research Projects Agency: Defense Advanced Research Projects Agency
+    Institute of Technology: null
+    University of Pittsburgh: University of Pittsburgh
+    University of Illinois: University of Illinois at Urbana-Champaign
+    Columbia University: Columbia University
+    Harvard University: Harvard University
+    Advanced Research Projects Agency: Defense Advanced Research Projects Agency
+    DEPARTMENT OF COMPUTER SCIENCE Telephone: REMOVE
+    UNITED STATES AIR FORCE: United States Air Force Academy
+    Japanese government: null
+    Navy: United States Navy
+    National Academy of Sciences: United States National Academy of Sciences
+    Rutgers University: Rutgers University
+    STANFORD: Stanford University
+    United States Army: United States Army
+    Yale: Yale University
+    Yale University: Yale University
+    Berkeley: University of California, Berkeley
+    federal government: Federal government of the United States
+    North Atlantic Treaty Organization: North Atlantic Treaty Organization (NATO)
+    United States Navy: United States Navy
+    University of Edinburgh: University of Edinburgh
+    Army: United States Army
+    Artificial Intelligence for Organic Chemistry: null
+    Cambridge University: Cambridge University Press
+    University of Southern California: University of Southern California
+    M.I.T: Massachusetts Institute of Technology
+    Rutgers: Rutgers University
+    American Chemical Society: American Chemical Society
+    Ministry of International Trade and Industry: Japanese Ministry of International Trade and Industry
+    Rockefeller University: Rockefeller University
+    Executive Committee: null
+    Princeton University: Princeton University
+    Association for Computing Machinery: Association for Computing Machinery
+    Industrial Administration: null
+    Internal Revenue Service: Internal Revenue Service
+    Kyoto University: Kyoto University
+    University of Massachusetts: University of Massachusetts
+    University of Texas: University of Texas at Austin
+    STANFORD ARTIFICIAL INTELLIGENCE LABORATORY: Stanford Artificial Intelligence Laboratory
+    U.S. Government: Federal government of the United States
+    UCLA: University of California, Los Angeles
+    University of Maryland: University of Maryland, College Park
+    University of Texas at Austin: University of Texas at Austin
+    Computer Science Stanford University: Stanford Computer Science
+    Office of Naval Research: Office of Naval Research
+    University of Minnesota: University of Minnesota
+    Artifical Intelligence: null
+    Institute for New Generation Computer Technology: null
+    Pacific Medical Center: null
+    DARPA: Defense Advanced Research Projects Agency
+    Purdue University: Purdue University
+    United Nations: United Nations
+    University of Tokyo: University of Tokyo
+    George Washington University: George Washington University
+    National Research Council: United States National Research Council
+    New York University: New York University
+    School of Engineering: Stanford University School of Engineering
+    University of Pennsylvania: University of Pennsylvania
+    White House: null
+    Board of Regents: null
+    CO CD: REMOVE
+    COMPUTER SCIENCE DEPARTMENT: REMOVE
+    National University of Singapore: National University of Singapore
+    World Congress: null
+    American Association for the Advancement of Science: American Association for the Advancement of Science
+    Artificial Intelligence for Chemical Inference: null
+    Carnegie Mellon University: Carnegie Mellon University
+    Federal Government: Federal government of the United States
+    School of Management: null
+    Environmental Protection Agency: null
+    Keio University: Keio University
+    Senate: United States Senate
+    Oxford University: University of Oxford
+    University of Missouri: University of Missouri
+    World Health Organization: World Health Organization
+    Federal Bureau of Investigation: Federal Bureau of Investigation
+    Medical School: Harvard Medical School
+    Stanford Computer Science Department: Stanford Computer Science
+corporateEntity:
+    RAND Corporation: RAND
+    Stanford University: Stanford University
+    Carnegie Institute of Technology: Carnegie Institute of Technology
+    Stanford Heuristic Programming Project: null
+    Stanford University School of Medicine: Stanford University School of Medicine
+    CS Department: Stanford Computer Science
+    Carnegie Corporation: Carnegie Corporation of New York
+    North Holland Publishing Co.: null
+    UC Berkeley: University of California, Berkeley
+    Jet Propulsion Laboratory: null
+    STANFORD ARTIFICIAL INTELLIGENCE PROJECT STANFORD UNIVERSITY: Stanford Artificial Intelligence Laboratory
+    AMC: AMC
+    Artificial Intellegence Center: SRI International
+    Berkeley: University of California, Berkeley
+    Carnegie Corporation of New York: Carnegie Corporation of New York
+    Carnegie Mellon University: Carnegie Mellon University
+    Center for Hunan Learning and Center for Research In Management Science: null
+    Computer Science Department: Stanford Computer Science
+    Department of Genetics: null
+    Department of Psychology: null
+    International Federation for Information Processing: International Federation for Information Processing
+    John Wiley & Sons: John Wiley &amp; Sons
+    Knowledge Systems Laboratory: null
+    Knowledge Systems Laboratory: null
+    Macmillan and Free Press: Macmillan Publishers
+    McGraw Hill: The McGraw-Hill Companies
+    McGraw Hill: The McGraw-Hill Companies
+    NORTH-HOLLAND PUBLISHING COMPANY: null
+    Pergamon Press: Pergamon Press
+    Prentice Hall: Prentice Hall
+    SRI International: SRI International
+    Systems Research LTD: null
+    Southwestern Publishing Company: null
+    Space Division: null
+    Stanford Artificial Intelligence Project: null
+    Univ. Pittsburgh Press: University of Pittsburgh Press
+    University of California Berkeley: University of California, Berkeley
+    University of Maryland: University of Maryland, College Park
+    University of Michigan: University of Michigan
+    Western Joint Computer Conference: null
+    Western Management Science Institute: null
+company:
+    KNOWLEDGE SYSTEMS LABORATORY: Stanford Artificial Intelligence Laboratory
+    IBM: IBM
+    Xerox: Xerox
+    INTELLICORP: IntelliCorp
+    Fujitsu: Fujitsu
+    McGraw-Hill: The McGraw-Hill Companies
+    Texas Instruments: Texas Instruments
+    Hitachi: Hitachi, Ltd.
+    Microsoft: Microsoft
+    Massachusetts Institute of Technology: Massachusetts Institute of Technology
+    Schlumberger: Schlumberger
+    Hewlett-Packard: Hewlett-Packard
+    American Express: American Express
+    Intel: Intel Corporation
+    AT&T: null
+    Digital Equipment Corporation: Digital Equipment Corporation
+    Artificial intelligence: null
+    Toshiba: Toshiba
+    Boeing: Boeing
+    Edinburgh University Press: Edinburgh University Press
+    General Motors: General Motors
+    Mitsubishi: Mitsubishi
+    Motorola: Motorola
+    Navistar: Navistar International
+    RAND Corporation: RAND
+    Digital Equipment Corp.: Digital Equipment Corporation
+    Stanford's Knowledge Systems Laboratory: Stanford Artificial Intelligence Laboratory
+    Lend Lease: Lend Lease Corporation
+    Toyota: Toyota Motor Corporation
+    Edward Feigenbaum: null
+    Matsushita: null
+    Knowledge-Based Systems: REMOVE
+    Fifth Generation Computer Systems: Fifth Generation Systems
+    Teknowledge Inc.: null
+    Ford: Ford Motor Company
+    Honeywell: Honeywell
+    Expert system: REMOVE
+    Cambridge University Press: Cambridge University Press
+    Hewlett Packard: Hewlett-Packard
+    General Electric: General Electric
+    Computer Sciences: Computer Sciences Corporation
+    NEC: NEC
+    Nintendo: Nintendo
+    Sony: Sony Music Entertainment
+    Teknowledge: Teknowledge
+    Sanwa Bank: Sanwa Group
+    Du Pont: DuPont
+    NCR: NCR Corporation
+    Oracle: Oracle Corporation
+    Apple Computer: Apple Inc.
+    IntelliGenetics, Inc.: IntelliGenetics, Inc.
+    The New York Times: The New York Times
+    Andersen Consulting: null
+    Chiyoda: Chiyoda Corporation
+    Inference Corporation: Inference Corp
+    Rule-Based Expert Systems: REMOVE
+    Silicon Graphics: Silicon Graphics, Inc.
+    International Trade: null
+    John Wiley & Sons: John Wiley &amp; Sons
+    Kajima: Kajima Construction
+    CD CO: REMOVE
+    CO CO: REMOVE
+    Compaq: Compaq
+    Harvard University Press: Harvard University Press
+    Computer Systems Laboratory: Stanford Computer Systems Laboratory
+    Elsevier Science Publishers B.V.: Elsevier BV
+    HEURISTIC PROGRAMMING PROJECT: null
+    Mitsubishi Electric: Mitsubishi Electric
+    Rockwell International: Rockwell International
+    Sun Microsystems Inc.: Sun Microsystems
+    Bank of America: Bank of America
+    Bell Laboratories: Bell Labs
+    Inference Corp.: Inference Corp
+    Pattern-Directed Inference Systems: null
+    Rockwell: Rockwell International
+    Tektronix: Tektronix
+    Wall Street Journal: null
+    Building Expert Systems: null
+    IBM Japan: IBM Japan
+    Industry: null
+    International Business Machines Corporation: IBM
+    Kaufmann Inc.: Morgan Kaufmann
+    Olivetti: Olivetti
+    Rand Corporation: RAND
+    Sperry Corporation: Sperry Corporation
+    Texas Instruments Inc.: Texas Instruments
+    Addison-Wesley Publishing Company: Addison-Wesley
+    Honda: Honda Motor Company, Ltd
+    Lawrence Erlbaum Associates: Lawrence Erlbaum Associates
+    Stanford Artificial Intelligence Laboratory: Stanford Artificial Intelligence Laboratory
+    Unisys: Unisys
+    Electrotechnical Laboratory: null
+    Hitachi Ltd.: Hitachi, Ltd.
+    Stanford Mass Spectrometry Laboratory: null
+    IBM Corporation: IBM
+    Integrated Systems: REMOVE
+    Knowledge Based Systems: REMOVE
+    Pergamon Press: Pergamon Press
+    Symbolics Inc.: Symbolics
+    TRW: TRW
