@@ -1,5 +1,9 @@
 require 'blacklight/catalog'
 
+# This controller is used to get document assets (pdfs, jp2000s, tei xml, ect ) from the asset server. 
+# A solr q. has to be done first in order to determine if the asset is tagged as public or private. If the user
+# is not logged in and the asset is private, the req. handler should not return results for the get_solr_response_for_doc_id and
+# instead return a  Blacklight::Exceptions::InvalidSolrID error. 
 class AssetController < ApplicationController  
 
    include Blacklight::Catalog

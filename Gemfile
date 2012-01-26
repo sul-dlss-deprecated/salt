@@ -44,8 +44,8 @@ end
 group :development, :test do
   gem 'sqlite3-ruby', '1.2.5'
   gem 'rcov'
-  gem 'ruby-debug'
-  gem 'ruby-debug-base'
+ # gem 'ruby-debug'
+ # gem 'ruby-debug-base'
   gem 'rspec', '=2.6.0'
   gem 'rspec-rails'
   gem 'email_spec'

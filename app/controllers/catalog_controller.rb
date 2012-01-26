@@ -74,34 +74,4 @@ private
     extra_head_content << view_context.stylesheet_link_tag("salt")
   end
 
-
- 
-=begin
-   # this isn't be used anywhere it seems....   
-   # gets a document based on its position within a resultset  
-   def setup_document_by_counter(counter)
-     
-     return if counter < 1 || session[:search].blank?
-     search = session[:search] || {}
-     if user_signed_in? and params[:search_field] == "fulltext"
-         self.solr_search_params_logic = [:show_authenticated_fulltext_records]
-         search[:qt] = "authed_search"
-     elsif user_signed_in? and params[:search_field] != "fulltext"
-            self.solr_search_params_logic = [:show_authenticated_records]
-            search[:qt] =  "authed_search"
-     elsif user_signed_in? 
-            self.solr_search_params_logic = [:show_authenticated_records]
-            search[:qt] =  "authed_search"  
-      elsif !user_signed_in? and params[:search_field] == "fulltext"
-            self.solr_search_params_logic = [:show_fulltext_records]
-            search[:qt] =  "fulltext"
-      else
-             search[:qt] =  "search"
-     end 
-     search[:qt] ||= validate_auth_search
-     get_single_doc_via_search(counter, search)
-   end
-=end
-   
-
 end 

@@ -16,10 +16,15 @@ class ApplicationController < ActionController::Base
 
 protected 
   
+  
+  # => store_bounce: used to capture bounce paramaters from Stanford WebAuth
+  #
   def store_bounce
      session[:bounce]=params[:bounce]
   end
   
+  # =>  set_current_user: checks the WEBAUTH_USER param to see if a Stanford WebAuth user is set. If there is, the user is logged in. 
+  #
   def set_current_user
     if current_user.nil? and !request.env['WEBAUTH_USER'].blank?
         user = User.find_by_username(request.env['WEBAUTH_USER'])
