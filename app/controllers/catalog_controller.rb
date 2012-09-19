@@ -4,10 +4,16 @@ require 'blacklight/catalog'
 class CatalogController < ApplicationController  
   
   layout "salt"
+
   include Blacklight::SolrHelper
   include Blacklight::Catalog
   include SaltHelper
   include AuthenticationHelper
+
+  self.solr_search_params_logic << :apply_gated_discovery
+  self.solr_search_params_logic << :apply_special_parameters_for_a_fulltext_query
+
+  helper_method :get_search_results
   
   before_filter :add_styles
 
@@ -20,18 +26,7 @@ class CatalogController < ApplicationController
       extra_head_content << view_context.auto_discovery_link_tag(:rss, url_for(params.merge(:format => 'rss')), :title => "RSS for results")
       extra_head_content << view_context.auto_discovery_link_tag(:atom, url_for(params.merge(:format => 'atom')), :title => "Atom for results")
       
-      if user_signed_in? and params[:search_field] == "fulltext"
-        self.solr_search_params_logic << :show_authenticated_fulltext_records
-        (@response, @document_list) = get_search_results
-      elsif user_signed_in? and  params[:search_field] != "fulltext"
-        self.solr_search_params_logic << :show_authenticated_records
-        (@response, @document_list) = get_search_results  
-      elsif !user_signed_in? and params[:search_field] == "fulltext"
-        self.solr_search_params_logic << :show_fulltext_records
-        (@response, @document_list) = get_search_results(:qt => "fulltext") 
-      else  
-        (@response, @document_list) = get_search_results 
-      end
+      (@response, @document_list) = get_search_results 
       
       @filters = params[:f] || []
       search_session[:total] = @response.total unless @response.nil?
@@ -48,8 +43,9 @@ class CatalogController < ApplicationController
     # get single document from the solr index
     def show
      
-      
-      user_signed_in? ? ( @response, @document = get_solr_response_for_doc_id(params[:id], :qt => "authed_document"); find_folder_siblings(@document, "authed_search") ) : (@response, @document = get_solr_response_for_doc_id(params[:id], :qt => "document"); find_folder_siblings(@document) )
+      @response, @document = get_solr_response_for_doc_id(params[:id])
+      folder_siblings(@document)
+
   
       respond_to do |format|
         format.html {setup_next_and_previous_documents}
