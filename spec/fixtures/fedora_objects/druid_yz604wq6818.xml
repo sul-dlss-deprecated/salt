@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Artificial Intelligence 1973"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-05-17T18:23:09.676Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-06-01T17:45:19.768Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-03-14T16:35:08.659Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-05-17T18:23:09.676Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -62,6 +62,158 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-06-01T17:45:19.768Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>json</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-06-09T22:12:06.673Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC8">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-06-22T17:23:35.209Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-06-26T12:23:52.272Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC10">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-06-29T17:47:25.254Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-06-30T17:17:45.162Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC12">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-06-30T18:17:33.273Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC13">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-07T19:23:36.637Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC14">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-29T05:36:08.742Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC15">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-29T17:16:03.920Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC16">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-29T20:29:47.312Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC17">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-30T04:00:33.899Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC18">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-09-14T20:20:54.715Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC19">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-09-14T20:45:44.314Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC20">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-09-27T17:16:35.810Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC21">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-09-27T17:57:04.895Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC22">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-09-27T18:42:20.317Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC23">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-09-28T01:11:11.827Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC24">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-10-04T17:18:36.122Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC25">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-03-14T16:35:08.659Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -78,23 +230,530 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="extracted_entities" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
 <foxml:datastreamVersion ID="extracted_entities.0" LABEL="extracted_entities" CREATED="2011-05-17T18:23:11.107Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="INTERNAL_ID" REF="http://salt-dev.stanford.edu:8080/fedora/get/druid:yz604wq6818/extracted_entities/2011-05-17T18:23:11.107Z"/>
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPGRvY3VtZW50PgogPGF0dHJpYnV0
+              ZXMvPgogPGZhY2V0cy8+CjwvZG9jdW1lbnQ+Cg==
+</foxml:binaryContent> 
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="extracted_entities.1" LABEL="extracted_entities" CREATED="2011-05-26T20:11:32.199Z" MIMETYPE="application/xml">
-<foxml:contentLocation TYPE="INTERNAL_ID" REF="http://salt-dev.stanford.edu:8080/fedora/get/druid:yz604wq6818/extracted_entities/2011-05-26T20:11:32.199Z"/>
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjxkb2N1bWVudD4KICA8ZmFjZXRzLz4KPC9kb2N1bWVudD4K
+</foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="location" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
 <foxml:datastreamVersion ID="location.0" LABEL="location" CREATED="2011-05-17T18:23:11.669Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="INTERNAL_ID" REF="http://salt-dev.stanford.edu:8080/fedora/get/druid:yz604wq6818/location/2011-05-17T18:23:11.669Z"/>
+<foxml:binaryContent> 
+              PGMwMSBsZXZlbD0ic2VyaWVzIj4KICA8ZGlkPgogICAgPHVuaXR0aXRsZT5BY2Nlc3Npb24gMTk4Ni0w
+              NTI8L3VuaXR0aXRsZT4KICA8L2RpZD4KICA8YzAyIGxldmVsPSJzdWJzZXJpZXMiPgogICAgPGRpZD4K
+              ICAgICAgPHVuaXR0aXRsZT5Db3JyZXNwb25kZW5jZTwvdW5pdHRpdGxlPgogICAgPC9kaWQ+CiAgICA8
+              YzAzIGxldmVsPSJmaWxlIj4KICAgICAgPGRpZD4KICAgICAgICA8Y29udGFpbmVyIHR5cGU9ImJveCIg
+              bGFiZWw9IkJveCI+MzwvY29udGFpbmVyPgogICAgICAgIDxjb250YWluZXIgdHlwZT0iZm9sZGVyIiBs
+              YWJlbD0iRm9sZGVyIj4zMzwvY29udGFpbmVyPgogICAgICAgIDx1bml0dGl0bGU+QXJ0aWZpY2lhbCBJ
+              bnRlbGxpZ2VuY2UgPHVuaXRkYXRlPjE5NzM8L3VuaXRkYXRlPjwvdW5pdHRpdGxlPgogICAgICA8L2Rp
+              ZD4KICAgIDwvYzAzPgogIDwvYzAyPgo8L2MwMT4=
+</foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="zotero" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
 <foxml:datastreamVersion ID="zotero.0" LABEL="zotero" CREATED="2011-05-17T18:23:12.178Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="INTERNAL_ID" REF="http://salt-dev.stanford.edu:8080/fedora/get/druid:yz604wq6818/zotero/2011-05-17T18:23:12.178Z"/>
+<foxml:binaryContent> 
+              CjxyZGY6UkRGIHhtbG5zOmJpYj0iaHR0cDovL3B1cmwub3JnL25ldC9iaWJsaW8jIiB4bWxuczpkYz0i
+              aHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOmRjdGVybXM9Imh0dHA6Ly9wdXJs
+              Lm9yZy9kYy90ZXJtcy8iIHhtbG5zOmZvYWY9Imh0dHA6Ly94bWxucy5jb20vZm9hZi8wLjEvIiB4bWxu
+              czpsaW5rPSJodHRwOi8vcHVybC5vcmcvcnNzLzEuMC9tb2R1bGVzL2xpbmsvIiB4bWxuczpwcmlzbT0i
+              aHR0cDovL3ByaXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyIgeG1sbnM6cmRmPSJo
+              dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxuczp2Y2FyZD0iaHR0
+              cDovL253YWxzaC5jb20vcmRmL3ZDYXJkIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8ub3JnL25h
+              bWVzcGFjZXMvZXhwb3J0IyI+CiAgPGJpYjpNYW51c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0
+              d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9kcnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93
+              bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgIDx6Oml0ZW1UeXBlPm1hbnVzY3JpcHQ8L3o6aXRlbVR5
+              cGU+CiAgICA8ZGM6dGl0bGU+QXJ0aWZpY2lhbCBJbnRlbGxpZ2VuY2UgMTk3MzwvZGM6dGl0bGU+CiAg
+              ICA8ZGM6aWRlbnRpZmllcj4KICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgIDxyZGY6dmFsdWU+aHR0
+              cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9kcnVpZDp5ejYwNHdxNjgxOC9kb3du
+              bG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmPC9yZGY6dmFsdWU+CiAgICAgIDwvZGN0ZXJtczpV
+              Ukk+CiAgICA8L2RjOmlkZW50aWZpZXI+CiAgICA8ZGM6Y292ZXJhZ2U+Qm94OiAzLCBGb2xkZXI6IDMz
+              LCBUaXRsZTogQXJ0aWZpY2lhbCBJbnRlbGxpZ2VuY2UgMTk3MzwvZGM6Y292ZXJhZ2U+CiAgICA8ZGM6
+              c3ViamVjdD4KICAgICAgPGRjdGVybXM6TENDPgogICAgICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0w
+              NTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAgICA8L2RjdGVybXM6TENDPgogICAgPC9kYzpz
+              dWJqZWN0PgogIDwvYmliOk1hbnVzY3JpcHQ+CjwvcmRmOlJERj4K
+</foxml:binaryContent> 
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="zotero.1" LABEL="zotero" CREATED="2011-06-01T17:45:19.768Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="INTERNAL_ID" REF="http://salt-dev.stanford.edu:8080/fedora/get/druid:yz604wq6818/zotero/2011-06-01T17:45:19.768Z"/>
+<foxml:binaryContent> 
+              DTxyZGY6UkRGIHhtbG5zOmJpYj0iaHR0cDovL3B1cmwub3JnL25ldC9iaWJsaW8jIiB4bWxuczpkYz0i
+              aHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOmRjdGVybXM9Imh0dHA6Ly9wdXJs
+              Lm9yZy9kYy90ZXJtcy8iIHhtbG5zOmZvYWY9Imh0dHA6Ly94bWxucy5jb20vZm9hZi8wLjEvIiB4bWxu
+              czpsaW5rPSJodHRwOi8vcHVybC5vcmcvcnNzLzEuMC9tb2R1bGVzL2xpbmsvIiB4bWxuczpwcmlzbT0i
+              aHR0cDovL3ByaXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyIgeG1sbnM6cmRmPSJo
+              dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxuczp2Y2FyZD0iaHR0
+              cDovL253YWxzaC5jb20vcmRmL3ZDYXJkIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8ub3JnL25h
+              bWVzcGFjZXMvZXhwb3J0IyI+DSAgPGJpYjpNYW51c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0
+              d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9kcnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93
+              bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4NICAgIDx6Oml0ZW1UeXBlPm1hbnVzY3JpcHQ8L3o6aXRlbVR5
+              cGU+DSAgICA8ZGM6dGl0bGU+QXJ0aWZpY2lhbCBJbnRlbGxpZ2VuY2UgMTk3MzwvZGM6dGl0bGU+DSAg
+              ICA8ZGM6aWRlbnRpZmllcj4NICAgICAgPGRjdGVybXM6VVJJPg0gICAgICAgIDxyZGY6dmFsdWU+aHR0
+              cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9kcnVpZDp5ejYwNHdxNjgxOC9kb3du
+              bG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmPC9yZGY6dmFsdWU+DSAgICAgIDwvZGN0ZXJtczpV
+              Ukk+DSAgICA8L2RjOmlkZW50aWZpZXI+DSAgICA8ZGM6Y292ZXJhZ2U+Qm94OiAzLCBGb2xkZXI6IDMz
+              LCBUaXRsZTogQXJ0aWZpY2lhbCBJbnRlbGxpZ2VuY2UgMTk3MzwvZGM6Y292ZXJhZ2U+DSAgIDxkYzpz
+              dWJqZWN0PnB1YmxpYzwvZGM6c3ViamVjdD4gDSAgIDxkYzpzdWJqZWN0Pg0gICAgICA8ZGN0ZXJtczpM
+              Q0M+DSAgICAgICAgPHJkZjp2YWx1ZT5TQzM0MF8xOTg2LTA1Ml9CMDNfRjMzX2kwMDAyPC9yZGY6dmFs
+              dWU+DSAgICAgIDwvZGN0ZXJtczpMQ0M+DSAgICA8L2RjOnN1YmplY3Q+DSAgPC9iaWI6TWFudXNjcmlw
+              dD4NPC9yZGY6UkRGPg0=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.2" LABEL="zotero" CREATED="2011-06-22T17:23:35.209Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.3" LABEL="zotero" CREATED="2011-06-26T12:23:52.272Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.4" LABEL="zotero" CREATED="2011-06-29T17:47:25.254Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.5" LABEL="zotero" CREATED="2011-06-30T17:17:45.162Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.6" LABEL="zotero" CREATED="2011-06-30T18:17:33.273Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.7" LABEL="zotero" CREATED="2011-07-07T19:23:36.637Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.8" LABEL="zotero" CREATED="2011-07-29T05:36:08.742Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.9" LABEL="zotero" CREATED="2011-07-29T17:16:03.920Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.10" LABEL="zotero" CREATED="2011-07-29T20:29:47.312Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.11" LABEL="zotero" CREATED="2011-07-30T04:00:33.899Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.12" LABEL="zotero" CREATED="2011-09-14T20:20:54.715Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.13" LABEL="zotero" CREATED="2011-09-14T20:45:44.314Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.14" LABEL="zotero" CREATED="2011-09-27T17:16:35.810Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.15" LABEL="zotero" CREATED="2011-09-27T17:57:04.895Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.16" LABEL="zotero" CREATED="2011-09-27T18:42:20.317Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.17" LABEL="zotero" CREATED="2011-09-28T01:11:11.827Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.18" LABEL="zotero" CREATED="2011-10-04T17:18:36.122Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDwvYmliOk1hbnVz
+              Y3JpcHQ+CiAgICAgICAgICAgPC9yZGY6UkRGPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.19" LABEL="zotero" CREATED="2012-03-14T16:35:08.659Z" MIMETYPE="application/xml">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcv
+              MTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVt
+              ZW50cy8xLjEvIiB4bWxuczpkY3Rlcm1zPSJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvIiB4bWxuczpi
+              aWI9Imh0dHA6Ly9wdXJsLm9yZy9uZXQvYmlibGlvIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8u
+              b3JnL25hbWVzcGFjZXMvZXhwb3J0IyIgeG1sbnM6bGluaz0iaHR0cDovL3B1cmwub3JnL3Jzcy8xLjAv
+              bW9kdWxlcy9saW5rLyIgeG1sbnM6Zm9hZj0iaHR0cDovL3htbG5zLmNvbS9mb2FmLzAuMS8iIHhtbG5z
+              OnZjYXJkPSJodHRwOi8vbndhbHNoLmNvbS9yZGYvdkNhcmQjIiB4bWxuczpwcmlzbT0iaHR0cDovL3By
+              aXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyI+CiAgICAgICAgICAgPGJpYjpNYW51
+              c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9k
+              cnVpZDp5ejYwNHdxNjgxOC9kb3dubG9hZHM/ZG93bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4KICAgICAg
+              ICA8ejppdGVtVHlwZT5tYW51c2NyaXB0PC96Oml0ZW1UeXBlPgogICAgICAgIDxkYzp0aXRsZT5BcnRp
+              ZmljaWFsIEludGVsbGlnZW5jZSAxOTczPC9kYzp0aXRsZT4KICAgICAgICA8ZGM6aWRlbnRpZmllcj4K
+              ICAgICAgICAgICAgPGRjdGVybXM6VVJJPgogICAgICAgICAgICAgICAgPHJkZjp2YWx1ZT5odHRwczov
+              L3NhbHR3b3Jrcy5zdGFuZm9yZC5lZHUvZG9jdW1lbnRzL2RydWlkOnl6NjA0d3E2ODE4L2Rvd25sb2Fk
+              cz9kb3dubG9hZF9pZD1kb2N1bWVudC5wZGY8L3JkZjp2YWx1ZT4KICAgICAgICAgICAgPC9kY3Rlcm1z
+              OlVSST4KICAgICAgICA8L2RjOmlkZW50aWZpZXI+CiAgICAgICAgPGRjOmNvdmVyYWdlPkJveDogMywg
+              Rm9sZGVyOiAzMywgVGl0bGU6IEFydGlmaWNpYWwgSW50ZWxsaWdlbmNlIDE5NzM8L2RjOmNvdmVyYWdl
+              PgogICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8ZGN0ZXJtczpMQ0M+CiAgICAgICAgICAg
+              ICAgIDxyZGY6dmFsdWU+U0MzNDBfMTk4Ni0wNTJfQjAzX0YzM19pMDAwMjwvcmRmOnZhbHVlPgogICAg
+              ICAgICAgICA8L2RjdGVybXM6TENDPgogICAgICAgIDwvZGM6c3ViamVjdD4KICAgIDxiaWI6YXV0aG9y
+              cz48cmRmOlNlcT48cmRmOmxpPjxmb2FmOlBlcnNvbj48Zm9hZjpzdXJuYW1lLz48Zm9hZjpnaXZlbm5h
+              bWUvPjwvZm9hZjpQZXJzb24+PC9yZGY6bGk+PC9yZGY6U2VxPjwvYmliOmF1dGhvcnM+PC9iaWI6TWFu
+              dXNjcmlwdD4KICAgICAgICAgICA8L3JkZjpSREY+Cg==
+</foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
@@ -106,6 +765,18 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="json" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="json.0" LABEL="json" CREATED="2011-06-09T22:12:06.673Z" MIMETYPE="application/json">
+<foxml:binaryContent> 
+              eyJkb2N1bWVudF9zdWJ0eXBlIjoiIiwidGl0bGUiOiJBcnRpZmljaWFsIEludGVsbGlnZW5jZSAxOTcz
+              IiwiZXh0ZW50IjoiIiwiYWJzdHJhY3QiOiIiLCJsYW5ndWFnZSI6IiIsImRydWlkIjoiZHJ1aWQ6eXo2
+              MDR3cTY4MTgiLCJ0YWdzIjpbXSwiZGF0ZSI6IiIsIkVBRl9oYXJkX2RyaXZlX2ZpbGVfbmFtZSI6IlND
+              MzQwXzE5ODYtMDUyX0IwM19GMzNfaTAwMDIiLCJjb250YWluaW5nX3dvcmsiOiIiLCJvcmlnaW5hdG9y
+              IjpbIk5pbHMgTmlsc3NvbiJdLCJkb2N1bWVudF90eXBlIjoibWFudXNjcmlwdCIsImNvcnBvcmF0ZV9l
+              bnRpdHkiOiIifQ==
+</foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>
 </foxml:digitalObject>
