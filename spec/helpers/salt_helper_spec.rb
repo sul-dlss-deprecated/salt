@@ -303,45 +303,38 @@ describe SaltHelper do
     end
     
     
-    describe "#find_folder_siblings" do
+    describe "#folder_siblings" do
       
       it "should return nil if box, folder, and series are not given" do
         @document = {}
-        helper.find_folder_siblings(@document).should be_nil
+        helper.folder_siblings(@document).should be_empty
       end
       
       it "should query Blacklight if series is given" do
-        solr = mock("Solr")
-        solr.expects(:find).with(:fq =>  ["series_facet:\"Big Box O' Porn\""], :qt => 'search', :rows => '1000').returns("The Results")
-        Blacklight.expects(:solr).returns(solr)
+        helper.expects(:get_search_results).with({:fq =>  ["series_facet:\"Big Box O' Porn\""], :rows => 1000}, {}).returns(["", "The Results"])
         
         @document = {:series_facet => "Big Box O' Porn"}
-        helper.find_folder_siblings(@document).should == "The Results"
+        helper.folder_siblings(@document).should == "The Results"
       end
       
         it "should query Blacklight if series and box is given" do
-          solr = mock("Solr")
-          solr.expects(:find).with(:fq =>  ["series_facet:\"Big Box O' Porn\"", "box_facet:\"78\""], :qt => 'search', :rows => '1000').returns("The Results")
-          Blacklight.expects(:solr).returns(solr)
-
+          helper.expects(:get_search_results).with({:fq =>  ["series_facet:\"Big Box O' Porn\"", "box_facet:\"78\""], :rows => 1000}, {}).returns(["", "The Results"])
+    
           @document = {:series_facet => "Big Box O' Porn", :box_facet => "78"}
-          helper.find_folder_siblings(@document).should == "The Results"
+          helper.folder_siblings(@document).should == "The Results"
         end
       
       
        it "should query Blacklight if series and box and folder are given" do
-          solr = mock("Solr")
-          solr.expects(:find).with(:fq =>  ["series_facet:\"Big Box O' Porn\"", "box_facet:\"78\"", "folder_facet:\"11\""], :qt => 'search', :rows => '1000').returns("The Results")
-          Blacklight.expects(:solr).returns(solr)
-
+          helper.expects(:get_search_results).with({:fq =>  ["series_facet:\"Big Box O' Porn\"", "box_facet:\"78\"", "folder_facet:\"11\""], :rows => 1000}, {}).returns(["", "The Results"])
+    
           @document = {:series_facet => "Big Box O' Porn", :box_facet => "78", :folder_facet => "11"}
-          helper.find_folder_siblings(@document).should == "The Results"
+          helper.folder_siblings(@document).should == "The Results"
         end
             
        it "shouldn't do anything if no series is given" do
-          Blacklight.expects(:solr).never
           @document = {:folder_facet => "11", :box_facet => "78"}
-          helper.find_folder_siblings(@document).should == nil
+          helper.folder_siblings(@document).should == []
         end
     end
     
