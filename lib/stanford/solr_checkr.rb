@@ -98,6 +98,9 @@ private
         end
         solr_value ||= []
         
+        if solr_value.is_a?(String)
+          solr_value = [solr_value]
+        end
         solr_value = clean_values(solr_value)
         zotero_value = clean_values(zotero_value)
         
