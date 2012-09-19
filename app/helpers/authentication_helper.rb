@@ -1,29 +1,14 @@
 module AuthenticationHelper
   
-
-
-  # solr_search_params_logic methods take two arguments
-  # @param [Hash] solr_parameters a hash of parameters to be sent to Solr (via RSolr)
-  # @param [Hash] user_parameters a hash of user-supplied parameters (often via `params`)
-  def show_authenticated_records solr_parameters, user_parameters
-    # add a new solr facet query ('fq') parameter that limits results to those with a 'public_b' field of 1 
-    solr_parameters[:qt] = 'authed_search'
+  def apply_special_parameters_for_a_fulltext_query solr_parameters, user_parameters
+    solr_parameters[:qt] = 'fulltext' if user_parameters[:search_field] == 'fulltext'
   end
-  
-  # solr_search_params_logic methods take two arguments
-   # @param [Hash] solr_parameters a hash of parameters to be sent to Solr (via RSolr)
-   # @param [Hash] user_parameters a hash of user-supplied parameters (often via `params`)
-   def show_authenticated_fulltext_records solr_parameters, user_parameters
-     # add a new solr facet query ('fq') parameter that limits results to those with a 'public_b' field of 1 
-     solr_parameters[:qt] = 'authed_fulltext'
-   end
-  
-   # solr_search_params_logic methods take two arguments
-    # @param [Hash] solr_parameters a hash of parameters to be sent to Solr (via RSolr)
-    # @param [Hash] user_parameters a hash of user-supplied parameters (often via `params`)
-    def show_fulltext_records solr_parameters, user_parameters
-      # add a new solr facet query ('fq') parameter that limits results to those with a 'public_b' field of 1 
-      solr_parameters[:qt] = 'fulltext'
+
+  def apply_gated_discovery solr_parameters, user_parameters
+    unless user_signed_in? or request.env["REMOTE_ADDR"] == FLIPBOOK_IP  or  request.env["REMOTE_ADDR"] == DJATOKA_IP
+      solr_parameters[:fq] ||= []
+      solr_parameters[:fq] << "public_b:true"
     end
+  end
   
 end

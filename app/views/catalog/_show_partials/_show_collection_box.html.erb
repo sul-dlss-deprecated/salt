@@ -10,13 +10,13 @@
     <li>
       <%= link_to_multifacet( @document['folder_facet'], " > ",   "series_facet" => @document["series_facet"], "box_facet" => @document["box_facet"], "folder_facet" => @document["folder_facet"]) %>
     </li>
-		<% if @folder_siblings %>
-    <li>(<%= @folder_siblings.total %> Documents)</li>
+		<% if folder_siblings %>
+    <li>(<%= folder_siblings.length %> Documents)</li>
     <% end %>
   </ul>
 	 <ul class="folder_siblings">
-		    <% if @folder_siblings %>
-        <%= render(:partial=>"catalog/_show_partials/show_folder_sibling", :collection=>@folder_siblings.docs, :as => :document) %>
+		    <% unless folder_siblings.empty? %>
+        <%= render(:partial=>"catalog/_show_partials/show_folder_sibling", :collection=>folder_siblings, :as => :document) %>
 				<% end %>
    </ul>
  	<ul class="links horizontal">

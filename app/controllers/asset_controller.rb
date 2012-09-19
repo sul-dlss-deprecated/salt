@@ -6,8 +6,11 @@ require 'blacklight/catalog'
 # instead return a  Blacklight::Exceptions::InvalidSolrID error. 
 class AssetController < ApplicationController  
 
-   include Blacklight::Catalog
-   include AssetHelper
+  include Blacklight::Catalog
+  include AssetHelper
+  include AuthenticationHelper
+
+  self.solr_search_params_logic << :apply_gated_discovery
   
   
   def show
@@ -17,11 +20,8 @@ class AssetController < ApplicationController
     end  
       
     
-    unless user_signed_in?
-       unless  request.env["REMOTE_ADDR"] == FLIPBOOK_IP  or  request.env["REMOTE_ADDR"] == DJATOKA_IP
-      	(  @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}"))  
-       end
-    end 
+  	@response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}")  
+
  
     @asset = Asset.new(params[:id], params[:page])
     
@@ -41,12 +41,8 @@ class AssetController < ApplicationController
   
   def show_page
     
-    unless user_signed_in?
-       unless  request.env["REMOTE_ADDR"] == FLIPBOOK_IP  or  request.env["REMOTE_ADDR"] == DJATOKA_IP           
-        (  @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}"))
-       end
-    end
-     
+     @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}")
+
 
      @asset = Asset.new(params[:id], params[:page] )
      

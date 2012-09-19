@@ -141,10 +141,13 @@ module SaltHelper
  
  #
  # Takes a solr document and returns documents that are in the document's folder. 
- def find_folder_siblings(document=@document, search_handler = "search")
-    folder_search_params = {:qt => search_handler }
+ def folder_siblings(document=@document)
+    @folder_siblings_cache ||= {}
+ 
+    return @folder_siblings_cache[document[:id]] if @folder_siblings_cache[document[:id]] 
+
+    folder_search_params = {:rows => 1000}
     if document[:series_facet]   
-      folder_search_params[:rows] = "1000"
       folder_search_params[:fq] = ["series_facet:\"#{return_first(document[:series_facet])}\""]
       if document[:box_facet]
         folder_search_params[:fq] << "box_facet:\"#{return_first(document[:box_facet])}\""
@@ -152,11 +155,15 @@ module SaltHelper
           folder_search_params[:fq] << "folder_facet:\"#{return_first(document[:folder_facet])}\""
         end
       end
-      @folder_siblings = Blacklight.solr.find folder_search_params
+
+      response, documents = get_search_results(folder_search_params, {})
+
+      @folder_siblings_cache[document[:id]] = documents
     else 
-      @folder_siblings = nil
+      []
     end
   end
+
  
  #convenience method for returning first value of a facet
  def return_first(a_facet=[])
@@ -184,8 +191,4 @@ module SaltHelper
      end
    end
    
-   
-   
- 
- 
 end
