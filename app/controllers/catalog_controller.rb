@@ -43,7 +43,8 @@ class CatalogController < ApplicationController
     # get single document from the solr index
     def show
      
-      @response, @document = get_solr_response_for_doc_id(params[:id])
+      # @response, @document = get_solr_response_for_doc_id(params[:id], )
+      @response, @document = get_solr_doc_with_gated_discovery(params[:id])
       folder_siblings(@document)
 
   

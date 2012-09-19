@@ -11,4 +11,11 @@ module AuthenticationHelper
     end
   end
   
+  def get_solr_doc_with_gated_discovery(doc_id, solr_parameters={})
+    unless user_signed_in? or request.env["REMOTE_ADDR"] == FLIPBOOK_IP  or  request.env["REMOTE_ADDR"] == DJATOKA_IP
+      solr_parameters[:fq] ||= []
+      solr_parameters[:fq] << "public_b:true"
+    end
+    get_solr_response_for_doc_id(doc_id, solr_parameters)
+  end
 end

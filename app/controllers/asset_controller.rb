@@ -20,7 +20,8 @@ class AssetController < ApplicationController
     end  
       
     
-  	@response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}")  
+    # @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}")  
+    @response, @document = get_solr_doc_with_gated_discovery("druid:#{params[:id]}")
 
  
     @asset = Asset.new(params[:id], params[:page])
@@ -41,7 +42,8 @@ class AssetController < ApplicationController
   
   def show_page
     
-     @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}")
+     # @response, @document = get_solr_response_for_doc_id("druid:#{params[:id]}")
+     @response, @document = get_solr_doc_with_gated_discovery("druid:#{params[:id]}")
 
 
      @asset = Asset.new(params[:id], params[:page] )
