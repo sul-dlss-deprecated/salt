@@ -28,7 +28,7 @@ namespace :salt do
     :startup_wait => 120
   }
 
-  desc "Load fixtures"
+  desc "Load fixtures.  Use RAILS_ENV=test to perform on test fedora & solr."
   task :load_fixtures do
     ActiveFedora.init(:fedora_config_path => File.expand_path(File.dirname(__FILE__) + '/../../config/fedora.yml'))
     fixtures_dir = File.expand_path(File.dirname(__FILE__) + '/../../spec/fixtures/fedora_objects')
@@ -41,7 +41,7 @@ namespace :salt do
     end
   end
 
-  desc "Delete fixtures"
+  desc "Delete fixtures. Use RAILS_ENV=test to perform on test fedora & solr."
   task :delete_fixtures do
     FIXTURE_PIDS.each { |pid|
       begin
@@ -57,6 +57,7 @@ namespace :salt do
   task :ci do 
     Rails.env = 'test'
     jetty_params = Jettywrapper.load_config.merge(JETTY_PARAMS)
+    Rake::Task["salt:jetty_setup"].invoke
     error = Jettywrapper.wrap(jetty_params) do  
       Rake::Task["salt:delete_fixtures"].invoke
       Rake::Task["salt:load_fixtures"].invoke
@@ -66,11 +67,21 @@ namespace :salt do
     raise "test failures: #{error}" if error
     # Rake::Task["doc"].invoke
   end
-
+  
+  desc "Set up jetty"
+  task :jetty_setup do
+    puts "setting up jetty"
+    `git submodule init; git submodule update`
+    salt_solr_config = File.expand_path(File.dirname(__FILE__) + '/../../config/solr_config/solrconfig.xml')
+    jetty_solr_config_dev = File.expand_path(File.dirname(__FILE__) + '/../../jetty/solr/development-core/conf/solrconfig.xml')
+    jetty_solr_config_test = File.expand_path(File.dirname(__FILE__) + '/../../jetty/solr/test-core/conf/solrconfig.xml')
+    FileUtils.cp salt_solr_config, jetty_solr_config_dev
+    FileUtils.cp salt_solr_config, jetty_solr_config_test
+  end
 
   desc "Start jetty"
   task :start do
-    puts "starting je"
+    puts "starting jetty"
     jetty_params = Jettywrapper.load_config.merge(JETTY_PARAMS)
     Jettywrapper.start(jetty_params)
     puts "jetty started at PID #{Jettywrapper.pid(JETTY_PARAMS)}"
