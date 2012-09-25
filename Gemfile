@@ -14,6 +14,7 @@ gem 'rest-client'
 gem 'simple-daemon'
 gem "will_paginate",  '~> 3.0.2'
 gem 'json'
+gem 'active-fedora'
 
 # Use unicorn as the web server
 # gem 'unicorn'
