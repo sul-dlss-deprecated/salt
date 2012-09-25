@@ -71,7 +71,6 @@ namespace :salt do
   desc "Set up jetty"
   task :jetty_setup do
     puts "setting up jetty"
-    `git submodule init; git submodule update`
     salt_solr_config = File.expand_path(File.dirname(__FILE__) + '/../../config/solr_config/solrconfig.xml')
     jetty_solr_config_dev = File.expand_path(File.dirname(__FILE__) + '/../../jetty/solr/development-core/conf/solrconfig.xml')
     jetty_solr_config_test = File.expand_path(File.dirname(__FILE__) + '/../../jetty/solr/test-core/conf/solrconfig.xml')
