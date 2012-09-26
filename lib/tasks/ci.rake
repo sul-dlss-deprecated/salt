@@ -57,6 +57,7 @@ namespace :salt do
   task :ci do 
     Rails.env = 'test'
     jetty_params = Jettywrapper.load_config.merge(JETTY_PARAMS)
+    Rake::Task["db:migrate"].invoke
     Rake::Task["salt:jetty_setup"].invoke
     error = Jettywrapper.wrap(jetty_params) do  
       Rake::Task["salt:delete_fixtures"].invoke
