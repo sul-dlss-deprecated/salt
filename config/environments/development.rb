@@ -28,7 +28,8 @@ Salt::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 end
 
-FEDORA_URI = "http://salt-dev.stanford.edu/fedora"
+# FEDORA_URI = "http://salt-dev.stanford.edu/fedora"
+FEDORA_URI = "http://127.0.0.1:8983/fedora"
 FEDORA_USER = "fedoraAdmin"
 FEDORA_PASSWORD = "fedoraAdmin"
 
