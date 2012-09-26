@@ -6,13 +6,13 @@ describe Stanford::Repository do
   before(:all) do
   
     #initialize_queue
-    FakeWeb.register_uri(:get,"http://127.0.0.1:8983/fedora/objects?query=pid~druid*&maxResults=50000&format=true&pid=true&title=true&resultFormat=xml" , :body => "<objects><pid>first</pid><pid>another</pid></objects>")  
+    FakeWeb.register_uri(:get,"http://127.0.0.1:8983/fedora-test/objects?query=pid~druid*&maxResults=50000&format=true&pid=true&title=true&resultFormat=xml" , :body => "<objects><pid>first</pid><pid>another</pid></objects>")  
     #get datastreams
-    FakeWeb.register_uri(:get,"http://127.0.0.1:8983/fedora/objects/fake:druid/datastreams?format=xml", :body => "<object><datastream dsid='first'/><datastream dsid='another'/></object>")
+    FakeWeb.register_uri(:get,"http://127.0.0.1:8983/fedora-test/objects/fake:druid/datastreams?format=xml", :body => "<object><datastream dsid='first'/><datastream dsid='another'/></object>")
     # get datastream
-    FakeWeb.register_uri(:get,"http://127.0.0.1:8983/fedora/objects/fake:druid/datastreams/fakeStream/content", :body => "Some content")
-    FakeWeb.register_uri(:put, %r|http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora/objects/fake:druid/datastreams/fakeStream|, :query => "<xml/>")
-    FakeWeb.register_uri(:put, %r|http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora/objects/druid:fail/datastreams/fakeStream|, :query => "<xml/>",  :body => "Unauthorized", :status => ["401", "Unauthorized"])
+    FakeWeb.register_uri(:get,"http://127.0.0.1:8983/fedora-test/objects/fake:druid/datastreams/fakeStream/content", :body => "Some content")
+    FakeWeb.register_uri(:put, %r|http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora-test/objects/fake:druid/datastreams/fakeStream|, :query => "<xml/>")
+    FakeWeb.register_uri(:put, %r|http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora-test/objects/druid:fail/datastreams/fakeStream|, :query => "<xml/>",  :body => "Unauthorized", :status => ["401", "Unauthorized"])
     
   end
   

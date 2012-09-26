@@ -34,7 +34,7 @@ Salt::Application.configure do
   config.active_support.deprecation = :stderr
 end
 
-FEDORA_URI = "http://127.0.0.1:8983/fedora"
+FEDORA_URI = "http://127.0.0.1:8983/fedora-test"
 FEDORA_USER = "fedoraAdmin"
 FEDORA_PASSWORD = "fedoraAdmin"
 
