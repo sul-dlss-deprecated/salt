@@ -7,7 +7,7 @@ describe Stanford::SolrCheckr do
   
   describe "#initalize" do
     
-    it "should initizliat properly" do
+    it "should initalize properly" do
       zi = ZoteroIngest.new
       zi.save
       

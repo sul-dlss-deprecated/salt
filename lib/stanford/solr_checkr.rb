@@ -8,8 +8,6 @@ module Stanford
   #this script is used to verify that the proper values are in Solr.
   
   class SolrCheckr
-  
-  
     attr_accessor :zotero_xml
     attr_accessor :zotero_ingest
     attr_accessor :solr
@@ -73,21 +71,23 @@ private
     end
     
     def get_solr_doc(druid, count=0)
-      if count < 5
-        return solr.get('select', :params => { :q => "id:#{druid.gsub(':', '\:')}"}, :wt => :json) 
-      else
-        return nil
-      end
-    rescue Timeout::Error => e # for random timeot error, let's try and wait them out. 
-      sleep(5)
-      count += 1 
-      get_solr_doc(druid, count)
-    rescue Errno::ETIMEDOUT => e # for random timeot error, let's try and wait them out. 
+      begin
+        if count < 5
+          return solr.get 'select', :params => { :q => "id:druid\\:#{druid}"}
+        else
+          return nil
+        end
+      rescue Timeout::Error => e # for random timeout error, let's try and wait them out. 
         sleep(5)
         count += 1 
         get_solr_doc(druid, count)
+      rescue Errno::ETIMEDOUT => e # for random timeout error, let's try and wait them out. 
+          sleep(5)
+          count += 1 
+          get_solr_doc(druid, count)
       rescue => e
-        @report << e.backtrace 
+          @report << e.backtrace 
+      end
     end
     
     
