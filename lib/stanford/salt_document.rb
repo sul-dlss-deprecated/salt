@@ -174,7 +174,7 @@ module Stanford
       return @solr_document
     end
     
-private
+# private
     
     # This builds @datastreams as a hash with keys as ds labels and string values as the XML content
     def get_datastreams(pid, datastreams=[]) 
@@ -270,9 +270,11 @@ private
     def generate_zotero_defaults
       xml  = Nokogiri::XML(@datastreams["zotero"])      
       id_hash = {}
-       # currently, we are using the subjects to mark the public/private status of the document      
-      id_hash["access_display"] ||= ["Private"]
-      id_hash["access_facet"] ||= ["Private"]
+       # currently, we are using the subjects to mark the public/private status of the document  
+       # Mark everything public by default, per request on October 3, 2012 --Bess    
+      id_hash["access_display"] ||= ["Public"]
+      id_hash["access_facet"] ||= ["Public"]
+      id_hash["public_b"] ||= ['true'] 
       id_hash["identifiers_s"] ||= [@pid]
       id_hash["identifiers_t"] ||= [@pid]
       
