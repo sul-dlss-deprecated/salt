@@ -155,6 +155,10 @@ module Stanford
           zotero_hash["public_b"] = ['true'] 
           zotero_hash["access_display"] = ["Public"]
           zotero_hash["access_facet"] = ["Public"]
+        elsif tag.upcase == 'PRIVATE'
+          zotero_hash["public_b"] = ['false'] 
+          zotero_hash["access_display"] = ["Private"]
+          zotero_hash["access_facet"] = ["Private"]
         else
           ["facet", "s", "t"].each {|v| zotero_hash["donor_tags_#{v}"] ||= [];  zotero_hash["donor_tags_#{v}"] << tag.strip }
         end
@@ -227,8 +231,19 @@ private
     
     # this method generates the hash from JSON using the PHP script and ensures key values are present
      def generate_hash
-       File.open("/tmp/zotero.xml", "w") { |f| f << @datastreams["zotero"] }
-       json = JSON(`/usr/bin/env php lib/stanford/zotero_to_json.php /tmp/zotero.xml`)
+       
+       tmp_file = "/tmp/zotero.xml"
+       
+       File.open(tmp_file, "w") { |f| f << @datastreams["zotero"] }
+       
+       # Check to make sure zotero.xml file has been written
+       raise "Couldn't write #{tmp_file}" unless File.exist?(tmp_file) and File.file?(tmp_file)
+       
+       php_output = `/usr/bin/env php lib/stanford/zotero_to_json.php /tmp/zotero.xml`
+       # puts php_output.inspect
+       
+       json = JSON(php_output)
+       # puts json.inspect
        json.is_a?(Array) ? json = json.first : json = json
        
        if json.nil? or json.is_a?(String)
