@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Letter from Edward A. Feigenbaum to Ed. Mahler"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-05-18T10:12:46.002Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-05-27T02:28:38.967Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-10-03T23:46:19.247Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-05-18T10:12:46.002Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -54,6 +54,14 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-05-27T02:28:38.967Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC6">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>zotero</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-10-03T23:46:19.247Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -69,7 +77,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="extracted_entities" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-<foxml:datastreamVersion ID="extracted_entities.0" LABEL="extracted_entities" CREATED="2011-05-18T10:12:48.587Z" MIMETYPE="text/xml">
+<foxml:datastreamVersion ID="extracted_entities.0" LABEL="extracted_entities" CREATED="2011-05-18T10:12:48.587Z" MIMETYPE="text/xml" SIZE="2321">
 <foxml:binaryContent> 
               PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPGRvY3VtZW50PgogPGF0dHJpYnV0
               ZXM+PGF0dHJpYnV0ZSB0eXBlPSJpdGVtIj4zNjQ0PC9hdHRyaWJ1dGU+PGF0dHJpYnV0ZSB0eXBlPSJv
@@ -112,7 +120,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               NiI+RGVsYXdhcmU8L2ZhY2V0PjwvZmFjZXRzPgo8L2RvY3VtZW50Pgo=
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="extracted_entities.1" LABEL="extracted_entities" CREATED="2011-05-27T02:28:38.967Z" MIMETYPE="application/xml">
+<foxml:datastreamVersion ID="extracted_entities.1" LABEL="extracted_entities" CREATED="2011-05-27T02:28:38.967Z" MIMETYPE="application/xml" SIZE="737">
 <foxml:binaryContent> 
               PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjxkb2N1bWVudD4KICA8ZmFjZXRzPgogICAgPGZhY2V0IHR5cGU9
               ImNpdHkiIGlkPSIyMjEyIj5XaWxtaW5ndG9uPC9mYWNldD4KICAgIDxmYWNldCB0eXBlPSJjb21wYW55
@@ -131,7 +139,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="location" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-<foxml:datastreamVersion ID="location.0" LABEL="location" CREATED="2011-05-18T10:12:49.498Z" MIMETYPE="text/xml">
+<foxml:datastreamVersion ID="location.0" LABEL="location" CREATED="2011-05-18T10:12:49.498Z" MIMETYPE="text/xml" SIZE="490">
 <foxml:binaryContent> 
               PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxjMDEgbGV2ZWw9InNlcmllcyI+CiAgPGRpZD4KICAgIDx1bml0
               dGl0bGU+QWNjZXNzaW9uIDIwMDUtMTAxPC91bml0dGl0bGU+CiAgPC9kaWQ+CiAgPGMwMiBsZXZlbD0i
@@ -146,7 +154,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="zotero" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-<foxml:datastreamVersion ID="zotero.0" LABEL="zotero" CREATED="2011-05-18T10:12:50.370Z" MIMETYPE="text/xml">
+<foxml:datastreamVersion ID="zotero.0" LABEL="zotero" CREATED="2011-05-18T10:12:50.370Z" MIMETYPE="text/xml" SIZE="1165">
 <foxml:binaryContent> 
               CjxyZGY6UkRGIHhtbG5zOmJpYj0iaHR0cDovL3B1cmwub3JnL25ldC9iaWJsaW8jIiB4bWxuczpkYz0i
               aHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOmRjdGVybXM9Imh0dHA6Ly9wdXJs
@@ -168,6 +176,30 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               ICA8ZGM6c3ViamVjdD4KICAgICAgPGRjdGVybXM6TENDPgogICAgICAgIDxyZGY6dmFsdWU+MDAwMTA1
               OTM8L3JkZjp2YWx1ZT4KICAgICAgPC9kY3Rlcm1zOkxDQz4KICAgIDwvZGM6c3ViamVjdD4KICA8L2Jp
               YjpNYW51c2NyaXB0Pgo8L3JkZjpSREY+Cg==
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="zotero.1" LABEL="zotero" CREATED="2012-10-03T23:46:19.247Z" MIMETYPE="text/xml" SIZE="1200">
+<foxml:binaryContent> 
+              DTxyZGY6UkRGIHhtbG5zOmJpYj0iaHR0cDovL3B1cmwub3JnL25ldC9iaWJsaW8jIiB4bWxuczpkYz0i
+              aHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOmRjdGVybXM9Imh0dHA6Ly9wdXJs
+              Lm9yZy9kYy90ZXJtcy8iIHhtbG5zOmZvYWY9Imh0dHA6Ly94bWxucy5jb20vZm9hZi8wLjEvIiB4bWxu
+              czpsaW5rPSJodHRwOi8vcHVybC5vcmcvcnNzLzEuMC9tb2R1bGVzL2xpbmsvIiB4bWxuczpwcmlzbT0i
+              aHR0cDovL3ByaXNtc3RhbmRhcmQub3JnL25hbWVzcGFjZXMvMS4yL2Jhc2ljLyIgeG1sbnM6cmRmPSJo
+              dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxuczp2Y2FyZD0iaHR0
+              cDovL253YWxzaC5jb20vcmRmL3ZDYXJkIyIgeG1sbnM6ej0iaHR0cDovL3d3dy56b3Rlcm8ub3JnL25h
+              bWVzcGFjZXMvZXhwb3J0IyI+DSAgPGJpYjpNYW51c2NyaXB0IHJkZjphYm91dD0iaHR0cHM6Ly9zYWx0
+              d29ya3Muc3RhbmZvcmQuZWR1L2RvY3VtZW50cy9kcnVpZDpiYjA0N3Z5MDUzNS9kb3dubG9hZHM/ZG93
+              bmxvYWRfaWQ9ZG9jdW1lbnQucGRmIj4NICAgIDx6Oml0ZW1UeXBlPm1hbnVzY3JpcHQ8L3o6aXRlbVR5
+              cGU+DSAgICA8ZGM6dGl0bGU+TGV0dGVyIGZyb20gRWR3YXJkIEEuIEZlaWdlbmJhdW0gdG8gRWQuIE1h
+              aGxlcjwvZGM6dGl0bGU+DSAgICA8ZGM6ZGF0ZT4xOTg5LTA1LTA1PC9kYzpkYXRlPg0gICAgPGRjOmlk
+              ZW50aWZpZXI+DSAgICAgIDxkY3Rlcm1zOlVSST4NICAgICAgICA8cmRmOnZhbHVlPmh0dHBzOi8vc2Fs
+              dHdvcmtzLnN0YW5mb3JkLmVkdS9kb2N1bWVudHMvZHJ1aWQ6YmIwNDd2eTA1MzUvZG93bmxvYWRzP2Rv
+              d25sb2FkX2lkPWRvY3VtZW50LnBkZjwvcmRmOnZhbHVlPg0gICAgICA8L2RjdGVybXM6VVJJPg0gICAg
+              PC9kYzppZGVudGlmaWVyPg0gICAgPGRjOmNvdmVyYWdlPkJveDogNTEsIEZvbGRlcjogMiwgVGl0bGU6
+              IEVBRiBQcmludGVkIENvcnJlc3BvbmRlbmNlSmFuLiAtIEp1bHkgMTk4OTwvZGM6Y292ZXJhZ2U+DSAg
+              ICA8ZGM6c3ViamVjdD4NICAgICAgPGRjdGVybXM6TENDPg0gICAgICAgIDxyZGY6dmFsdWU+MDAwMTA1
+              OTM8L3JkZjp2YWx1ZT4NICAgICAgPC9kY3Rlcm1zOkxDQz4NICAgIDwvZGM6c3ViamVjdD4NICA8ZGM6
+              c3ViamVjdD5QUklWQVRFPC9kYzpzdWJqZWN0Pg0gIDwvYmliOk1hbnVzY3JpcHQ+DTwvcmRmOlJERj4N
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>
