@@ -1,6 +1,7 @@
 <?php
 //zotero_to_json.php: ver. 05.2
 //for more info, see scott.vanduyne@gmail.com (savd@stanford.edu)
+error_reporting(0); // suppress PHP Notice warnings... any extraneous output will cause failure
 
 //get input file name
 $in_filename = $argv[1];
