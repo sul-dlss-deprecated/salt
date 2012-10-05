@@ -1,8 +1,8 @@
 namespace :salt do
   
   desc "Index items from fedora into solr. Uses a list file for the pids to be index found at RAILS_ROOT/doc/pids.txt."
-  task :index => :environment do
-      
+  task :index => :environment do    
+    require File.expand_path(File.dirname(__FILE__) + "/../../config/environments/#{Rails.env}")
       if File.exists?(File.join(File.dirname(__FILE__) , '/../../doc/pids.txt'))
         pids = []
         File.open(File.join(File.dirname(__FILE__) , '/../../doc/pids.txt')).each_line { |p| pids << p.chomp }

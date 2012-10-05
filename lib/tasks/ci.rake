@@ -28,9 +28,12 @@ namespace :salt do
     :startup_wait => 120
   }
 
-  desc "Load fixtures.  Use RAILS_ENV=test to perform on test fedora & solr."
-  task :load_fixtures do
+  desc "Load fixtures.  Use RAILS_ENV=test to perform on test solr."
+  task :load_fixtures => :environment do
     ActiveFedora.init(:fedora_config_path => File.expand_path(File.dirname(__FILE__) + '/../../config/fedora.yml'))
+    puts "!!!"
+    puts ActiveFedora.environment
+    puts "!!!"
     fixtures_dir = File.expand_path(File.dirname(__FILE__) + '/../../spec/fixtures/fedora_objects')
     Dir.glob("#{fixtures_dir}/*.xml") do |foxml_file|
       begin
@@ -41,8 +44,8 @@ namespace :salt do
     end
   end
 
-  desc "Delete fixtures. Use RAILS_ENV=test to perform on test fedora & solr."
-  task :delete_fixtures do
+  desc "Delete fixtures. Use RAILS_ENV=test to perform on test fedora"
+  task :delete_fixtures => :environment do
     FIXTURE_PIDS.each { |pid|
       begin
         ENV["pid"] = pid
@@ -66,7 +69,7 @@ namespace :salt do
       Rake::Task["spec:rcov"].invoke
     end
     raise "test failures: #{error}" if error
-    # Rake::Task["doc"].invoke
+    Rake::Task["doc"].invoke
   end
   
   desc "Set up jetty"
@@ -92,4 +95,5 @@ namespace :salt do
     Jettywrapper.stop(JETTY_PARAMS)
     puts "jetty stopped"
   end
+ 
 end
