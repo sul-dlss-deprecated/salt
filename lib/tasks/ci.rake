@@ -31,9 +31,6 @@ namespace :salt do
   desc "Load fixtures.  Use RAILS_ENV=test to perform on test solr."
   task :load_fixtures => :environment do
     ActiveFedora.init(:fedora_config_path => File.expand_path(File.dirname(__FILE__) + '/../../config/fedora.yml'))
-    puts "!!!"
-    puts ActiveFedora.environment
-    puts "!!!"
     fixtures_dir = File.expand_path(File.dirname(__FILE__) + '/../../spec/fixtures/fedora_objects')
     Dir.glob("#{fixtures_dir}/*.xml") do |foxml_file|
       begin
