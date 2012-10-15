@@ -29,13 +29,13 @@ Salt::Application.configure do
 end
 
 # FEDORA_URI = "http://salt-dev.stanford.edu/fedora"
-FEDORA_URI = "http://127.0.0.1:8983/fedora"
+FEDORA_URI = "http://salt-dev.stanford.edu:8080/fedora"
 FEDORA_USER = "fedoraAdmin"
-FEDORA_PASSWORD = "fedoraAdmin"
+FEDORA_PASSWORD = "4314156bc0c1f367a2c18929556825e8"
 
-ASSET_SERVER_URI = "http://stanford.edu/~cfitz"
-ASSET_SERVER_USER = "fedoraAdmin"
-ASSET_SERVER_PASSWORD = "fedoraAdmin"
+ASSET_SERVER_URI = "http://salt-dev.stanford.edu/assets/"
+ASSET_SERVER_USER = "salt"
+ASSET_SERVER_PASSWORD = "35473d24664035c02d92aba25c94d9c6"
 
 FLIPBOOK_URL = "http://salt-dev.stanford.edu:8080/flipbook_salt/"
 FLIPBOOK_IP = "171.67.34.68"
