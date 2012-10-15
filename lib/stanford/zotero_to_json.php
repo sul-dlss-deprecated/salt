@@ -1,7 +1,9 @@
 <?php
-//zotero_to_json.php: ver. 05.2
+//zotero_to_json.php: ver. 06
 //for more info, see scott.vanduyne@gmail.com (savd@stanford.edu)
-error_reporting(0); // suppress PHP Notice warnings... any extraneous output will cause failure
+
+//error_reporting(E_ALL);
+error_reporting(0);
 
 //get input file name
 $in_filename = $argv[1];
@@ -59,7 +61,10 @@ foreach ($xml as $record) {
   //DRUID
   //look for anything of druid format 'aa111aa1111' in 'about' or 'url'
   unset($match);
-  $rdfabout = str_replace($r,$s,(string)$record->attributes()->{"rdf{$r}about"});
+  if (isset($record->attributes()->{"rdf{$r}about"})) {
+    $rdfabout = str_replace($r,$s,(string)$record->attributes()->{"rdf{$r}about"});
+    preg_match('/[a-z]{2}\d{3}[a-z]{2}\d{4}/',$rdfabout,$match); 
+  }
   if (!$match[0] && isset($record->{"dc{$r}identifier"}->{"dcterms{$r}URI"}->{"rdf{$r}value"})) {
     $rdfurl = str_replace($r,$s,(string)$record->{"dc{$r}identifier"}->{"dcterms{$r}URI"}->{"rdf{$r}value"});
     preg_match('/[a-z]{2}\d{3}[a-z]{2}\d{4}/',$rdfurl,$match); 
@@ -210,7 +215,7 @@ foreach ($xml as $record) {
   else $crecord['corporate_entity'] = '';
   
   //PLACE
-  $record['place'] = '';
+  $crecord['place'] = '';
   if (isset($record->{"dc{$r}publisher"}->{"foaf{$r}Organization"}->
 	    {"vcard{$r}adr"}->{"vcard{$r}Address"}->{"vcard{$r}locality"}))  
     $crecord['place'] 
@@ -224,7 +229,7 @@ foreach ($xml as $record) {
 		     (string) $record->{"bib{$r}presentedAt"}->{"foaf{$r}Organization"}->{"foaf{$r}name"});
 		     
   //NUMBER ($crecord['number'] ? ', ' : '') .
-  $record['number'] = '';
+  $crecord['number'] = '';
   if (isset($record->{"prism{$r}number"})) 
     $crecord['number'] .= 
       str_replace($r,$s,(string)$record->{"prism{$r}number"});
@@ -334,7 +339,7 @@ function replace_html_tags($str) {
 
 
 function get_author_from_li($stem) {
-  global $r;
+  global $r,$s;
    $pers = $stem->{"foaf{$r}Person"};
   $name = '';
   if ($pers->{"foaf{$r}givenname"} && $pers->{"foaf{$r}givenname"} != '') 
