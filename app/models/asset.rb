@@ -38,9 +38,15 @@ class Asset
   end
   
   def get_flipbook
-    @druid.include?("druid:") ? id = @druid : id = "druid:#{@druid}"
-    uri = URI.parse("#{FLIPBOOK_URL}/embed.jsp?id=#{id}")
-    return Asset.http(uri)
+    begin
+      @druid.include?("druid:") ? id = @druid : id = "druid:#{@druid}"
+      uri = URI.parse("#{FLIPBOOK_URL}/embed.jsp?id=#{id}")
+      return Asset.http(uri)
+    rescue Errno::ECONNREFUSED => e
+      raise "Connection refused for #{uri}"
+    rescue => e
+      raise "Couldn't get flipbook from #{uri}"
+    end
   end
   
   def self.get_flipbook_asset(file, mime)
@@ -67,6 +73,7 @@ private
 
 
   def self.http(uri, limit = 10)
+    begin
       raise ArgumentError, 'HTTP redirect too deep' if limit == 0
       request = Net::HTTP::Get.new(uri.request_uri) 
       response = Net::HTTP.start(uri.host, uri.port) { |http| http.request(request) }
@@ -76,8 +83,9 @@ private
       else
         raise response.error!
       end
-  rescue Exception => e
-          raise e
+    rescue Exception => e
+      raise "Couldn't connect to #{uri.request_uri}"
+    end
   end #rescue 
 
 
