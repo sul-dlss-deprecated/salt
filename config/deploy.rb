@@ -1,4 +1,3 @@
-require "rvm/capistrano"                               # Load RVM's capistrano plugin.
 require 'net/ssh/kerberos'
 require 'bundler/setup'
 require 'bundler/capistrano'
@@ -11,7 +10,6 @@ set :bundle_flags, "--quiet"
 
 require 'capistrano/ext/multistage'
 
-after "deploy:assets:symlink", "rvm:trust_rvmrc"
 #after "deploy:restart", "dlss:log_release"
 
 set :shared_children, %w(
