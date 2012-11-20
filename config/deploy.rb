@@ -46,3 +46,11 @@ namespace :deploy do
 end
 
 after "deploy", "deploy:migrate"
+
+namespace :deploy do
+  namespace :assets do
+    task :symlink do ; end
+    task :precompile do ; end
+  end
+end
+
