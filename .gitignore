@@ -7,3 +7,6 @@ tmp/
 coverage
 coverage/*
 coverage.data
+config/solr.yml
+config/fedora.yml
+config/database.yml
