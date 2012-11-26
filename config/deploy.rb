@@ -18,6 +18,7 @@ set :shared_children, %w(
   config/database.yml
   config/solr.yml
   config/fedora.yml
+  config/environments
 )
 
 set :user, "lyberadmin"
