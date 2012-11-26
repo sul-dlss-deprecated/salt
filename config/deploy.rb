@@ -14,6 +14,7 @@ require 'capistrano/ext/multistage'
 
 set :shared_children, %w(
   log
+  db
   config/database.yml
   config/solr.yml
   config/fedora.yml
