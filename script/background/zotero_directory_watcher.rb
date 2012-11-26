@@ -21,8 +21,9 @@ class ZoteroDirectoryWatcher < SimpleDaemon::Base
   
   def self.start    
     STDOUT.sync = true
-    @logger = Logger.new(STDOUT)
-    @logger.level = Logger::WARN
+    @logger = Logger.new('/var/www/salt/log/zotero_dir_watcher.log')
+    @logger.level = Logger::INFO
+
    
     if Rails.env.development?
       # Disable SQL logging in debugging.
@@ -31,11 +32,16 @@ class ZoteroDirectoryWatcher < SimpleDaemon::Base
     end
 
    @logger.info "Starting daemon ZoteroDirectoryWatcher"		
+   @logger.info "Watching #{DIRECTORY_WATCHER_DIR}"
 
     loop do 
       begin
+
+	# Keep renewing the kerberos ticket and keep moving any new files
+    	@logger.info  `/home/lyberadmin/bin/renew-ticket.sh`
+    	@logger.info  `ruby /var/www/salt/script/import_directory_script.rb`
+
          zotero = nil
-         @logger.info DIRECTORY_WATCHER_DIR
         Dir.glob(File.join(DIRECTORY_WATCHER_DIR, "*.rdf")).each do |f|
           @logger.info "glob"
           @logger.info "starting #{f}"
@@ -45,7 +51,7 @@ class ZoteroDirectoryWatcher < SimpleDaemon::Base
         end
         
         # Optional. Sleep between tasks.
-        Kernel.sleep 1
+        Kernel.sleep 60 
       rescue Exception => e
         # This gets thrown when we need to get out.
         raise if e.kind_of? SystemExit
@@ -58,7 +64,7 @@ class ZoteroDirectoryWatcher < SimpleDaemon::Base
         end
         # If something bad happened, it usually makes sense to wait for some
         # time, so any external issues can settle.
-        Kernel.sleep 5
+        Kernel.sleep 60
       end
     end
   end
