@@ -52,12 +52,12 @@ group :development, :test do
   gem 'email_spec'
   gem 'mocha'
   gem 'cucumber', '>=0.8.5'
-  gem 'cucumber-rails', '>0.4.0' 
+  gem 'cucumber-rails', '>0.4.0'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'gherkin'
   gem 'factory_girl'
 	gem 'fakeweb'
-	gem 'jettywrapper'
+	gem 'jettywrapper', "~> 1.3"
 	gem 'equivalent-xml'
 end

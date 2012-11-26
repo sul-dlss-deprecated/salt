@@ -54,21 +54,20 @@ namespace :salt do
   end
 
   desc "Continuous integration build"
-  task :ci do 
+  task :ci do
     Rails.env = 'test'
     jetty_params = Jettywrapper.load_config.merge(JETTY_PARAMS)
     Rake::Task["db:migrate"].invoke
     Rake::Task["salt:jetty_setup"].invoke
-    error = Jettywrapper.wrap(jetty_params) do  
+    Jettywrapper.wrap(jetty_params) do
       Rake::Task["salt:delete_fixtures"].invoke
       Rake::Task["salt:load_fixtures"].invoke
       Rake::Task["salt:index"].invoke
       Rake::Task["spec:rcov"].invoke
     end
-    raise "test failures: #{error}" if error
     Rake::Task["doc"].invoke
   end
-  
+
   desc "Set up jetty"
   task :jetty_setup do
     puts "setting up jetty"
@@ -86,11 +85,11 @@ namespace :salt do
     Jettywrapper.start(jetty_params)
     puts "jetty started at PID #{Jettywrapper.pid(JETTY_PARAMS)}"
   end
-  
+
   desc "stop jetty"
   task :stop do
     Jettywrapper.stop(JETTY_PARAMS)
     puts "jetty stopped"
   end
- 
+
 end
