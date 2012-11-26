@@ -105,7 +105,7 @@ GEM
     httpi (1.1.1)
       rack
     i18n (0.5.0)
-    jettywrapper (1.2.1)
+    jettywrapper (1.3.2)
       activesupport (>= 3.0.0)
       childprocess
       i18n
@@ -252,7 +252,7 @@ DEPENDENCIES
   factory_girl
   fakeweb
   gherkin
-  jettywrapper
+  jettywrapper (~> 1.3)
   json
   mocha
   mysql2 (= 0.2.13)
@@ -262,6 +262,7 @@ DEPENDENCIES
   rest-client
   rspec (= 2.6.0)
   rspec-rails
+  rubydora
   simple-daemon
   sqlite3-ruby (= 1.2.5)
   will_paginate (~> 3.0.2)
