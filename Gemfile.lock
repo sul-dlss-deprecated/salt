@@ -129,7 +129,6 @@ GEM
     mocha (0.10.2)
       metaclass (~> 0.0.1)
     multi_json (1.0.4)
-    mysql2 (0.2.13)
     nokogiri (1.5.0)
     nori (1.1.3)
     om (1.6.1)
@@ -255,7 +254,6 @@ DEPENDENCIES
   jettywrapper (~> 1.3)
   json
   mocha
-  mysql2 (= 0.2.13)
   rails (= 3.0.6)
   rake (= 0.8.7)
   rcov
