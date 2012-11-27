@@ -10,9 +10,7 @@
 begin
 require 'cucumber/rake/task'
 require "rspec/core/rake_task"
-rescue LoadError
-  puts "Rspec/cucumber not found"
-end
+
 namespace :rcov do
   Cucumber::Rake::Task.new(:cucumber_run) do |t|    
     t.rcov = true
@@ -44,4 +42,11 @@ namespace :rcov do
     rm "coverage.data" if File.exist?("coverage.data")
     Rake::Task["rcov:cucumber_run"].invoke
   end    
+end
+
+rescue LoadError
+  desc 'rcov rake task not available (cucumber/rspec/rcov not installed)'
+  task :rcov do
+    abort 'Rcov rake tasks are not available. Be sure to install cucumber/rspec/rcov as a gem or plugin'
+  end
 end
