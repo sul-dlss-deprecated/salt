@@ -1,5 +1,5 @@
 set :rails_env, "production"
-set :deployment_host, "salt-app-prod.stanford.edu"
+set :deployment_host, "salt-app.stanford.edu"
 set :repository, "/afs/ir/dev/dlss/git/appteam/salt.git"
 set :deploy_via, :remote_cache
 DEFAULT_TAG='master'
