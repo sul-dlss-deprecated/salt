@@ -7,10 +7,12 @@
 #
 # Use rcov:rspec or rcov:cucumber
 # to get non-aggregated coverage reports for rspec or cucumber separately
-
+begin
 require 'cucumber/rake/task'
 require "rspec/core/rake_task"
-
+rescue LoadError
+  puts "Rspec/cucumber not found"
+end
 namespace :rcov do
   Cucumber::Rake::Task.new(:cucumber_run) do |t|    
     t.rcov = true
