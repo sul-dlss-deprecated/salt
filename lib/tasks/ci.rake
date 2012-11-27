@@ -1,9 +1,9 @@
 begin
 require 'rspec/core/rake_task'
-rescue LoadError
-  puts "RSpec not found"
-end
 require 'jettywrapper'
+rescue LoadError
+  puts "RSpec/jettywrapper not found"
+end
 require 'active_fedora'
 namespace :salt do
 
