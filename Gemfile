@@ -40,13 +40,13 @@ gem 'rubydora'
 #   gem 'webrat'
 # end
 group :production do
-   #gem "mysql2", '0.2.13'
+   gem "mysql2", '0.2.13'
 end
 
-gem 'sqlite3-ruby', '1.2.5'
 
 group :development, :test do
   gem 'rcov'
+  gem 'sqlite3-ruby', '1.2.5'
  # gem 'ruby-debug'
  # gem 'ruby-debug-base'
   gem 'rspec', '=2.6.0'
