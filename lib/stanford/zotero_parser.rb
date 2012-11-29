@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'nokogiri'
-require 'lib/stanford/repository'
 require 'json'
 require 'tempfile'
 

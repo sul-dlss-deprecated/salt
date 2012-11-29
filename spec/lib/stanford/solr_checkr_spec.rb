@@ -1,5 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
-require 'lib/stanford/solr_checkr'
 require 'equivalent-xml'
 
 describe Stanford::SolrCheckr do

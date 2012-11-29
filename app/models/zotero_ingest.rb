@@ -1,6 +1,3 @@
-require 'lib/stanford/zotero_parser'
-
-
 # this is used to track ingested zotero export files. The ZoteroDirectoryWatcher (script/background/zotero_directory_watcher.rb) deamon kicks off the processes.
 
 class ZoteroIngest < ActiveRecord::Base

@@ -1,4 +1,3 @@
-require_dependency  'lib/stanford/asset_repository'
 require_dependency 'blacklight/catalog'
 require 'rest_client'
 

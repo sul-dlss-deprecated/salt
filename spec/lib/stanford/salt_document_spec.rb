@@ -1,6 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
-require 'lib/stanford/salt_document'
-
 
 describe Stanford::SaltDocument do
   

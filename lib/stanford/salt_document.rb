@@ -3,8 +3,6 @@ require 'rsolr'
 require 'rsolr-ext'
 require 'json'
 require 'yaml'
-require 'lib/stanford/alto_parser'
-require 'lib/stanford/repository'
 
 module Stanford
   
