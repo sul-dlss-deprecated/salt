@@ -268,11 +268,10 @@ module Stanford
     def generate_zotero_defaults
       xml  = Nokogiri::XML(@datastreams["zotero"])      
       id_hash = {}
-       # currently, we are using the subjects to mark the public/private status of the document  
-       # Mark everything public by default, per request on October 3, 2012 --Bess    
-      id_hash["access_display"] ||= ["Public"]
-      id_hash["access_facet"] ||= ["Public"]
-      id_hash["public_b"] ||= ['true'] 
+       # no public or private tag -> private per tcramer, 11/28
+      id_hash["access_display"] ||= ["Private"]
+      id_hash["access_facet"] ||= ["Private"]
+      id_hash["public_b"] ||= ['false'] 
       id_hash["identifiers_s"] ||= [@pid]
       id_hash["identifiers_t"] ||= [@pid]
       
