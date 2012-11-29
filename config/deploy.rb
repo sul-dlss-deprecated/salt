@@ -19,6 +19,7 @@ set :shared_children, %w(
   config/solr.yml
   config/fedora.yml
   config/environments
+  public/.htaccess
 )
 
 set :user, "lyberadmin"
