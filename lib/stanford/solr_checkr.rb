@@ -17,7 +17,7 @@ module Stanford
         
         raise ArgumentError.new("Need to provide xml file to process") if !File.exists?(zotero_xml)
         
-        @zotero_xml = zotero_xml
+        @zotero_xml = File.expand_path(zotero_xml)
         zotero_ingest.is_a?(ZoteroIngest) ? @zotero_ingest = zotero_ingest : @zotero_ingest = nil
             
         @solr = SolrDocument.connection
@@ -65,7 +65,9 @@ private
 
   # this method generates an array of hashes from JSON using the PHP script and ensures key values are present
     def generate_zotero_hashes
-      json = JSON(`/usr/bin/env php lib/stanford/zotero_to_json.php #{@zotero_xml}`)
+      Dir.chdir(Rails.root) do
+        json = JSON(`/usr/bin/env php lib/stanford/zotero_to_json.php #{@zotero_xml}`)
+      end
       json.is_a?(Array) ? zotero_hashes = json : zotero_hashes = [json]
       return zotero_hashes
     end
