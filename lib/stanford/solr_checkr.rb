@@ -21,7 +21,7 @@ module Stanford
         zotero_ingest.is_a?(ZoteroIngest) ? @zotero_ingest = zotero_ingest : @zotero_ingest = nil
             
         @solr = SolrDocument.connection
-        @report = File.open("log/data_check_#{Time.now}.txt", "w")
+        @report = File.open(File.join(Rails.root, 'log', "data_check_#{Time.now.to_i}.txt", "w")
     end
     
     def check_documents
