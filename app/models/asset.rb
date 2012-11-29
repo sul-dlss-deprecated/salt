@@ -1,5 +1,6 @@
 require_dependency  'lib/stanford/asset_repository'
 require_dependency 'blacklight/catalog'
+require 'rest_client'
 
 class Asset
   
@@ -38,56 +39,22 @@ class Asset
   end
   
   def get_flipbook
-    begin
       @druid.include?("druid:") ? id = @druid : id = "druid:#{@druid}"
-      uri = URI.parse("#{FLIPBOOK_URL}/embed.jsp?id=#{id}")
-      return Asset.http(uri)
-    rescue Errno::ECONNREFUSED => e
-      raise "Connection refused for #{uri}"
-    rescue => e
-      raise "Couldn't get flipbook from #{uri}"
-    end
+      RestClient.get("#{FLIPBOOK_URL}/embed.jsp?id=#{id}").body
   end
   
   def self.get_flipbook_asset(file, mime)
     file.include?(mime) ? file.chomp!(mime) : file = file
     if mime == ".css"
-      uri = URI.parse("#{FLIPBOOK_URL}/css/#{file}#{mime}")
+      uri = "#{FLIPBOOK_URL}/css/#{file}#{mime}"
     elsif mime == ".js"
-      uri = URI.parse("#{FLIPBOOK_URL}/js/#{file}#{mime}")
+      uri = "#{FLIPBOOK_URL}/js/#{file}#{mime}"
     elsif mime == ".png"
-      uri = URI.parse("#{FLIPBOOK_URL}/images/#{file}#{mime}")
+      uri = "#{FLIPBOOK_URL}/images/#{file}#{mime}"
     end
-    return Asset.http(uri)
+    return RestClient.get(uri).body
   end
   
-  
-  
-  #  return get(flipbook_url)
-  #  iframe = "<iframe src='#{flipbook_url}' width='99%' height='450px'/>"
-  #  flipbook_link = "<a href='#{flipbook_url}' style='cursor:pointer;' onclick=\"window.open('#{flipbook_url}','status=0','toolbar=0','location=0','menubar=0','directories=0','navigation=0');return false;\">Open viewer in new window</a>"
-  #  return "#{iframe}#{flipbook_link}" 
-  # end
-  
-private
-
-
-  def self.http(uri, limit = 10)
-    begin
-      raise ArgumentError, 'HTTP redirect too deep' if limit == 0
-      request = Net::HTTP::Get.new(uri.request_uri) 
-      response = Net::HTTP.start(uri.host, uri.port) { |http| http.request(request) }
-      case response
-      when Net::HTTPSuccess then response.body
-      when Net::HTTPRedirection then Asset.http(URI.parse(response['location']), limit - 1)
-      else
-        raise response.error!
-      end
-    rescue Exception => e
-      raise "Couldn't connect to #{uri.request_uri}"
-    end
-  end #rescue 
-
 
 
 end
