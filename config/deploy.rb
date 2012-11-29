@@ -20,6 +20,7 @@ set :shared_children, %w(
   config/fedora.yml
   config/environments
   public/.htaccess
+  zotero_ingests
 )
 
 set :user, "lyberadmin"
