@@ -65,9 +65,12 @@ private
 
   # this method generates an array of hashes from JSON using the PHP script and ensures key values are present
     def generate_zotero_hashes
+      json = nil
+
       Dir.chdir(Rails.root) do
         json = JSON(`/usr/bin/env php lib/stanford/zotero_to_json.php #{@zotero_xml}`)
       end
+      
       json.is_a?(Array) ? zotero_hashes = json : zotero_hashes = [json]
       return zotero_hashes
     end
