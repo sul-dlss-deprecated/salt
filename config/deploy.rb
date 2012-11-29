@@ -55,7 +55,7 @@ after "deploy", "salt:watcher"
 
 namespace :salt do
   task :watcher do
-    run "cd #{deploy_to}/script/background; RAILS_ENV=#{rails_env} bundle exec ruby zotero_directory_watcher.rb stop; RAILS_ENV=#{rails_env} bundle exec ruby zotero_directory_watcher.rb start"
+    run "cd #{release_path}/script/background; RAILS_ENV=#{rails_env} bundle exec ruby zotero_directory_watcher.rb stop; RAILS_ENV=#{rails_env} bundle exec ruby zotero_directory_watcher.rb start"
   end
 end
 
