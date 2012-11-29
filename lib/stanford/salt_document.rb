@@ -237,7 +237,7 @@ module Stanford
        # Check to make sure zotero.xml file has been written
        raise "Couldn't write #{tmp_file}" unless File.exist?(tmp_file) and File.file?(tmp_file)
        
-       php_output = `/usr/bin/env php lib/stanford/zotero_to_json.php /tmp/zotero.xml`
+       php_output = `/usr/bin/env php #{File.join(Rails.root, 'lib/stanford/zotero_to_json.php' )} /tmp/zotero.xml`
        # puts php_output.inspect
        
        json = JSON(php_output)
