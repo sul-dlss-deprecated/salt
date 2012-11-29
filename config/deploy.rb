@@ -51,6 +51,14 @@ end
 
 after "deploy", "deploy:migrate"
 
+after "deploy", "salt:watcher"
+
+namespace :salt do
+  task :watcher do
+    run "cd #{deploy_to}/script/background; RAILS_ENV=#{rails_env} bundle exec ruby zotero_directory_watcher.rb stop; RAILS_ENV=#{rails_env} bundle exec ruby zotero_directory_watcher.rb start"
+  end
+end
+
 namespace :deploy do
   namespace :assets do
     task :symlink do ; end
