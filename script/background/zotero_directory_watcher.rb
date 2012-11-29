@@ -17,7 +17,7 @@ end
 
 require 'simple-daemon'
 class ZoteroDirectoryWatcher < SimpleDaemon::Base
-  SimpleDaemon::WORKING_DIRECTORY = Rails.root.join
+  SimpleDaemon::WORKING_DIRECTORY = File.join(Rails.root, 'log')
 
   def self.start
     STDOUT.sync = true
