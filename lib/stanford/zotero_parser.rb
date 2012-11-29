@@ -87,10 +87,14 @@ EOF
         druid = xml.search("//rdf:RDF/*[@rdf:about]").first["about"].gsub("https://saltworks.stanford.edu/documents/","").gsub("/downloads?download_id=document.pdf","")
         unless druid.nil?
              log_message("Updating #{druid} at #{@repository.base}")
-             response = @repository.update_datastream(druid, "zotero", xml.to_xml)
+
+             begin
+               response = @repository.update_datastream(druid, "zotero", xml.to_xml)
              
-             response == Net::HTTPSuccess ?  @processed_druids << druid : log_message("#{druid} -- #{response}")
-               
+               @processed_druids << druid
+             rescue FedoraInvalidRequest => e
+               log_message("#{druid} -- #{e.inspect}")
+            end
         end
       end
     end
