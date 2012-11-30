@@ -83,7 +83,7 @@ EOF
     # takes XML nokogiri object and updates it to fedora
     def update_fedora(xml)
       unless xml.nil?        
-        druid = xml.search("//rdf:RDF/*[@rdf:about]").first["about"].gsub("https://saltworks.stanford.edu/documents/","").gsub("/downloads?download_id=document.pdf","")
+        druid = xml.search("//rdf:RDF/*[@rdf:about]").first["about"].gsub("https://saltworks.stanford.edu/documents/","").gsub("/downloads?download_id=document.pdf","").gsub("https://saltworks.stanford.edu/assets/","").gsub(".pdf","")
         unless druid.nil?
              log_message("Updating #{druid} at #{@repository.base}")
 
