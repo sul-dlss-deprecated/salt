@@ -91,7 +91,7 @@ EOF
                response = @repository.update_datastream(druid, "zotero", xml.to_xml)
              
                @processed_druids << druid
-             rescue FedoraInvalidRequest => e
+             rescue Rubydora::FedoraInvalidRequest => e
                log_message("#{druid} -- #{e.inspect}")
             end
         end
