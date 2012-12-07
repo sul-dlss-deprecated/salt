@@ -37,8 +37,11 @@ module Stanford
      xml = Nokogiri::XML(open(@xmlfile))
      nodes =  xml.search("//rdf:RDF/*")
      nodes.reject { |node| node.name == "Memo" }.each do |node|
-        doc =  process_node(node)
-        update_fedora(doc)
+        doc = process_node(node)
+        next if doc.nil?
+        druid = figure_out_the_druid_for_the_doc(doc)
+        next if druid.nil?
+        update_fedora(doc, druid)
      end
      update_record(:ingest_end, Time.now)
      return true
@@ -71,18 +74,32 @@ EOF
 
         return rdf
    end
+    
+    def figure_out_the_druid_for_the_doc doc
+      about = doc.xpath("//rdf:RDF/*[@rdf:about]/@rdf:about").first.text
+      # if rdf:about has something that looks like a druid, take it!
+      if about =~ /([a-z]{2}\d{3}[a-z]{2}\d{4})/
+        return "druid:#{$1}" # first match
+      end
+
+      # look in the identifiers
+      doc.xpath('//dc:identifier/dcterms:URI/rdf:value').each do |v|
+        if v.text =~ /([a-z]{2}\d{3}[a-z]{2}\d{4})/
+          return "druid:#{$1}"
+        end
+      end
       
+      # look in dc:description???
+      doc.xpath('//dc:description').each do |v|
+        if v.text =~ /([a-z]{2}\d{3}[a-z]{2}\d{4})/
+          return "druid:#{$1}"
+        end
+      end
+
+    end  
     
     # takes XML nokogiri object and updates it to fedora
-    def update_fedora(xml)
-      unless xml.nil?        
-        about = xml.search("//rdf:RDF/*[@rdf:about]").first["about"]
-
-        druid = nil
-
-        druid ||= about.gsub("https://saltworks.stanford.edu/documents/","").gsub("/downloads?download_id=document.pdf","") if about =~ /documents/
-        druid ||= "druid:#{about.gsub("https://saltworks.stanford.edu/assets/","").gsub(".pdf","")}"
-        unless druid.nil?
+    def update_fedora(xml, druid)
              log_message("Updating #{druid} at #{@repository.base}")
 
              begin
@@ -92,8 +109,6 @@ EOF
              rescue Rubydora::FedoraInvalidRequest => e
                log_message("#{druid} -- #{e.inspect}")
             end
-        end
-      end
     end
      
       private
