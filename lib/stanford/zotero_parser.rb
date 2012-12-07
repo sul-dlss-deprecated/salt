@@ -36,11 +36,10 @@ module Stanford
      update_record(:ingest_start, Time.now)
      xml = Nokogiri::XML(open(@xmlfile))
      nodes =  xml.search("//rdf:RDF/*")
-     previous = nil
-     nodes.each do |node|
-        previous =  process_node(node, previous)
+     nodes.reject { |node| node.name == "Memo" }.each do |node|
+        doc =  process_node(node)
+        update_fedora(doc)
      end
-     update_fedora(previous)  #make sure the last node in the XML document was updated
      update_record(:ingest_end, Time.now)
      return true
    end
@@ -49,16 +48,8 @@ module Stanford
    # accecpts a nokogiri node and a nokogiri document. If the node name is a memo, that will be added to the xml document.
    # otherwise, the xml document will be added to fedora and the node will be inserted into its own xml document and returned.
    
-   def process_node(node, previous)
-     if node.name == "Memo"
-        previous.root << node
-        return previous
-     else
-        
-        unless previous.nil?
-          update_fedora(previous) #update Fedora with the pervious node and move on
-        end
-        
+   def process_node(node)
+
         string = <<EOF
          <rdf:RDF
            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -75,8 +66,10 @@ module Stanford
 EOF
 
         rdf = Nokogiri::XML(string)
+
+        rdf.root << node.xpath('//bib:Memo[@rdf:about="%s"]' % [node.xpath('dcterms:isReferencedBy/@rdf:resource').text])
+
         return rdf
-     end
    end
       
     
