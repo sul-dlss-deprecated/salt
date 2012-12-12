@@ -65,7 +65,7 @@ rescue => e
   log_message("Zotero Import Error -- File: #{File.join(@inprocess_directory, filename)}")
   log_message("Errors: #{e.inspect} #{e.backtrace.join('\n')}")
   
-   outdir = File.join(@error_directory, timestamp)
+   outdir = File.join(@error_directory, render_now)
    FileUtils.mkpath(outdir)
    FileUtils.mv(@processing_file, outdir )
    File.open(File.join(outdir, "error.txt"), "w") { |f| f << "#{e.inspect} #{e.backtrace.join('\n')}" }
