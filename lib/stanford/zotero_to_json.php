@@ -1,5 +1,5 @@
 <?php
-//zotero_to_json.php: ver. 06
+//zotero_to_json.php: ver. 07
 //for more info, see scott.vanduyne@gmail.com (savd@stanford.edu)
 
 //error_reporting(E_ALL);
@@ -84,6 +84,7 @@ foreach ($xml as $record) {
 
   //AUTHORS
   $crecord['originator'] = '';
+  unset($authors_stem);
   if (isset($record->{"bib{$r}authors"})) {
     $authors_stem = $record->{"bib{$r}authors"}->{"rdf{$r}Seq"};
   }
