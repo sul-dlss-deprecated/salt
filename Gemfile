@@ -1,12 +1,13 @@
 source 'http://rubygems.org'
 
 gem 'rake', '0.8.7'
-gem 'rails', '3.0.6'
+gem 'rails', '3.0.19'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'blacklight'
+gem 'blacklight-sitemap'
 gem 'devise'
 gem 'directory_watcher'
 gem 'eventmachine'
