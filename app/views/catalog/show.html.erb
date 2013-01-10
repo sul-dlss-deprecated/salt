@@ -33,7 +33,7 @@
     <div class="document">
 				<div class="document_viewer" id="<%= remove_druid_prefix(@document[:id]) %>">
 					<div id="embedded_viewer"><div id="flipbook_loading"><%= image_tag("ajax-loader.gif")  %></div></div>
-					<span id="downloads"></span>
+					<span id="downloads"><%= link_to 'Download PDF', url_for(:action => 'show', :controller => 'asset', :id => @document[:id], :format => :pdf) %></span>
 				</div>
       <%= render_document_partial @document, :show %>
       
