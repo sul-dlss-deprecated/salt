@@ -7,5 +7,6 @@ group :deployment do
   gem 'rvm-capistrano'
   gem 'lyberteam-devel', '>=1.0.0'
   gem 'lyberteam-gems-devel', '>=1.0.0'
-  gem 'net-ssh-kerberos'
+  gem 'net-ssh-krb'
+  gem 'gssapi', :github => 'cbeer/gssapi'
 end
