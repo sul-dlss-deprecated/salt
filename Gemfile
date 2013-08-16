@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake', '0.8.7'
-gem 'rails', '3.0.19'
+gem 'rails', '3.0.20'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -46,7 +46,7 @@ end
 
 
 group :development, :test do
-  gem 'rcov'
+  gem 'rcov', :platform => :ruby_18
   gem 'sqlite3-ruby', '1.2.5'
  # gem 'ruby-debug'
  # gem 'ruby-debug-base'
