@@ -160,24 +160,6 @@ Blacklight.configure(:shared) do |config|
   # or can be specified manually to be different. 
   config[:search_fields] ||= []
 
-  # This one uses all the defaults set by the solr request handler. Which
-  # solr request handler? The one set in config[:default_solr_parameters][:qt],
-  # since we aren't specifying it otherwise. 
-  config[:search_fields] << {
-    :key => "all_fields",  
-    :display_label => 'All Fields'   
-  }
-
-  
-  config[:search_fields] << {
-    :key => "fulltext",
-    :display_label => "Descriptions and Fulltext",
-    :solr_parameters => {
-      :qt => "fulltext"
-    }
-  }
-  
-  
   #config[:search_fields] << {
   #  :key =>'author',     
   #  :solr_parameters => {
