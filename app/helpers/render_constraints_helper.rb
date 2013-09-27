@@ -8,12 +8,7 @@ module RenderConstraintsHelper
   def render_constraints_query(localized_params = params)
     # So simple don't need a view template, we can just do it here.
     if (!localized_params[:q].blank?)
-      label = 
-        if (localized_params[:search_field] == Blacklight.default_search_field[:key] or localized_params[:search_field].blank? )
-          nil
-        else
-          Blacklight.label_for_search_field(localized_params[:search_field])
-        end
+      label = nil
       
       content = "<span class='search_terms'><span class='search_label'>Your Search: </span>"
       
