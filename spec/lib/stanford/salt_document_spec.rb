@@ -11,7 +11,7 @@ describe Stanford::SaltDocument do
      
     it "should raise an error if it have a pid" do
       lambda { Stanford::SaltDocument.new("") }.should raise_error(ArgumentError, "Must have a PID for the salt document")
-      lambda { Stanford::SaltDocument.new() }.should raise_error(ArgumentError, "wrong number of arguments (0 for 1..2)")
+      lambda { Stanford::SaltDocument.new() }.should raise_error(ArgumentError, /wrong number of arguments/)
       lambda { Stanford::SaltDocument.new([]) }.should raise_error(ArgumentError, "Must have a PID for the salt document")
     end 
      
