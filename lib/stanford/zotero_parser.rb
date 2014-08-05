@@ -35,7 +35,7 @@ module Stanford
    def process_document
      update_record(:ingest_start, Time.now)
      xml = Nokogiri::XML(open(@xmlfile))
-     nodes =  xml.search("//rdf:RDF/*")
+     nodes =  xml.search("//rdf:RDF/*", "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
      nodes.reject { |node| node.name == "Memo" }.each do |node|
         doc = process_node(node)
         next if doc.nil?
@@ -76,21 +76,21 @@ EOF
    end
     
     def figure_out_the_druid_for_the_doc doc
-      about = doc.xpath("//rdf:RDF/*[@rdf:about]/@rdf:about").first.text
+      about = doc.xpath("//rdf:RDF/*[@rdf:about]/@rdf:about", "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#").first
       # if rdf:about has something that looks like a druid, take it!
       if about =~ /([a-z]{2}\d{3}[a-z]{2}\d{4})/
         return "druid:#{$1}" # first match
       end
 
       # look in the identifiers
-      doc.xpath('//dc:identifier/dcterms:URI/rdf:value').each do |v|
+      doc.xpath('//dc:identifier/dcterms:URI/rdf:value', "dc" => "http://purl.org/dc/elements/1.1/", "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#", "dcterms" =>"http://purl.org/dc/terms/").each do |v|
         if v.text =~ /([a-z]{2}\d{3}[a-z]{2}\d{4})/
           return "druid:#{$1}"
         end
       end
       
       # look in dc:description???
-      doc.xpath('//dc:description').each do |v|
+      doc.xpath('//dc:description', "dc" => "http://purl.org/dc/elements/1.1/").each do |v|
         if v.text =~ /([a-z]{2}\d{3}[a-z]{2}\d{4})/
           return "druid:#{$1}"
         end
