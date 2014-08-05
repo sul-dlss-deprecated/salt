@@ -18,7 +18,7 @@ describe RenderConstraintsHelper do
     
     it "should return the proper html if params are given with a search field" do
       localized_params = {:q => "This is my query", :search_field => "fulltext" }
-      helper.render_constraints_query(localized_params).should ==  "<span class='search_terms'><span class='search_label'>Your Search: </span>\n<span class=\"appliedFilter constraint query\">\n        <span class=\"filterName\">Descriptions and Fulltext</span> \n        <span class=\"filterValue\">This</span>\n        <a href=\"/catalog?q=is+my+query&amp;search_field=fulltext\" alt=\"remove\" class=\"btnRemove imgReplace\">Remove constraint This: This</a>\n</span>\n\n<span class=\"appliedFilter constraint query\">\n        <span class=\"filterName\">Descriptions and Fulltext</span> \n        <span class=\"filterValue\">is</span>\n        <a href=\"/catalog?q=This+my+query&amp;search_field=fulltext\" alt=\"remove\" class=\"btnRemove imgReplace\">Remove constraint is: is</a>\n</span>\n\n<span class=\"appliedFilter constraint query\">\n        <span class=\"filterName\">Descriptions and Fulltext</span> \n        <span class=\"filterValue\">my</span>\n        <a href=\"/catalog?q=This+is+query&amp;search_field=fulltext\" alt=\"remove\" class=\"btnRemove imgReplace\">Remove constraint my: my</a>\n</span>\n\n<span class=\"appliedFilter constraint query\">\n        <span class=\"filterName\">Descriptions and Fulltext</span> \n        <span class=\"filterValue\">query</span>\n        <a href=\"/catalog?q=This+is+my&amp;search_field=fulltext\" alt=\"remove\" class=\"btnRemove imgReplace\">Remove constraint query: query</a>\n</span>\n"
+      helper.render_constraints_query(localized_params).should == "<span class='search_terms'><span class='search_label'>Your Search: </span>\n<span class=\"appliedFilter constraint query\">\n        <span class=\"filterValue\">This</span>\n        <a href=\"/catalog?q=is+my+query&amp;search_field=fulltext\" alt=\"remove\" class=\"btnRemove imgReplace\">Remove constraint This</a>\n</span>\n\n<span class=\"appliedFilter constraint query\">\n        <span class=\"filterValue\">is</span>\n        <a href=\"/catalog?q=This+my+query&amp;search_field=fulltext\" alt=\"remove\" class=\"btnRemove imgReplace\">Remove constraint is</a>\n</span>\n\n<span class=\"appliedFilter constraint query\">\n        <span class=\"filterValue\">my</span>\n        <a href=\"/catalog?q=This+is+query&amp;search_field=fulltext\" alt=\"remove\" class=\"btnRemove imgReplace\">Remove constraint my</a>\n</span>\n\n<span class=\"appliedFilter constraint query\">\n        <span class=\"filterValue\">query</span>\n        <a href=\"/catalog?q=This+is+my&amp;search_field=fulltext\" alt=\"remove\" class=\"btnRemove imgReplace\">Remove constraint query</a>\n</span>\n"
     end
     
   end
@@ -42,7 +42,7 @@ describe RenderConstraintsHelper do
   describe "#get_search_breadcrumb_terms" do 
     
     it "should return return the search terms if quotes are present  are present" do
-      helper.get_search_breadcrumb_terms('he said "Boo Yah, Brah"').should ==  ["\"Boo Yah, Brah\"", "he", "said"]
+      helper.get_search_breadcrumb_terms('he said "Boo Yah, Brah"').should eq  ["he", "said", "\"Boo Yah, Brah\""]
     end
     
     it "should return a split if not quotes are in the param[:f]" do

@@ -16,8 +16,8 @@ describe RegistrationsController do
     @request.env["devise.mapping"] = Devise.mappings[:user]
     
     mailer = mock("UserMailer")
-    mailer.expects(:deliver).once
-    UserMailer.expects(:notification_email).once.returns(mailer)
+    mailer.should_receive(:deliver).once
+    UserMailer.should_receive(:notification_email).once.and_return(mailer)
     
     post :create
   end

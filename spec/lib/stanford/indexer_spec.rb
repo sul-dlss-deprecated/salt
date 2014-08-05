@@ -10,8 +10,8 @@ describe Stanford::Indexer do
         @mock_zotero_index = mock("ZoteroIndex")
         
         @mock_indexer_repo = mock("Stanford::Repository")
-        @mock_indexer_repo.stubs(:initialize_queue).returns(["foo:bar", "bar:foo"])
-        Stanford::Repository.expects(:new).returns(@mock_indexer_repo)
+        @mock_indexer_repo.stub(:initialize_queue => ["foo:bar", "bar:foo"])
+        Stanford::Repository.should_receive(:new).and_return(@mock_indexer_repo)
         @indexer = Stanford::Indexer.new(["foo:bar", "bar:foo" ], @mock_zotero_index)
         
         @indexer.queue.should == ["foo:bar", "bar:foo"]
@@ -27,8 +27,8 @@ describe Stanford::Indexer do
     
     before(:each) do 
       @mock_indexer_repo = mock("Stanford::Repository")
-      @mock_indexer_repo.stubs(:initialize_queue).returns(["foo:bar", "bar:foo"])
-      Stanford::Repository.expects(:new).returns(@mock_indexer_repo)
+      @mock_indexer_repo.stub(:initialize_queue => ["foo:bar", "bar:foo"])
+      Stanford::Repository.should_receive(:new).and_return(@mock_indexer_repo)
       @indexer = Stanford::Indexer.new([],ZoteroIngest.new)
       @indexer.zotero_ingest.save
     end
@@ -44,20 +44,20 @@ describe Stanford::Indexer do
     
     it "should run and index each of the objects in the queue" do
       
-      @indexer.expects(:process_item).with("foo:bar").once
-      @indexer.expects(:process_item).with("bar:foo").once
-      @indexer.expects(:process_item).with("druid:bb047vy0535").never
+      @indexer.should_receive(:process_item).with("foo:bar").once
+      @indexer.should_receive(:process_item).with("bar:foo").once
+      @indexer.should_receive(:process_item).with("druid:bb047vy0535").never
       @indexer.process_queue
       
     end
     
     it "should update the records" do
        
-        @indexer.expects(:process_item).with("foo:bar").once
-        @indexer.expects(:process_item).with("bar:foo").once
-        @indexer.expects(:process_item).with("druid:bb047vy0535").never
+        @indexer.should_receive(:process_item).with("foo:bar").once
+        @indexer.should_receive(:process_item).with("bar:foo").once
+        @indexer.should_receive(:process_item).with("druid:bb047vy0535").never
         
-        Time.expects(:now).returns("NOW!").times(8)
+        Time.stub(:now => "NOW!")
             
         @indexer.process_queue
     end
@@ -66,17 +66,17 @@ describe Stanford::Indexer do
       
        mock_salt_doc = mock("Stanford::SaltDocument")
        mock_solr_doc = mock("SolrDocument")
-       mock_salt_doc.stubs(:solr_document).returns(mock_solr_doc)
+       mock_salt_doc.stub(:solr_document => mock_solr_doc)
      
-       mock_salt_doc.stubs(:to_solr).returns([])
+       mock_salt_doc.stub(:to_solr => [])
        
        
        mock_connection = mock("SolrConnection")
-       mock_connection.stubs(:add).returns(true)
-       mock_connection.stubs(:update).returns(true)
+       mock_connection.stub(:add => true)
+       mock_connection.stub(:update => true)
        @indexer.solr = mock_connection
        
-       Stanford::SaltDocument.expects(:new).with("foo:bar", {:repository => @mock_indexer_repo}).returns(mock_salt_doc)
+       Stanford::SaltDocument.should_receive(:new).with("foo:bar", {:repository => @mock_indexer_repo}).and_return(mock_salt_doc)
                
        @indexer.process_item("foo:bar")
         
@@ -85,18 +85,18 @@ describe Stanford::Indexer do
     it "should rescue if there's an SocketError " do
        mock_salt_doc = mock("Stanford::SaltDocument")
        mock_solr_doc = mock("SolrDocument")
-       mock_salt_doc.stubs(:solr_document).returns(mock_solr_doc)
+       mock_salt_doc.stub(:solr_document => mock_solr_doc)
      
-       mock_salt_doc.stubs(:to_solr).returns([])
+       mock_salt_doc.stub(:to_solr => [])
       
       
        mock_connection = mock("SolrConnection")
-       mock_connection.stubs(:add).raises(Errno::EHOSTUNREACH)
+       mock_connection.stub(:add).and_raise(Errno::EHOSTUNREACH)
        @indexer.solr = mock_connection
-       @indexer.expects(:log_message).once.with("Indexing item foo:bar")
-       @indexer.expects(:log_message).once.with("SocketError")
+       @indexer.should_receive(:log_message).once.with("Indexing item foo:bar")
+       @indexer.should_receive(:log_message).once.with("SocketError")
         
-      Stanford::SaltDocument.expects(:new).with("foo:bar", {:repository => @mock_indexer_repo}).returns(mock_salt_doc)
+      Stanford::SaltDocument.should_receive(:new).with("foo:bar", {:repository => @mock_indexer_repo}).and_return(mock_salt_doc)
       
       @indexer.process_item("foo:bar") 
       
@@ -105,20 +105,20 @@ describe Stanford::Indexer do
      it "should rescue if there's an another kind of error " do
          mock_salt_doc = mock("Stanford::SaltDocument")
          mock_solr_doc = mock("SolrDocument")
-         mock_salt_doc.stubs(:solr_document).returns(mock_solr_doc)
+         mock_salt_doc.stub(:solr_document => mock_solr_doc)
 
-         mock_salt_doc.stubs(:to_solr).returns([])
+         mock_salt_doc.stub(:to_solr => [])
 
 
          mock_connection = mock("SolrConnection")
-         mock_connection.stubs(:add).raises(Net::HTTPServerException, "There's a problems")
+         mock_connection.stub(:add).and_raise(Net::HTTPServerException.new "There's a problems", nil)
          @indexer.solr = mock_connection
          
-         @indexer.expects(:log_message).once.with('Indexing item foo:bar')
-         @indexer.expects(:log_message).once.with('wrong number of arguments (1 for 2)')
+         @indexer.should_receive(:log_message).once.with('Indexing item foo:bar')
+         @indexer.should_receive(:log_message).once.with('There\'s a problems')
         
 
-        Stanford::SaltDocument.expects(:new).with("foo:bar", {:repository => @mock_indexer_repo}).returns(mock_salt_doc)
+        Stanford::SaltDocument.should_receive(:new).with("foo:bar", {:repository => @mock_indexer_repo}).and_return(mock_salt_doc)
 
         @indexer.process_item("foo:bar") 
         

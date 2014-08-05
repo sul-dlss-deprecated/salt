@@ -33,7 +33,7 @@ describe UsersController do
     end
     
     it "should show users awaiting approval" do
-      User.expects(:find_all_by_approved).with(false)
+      User.should_receive(:find_all_by_approved).with(false)
       get :index, {:approved => "false"}
       response.should_not redirect_to('/')
       response.should be_success
@@ -45,7 +45,7 @@ describe UsersController do
    describe "#edit admin" do
     login_admin
     it "should get the user by id for updating" do
-      User.expects(:find_by_id).with(1)
+      User.should_receive(:find_by_id).with("1")
       get :edit, :id=>1 
       response.should_not redirect_to('/')
       response.should be_success
@@ -84,7 +84,7 @@ describe UsersController do
      login_admin
      it "should update the user when given the proper infomation" do
         user = Factory.create(:not_approved)
-        User.expects(:find).with(666).returns(user)
+        User.should_receive(:find).with("666").and_return(user)
         get :update, :id => 666, :approved => true, :email => "foobar@foofoo.com"
         response.should redirect_to("/")
         flash[:notice].should == "Successfully updated User."
@@ -92,8 +92,8 @@ describe UsersController do
      
      it "should not update the user when given crap" do
        user = Factory.create(:not_approved)
-       User.expects(:find).with(666).returns(user)
-       user.expects(:update_attributes).returns(false)
+       User.should_receive(:find).with("666").and_return(user)
+       user.should_receive(:update_attributes).and_return(false)
        get :update, :id => 666, :approved => true, :email => "this is not an email."
        response.should_not redirect_to("/")
        response.should render_template("users/edit")
@@ -116,14 +116,14 @@ describe UsersController do
      it "should log in a user if they've webauthed and have an account made" do
        user = Factory.create(:admin)
        request.env["WEBAUTH_USER"] = "mrbossman"
-       User.expects(:find_by_username).with("mrbossman").returns(user)
+       User.should_receive(:find_by_username).with("mrbossman").and_return(user)
        get :show, :id => 1
        response.should be_success 
      end
      
      it "should not allow the user to do anything if there is no user in the database" do
        request.env["WEBAUTH_USER"] = "mrbossman"
-       User.expects(:find_by_username).with("mrbossman").returns(nil)
+       User.should_receive(:find_by_username).with("mrbossman").and_return(nil)
        get :show, :id => 1
        response.should_not be_success 
        response.should redirect_to('/users/sign_up')

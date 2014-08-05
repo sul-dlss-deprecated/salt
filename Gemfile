@@ -1,6 +1,6 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rake', '0.8.7'
+gem 'rake'
 gem 'rails', '3.2.19'
 
 # Bundle edge Rails instead:
@@ -45,23 +45,21 @@ group :production do
    gem "mysql2", '~> 0.2.13'
 end
 
-
 group :development, :test do
-  gem 'rcov', :platform => :ruby_18
   gem 'sqlite3'
- # gem 'ruby-debug'
- # gem 'ruby-debug-base'
-  gem 'rspec', '=2.6.0'
+  gem 'jettywrapper', "~> 1.3"
+end
+
+group :development do
+  
+end
+
+group :test do
+  gem 'rspec', '~> 2.14.0'
   gem 'rspec-rails'
   gem 'email_spec'
-  gem 'mocha'
-  gem 'cucumber', '>=0.8.5'
-  gem 'cucumber-rails', '>0.4.0'
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'gherkin'
   gem 'factory_girl'
-	gem 'fakeweb'
-	gem 'jettywrapper', "~> 1.3"
 	gem 'equivalent-xml'
 end

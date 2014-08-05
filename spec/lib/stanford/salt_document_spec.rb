@@ -6,12 +6,12 @@ describe Stanford::SaltDocument do
      
      before(:each) do 
        @mock_salt_doc_repo = mock("Stanford::Repository")
-       @mock_salt_doc_repo.stubs(:get_datastream).returns("<xml/>")
+       @mock_salt_doc_repo.stub(:get_datastream => "<xml/>")
      end
      
     it "should raise an error if it have a pid" do
       lambda { Stanford::SaltDocument.new("") }.should raise_error(ArgumentError, "Must have a PID for the salt document")
-      lambda { Stanford::SaltDocument.new() }.should raise_error(ArgumentError, "wrong number of arguments (0 for 1)")
+      lambda { Stanford::SaltDocument.new() }.should raise_error(ArgumentError, "wrong number of arguments (0 for 1..2)")
       lambda { Stanford::SaltDocument.new([]) }.should raise_error(ArgumentError, "Must have a PID for the salt document")
     end 
      
@@ -22,7 +22,7 @@ describe Stanford::SaltDocument do
      
    
      it "should have the instance variables properyl set up by default" do
-       Stanford::Repository.expects(:new).returns(@mock_salt_doc_repo)
+       Stanford::Repository.should_receive(:new).and_return(@mock_salt_doc_repo)
        @salt_doc = Stanford::SaltDocument.new("druid:123")
        @salt_doc.datastreams.should == {"extracted_entities" => "<xml/>", "zotero" => "<xml/>"}
        @salt_doc.solr_document.should == {"id" => ["druid:123"]}
@@ -33,7 +33,7 @@ describe Stanford::SaltDocument do
      it "should be allow for defaults to be overridden" do
          
        @mock_salt_doc_repo2 = mock("Stanford::Repository2")
-       @mock_salt_doc_repo2.stubs(:get_datastream).returns("<xml/>")
+       @mock_salt_doc_repo2.stub(:get_datastream => "<xml/>")
                
        @salt_doc = Stanford::SaltDocument.new("druid:456", {:repository=> @mock_salt_doc_repo2, :datastreams => ["foo", "bar"] })
        
@@ -54,8 +54,8 @@ describe Stanford::SaltDocument do
        File.open("/tmp/zotero.xml", "w") { |f| f << '<rdf:RDF xmlns:bib="http://purl.org/net/biblio#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:link="http://purl.org/rss/1.0/modules/link/" xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:vcard="http://nwalsh.com/rdf/vCard#" xmlns:z="http://www.zotero.org/namespaces/export#"/>' }
        @mock_salt_doc_repo = mock("Stanford::Repository")
        # adding all the namespaces that it expects with the Zotero XML 
-       @mock_salt_doc_repo.stubs(:get_datastream).returns('<rdf:RDF xmlns:bib="http://purl.org/net/biblio#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:link="http://purl.org/rss/1.0/modules/link/" xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:vcard="http://nwalsh.com/rdf/vCard#" xmlns:z="http://www.zotero.org/namespaces/export#"/>')
-       Stanford::Repository.expects(:new).returns(@mock_salt_doc_repo)
+       @mock_salt_doc_repo.stub(:get_datastream => '<rdf:RDF xmlns:bib="http://purl.org/net/biblio#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:link="http://purl.org/rss/1.0/modules/link/" xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:vcard="http://nwalsh.com/rdf/vCard#" xmlns:z="http://www.zotero.org/namespaces/export#"/>')
+       Stanford::Repository.should_receive(:new).and_return(@mock_salt_doc_repo)
     end
     
     
@@ -64,7 +64,7 @@ describe Stanford::SaltDocument do
       salt_doc.to_solr
       solr_doc = salt_doc.solr_document
       solr_doc["id"].should ==  ["druid:123"]
-      solr_doc["access_display"].should eql(["Public"])
+      solr_doc["access_display"].should eql(["Private"])
       # solr_doc.should ==    {"access_display"=>["Public"], "identifiers_t"=>["druid:123"], "series_s"=>["Accession 2005-101"], "containingWork_t"=>[""], "abstract_s"=>[""], "box_s"=>[""], "subseries_s"=>[""], "series_t"=>["Accession 2005-101"], "documentSubType_facet"=>[""], "extent_s"=>[""], "abstract_t"=>[""], "subseries_t"=>[""], "corporateEntity_facet"=>[""], "extent_t"=>[""], "EAFHardDriveFileName_display"=>[""], "box_t"=>[""], "subseries_facet"=>[""], "title_s"=>[""], "documentSubType_s"=>[""], "box_facet"=>[""], "text"=>[], "series_display"=>["Accession 2005-101"], "title_t"=>[""], "date_s"=>[""], "documentType_facet"=>[""], "documentSubType_t"=>[""], "containingWork_display"=>[""], "extent_display"=>[""], "folder_s"=>[""], "date_t"=>[""], "containingWork_facet"=>[""], "language_s"=>[""], "EAFHardDriveFileName_s"=>[""], "box_display"=>[""], "folder_t"=>[""], "id"=>["druid:123"], "access_facet"=>["Public"], "series_facet"=>["Accession 2005-101"], "date_sort"=>[""], "documentType_display"=>[""], "documentSubType_display"=>[""], "language_t"=>[""], "EAFHardDriveFileName_t"=>[""], "folder_display"=>[""], "subseries_display"=>[""], "originator_s"=>[], "language_display"=>[""], "series_sort"=>["Accession 2005-101"], "originator_t"=>[], "title_display"=>[""], "originator_facet"=>[], "documentType_s"=>[""], "corporateEntity_t"=>[""], "language_facet"=>[""], "abstract_display"=>[""], "identifiers_s"=>["druid:123"], "date_facet"=>[""], "date_display"=>[""], "documentType_t"=>[""], "containingWork_s"=>[""], "folder_facet"=>[""]}
       # solr_doc.should == salt_doc.solr_document
     end
@@ -72,15 +72,15 @@ describe Stanford::SaltDocument do
     it "should run the _to_solr methods for all datastreams in the @datastreams" do
       salt_doc = Stanford::SaltDocument.new("druid:123")
           
-      salt_doc.expects(:extracted_entities_to_solr).once
-      salt_doc.expects(:zotero_to_solr).once
+      salt_doc.should_receive(:extracted_entities_to_solr).once
+      salt_doc.should_receive(:zotero_to_solr).once
       salt_doc.to_solr
     end
     
     it "should raise not run an default methods if the datastream does not have a matching method when using #to_solr" do
       salt_doc = Stanford::SaltDocument.new("druid:123", {:datastreams => ["foo"]})
-      salt_doc.expects(:extracted_entities_to_solr).never
-      salt_doc.expects(:zotero_to_solr).never
+      salt_doc.should_receive(:extracted_entities_to_solr).never
+      salt_doc.should_receive(:zotero_to_solr).never
       
       salt_doc.to_solr  
     end
@@ -88,10 +88,10 @@ describe Stanford::SaltDocument do
   end
   
   describe "fulltext_to_solr" do
-    before(:all) do 
+    before(:each) do 
        @mock_salt_doc_asset_repo = mock("Stanford::AssetRepository")
-       @mock_salt_doc_asset_repo.stubs(:get_json).returns({ "pages" => [ "a page" ]})
-       @mock_salt_doc_asset_repo.stubs(:get_page_xml).returns("<xml><String CONTENT='this'/><String CONTENT='is'/><String CONTENT='alto'/><word CONTENT='not.'/></xml>")
+       @mock_salt_doc_asset_repo.stub(:get_json => { "pages" => [ "a page" ]})
+       @mock_salt_doc_asset_repo.stub(:get_page_xml => "<xml><String CONTENT='this'/><String CONTENT='is'/><String CONTENT='alto'/><word CONTENT='not.'/></xml>")
     end
    
     it  "should get the full text index from the alto files" do 
@@ -106,9 +106,9 @@ describe Stanford::SaltDocument do
     
     it "should get the alto file for a page" do
        @mock_salt_doc_asset_repo = mock("Stanford::AssetRepository")
-      # @mock_salt_doc_asset_repo.stubs(:get_json).returns({ "pages" => [ "a page" ]})
+      # @mock_salt_doc_asset_repo.stub(:get_json => { "pages" => [ "a page" ]})
        xml = "<xml><String CONTENT='this'/><String CONTENT='is'/><String CONTENT='alto'/><word CONTENT='not.'/></xml>"
-       @mock_salt_doc_asset_repo.stubs(:get_page_xml).returns(xml)
+       @mock_salt_doc_asset_repo.stub(:get_page_xml => xml)
       
        @salt_doc = Stanford::SaltDocument.new("druid:456", {:asset_repo=> @mock_salt_doc_asset_repo })  
        @salt_doc.get_alto("1").should == xml
@@ -116,7 +116,7 @@ describe Stanford::SaltDocument do
     
     it "should return nil if there's an exception raised" do
        @mock_salt_doc_asset_repo = mock("Stanford::AssetRepository")
-       @mock_salt_doc_asset_repo.stubs(:get_page_xml).raises(StandardError.new("meatball problems."))
+       @mock_salt_doc_asset_repo.stub(:get_page_xml).and_raise(StandardError.new("meatball problems."))
       
        @salt_doc = Stanford::SaltDocument.new("druid:456", {:asset_repo=> @mock_salt_doc_asset_repo })  
        @salt_doc.get_alto("1").should be_nil
@@ -132,10 +132,10 @@ describe Stanford::SaltDocument do
   describe "#*_to_solr" do
     before(:each) do 
        @mock_salt_doc_repo = mock("Stanford::Repository")
-       @mock_salt_doc_repo.stubs(:get_datastream).with("druid:123", "extracted_entities").returns(IO.read(fixture("extracted_entities_ds.xml").path))
-       @mock_salt_doc_repo.stubs(:get_datastream).with("druid:123", "zotero").returns(IO.read(fixture("zotero_ds.xml").path))
+       @mock_salt_doc_repo.stub(:get_datastream).with("druid:123", "extracted_entities").and_return(IO.read(fixture("extracted_entities_ds.xml").path))
+       @mock_salt_doc_repo.stub(:get_datastream).with("druid:123", "zotero").and_return(IO.read(fixture("zotero_ds.xml").path))
        
-       Stanford::Repository.expects(:new).returns(@mock_salt_doc_repo)
+       Stanford::Repository.should_receive(:new).and_return(@mock_salt_doc_repo)
        @salt_doc = Stanford::SaltDocument.new("druid:123")
     end
     
@@ -148,8 +148,8 @@ describe Stanford::SaltDocument do
     
     it "#zotero_to_solr should update the @solr_document hash with proper values mapped from the datastream" do
       @salt_doc.zotero_to_solr
-      @salt_doc.solr_document.should ==   {"documentSubType_display"=>[""], "subseries_s"=>["HPP Papers, Various Authors (1 of 2)1970 -      1979"], "series_sort"=>["Accession 1986-052"], "series_facet"=>["Accession 1986-052"], "containingWork_facet"=>[""], "documentType_facet"=>["report"], "folder_s"=>["15"], "EAFHardDriveFileName_display"=>["SC340_1986"], "subseries_t"=>["HPP Papers, Various Authors (1 of 2)1970 -      1979"], "corporateEntity_t"=>["Stanford Heuristic Programming Project"], "year_s"=>["1977"], "documentType_display"=>["report"], "folder_t"=>["15"], "month_facet"=>["03"], "language_facet"=>[""], "year_t"=>["1977"], "donor_tags_facet"=>["InProgress", "Machine Learning"], "documentSubType_facet"=>[""], "extent_s"=>[""], "extent_t"=>[""], "subseries_facet"=>["HPP Papers, Various Authors (1 of 2)1970 -      1979"], "box_s"=>["36"], "title_display"=>["A Model for Learning Systems"], "subseries_display"=>["HPP Papers, Various Authors (1 of 2)1970 -      1979"], "EAFHardDriveFileName_s"=>["SC340_1986"], "series_display"=>["Accession 1986-052"], "folder_facet"=>["15"], "EAFHardDriveFileName_t"=>["SC340_1986"], "language_s"=>[""], "containingWork_display"=>[""], "box_t"=>["36"], "year_facet"=>["1977"], "identifiers_s"=>["druid:123", "SC340_1986"], "month_sort"=>["03"], "language_t"=>[""], "month_s"=>["03"], "title_s"=>["A Model for Learning Systems"], "month_t"=>["03"], "identifiers_t"=>["druid:123", "SC340_1986"], "title_t"=>["A Model for Learning Systems"], "year_display"=>["1977"], "abstract_s"=>[""], "date_display"=>["1977-03"], "month_display"=>["03"], "date_s"=>["1977-03"], "documentSubType_s"=>[""], "abstract_t"=>[""], "donor_tags_s"=>["InProgress", "Machine Learning"], "date_t"=>["1977-03"], "documentSubType_t"=>[""], "corporateEntity_facet"=>["Stanford Heuristic Programming Project"], "access_display"=>["Public"], "donor_tags_t"=>["InProgress", "Machine Learning"], "date_sort"=>["1977-03"], 
-        "public_b"=>["true"], "year_sort"=>["1977"], "containingWork_s"=>[""], "originator_s"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "box_display"=>["36"], "extent_display"=>[""], "box_facet"=>["36"], "series_s"=>["Accession 1986-052"], "containingWork_t"=>[""], "series_t"=>["Accession 1986-052"], "access_facet"=>["Public"], "originator_facet"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "originator_t"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "folder_display"=>["15"], "abstract_display"=>[""], "documentType_s"=>["report"], "date_facet"=>["1977-03"], "language_display"=>[""], "documentType_t"=>["report"], "id"=>["druid:123"]}
+      @salt_doc.solr_document.should include ({"documentSubType_display"=>[""], "subseries_s"=>["HPP Papers, Various Authors (1 of 2)1970 -      1979"], "series_sort"=>["Accession 1986-052"], "series_facet"=>["Accession 1986-052"], "containingWork_facet"=>[""], "documentType_facet"=>["report"], "folder_s"=>["15"], "EAFHardDriveFileName_display"=>["SC340_1986"], "subseries_t"=>["HPP Papers, Various Authors (1 of 2)1970 -      1979"], "corporateEntity_t"=>["Stanford Heuristic Programming Project"], "year_s"=>["1977"], "documentType_display"=>["report"], "folder_t"=>["15"], "month_facet"=>["03"], "language_facet"=>[""], "year_t"=>["1977"], "donor_tags_facet"=>["InProgress", "Machine Learning"], "documentSubType_facet"=>[""], "extent_s"=>[""], "extent_t"=>[""], "subseries_facet"=>["HPP Papers, Various Authors (1 of 2)1970 -      1979"], "box_s"=>["36"], "title_display"=>["A Model for Learning Systems"], "subseries_display"=>["HPP Papers, Various Authors (1 of 2)1970 -      1979"], "EAFHardDriveFileName_s"=>["SC340_1986"], "series_display"=>["Accession 1986-052"], "folder_facet"=>["15"], "EAFHardDriveFileName_t"=>["SC340_1986"], "language_s"=>[""], "containingWork_display"=>[""], "box_t"=>["36"], "year_facet"=>["1977"], "identifiers_s"=>["druid:123", "SC340_1986"], "month_sort"=>["03"], "language_t"=>[""], "month_s"=>["03"], "title_s"=>["A Model for Learning Systems"], "month_t"=>["03"], "identifiers_t"=>["druid:123", "SC340_1986"], "title_t"=>["A Model for Learning Systems"], "year_display"=>["1977"], "abstract_s"=>[""], "date_display"=>["1977-03"], "month_display"=>["03"], "date_s"=>["1977-03"], "documentSubType_s"=>[""], "abstract_t"=>[""], "donor_tags_s"=>["InProgress", "Machine Learning"], "date_t"=>["1977-03"], "documentSubType_t"=>[""], "corporateEntity_facet"=>["Stanford Heuristic Programming Project"], "access_display"=>["Public"], "donor_tags_t"=>["InProgress", "Machine Learning"], "date_sort"=>["1977-03"], 
+        "public_b"=>["true"], "year_sort"=>["1977"], "containingWork_s"=>[""], "originator_s"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "box_display"=>["36"], "extent_display"=>[""], "box_facet"=>["36"], "series_s"=>["Accession 1986-052"], "containingWork_t"=>[""], "series_t"=>["Accession 1986-052"], "access_facet"=>["Public"], "originator_facet"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "originator_t"=>["Bruce Buchanan", "Reid Smith", "Tom Mitchell", "R. Shestek"], "folder_display"=>["15"], "abstract_display"=>[""], "documentType_s"=>["report"], "date_facet"=>["1977-03"], "language_display"=>[""], "documentType_t"=>["report"], "id"=>["druid:123"]})
     end
   end
 
@@ -157,16 +157,16 @@ describe Stanford::SaltDocument do
     context "public records" do
       before(:each) do 
         @mock_salt_doc_repo1 = mock("Stanford::Repository")
-        @mock_salt_doc_repo1.stubs(:get_datastream).with("druid:public_test", "extracted_entities").returns(IO.read(fixture("extracted_entities2_ds.xml").path))
-        @mock_salt_doc_repo1.stubs(:get_datastream).with("druid:public_test", "zotero").returns(IO.read(fixture("zotero_ds.xml").path))
-        Stanford::Repository.expects(:new).returns(@mock_salt_doc_repo1)
+        @mock_salt_doc_repo1.stub(:get_datastream).with("druid:public_test", "extracted_entities").and_return(IO.read(fixture("extracted_entities2_ds.xml").path))
+        @mock_salt_doc_repo1.stub(:get_datastream).with("druid:public_test", "zotero").and_return(IO.read(fixture("zotero_ds.xml").path))
+        Stanford::Repository.should_receive(:new).and_return(@mock_salt_doc_repo1)
         @public_salt_doc = Stanford::SaltDocument.new("druid:public_test")
       end
-      it "marks records public by default" do
+      it "marks records private by default" do
         defaults = @public_salt_doc.generate_zotero_defaults
-        defaults["public_b"].should eql(['true'])
-        defaults["access_display"].should eql(["Public"])
-        defaults["access_facet"].should eql(["Public"])
+        defaults["public_b"].should eql(['false'])
+        defaults["access_display"].should eql(["Private"])
+        defaults["access_facet"].should eql(["Private"])
       end
       it "processes dc:subject=PUBLIC tags" do
         @public_salt_doc.zotero_to_solr
@@ -178,9 +178,9 @@ describe Stanford::SaltDocument do
     context "private records" do
       before(:each) do 
          @mock_salt_doc_repo2 = mock("Stanford::Repository")
-         @mock_salt_doc_repo2.stubs(:get_datastream).with("druid:private_test", "extracted_entities").returns(IO.read(fixture("extracted_entities2_ds.xml").path))
-         @mock_salt_doc_repo2.stubs(:get_datastream).with("druid:private_test", "zotero").returns(IO.read(fixture("zotero2_ds.xml").path))
-         Stanford::Repository.expects(:new).returns(@mock_salt_doc_repo2)
+         @mock_salt_doc_repo2.stub(:get_datastream).with("druid:private_test", "extracted_entities").and_return(IO.read(fixture("extracted_entities2_ds.xml").path))
+         @mock_salt_doc_repo2.stub(:get_datastream).with("druid:private_test", "zotero").and_return(IO.read(fixture("zotero2_ds.xml").path))
+         Stanford::Repository.should_receive(:new).and_return(@mock_salt_doc_repo2)
          @private_salt_doc = Stanford::SaltDocument.new("druid:private_test")
       end
       it "processes dc:subject=PRIVATE tags" do
@@ -196,10 +196,10 @@ describe Stanford::SaltDocument do
   describe "#format_coverage" do
     before(:each) do 
        @mock_salt_doc_repo = mock("Stanford::Repository")
-       @mock_salt_doc_repo.stubs(:get_datastream).with("druid:123", "extracted_entities").returns(IO.read(fixture("extracted_entities2_ds.xml").path))
-       @mock_salt_doc_repo.stubs(:get_datastream).with("druid:123", "zotero").returns(IO.read(fixture("zotero2_ds.xml").path))
+       @mock_salt_doc_repo.stub(:get_datastream).with("druid:123", "extracted_entities").and_return(IO.read(fixture("extracted_entities2_ds.xml").path))
+       @mock_salt_doc_repo.stub(:get_datastream).with("druid:123", "zotero").and_return(IO.read(fixture("zotero2_ds.xml").path))
        
-       Stanford::Repository.expects(:new).returns(@mock_salt_doc_repo)
+       Stanford::Repository.should_receive(:new).and_return(@mock_salt_doc_repo)
        @salt_doc = Stanford::SaltDocument.new("druid:123")
     end
    

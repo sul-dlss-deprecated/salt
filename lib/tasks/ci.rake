@@ -5,6 +5,10 @@ rescue LoadError
   puts "RSpec/jettywrapper not found"
 end
 require 'active_fedora'
+
+require "rspec/core/rake_task"
+RSpec::Core::RakeTask.new(:spec)
+
 namespace :salt do
 
   FIXTURE_PIDS = [
@@ -59,6 +63,7 @@ namespace :salt do
 
   desc "Continuous integration build"
   task :ci do
+    ENV['RAILS_ENV'] = 'test'
     Rails.env = 'test'
     jetty_params = Jettywrapper.load_config.merge(JETTY_PARAMS)
     Rake::Task["db:migrate"].invoke
@@ -67,7 +72,7 @@ namespace :salt do
       Rake::Task["salt:delete_fixtures"].invoke
       Rake::Task["salt:load_fixtures"].invoke
       Rake::Task["salt:index"].invoke
-      Rake::Task["spec:rcov"].invoke
+      Rake::Task["spec"].invoke
     end
     Rake::Task["doc"].invoke
   end
