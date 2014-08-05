@@ -1,0 +1,18 @@
+fedora:
+  uri: "http://127.0.0.1:8983/fedora-test"
+  user: "fedoraAdmin"
+  password: "fedoraAdmin"
+    
+asset_server:
+  uri: "https://salt-data-prod.stanford.edu/assets/"
+
+flipbook:
+  url: https://salt-data-prod.stanford.edu/flipbook_salt/
+  ip: 172.20.206.161
+    
+djatoka:
+  ip: 172.20.206.161
+    
+directory_watcher:
+  remote: ""
+  local: "<%= Dir.mktmpdir %>"
