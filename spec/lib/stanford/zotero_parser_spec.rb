@@ -54,13 +54,16 @@ describe Stanford::ZoteroParser do
         >
           <bib:Manuscript>
             <dcterms:isReferencedBy rdf:resource="#xyz" />
+            <dcterms:isReferencedBy rdf:resource="#ijk" />
           </bib:Manuscript>  
           <bib:Memo rdf:about="#xyz">
             
           </bib:Memo>
-          <bib:Memo rdf:about="#xyz">
+          <bib:Memo rdf:about="#ijk">
             
           </bib:Memo>
+
+          <!-- unreferenced memo -->
           <bib:Memo rdf:about="#abc">
             
           </bib:Memo>

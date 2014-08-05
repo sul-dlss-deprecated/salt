@@ -68,7 +68,9 @@ EOF
 
         rdf = Nokogiri::XML(string)
 
-        rdf.root << node.xpath('//bib:Memo[@rdf:about="%s"]' % [node.xpath('dcterms:isReferencedBy/@rdf:resource', "dcterms" =>"http://purl.org/dc/terms/", "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#").text], "bib" => "http://purl.org/net/biblio#", "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+        node.xpath('dcterms:isReferencedBy/@rdf:resource', "dcterms" =>"http://purl.org/dc/terms/", "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#").each do |ref|
+          rdf.root << node.xpath('//bib:Memo[@rdf:about="%s"]' % [ref.text], "bib" => "http://purl.org/net/biblio#", "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+        end
 
         return rdf
    end
@@ -98,15 +100,15 @@ EOF
     
     # takes XML nokogiri object and updates it to fedora
     def update_fedora(xml, druid)
-             log_message("Updating #{druid} at #{@repository.base}")
+      log_message("Updating #{druid} at #{@repository.base}")
 
-             begin
-               response = @repository.update_datastream(druid, "zotero", xml.to_xml)
-             
-               @processed_druids << druid
-             rescue Rubydora::FedoraInvalidRequest => e
-               log_message("#{druid} -- #{e.inspect}")
-            end
+      begin
+        response = @repository.update_datastream(druid, "zotero", xml.to_xml)
+       
+        @processed_druids << druid
+      rescue Rubydora::FedoraInvalidRequest => e
+        log_message("#{druid} -- #{e.inspect}")
+      end
     end
      
       private
