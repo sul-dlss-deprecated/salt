@@ -56,9 +56,8 @@ module Stanford
     
     #this method returns a hash that will be indexed in solr. 
     def to_solr
-     
       @datastreams.each do |key, value|
-        if self.methods.include?("#{key}_to_solr")
+        if self.respond_to?("#{key}_to_solr")
           self.send("#{key}_to_solr")
         end #if
       end
@@ -76,7 +75,7 @@ module Stanford
       
       unless json.nil?
         i = 1
-        json["pages"].each do |p|
+        Array.wrap(json["pages"]).each do |p|
          
           xml = get_alto(i.to_s)
           unless xml.nil?
@@ -129,7 +128,7 @@ module Stanford
       
       
       ["title_s", "title_display", "title_t"].each { |k| zotero_hash[k] ||= []; zotero_hash[k] << json["title"] } 
-      ["originator_facet", "originator_s", "originator_t"].each {|p|  zotero_hash[p] = []; json["originator"].collect { |o| zotero_hash[p] = zotero_hash[p] + authorize_term(p, o); } }
+      ["originator_facet", "originator_s", "originator_t"].each {|p|  zotero_hash[p] = []; Array.wrap(json["originator"]).collect { |o| zotero_hash[p] = zotero_hash[p] + authorize_term(p, o); } }
       
       format_date(json["date"]).each do |key,vals|
         ["facet", "sort", "s", "display", "t"].each {|v| zotero_hash["#{key}_#{v}"] ||= [];  zotero_hash["#{key}_#{v}"] << vals }
@@ -148,7 +147,7 @@ module Stanford
              
      
       
-      json["tags"].each do |tag|
+      Array.wrap(json["tags"]).each do |tag|
         if tag.upcase == "PUBLIC"
           zotero_hash["public_b"] = ['true'] 
           zotero_hash["access_display"] = ["Public"]
@@ -163,7 +162,7 @@ module Stanford
       end
       
       unless json["notes"].nil?
-        json["notes"].each do |note|
+        Array.wrap(json["notes"]).each do |note|
           ["s", "t", "display"].each {|n| zotero_hash["notes_#{n}"] ||= []; zotero_hash["notes_#{n}"] << note }
         end
       end
@@ -322,5 +321,3 @@ module Stanford
      
   end
 end
-
-

@@ -107,7 +107,7 @@ module SaltHelper
      result << "<dd class='blacklight-#{ solr_fname.parameterize }'>"
      @document[solr_fname] ? notes = @document[solr_fname].join("<br/><br/>") : notes = ""
      unless notes.nil?
-       notes.each { |n| result << n  }
+       Array.wrap(notes).each { |n| result << n  }
      end
      return result.html_safe
  end
