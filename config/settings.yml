@@ -1,0 +1,18 @@
+fedora:
+  uri: "http://127.0.0.1:8080/fedora"
+  user: "fedoraAdmin"
+  password: "fedoraAdmin"
+    
+asset_server:
+  uri: "https://salt-data-prod.stanford.edu/assets/"
+
+flipbook:
+  url: https://127.0.0.1/flipbook/
+  ip: 127.0.0.1
+    
+djatoka:
+  ip: 127.0.0.1
+    
+directory_watcher:
+  remote: ""
+  local: "<%= File.join(Rails.root, 'zotero_ingests') %>"

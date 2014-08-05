@@ -14,9 +14,9 @@ class ZoteroIngest < ActiveRecord::Base
 
 def after_initialize
     self.message ||= ""
-    @inprocess_directory = File.join(DIRECTORY_WATCHER_DIR, "inprocess")
-    @out_directory = File.join(DIRECTORY_WATCHER_DIR, "completed")
-    @error_directory = File.join(DIRECTORY_WATCHER_DIR, "error")
+    @inprocess_directory = File.join(Settings.directory_watcher.local, "inprocess")
+    @out_directory = File.join(Settings.directory_watcher.local, "completed")
+    @error_directory = File.join(Settings.directory_watcher.local, "error")
     make_directories    
 end
 

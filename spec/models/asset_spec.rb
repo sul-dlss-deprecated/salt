@@ -56,7 +56,7 @@ describe Asset do
   
   describe "#get_flipbook" do 
     it "should return the flipbook html" do
-      RestClient.expects(:get).with("#{FLIPBOOK_URL}/embed.jsp?id=druid:#{@asset.druid}").returns(mock(:body => "<html:flipbook/>"))
+      RestClient.expects(:get).with("#{Settings.flipbook.url}/embed.jsp?id=druid:#{@asset.druid}").returns(mock(:body => "<html:flipbook/>"))
 
       @asset.get_flipbook.should == "<html:flipbook/>"
     end

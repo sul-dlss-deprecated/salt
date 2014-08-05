@@ -16,9 +16,9 @@ module Stanford
     attr_reader :base
 
     def initialize(base=nil, username=nil, password=nil)
-      base ||= FEDORA_URI
-      username ||= FEDORA_USER
-      password ||= FEDORA_PASSWORD
+      base ||= Settings.fedora.uri
+      username ||= Settings.fedora.user
+      password ||= Settings.fedora.password
 
       @base = base
       @repository = Rubydora.connect :url => base, :user => username, :password => password

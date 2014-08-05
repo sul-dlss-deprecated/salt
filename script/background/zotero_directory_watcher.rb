@@ -32,7 +32,7 @@ class ZoteroDirectoryWatcher < SimpleDaemon::Base
     end
 
    @logger.info "Starting daemon ZoteroDirectoryWatcher"
-   @logger.info "Watching #{DIRECTORY_WATCHER_DIR}"
+   @logger.info "Watching #{Settings.directory_watcher.local}"
 
     loop do
       begin
@@ -42,7 +42,7 @@ class ZoteroDirectoryWatcher < SimpleDaemon::Base
     	@logger.info  `ruby #{Rails.root}/script/import_directory_script.rb`
 
          zotero = nil
-        Dir.glob(File.join(DIRECTORY_WATCHER_DIR, "*.rdf")).each do |f|
+        Dir.glob(File.join(Settings.directory_watcher.local, "*.rdf")).each do |f|
           @logger.info "glob"
           @logger.info "starting #{f}"
           zotero = ZoteroIngest.new(:filename => f)

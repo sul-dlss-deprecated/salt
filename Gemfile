@@ -17,6 +17,7 @@ gem "will_paginate",  '~> 3.0.2'
 gem 'json'
 gem 'active-fedora'
 gem 'rubydora'
+gem 'rails_config'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -47,7 +48,7 @@ end
 
 group :development, :test do
   gem 'rcov', :platform => :ruby_18
-  gem 'sqlite3-ruby', '1.2.5'
+  gem 'sqlite3'
  # gem 'ruby-debug'
  # gem 'ruby-debug-base'
   gem 'rspec', '=2.6.0'

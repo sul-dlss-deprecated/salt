@@ -7,8 +7,8 @@ require File.expand_path("../../config/environment", __FILE__)
 
 class ImportDirectoryScript
 
-  REMOTE_DIR = AFS_DIRECTORY_WATCHER_DIR
-  LOCAL_DIR = DIRECTORY_WATCHER_DIR
+  REMOTE_DIR = Settings.directory_watcher.remote
+  LOCAL_DIR = Settings.directory_watcher.local
 
   @logger = Logger.new(File.join(Rails.root, 'log', 'import_directory.log'))
   @logger.level = Logger::INFO

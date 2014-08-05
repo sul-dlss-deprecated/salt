@@ -5,14 +5,14 @@ module AuthenticationHelper
   end
 
   def apply_gated_discovery solr_parameters, user_parameters
-    unless user_signed_in? or request.env["REMOTE_ADDR"] == FLIPBOOK_IP  or  request.env["REMOTE_ADDR"] == DJATOKA_IP
+    unless user_signed_in? or request.env["REMOTE_ADDR"] == Settings.flipbook.ip  or  request.env["REMOTE_ADDR"] == Settings.djatoka.ip
       solr_parameters[:fq] ||= []
       solr_parameters[:fq] << "public_b:true"
     end
   end
   
   def get_solr_doc_with_gated_discovery(doc_id, solr_parameters={})
-    unless user_signed_in? or request.env["REMOTE_ADDR"] == FLIPBOOK_IP  or  request.env["REMOTE_ADDR"] == DJATOKA_IP
+    unless user_signed_in? or request.env["REMOTE_ADDR"] == Settings.flipbook.ip  or  request.env["REMOTE_ADDR"] == Settings.djatoka.ip
       solr_parameters[:fq] ||= []
       solr_parameters[:fq] << "public_b:true"
     end

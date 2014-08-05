@@ -39,17 +39,17 @@ class Asset
   
   def get_flipbook
       @druid.include?("druid:") ? id = @druid : id = "druid:#{@druid}"
-      RestClient.get("#{FLIPBOOK_URL}/embed.jsp?id=#{id}").body
+      RestClient.get("#{Settings.flipbook.url}/embed.jsp?id=#{id}").body
   end
   
   def self.get_flipbook_asset(file, mime)
     file.include?(mime) ? file.chomp!(mime) : file = file
     if mime == ".css"
-      uri = "#{FLIPBOOK_URL}/css/#{file}#{mime}"
+      uri = "#{Settings.flipbook.url}/css/#{file}#{mime}"
     elsif mime == ".js"
-      uri = "#{FLIPBOOK_URL}/js/#{file}#{mime}"
+      uri = "#{Settings.flipbook.url}/js/#{file}#{mime}"
     elsif mime == ".png"
-      uri = "#{FLIPBOOK_URL}/images/#{file}#{mime}"
+      uri = "#{Settings.flipbook.url}/images/#{file}#{mime}"
     end
     return RestClient.get(uri).body
   end

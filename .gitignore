@@ -10,3 +10,8 @@ coverage.data
 config/solr.yml
 config/fedora.yml
 config/database.yml
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/settings/*
+config/environments/*.local.yml

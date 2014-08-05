@@ -8,9 +8,9 @@ describe ZoteroIngest do
       # 1. file is seen into DIRECTORY_WATCHER_DIR, 2. file is moved to inprocess directory and given time stamp. 3. when process is completed, file is moved into completed directory.
       # else, it's moved into the error directory with a error.txt file with backtrace. 
     @file = fixture('singleton_zotero_export.xml').path #our source file.
-    @inprocess_file = File.join(DIRECTORY_WATCHER_DIR, "inprocess", "#{File.basename(@file)}-1969-04-11_4:20.rdf") #what our file should look like when it's moved into the process dir
-    @completed_directory = File.join(DIRECTORY_WATCHER_DIR, "completed", "1969-04-11_4:20" ) # file in error directory
-    @error_directory =  File.join(DIRECTORY_WATCHER_DIR, "error", "1969-04-11_4:20") # file in error directory
+    @inprocess_file = File.join(Settings.directory_watcher.local, "inprocess", "#{File.basename(@file)}-1969-04-11_4:20.rdf") #what our file should look like when it's moved into the process dir
+    @completed_directory = File.join(Settings.directory_watcher.local, "completed", "1969-04-11_4:20" ) # file in error directory
+    @error_directory =  File.join(Settings.directory_watcher.local, "error", "1969-04-11_4:20") # file in error directory
   end
   
 

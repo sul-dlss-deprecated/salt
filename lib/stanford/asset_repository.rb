@@ -7,7 +7,7 @@ module Stanford
 
    def initialize(base=nil)
 
-     base = ASSET_SERVER_URI if base.nil?
+     base = Settings.asset_server.uri if base.nil?
 
      base.chop! if /\/$/.match(base)
      @base = base
