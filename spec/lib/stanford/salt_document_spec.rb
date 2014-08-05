@@ -5,7 +5,7 @@ describe Stanford::SaltDocument do
   describe "it should itialize correctly" do
      
      before(:each) do 
-       @mock_salt_doc_repo = mock("Stanford::Repository")
+       @mock_salt_doc_repo = double("Stanford::Repository")
        @mock_salt_doc_repo.stub(:get_datastream => "<xml/>")
      end
      
@@ -32,7 +32,7 @@ describe Stanford::SaltDocument do
      
      it "should be allow for defaults to be overridden" do
          
-       @mock_salt_doc_repo2 = mock("Stanford::Repository2")
+       @mock_salt_doc_repo2 = double("Stanford::Repository2")
        @mock_salt_doc_repo2.stub(:get_datastream => "<xml/>")
                
        @salt_doc = Stanford::SaltDocument.new("druid:456", {:repository=> @mock_salt_doc_repo2, :datastreams => ["foo", "bar"] })
@@ -52,7 +52,7 @@ describe Stanford::SaltDocument do
   describe "#to_solr" do 
     before(:each) do 
        File.open("/tmp/zotero.xml", "w") { |f| f << '<rdf:RDF xmlns:bib="http://purl.org/net/biblio#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:link="http://purl.org/rss/1.0/modules/link/" xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:vcard="http://nwalsh.com/rdf/vCard#" xmlns:z="http://www.zotero.org/namespaces/export#"/>' }
-       @mock_salt_doc_repo = mock("Stanford::Repository")
+       @mock_salt_doc_repo = double("Stanford::Repository")
        # adding all the namespaces that it expects with the Zotero XML 
        @mock_salt_doc_repo.stub(:get_datastream => '<rdf:RDF xmlns:bib="http://purl.org/net/biblio#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:link="http://purl.org/rss/1.0/modules/link/" xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:vcard="http://nwalsh.com/rdf/vCard#" xmlns:z="http://www.zotero.org/namespaces/export#"/>')
        Stanford::Repository.should_receive(:new).and_return(@mock_salt_doc_repo)
@@ -89,7 +89,7 @@ describe Stanford::SaltDocument do
   
   describe "fulltext_to_solr" do
     before(:each) do 
-       @mock_salt_doc_asset_repo = mock("Stanford::AssetRepository")
+       @mock_salt_doc_asset_repo = double("Stanford::AssetRepository")
        @mock_salt_doc_asset_repo.stub(:get_json => { "pages" => [ "a page" ]})
        @mock_salt_doc_asset_repo.stub(:get_page_xml => "<xml><String CONTENT='this'/><String CONTENT='is'/><String CONTENT='alto'/><word CONTENT='not.'/></xml>")
     end
@@ -105,7 +105,7 @@ describe Stanford::SaltDocument do
   describe "#get_alto" do
     
     it "should get the alto file for a page" do
-       @mock_salt_doc_asset_repo = mock("Stanford::AssetRepository")
+       @mock_salt_doc_asset_repo = double("Stanford::AssetRepository")
       # @mock_salt_doc_asset_repo.stub(:get_json => { "pages" => [ "a page" ]})
        xml = "<xml><String CONTENT='this'/><String CONTENT='is'/><String CONTENT='alto'/><word CONTENT='not.'/></xml>"
        @mock_salt_doc_asset_repo.stub(:get_page_xml => xml)
@@ -115,7 +115,7 @@ describe Stanford::SaltDocument do
     end
     
     it "should return nil if there's an exception raised" do
-       @mock_salt_doc_asset_repo = mock("Stanford::AssetRepository")
+       @mock_salt_doc_asset_repo = double("Stanford::AssetRepository")
        @mock_salt_doc_asset_repo.stub(:get_page_xml).and_raise(StandardError.new("meatball problems."))
       
        @salt_doc = Stanford::SaltDocument.new("druid:456", {:asset_repo=> @mock_salt_doc_asset_repo })  
@@ -131,7 +131,7 @@ describe Stanford::SaltDocument do
   
   describe "#*_to_solr" do
     before(:each) do 
-       @mock_salt_doc_repo = mock("Stanford::Repository")
+       @mock_salt_doc_repo = double("Stanford::Repository")
        @mock_salt_doc_repo.stub(:get_datastream).with("druid:123", "extracted_entities").and_return(IO.read(fixture("extracted_entities_ds.xml").path))
        @mock_salt_doc_repo.stub(:get_datastream).with("druid:123", "zotero").and_return(IO.read(fixture("zotero_ds.xml").path))
        
@@ -156,7 +156,7 @@ describe Stanford::SaltDocument do
   context "public / private flags" do
     context "public records" do
       before(:each) do 
-        @mock_salt_doc_repo1 = mock("Stanford::Repository")
+        @mock_salt_doc_repo1 = double("Stanford::Repository")
         @mock_salt_doc_repo1.stub(:get_datastream).with("druid:public_test", "extracted_entities").and_return(IO.read(fixture("extracted_entities2_ds.xml").path))
         @mock_salt_doc_repo1.stub(:get_datastream).with("druid:public_test", "zotero").and_return(IO.read(fixture("zotero_ds.xml").path))
         Stanford::Repository.should_receive(:new).and_return(@mock_salt_doc_repo1)
@@ -177,7 +177,7 @@ describe Stanford::SaltDocument do
     end
     context "private records" do
       before(:each) do 
-         @mock_salt_doc_repo2 = mock("Stanford::Repository")
+         @mock_salt_doc_repo2 = double("Stanford::Repository")
          @mock_salt_doc_repo2.stub(:get_datastream).with("druid:private_test", "extracted_entities").and_return(IO.read(fixture("extracted_entities2_ds.xml").path))
          @mock_salt_doc_repo2.stub(:get_datastream).with("druid:private_test", "zotero").and_return(IO.read(fixture("zotero2_ds.xml").path))
          Stanford::Repository.should_receive(:new).and_return(@mock_salt_doc_repo2)
@@ -195,7 +195,7 @@ describe Stanford::SaltDocument do
   # this test the fomating of the coverage node, which is done in a private method. 
   describe "#format_coverage" do
     before(:each) do 
-       @mock_salt_doc_repo = mock("Stanford::Repository")
+       @mock_salt_doc_repo = double("Stanford::Repository")
        @mock_salt_doc_repo.stub(:get_datastream).with("druid:123", "extracted_entities").and_return(IO.read(fixture("extracted_entities2_ds.xml").path))
        @mock_salt_doc_repo.stub(:get_datastream).with("druid:123", "zotero").and_return(IO.read(fixture("zotero2_ds.xml").path))
        

@@ -15,23 +15,23 @@ describe Stanford::AssetRepository do
   end
 
   it "should get the thumbnail for an asset but return nil for one that doesn't exist" do
-    RestClient.should_receive(:get).with("http://fedoraAdmin:fedoraAdmin@example.com/assets/#{@druid}/thumb.jpg").and_return(mock(:body => '123'))
+    RestClient.should_receive(:get).with("http://fedoraAdmin:fedoraAdmin@example.com/assets/#{@druid}/thumb.jpg").and_return(double(:body => '123'))
     @asset_repo.get_thumbnail(@druid).should == '123'
   end
 
   it "should get the pdf for an asset" do
-    RestClient.should_receive(:get).with("http://fedoraAdmin:fedoraAdmin@example.com/assets/#{@druid}/#{@druid}.pdf").and_return(mock(:body => '123'))
+    RestClient.should_receive(:get).with("http://fedoraAdmin:fedoraAdmin@example.com/assets/#{@druid}/#{@druid}.pdf").and_return(double(:body => '123'))
     @asset_repo.get_pdf(@druid).should == '123'
   end
 
   it "should get the jp2000 for a page of an asset" do
-    RestClient.should_receive(:get).with("http://fedoraAdmin:fedoraAdmin@example.com/assets/#{@druid}/#{@druid}_#{@page}.jp2").and_return(mock(:body => '123'))
+    RestClient.should_receive(:get).with("http://fedoraAdmin:fedoraAdmin@example.com/assets/#{@druid}/#{@druid}_#{@page}.jp2").and_return(double(:body => '123'))
 
     @asset_repo.get_page_jp2(@druid, @page).should == '123'
   end
 
   it "should get the alto for a page of an asset" do
-    RestClient.should_receive(:get).with("http://fedoraAdmin:fedoraAdmin@example.com/assets/#{@druid}/#{@druid}_#{@page}.xml").and_return(mock(:body => '123'))
+    RestClient.should_receive(:get).with("http://fedoraAdmin:fedoraAdmin@example.com/assets/#{@druid}/#{@druid}_#{@page}.xml").and_return(double(:body => '123'))
 
     @asset_repo.get_page_xml(@druid, @page).should == '123'
   end

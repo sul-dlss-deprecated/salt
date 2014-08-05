@@ -7,9 +7,9 @@ describe Stanford::Indexer do
     
     it "should have all relative stuff initilized" do
         
-        @mock_zotero_index = mock("ZoteroIndex")
+        @mock_zotero_index = double("ZoteroIndex")
         
-        @mock_indexer_repo = mock("Stanford::Repository")
+        @mock_indexer_repo = double("Stanford::Repository")
         @mock_indexer_repo.stub(:initialize_queue => ["foo:bar", "bar:foo"])
         Stanford::Repository.should_receive(:new).and_return(@mock_indexer_repo)
         @indexer = Stanford::Indexer.new(["foo:bar", "bar:foo" ], @mock_zotero_index)
@@ -26,7 +26,7 @@ describe Stanford::Indexer do
   describe "starting an indexer" do
     
     before(:each) do 
-      @mock_indexer_repo = mock("Stanford::Repository")
+      @mock_indexer_repo = double("Stanford::Repository")
       @mock_indexer_repo.stub(:initialize_queue => ["foo:bar", "bar:foo"])
       Stanford::Repository.should_receive(:new).and_return(@mock_indexer_repo)
       @indexer = Stanford::Indexer.new([],ZoteroIngest.new)
@@ -64,14 +64,14 @@ describe Stanford::Indexer do
     
     it "it should index when processing an item" do
       
-       mock_salt_doc = mock("Stanford::SaltDocument")
-       mock_solr_doc = mock("SolrDocument")
+       mock_salt_doc = double("Stanford::SaltDocument")
+       mock_solr_doc = double("SolrDocument")
        mock_salt_doc.stub(:solr_document => mock_solr_doc)
      
        mock_salt_doc.stub(:to_solr => [])
        
        
-       mock_connection = mock("SolrConnection")
+       mock_connection = double("SolrConnection")
        mock_connection.stub(:add => true)
        mock_connection.stub(:update => true)
        @indexer.solr = mock_connection
@@ -83,14 +83,14 @@ describe Stanford::Indexer do
     end
   
     it "should rescue if there's an SocketError " do
-       mock_salt_doc = mock("Stanford::SaltDocument")
-       mock_solr_doc = mock("SolrDocument")
+       mock_salt_doc = double("Stanford::SaltDocument")
+       mock_solr_doc = double("SolrDocument")
        mock_salt_doc.stub(:solr_document => mock_solr_doc)
      
        mock_salt_doc.stub(:to_solr => [])
       
       
-       mock_connection = mock("SolrConnection")
+       mock_connection = double("SolrConnection")
        mock_connection.stub(:add).and_raise(Errno::EHOSTUNREACH)
        @indexer.solr = mock_connection
        @indexer.should_receive(:log_message).once.with("Indexing item foo:bar")
@@ -103,14 +103,14 @@ describe Stanford::Indexer do
     end
   
      it "should rescue if there's an another kind of error " do
-         mock_salt_doc = mock("Stanford::SaltDocument")
-         mock_solr_doc = mock("SolrDocument")
+         mock_salt_doc = double("Stanford::SaltDocument")
+         mock_solr_doc = double("SolrDocument")
          mock_salt_doc.stub(:solr_document => mock_solr_doc)
 
          mock_salt_doc.stub(:to_solr => [])
 
 
-         mock_connection = mock("SolrConnection")
+         mock_connection = double("SolrConnection")
          mock_connection.stub(:add).and_raise(Net::HTTPServerException.new "There's a problems", nil)
          @indexer.solr = mock_connection
          

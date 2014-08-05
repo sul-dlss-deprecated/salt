@@ -26,9 +26,9 @@ describe SaltHelper do
   
   describe "#index_grouped_results" do
     it "should render the partial correctly with the proper locals" do
-      @response = mock("SolrResponse")
+      @response = double("SolrResponse")
       
-      docs = mock("SolrDocuments")
+      docs = double("SolrDocuments")
       grouping = [["1990", "docs"]] 
       docs.should_receive(:group_by).once.and_return(grouping)
       @response.should_receive(:docs).once.and_return(docs)
@@ -40,8 +40,8 @@ describe SaltHelper do
   
   describe "#index_ungrouped_results" do
     it "should render the partial correctly with the proper locals" do
-      @response = mock("SolrResponse")
-      docs = mock("SolrDocuments")
+      @response = double("SolrResponse")
+      docs = double("SolrDocuments")
       @response.should_receive(:docs).once.and_return(docs)
       helper.stub(:viewing_context => "gallery")
       helper.should_receive(:render_partial).with('catalog/_index_partials/group',{ :docs => docs, :facet_name => nil, :facet_value => nil, :view_type => 'gallery' } ).once
@@ -125,8 +125,8 @@ describe SaltHelper do
   
   describe "#grouped_result_count" do 
     it "should return the count and the correct pluziation of document when there are no facets" do
-      response = mock("SolrResponse")
-      docs = mock("SolrDocuments")
+      response = double("SolrResponse")
+      docs = double("SolrDocuments")
       docs.should_receive(:length).and_return(3)
       response.should_receive(:docs).once.and_return(docs)
       
@@ -134,8 +134,8 @@ describe SaltHelper do
     end
     
     it "should return the count and the correct pluziation of document when there are no facets" do
-      response = mock("SolrResponse")
-      docs = mock("SolrDocuments")
+      response = double("SolrResponse")
+      docs = double("SolrDocuments")
       docs.should_receive(:length).and_return(1)
       response.should_receive(:docs).once.and_return(docs)
 
@@ -143,10 +143,10 @@ describe SaltHelper do
     end
     
     it "should return the count and the correct pluziation of document when there is a facet" do
-      response = mock("SolrResponse")
-      facets = mock("SolrFacets")
-      items = mock("SolrItems")
-      item = mock("FacetItem")
+      response = double("SolrResponse")
+      facets = double("SolrFacets")
+      items = double("SolrItems")
+      item = double("FacetItem")
       facets.should_receive(:detect).and_return(facets)
       facets.should_receive(:items).and_return(items)
       items.should_receive(:detect).and_return(item)
@@ -234,8 +234,8 @@ describe SaltHelper do
     describe "#render_salt_pagination_info" do
       
        it "should return the proper html given a solr response with no docs" do
-          @solr_response = mock("SolrResponse")
-          docs = mock("SolrDocuments")
+          @solr_response = double("SolrResponse")
+          docs = double("SolrDocuments")
           docs.should_receive(:length).twice.and_return(0)
           docs.should_receive(:first).never
           
@@ -250,8 +250,8 @@ describe SaltHelper do
        end
       
        it "should return the proper html given a solr response with 1 docs" do
-          @solr_response = mock("SolrResponse")
-          docs = mock("SolrDocuments")
+          @solr_response = double("SolrResponse")
+          docs = double("SolrDocuments")
           docs.should_receive(:length).twice.and_return(1)
 
           first = SolrDocument.new 
@@ -267,8 +267,8 @@ describe SaltHelper do
         end
         
         it "should return the proper html given a solr response with multiple docs but not paginated" do
-            @solr_response = mock("SolrResponse")
-            docs = mock("SolrDocuments")
+            @solr_response = double("SolrResponse")
+            docs = double("SolrDocuments")
             docs.should_receive(:length).twice.and_return(5)
 
             first = SolrDocument.new 
@@ -285,11 +285,11 @@ describe SaltHelper do
         
       
          it "should return the proper html given a solr response with many docs paginated" do
-            @solr_response = mock("SolrResponse")
-            docs = mock("SolrDocuments")
+            @solr_response = double("SolrResponse")
+            docs = double("SolrDocuments")
             docs.should_receive(:length).once.and_return(100000000)
 
-            first = mock("SolrDoc")
+            first = double("SolrDoc")
             docs.should_receive(:first).and_return(first)
 
             @solr_response.should_receive(:empty?).and_return(false)

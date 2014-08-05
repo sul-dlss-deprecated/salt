@@ -4,7 +4,7 @@ describe Asset do
   
   # Relies on the descriptor registered by config/initializers/salt_descriptors.rb
   before(:each) do
-     @mock_repo = mock("Stanford::AssetRepository")
+     @mock_repo = double("Stanford::AssetRepository")
      Stanford::AssetRepository.should_receive(:new).and_return(@mock_repo)
      @asset = Asset.new("ff241yc8370", "00001")
   end
@@ -56,7 +56,7 @@ describe Asset do
   
   describe "#get_flipbook" do 
     it "should return the flipbook html" do
-      RestClient.should_receive(:get).with("#{Settings.flipbook.url}/embed.jsp?id=druid:#{@asset.druid}").and_return(mock(:body => "<html:flipbook/>"))
+      RestClient.should_receive(:get).with("#{Settings.flipbook.url}/embed.jsp?id=druid:#{@asset.druid}").and_return(double(:body => "<html:flipbook/>"))
 
       @asset.get_flipbook.should == "<html:flipbook/>"
     end

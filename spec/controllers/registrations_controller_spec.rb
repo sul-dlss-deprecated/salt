@@ -15,7 +15,7 @@ describe RegistrationsController do
   it "should send an email when a new user is created" do 
     @request.env["devise.mapping"] = Devise.mappings[:user]
     
-    mailer = mock("UserMailer")
+    mailer = double("UserMailer")
     mailer.should_receive(:deliver).once
     UserMailer.should_receive(:notification_email).once.and_return(mailer)
     

@@ -30,11 +30,11 @@ describe ZoteroIngest do
       @zi.should_receive(:update_index).once.and_return(true)
       
       
-      zp = mock("ZoteroParser")
+      zp = double("ZoteroParser")
       zp.should_receive(:process_document).once
       zp.should_receive(:processed_druids).twice.and_return(["test:druid"])
       
-      sc = mock("SolrCheckr")
+      sc = double("SolrCheckr")
       sc.should_receive(:check_documents).once
       
       Stanford::ZoteroParser.should_receive(:new).with(@inprocess_file, @zi).and_return(zp)
@@ -66,7 +66,7 @@ describe ZoteroIngest do
     it "should update the index when given an array of druids" do
       @zi = ZoteroIngest.new()
       druids = ["foo:bar", "bar:foo", "bar:bar", "foo:foo"]
-      mock_indexer = mock("Stanford::Indexer")
+      mock_indexer = double("Stanford::Indexer")
       mock_indexer.should_receive(:process_queue).and_return(true)
       Stanford::Indexer.should_receive(:new).with(druids, @zi).and_return(mock_indexer)  
       
