@@ -80,7 +80,7 @@ describe Stanford::ZoteroParser do
     
      it "should update fedora with the proper values to the data stream" do
        xml = Nokogiri::XML(fixture("singleton_zotero_export.xml"))
-       @zp.repository.expects(:update_datastream).with('druid:dn211xc8708', "zotero", xml.to_xml ).once
+       @zp.repository.should_receive(:update_datastream).with('druid:dn211xc8708', "zotero", xml.to_xml )
        @zp.update_fedora(xml) 
      end
   end
