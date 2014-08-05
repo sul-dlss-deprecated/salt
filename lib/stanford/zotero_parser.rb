@@ -48,9 +48,7 @@ module Stanford
    end
    
    
-   # accecpts a nokogiri node and a nokogiri document. If the node name is a memo, that will be added to the xml document.
-   # otherwise, the xml document will be added to fedora and the node will be inserted into its own xml document and returned.
-   
+   # Convert a bib node into a document, and include any Memos from the node's document context in the generated document
    def process_node(node)
 
         string = <<EOF
@@ -70,7 +68,7 @@ EOF
 
         rdf = Nokogiri::XML(string)
 
-        rdf.root << node.xpath('//bib:Memo[@rdf:about="%s"]' % [node.xpath('dcterms:isReferencedBy/@rdf:resource').text])
+        rdf.root << node.xpath('//bib:Memo[@rdf:about="%s"]' % [node.xpath('dcterms:isReferencedBy/@rdf:resource', "dcterms" =>"http://purl.org/dc/terms/", "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#").text], "bib" => "http://purl.org/net/biblio#", "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
 
         return rdf
    end

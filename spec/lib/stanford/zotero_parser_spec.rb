@@ -25,19 +25,12 @@ describe Stanford::ZoteroParser do
     end
     
     it "should run the process_node and update_fedora methods for each node" do
-      # fixture document has 20 documents with some memos, so it should run for each document
-      @zp.expects(:process_node).times(20).returns(Nokogiri::XML("<foo/>"))
+      # fixture document has 20 documents with one memos, so it should run for each document
+      @zp.should_receive(:process_node).exactly(19).times.and_return(Nokogiri::XML("<foo/>"))
       # update fedora with the last node. 
-      @zp.expects(:update_fedora).once
+      @zp.should_receive(:update_fedora).at_least(:once)
       @zp.process_document
     end
-    
-    it "should update the record for the ActiveRecord/ZoteroIngest object" do
-      
-      
-      
-    end
-    
     
   end
   
@@ -46,78 +39,37 @@ describe Stanford::ZoteroParser do
     before(:each) do 
         @zp = Stanford::ZoteroParser.new(fixture("zotero_export.xml").path)
     end
-  
-    it "should add the memo to the previous document" do
-      documentXML = Nokogiri::XML("<rdf><Manuscript/></rdf>")
-      memoXML = Nokogiri::XML("<Memo/>").root
-      @zp.process_node(memoXML, documentXML).to_xml.should == Nokogiri::XML("<rdf><Manuscript/><Memo/></rdf>").to_xml
+    
+    it "should construct a document from a node" do
+      documentXML = Nokogiri::XML("<Manuscript/>")
+      expect(@zp.process_node(documentXML.root).root.name).to eq "RDF"
     end
     
-    it "should build out the XML properly" do
-      xml =  Nokogiri::XML(' <rdf:RDF
+    it "should extract any referenced memos from the document" do
+      rdf = %Q{
+        <rdf:RDF
           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-          xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:dcterms="http://purl.org/dc/terms/"
-          xmlns:bib="http://purl.org/net/biblio#"
-          xmlns:z="http://www.zotero.org/namespaces/export#"
-          xmlns:link="http://purl.org/rss/1.0/modules/link/"
-          xmlns:foaf="http://xmlns.com/foaf/0.1/"
-          xmlns:vcard="http://nwalsh.com/rdf/vCard#"
-          xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/"><bib:Manuscript rdf:about="fricking namespaces suck">Blah Blah Blah</bib:Manuscript><bib:Manuscript rdf:about="Seriousyly">burp</bib:Manuscript></rdf:RDF>')
+          xmlns:bib="http://purl.org/net/biblio#"  
+        >
+          <bib:Manuscript>
+            <dcterms:isReferencedBy rdf:resource="#xyz" />
+          </bib:Manuscript>  
+          <bib:Memo rdf:about="#xyz">
+            
+          </bib:Memo>
+          <bib:Memo rdf:about="#xyz">
+            
+          </bib:Memo>
+          <bib:Memo rdf:about="#abc">
+            
+          </bib:Memo>
+        </rdf:RDF>
+      }
+      documentXML = Nokogiri::XML(rdf)
+      fragment = @zp.process_node(documentXML.xpath("//bib:Manuscript", "bib" => "http://purl.org/net/biblio#").first)
+      expect(fragment.xpath("//bib:Memo", "bib" => "http://purl.org/net/biblio#").length).to eq 2
       
-      expected_xml =     Nokogiri::XML(' <rdf:RDF
-              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-              xmlns:dc="http://purl.org/dc/elements/1.1/"
-              xmlns:dcterms="http://purl.org/dc/terms/"
-              xmlns:bib="http://purl.org/net/biblio#"
-              xmlns:z="http://www.zotero.org/namespaces/export#"
-              xmlns:link="http://purl.org/rss/1.0/modules/link/"
-              xmlns:foaf="http://xmlns.com/foaf/0.1/"
-              xmlns:vcard="http://nwalsh.com/rdf/vCard#"
-              xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/"><bib:Manuscript rdf:about="fricking namespaces suck">Blah Blah Blah</bib:Manuscript></rdf:RDF>')
-      
-      
-      previous = Nokogiri::XML("<xml>Nothing to see here. I'm just being added to fedora and not updated</xml>")
-      
-      
-      
-     @zp.expects(:update_fedora).with(previous).once  
-     EquivalentXml.equivalent?(@zp.process_node( xml.root.children.first, previous), expected_xml).should be_true      
-      
-      
-    end
-    
-    
-    it "should properly add memo nodes to the previous document node" do
-       pending("For some reason this is not working on the hudson server. Nokogiri/LibXML differences...boo.")
-       previous = Nokogiri::XML(' <rdf:RDF
-          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-          xmlns:dc="http://purl.org/dc/elements/1.1/"
-          xmlns:dcterms="http://purl.org/dc/terms/"
-          xmlns:bib="http://purl.org/net/biblio#"
-          xmlns:z="http://www.zotero.org/namespaces/export#"
-          xmlns:link="http://purl.org/rss/1.0/modules/link/"
-          xmlns:foaf="http://xmlns.com/foaf/0.1/"
-          xmlns:vcard="http://nwalsh.com/rdf/vCard#"
-          xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/"><bib:Manuscript rdf:about="fricking namespaces suck">Blah Blah Blah</bib:Manuscript></rdf:RDF>')
-       
-       memo = Nokogiri::XML(' <rdf:RDF
-              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-              xmlns:dc="http://purl.org/dc/elements/1.1/"
-              xmlns:dcterms="http://purl.org/dc/terms/"
-              xmlns:bib="http://purl.org/net/biblio#"
-              xmlns:z="http://www.zotero.org/namespaces/export#"
-              xmlns:link="http://purl.org/rss/1.0/modules/link/"
-              xmlns:foaf="http://xmlns.com/foaf/0.1/"
-              xmlns:vcard="http://nwalsh.com/rdf/vCard#"
-              xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/"><bib:Memo>This is a note about the previous document</bib:Memo></rdf:RDF>')
-       
-       zotero_document= previous.dup
-       zotero_document.root << memo.root.children.first.dup
-       
-   
-       @zp.expects(:update_fedora).with(previous).never 
-       EquivalentXml.equivalent?(@zp.process_node( memo.root.children.first, previous), final).should be_true      
     end
   end
   
