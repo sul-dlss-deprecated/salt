@@ -12,13 +12,13 @@ class ZoteroIngest < ActiveRecord::Base
 
 
 
-def after_initialize
+  after_initialize do
     self.message ||= ""
     @inprocess_directory = File.join(Settings.directory_watcher.local, "inprocess")
     @out_directory = File.join(Settings.directory_watcher.local, "completed")
     @error_directory = File.join(Settings.directory_watcher.local, "error")
     make_directories    
-end
+  end
 
 #
 # This method is used by the zotero_ingest background daemon to process new files for ingest. 
