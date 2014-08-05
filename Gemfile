@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake', '0.8.7'
-gem 'rails', '3.0.20'
+gem 'rails', '3.2.19'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -41,7 +41,7 @@ gem 'rubydora'
 #   gem 'webrat'
 # end
 group :production do
-   gem "mysql2", '0.2.13'
+   gem "mysql2", '~> 0.2.13'
 end
 
 
