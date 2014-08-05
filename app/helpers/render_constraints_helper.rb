@@ -52,20 +52,7 @@ module RenderConstraintsHelper
   
   # taken from the searchworks helper. breaks searches into terms. 
    def get_search_breadcrumb_terms(q_param)
-      if q_param.scan(/"([^"\r\n]*)"/).length > 0
-        q_arr = []
-        old_q = q_param.dup
-        q_param.scan(/"([^"\r\n]*)"/).each{|t| q_arr << "\"#{h(t)}\""}
-        q_arr.each do |l|
-          old_q.gsub!(l,'')
-        end
-        unless old_q.blank?
-          old_q.split(' ').each {|q| q_arr << h(q) }
-        end
-      q_arr
-      else
-         q_arr = q_param.split(' ')
-      end
+     q_param.scan(/("[^"]+"|\w+)/).flatten
     end
   
   
