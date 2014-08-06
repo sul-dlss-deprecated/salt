@@ -3,5 +3,5 @@
   <% if document[Blacklight.config[:show][:heading]] %>
     <%= link_to_document(document, :label => truncate(document[Blacklight.config[:show][:heading]].first, :length => 35, :omission => "..."), :counter => (document_counter + 1 + @response.params[:start].to_i),:title=>document[Blacklight.config[:show][:heading]] ) -%>
   <% end -%>
-  <%= document['date_display'] %>
+  <%= Array.wrap(document['date_display']).first %>
 </div>

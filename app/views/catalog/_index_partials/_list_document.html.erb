@@ -1,12 +1,12 @@
 <%# default partial to display solr document fields in catalog index view -%>
 <tr class="document <%= cycle("even","odd")%>">
   <td>
-    <%= "#{document[:date_display]}" %>
+    <%= "#{Array.wrap(document[:date_display]).first}" %>
   </td>
   <td>
-    <%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+    <%= link_to_document(document, :label => Array.wrap(document[Blacklight.config[:show][:heading].to_sym]).first, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
   </td>
   <td>
-    <%= "Series: #{document[:series_display]}, Subseries: #{document[:subseries_display]},  Box: #{document[:box_display]}, Folder: #{document[:folder_display]}" %>
+    <%= "Series: #{Array.wrap(document[:series_display]).first}, Subseries: #{Array.wrap(document[:subseries_display]).first},  Box: #{Array.wrap(document[:box_display]).first}, Folder: #{Array.wrap(document[:folder_display]).first}" %>
   </td>
 </tr>

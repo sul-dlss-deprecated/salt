@@ -9,6 +9,10 @@ module BlacklightHelper
    
 
    
+  # Used in the show view for setting the main html document title
+  def document_show_html_title
+    Array.wrap(@document[blacklight_config.show.html_title]).first
+  end
    
    def render_document_index_label doc, opts
      label = nil
@@ -29,7 +33,22 @@ module BlacklightHelper
      doc[:id].include?("druid:") ? doc_id = doc[:id] : doc_id = "druid:#{doc[:id]}"
      link_to_with_data(label, catalog_path(doc_id), {:method => :put, :class => label.first.parameterize, :data => opts}).html_safe
    end   
-   
+  
+    def render_document_heading(*args)
+      options = args.extract_options!
+      if args.first.is_a? SolrDocument
+        document = args.shift
+        tag = options[:tag]
+      else
+        document = @document
+        tag = args.first || options[:tag]
+      end
+
+      tag ||= :h4
+
+      document_heading = Array.wrap(document[blacklight_config.show.heading]).first || document.id
+      content_tag(tag, document_heading, :itemprop => "name")
+    end
    
    def application_name
      'SALT (Self Archiving Legacy Toolkit)'

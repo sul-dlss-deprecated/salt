@@ -187,7 +187,7 @@ module SaltHelper
            facet_params[:f][k].push(v)
          end
        end
-       link_to("#{prefix}#{facet}", catalog_index_path(facet_params), options).html_safe
+       link_to("#{prefix}#{return_first(facet)}", catalog_index_path(facet_params), options).html_safe
      end
    end
    
