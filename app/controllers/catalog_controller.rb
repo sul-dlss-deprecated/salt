@@ -14,9 +14,6 @@ class CatalogController < ApplicationController
   self.solr_search_params_logic << :apply_special_parameters_for_a_fulltext_query
 
   helper_method :get_search_results
-  
-  before_filter :add_styles
-
 
    # get search results from the solr index
     def index
@@ -64,11 +61,5 @@ class CatalogController < ApplicationController
       flash[:notice]= "You do not have sufficient access privileges to read this document, which has been marked private."
       redirect_to("/") and return false
     end
-
-private
-
-  def add_styles
-    extra_head_content << view_context.stylesheet_link_tag("salt")
-  end
 
 end 
