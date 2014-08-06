@@ -11,7 +11,7 @@ module BlacklightHelper
    
   # Used in the show view for setting the main html document title
   def document_show_html_title
-    Array.wrap(@document[blacklight_config.show.html_title]).first
+    Array.wrap(@document[Blacklight.config[:show][:html_title]]).first
   end
    
    def render_document_index_label doc, opts
@@ -46,7 +46,7 @@ module BlacklightHelper
 
       tag ||= :h4
 
-      document_heading = Array.wrap(document[blacklight_config.show.heading]).first || document.id
+      document_heading = Array.wrap(document[Blacklight.config[:show][:heading]]).first || document.id
       content_tag(tag, document_heading, :itemprop => "name")
     end
    
