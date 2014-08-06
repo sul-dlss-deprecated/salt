@@ -207,22 +207,6 @@ describe SaltHelper do
 
     end
     
-    describe "#facets_toggle" do 
-     
-      it "should add the proper javascript files to the includes when in the show context" do
-        helper.should_receive(:javascript_includes).at_least(:once).and_return([])
-        helper.should_receive(:action_name).and_return("show")
-        helper.facets_toggle.should == ["facet_toggle.js", "flipbook.js"]
-      end
-      
-      it "should return nil and keep the javascript includes as is if not in the show context" do
-        helper.should_receive(:javascript_includes).once.and_return([])    
-        helper.should_receive(:action_name).and_return("index")
-        helper.facets_toggle.should == [] 
-      end
-      
-    end
-    
     describe "#display_notes" do
       
       it "should return the html in the correct format" do 

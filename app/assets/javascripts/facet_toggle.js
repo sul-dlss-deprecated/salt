@@ -1,5 +1,4 @@
 $(document).ready(function() {
-   $("#facets h3").click();
+   $(".blacklight-catalog-show #facets h3").click();
 });
  
-

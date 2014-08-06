@@ -91,15 +91,7 @@ module SaltHelper
  def facets_display_heading()
    action_name == "show" ? "This Document Refers To" : "Limit Your Search"
  end
-  
- def facets_toggle
-   if action_name == "show"
-     javascript_includes << "facet_toggle.js"
-      javascript_includes << "flipbook.js"
-   end
-   return javascript_includes 
- end
- 
+
  # returns the donor notes as unescaped html 
  def display_donor_notes
      solr_fname = "notes_display"
