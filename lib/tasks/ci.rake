@@ -1,13 +1,13 @@
 begin
-require 'rspec/core/rake_task'
-require 'jettywrapper'
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+
+  require 'jettywrapper'
 rescue LoadError
   puts "RSpec/jettywrapper not found"
 end
 require 'active_fedora'
 
-require "rspec/core/rake_task"
-RSpec::Core::RakeTask.new(:spec)
 
 namespace :salt do
 
