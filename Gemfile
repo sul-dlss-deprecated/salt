@@ -8,7 +8,7 @@ gem 'rails', '3.2.19'
 
 gem 'blacklight'
 gem 'blacklight-sitemap'
-gem 'devise', "~> 1.5.4"
+gem 'devise', "~> 2.0"
 gem 'rest-client'
 gem 'simple-daemon'
 gem "will_paginate",  '~> 3.0.5'

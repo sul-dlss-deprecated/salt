@@ -96,10 +96,11 @@ GEM
     database_cleaner (0.7.1)
     deprecation (0.0.5)
       activesupport
-    devise (1.5.4)
+    devise (2.2.8)
       bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.0.3)
-      warden (~> 1.1)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     diff-lcs (1.2.5)
     email_spec (1.2.1)
       mail (~> 2.2)
@@ -162,7 +163,7 @@ GEM
     om (1.6.1)
       mediashelf-loggable
       nokogiri (>= 1.4.2)
-    orm_adapter (0.0.7)
+    orm_adapter (0.5.0)
     polyglot (0.3.5)
     rack (1.4.5)
     rack-cache (1.2)
@@ -308,7 +309,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 3.2.1)
   database_cleaner
-  devise (~> 1.5.4)
+  devise (~> 2.0)
   email_spec
   factory_girl
   jettywrapper (~> 1.3)
