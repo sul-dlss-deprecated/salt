@@ -25,7 +25,7 @@ html {background: #4d606a none repeat scroll 0 0;
 body {
   font: 0.7em Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif; line-height: 1.4; color:#333;
   background-color: #4d606a;
-  background-image:url(/images/salt-background.png);
+  background-image:image-url("salt-background.png");
   background-position:left top;
   background-repeat:no-repeat;
 }
@@ -486,19 +486,19 @@ div.list_gallery_toggle a, div.list_gallery_toggle span {
 
 
 div.list_gallery_toggle a.list_toggle {
-  background-image: url(/images/list_toggle.gif);
+  background-image: image-url("list_toggle.gif");
 }
 
 div.list_gallery_toggle a.gallery_toggle {
-  background-image: url(/images/gallery_toggle.gif);
+  background-image: image-url("gallery_toggle.gif");
 }
 
 div.list_gallery_toggle span.list_toggle {
-  background-image: url(/images/list_toggle_current.gif);
+  background-image: image-url("list_toggle_current.gif");
 }
 
 div.list_gallery_toggle span.gallery_toggle {
-  background-image: url(/images/gallery_toggle_current.gif);
+  background-image: image-url("gallery_toggle_current.gif");
 }
 
 form.sort {
@@ -583,21 +583,21 @@ div#searchMods label, div#searchMods h2 {
 }
 
 .edit-browse a.edit{
-  background:transparent url('/images/edit_toggle.png') center left no-repeat;
+  background:transparent image-url("edit_toggle.png") center left no-repeat;
   padding: 2px 10px 2px 20px;
 }
 .edit-browse a.browse {
-  background:transparent url('/images/browse_toggle.png') center left no-repeat;
+  background:transparent image-url("browse_toggle.png") center left no-repeat;
   padding: 2px 10px 2px 20px;
 }
 
 .edit-browse span.edit{
-  background:transparent url('/images/edit_toggle_current.png') center left no-repeat;
+  background:transparent image-url("edit_toggle_current.png") center left no-repeat;
   padding: 2px 10px 2px 20px;
         color: #666666;
 }
 .edit-browse span.browse {
-  background:transparent url('/images/browse_toggle_current.png') center left no-repeat;
+  background:transparent image-url("browse_toggle_current.png") center left no-repeat;
   padding: 2px 10px 2px 20px;
         color: #666666;
 }
@@ -989,10 +989,10 @@ dl dd.help_text, span.help_text {
   padding-top: 5px;
   padding-left:15px;
   font-size: 1.1em;
-  background-image:url('/images/facet_closed.png');
+  background-image:image-url("facet_closed.png");
 }
 #facets h3.twiddle-open {
-  background-image:url('/images/facet_open.png');
+  background-image:image-url("facet_open.png");
 }
 #facets ul {
   padding-left:15px;
@@ -1121,7 +1121,7 @@ dl dd.help_text, span.help_text {
   padding-bottom:0;
 }
 * html .notice-item-close{
-  background:url(/images/gritter-close-ie6.gif);
+  background:image-url("gritter-close-ie6.gif");
   width:22px;
   height:22px;
   top:7px;
@@ -1142,7 +1142,7 @@ dl dd.help_text, span.help_text {
  
 .notice-item {
   display:block;
-  background:url(/images/gritter.png) no-repeat left -40px;
+  background:image-url("gritter.png") no-repeat left -40px;
   color:#eee;
   padding:2px 11px 8px 11px;
   font-size: 12px;
@@ -1160,7 +1160,7 @@ dl dd.help_text, span.help_text {
   position:absolute;
   top:5px;
   left:3px;
-  background:url(/images/gritter.png) no-repeat left top;
+  background:image-url("gritter.png") no-repeat left top;
   cursor:pointer;
   width:30px;
   height:30px;
@@ -1212,7 +1212,7 @@ li.field_value div.textile:hover, li.field_value div.textile p:hover, .controlle
 }
 
 div.textile form {
-  display: inline; !important;
+  display: inline;
 }
 div.textile form textarea {
   width: 100% !important;
