@@ -57,6 +57,23 @@ GEM
     blacklight-sitemap (1.1.0)
       nokogiri
     builder (3.0.4)
+    capistrano (3.2.1)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+    capistrano-holepicker (0.0.1)
+      capistrano (~> 3.0)
+      holepicker
+    capistrano-one_time_key (0.0.1)
+      capistrano (~> 3.0)
+    capistrano-rails (1.1.1)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-releaseboard (0.0.1)
+      faraday
     capybara (1.1.2)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -83,11 +100,16 @@ GEM
     erubis (2.7.0)
     factory_girl (2.4.2)
       activesupport
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     ffi (1.0.11)
     gyoku (0.4.6)
       builder (>= 2.1.2)
     hike (1.2.3)
+    holepicker (0.3.3)
+      json (~> 1.8)
+      rainbow (~> 2.0)
     hooks (0.2.1)
     httpi (1.1.1)
       rack
@@ -105,6 +127,11 @@ GEM
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
     logger (1.2.8)
+    lyberteam-capistrano-devel (3.0.0)
+      capistrano (~> 3.0)
+      capistrano-holepicker
+      capistrano-one_time_key
+      capistrano-releaseboard
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -113,7 +140,11 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.6.0)
     multi_json (1.0.4)
-    mysql2 (0.2.23)
+    multipart-post (2.0.0)
+    mysql2 (0.3.16)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.7.0)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     nori (1.1.3)
@@ -146,6 +177,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
+    rainbow (2.0.0)
     rake (10.3.2)
     rdf (0.3.8)
       addressable (>= 2.2.6)
@@ -216,9 +248,16 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.9)
+    sshkit (1.3.0)
+      net-scp (>= 1.1.2)
+      net-ssh
+      term-ansicolor
     stomp (1.2.5)
+    term-ansicolor (1.3.0)
+      tins (~> 1.0)
     thor (0.19.1)
     tilt (1.4.1)
+    tins (1.3.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -241,6 +280,8 @@ DEPENDENCIES
   active-fedora
   blacklight
   blacklight-sitemap
+  capistrano (~> 3.0)
+  capistrano-rails
   capybara
   database_cleaner
   devise
@@ -248,7 +289,8 @@ DEPENDENCIES
   factory_girl
   jettywrapper (~> 1.3)
   json
-  mysql2 (~> 0.2.13)
+  lyberteam-capistrano-devel (~> 3.0)
+  mysql2 (~> 0.3)
   rails (= 3.2.19)
   rails_config
   rake

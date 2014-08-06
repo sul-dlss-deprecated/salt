@@ -18,7 +18,7 @@ gem 'rubydora'
 gem 'rails_config'
 
 group :production do
-   gem "mysql2", '~> 0.2.13'
+   gem "mysql2", '~> 0.3'
 end
 
 group :development, :test do
@@ -37,4 +37,10 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'factory_girl'
+end
+
+group :deployment do
+  gem 'capistrano', '~> 3.0'
+  gem 'lyberteam-capistrano-devel', '~> 3.0'
+  gem 'capistrano-rails'
 end
