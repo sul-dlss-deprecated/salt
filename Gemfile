@@ -30,6 +30,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'jquery-rails'
+
 group :production do
    gem "mysql2", '~> 0.3'
 end
