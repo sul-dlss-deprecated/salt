@@ -31,6 +31,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 group :production do
    gem "mysql2", '~> 0.3'

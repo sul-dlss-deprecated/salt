@@ -1,5 +1,6 @@
 /*
  *= require 'yui'
+ *= require jquery.ui.all
  *= require 'blacklight/blacklight'
  *= require 'salt'
  *= require_self
