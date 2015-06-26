@@ -14,7 +14,7 @@ describe BlacklightHelper do
    it "should consist of the document title wrapped in a <a>" do
          data = {'id'=>'druid:foo','title_display'=>['bar'] }
          @document = SolrDocument.new(data)
-         helper.link_to_document(@document, { :label => :title_display }).should have_selector("a", :content => 'bar', :count => 1)
+         helper.link_to_document(@document, { :label => :title_display }).should have_selector("a", :text => 'bar', :count => 1)
    end
    
     it "should add druid: prefix even if the id does not have it" do
