@@ -56,7 +56,8 @@ namespace :salt do
         ENV["pid"] = pid
         Rake::Task['repo:delete'].reenable
         Rake::Task['repo:delete'].invoke
-      rescue
+      rescue => e
+        puts e
       end
   }
   end
