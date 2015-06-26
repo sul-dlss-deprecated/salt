@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'rails', '3.2.19'
+gem 'rails', '3.2.22'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'blacklight'
+gem 'blacklight', '3.1.2'
 gem 'blacklight-sitemap'
 gem 'devise', "~> 2.0"
 gem 'rest-client'
 gem 'simple-daemon'
 gem "will_paginate",  '~> 3.0.5'
 gem 'json'
-gem 'active-fedora'
+gem 'active-fedora', '4.5.2'
 gem 'rubydora'
 gem 'rails_config'
 
@@ -40,6 +40,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'jettywrapper', "~> 1.3"
+  gem 'byebug'
 end
 
 group :development do
@@ -53,10 +54,17 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'factory_girl'
+  gem 'test-unit'
 end
 
 group :deployment do
   gem 'capistrano', '~> 3.0'
-  gem 'lyberteam-capistrano-devel', '~> 3.0'
+  gem 'lyberteam-capistrano-devel'
   gem 'capistrano-rails'
+  gem 'capistrano-passenger'
 end
+
+gem 'squash_ruby', require: 'squash/ruby'
+gem 'squash_rails', "1.3.3", require: 'squash/rails'
+
+
