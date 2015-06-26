@@ -7,12 +7,12 @@ describe User do
   describe "#inactive_message" do
     
     it "should give indicate if the user is not approved" do
-       user = Factory.create(:not_approved)
+       user = create(:not_approved)
        user.inactive_message.should ==  :not_approved
     end
     
     it "should give give the inactive message if the user is approved" do 
-      user = Factory.create(:admin)
+      user = create(:admin)
       user.inactive_message.should == :inactive
     end
     

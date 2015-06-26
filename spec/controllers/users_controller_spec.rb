@@ -83,7 +83,7 @@ describe UsersController do
    describe "#update admin" do
      login_admin
      it "should update the user when given the proper infomation" do
-        user = Factory.create(:not_approved)
+        user = create(:not_approved)
         User.should_receive(:find).with("666").and_return(user)
         get :update, :id => 666, :approved => true, :email => "foobar@foofoo.com"
         response.should redirect_to("/")
@@ -91,7 +91,7 @@ describe UsersController do
      end
      
      it "should not update the user when given crap" do
-       user = Factory.create(:not_approved)
+       user = create(:not_approved)
        User.should_receive(:find).with("666").and_return(user)
        user.should_receive(:update_attributes).and_return(false)
        get :update, :id => 666, :approved => true, :email => "this is not an email."
@@ -114,7 +114,7 @@ describe UsersController do
    describe "stanford web-auth" do 
      
      it "should log in a user if they've webauthed and have an account made" do
-       user = Factory.create(:admin)
+       user = create(:admin)
        request.env["WEBAUTH_USER"] = "mrbossman"
        User.should_receive(:find_by_username).with("mrbossman").and_return(user)
        get :show, :id => 1

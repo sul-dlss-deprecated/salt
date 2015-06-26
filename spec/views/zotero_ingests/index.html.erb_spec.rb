@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "zotero_ingests/index.html.erb" do
   before(:each) do
-    assign(:zotero_ingests, [ Factory.create(:zotero_ingest), Factory.create(:zotero_ingest)])
+    assign(:zotero_ingests, [ create(:zotero_ingest), create(:zotero_ingest)])
     
      
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "zotero_ingests/show.html.erb" do
   before(:each) do
-    @zotero_ingest = Factory.create(:zotero_ingest)
+    @zotero_ingest = create(:zotero_ingest)
   end
 
   it "renders attributes in <p>" do
