@@ -6,7 +6,7 @@ describe Stanford::AltoParser do
      alto = Stanford::AltoParser.new
      parser = Nokogiri::XML::SAX::Parser.new(alto)
      parser.parse("<xml><String CONTENT='this'/><String CONTENT='is'/><String CONTENT='alto'/><word CONTENT='not.'/></xml>")
-     alto.text.strip.should == "this is alto"
+     expect(alto.text.strip).to eq("this is alto")
   end
   
   

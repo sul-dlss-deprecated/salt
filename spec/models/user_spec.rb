@@ -8,12 +8,12 @@ describe User do
     
     it "should give indicate if the user is not approved" do
        user = create(:not_approved)
-       user.inactive_message.should ==  :not_approved
+       expect(user.inactive_message).to eq(:not_approved)
     end
     
     it "should give give the inactive message if the user is approved" do 
       user = create(:admin)
-      user.inactive_message.should == :inactive
+      expect(user.inactive_message).to eq(:inactive)
     end
     
   end

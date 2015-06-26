@@ -33,7 +33,7 @@ describe ZoteroIngestsController do
     it "assigns all zotero_ingests as @zotero_ingests" do
       zotero_ingest = ZoteroIngest.create! valid_attributes
       get :index
-      assigns(:zotero_ingests).should eq([zotero_ingest])
+      expect(assigns(:zotero_ingests)).to eq([zotero_ingest])
     end
   end
   
@@ -43,8 +43,8 @@ describe ZoteroIngestsController do
      it "assigns all zotero_ingests as @zotero_ingests" do
        zotero_ingest = ZoteroIngest.create! valid_attributes
        get :index
-       response.should redirect_to('/')
-       response.should_not be_success
+       expect(response).to redirect_to('/')
+       expect(response).not_to be_success
      end
    end
 
@@ -54,7 +54,7 @@ describe ZoteroIngestsController do
     it "assigns the requested zotero_ingest as @zotero_ingest" do
       zotero_ingest = ZoteroIngest.create! valid_attributes
       get :show, :id => zotero_ingest.id.to_s
-      assigns(:zotero_ingest).should eq(zotero_ingest)
+      expect(assigns(:zotero_ingest)).to eq(zotero_ingest)
     end
   end
 
@@ -64,8 +64,8 @@ describe ZoteroIngestsController do
     it "assigns the requested zotero_ingest as @zotero_ingest" do
       zotero_ingest = ZoteroIngest.create! valid_attributes
       get :show, :id => zotero_ingest.id.to_s
-        response.should redirect_to('/')
-         response.should_not be_success    end
+        expect(response).to redirect_to('/')
+         expect(response).not_to be_success    end
   end
 
 end

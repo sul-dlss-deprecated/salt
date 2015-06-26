@@ -16,11 +16,11 @@ describe UserMailer do
     end
      
     it "should be set to be delivered to the admin email" do
-      @email.should deliver_to("bess@stanford.edu")
+      expect(@email).to deliver_to("bess@stanford.edu")
     end
      
     it "should have the correct subject" do
-      @email.should have_subject("User Request to Saltworks: bess@stanford.edu")
+      expect(@email).to have_subject("User Request to Saltworks: bess@stanford.edu")
     end
      
      

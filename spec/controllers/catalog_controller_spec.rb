@@ -9,7 +9,7 @@ describe CatalogController do
 
    
    it "should use CatalogController" do
-      controller.should be_an_instance_of(CatalogController)
+      expect(controller).to be_an_instance_of(CatalogController)
    end
    
    
@@ -18,29 +18,29 @@ describe CatalogController do
      
      it "should allow logged in users to index documents" do
        get :index
-       response.should_not redirect_to('/')
-       response.should be_success
+       expect(response).not_to redirect_to('/')
+       expect(response).to be_success
      end
      
     it "should allow logged in users to index documents" do
       get :index, { :search_field => "fulltext"}
-      response.should_not redirect_to('/')
-      response.should be_success
+      expect(response).not_to redirect_to('/')
+      expect(response).to be_success
     end
     
    
      it "should  allow users to index documents" do
         sign_out @user
         get :index
-        response.should_not redirect_to('/')
-        response.should be_success
+        expect(response).not_to redirect_to('/')
+        expect(response).to be_success
      end
      
      it "should allow logged in users to index documents" do
         sign_out @user
         get :index, { :search_field => "fulltext"}
-        response.should_not redirect_to('/')
-        response.should be_success
+        expect(response).not_to redirect_to('/')
+        expect(response).to be_success
       end
      
    end
@@ -52,8 +52,8 @@ describe CatalogController do
 
        it "should allow logged in users to see private documents" do
          get :show, :id=>"druid:bb047vy0535"
-         response.should_not redirect_to('/')
-         response.should be_success
+         expect(response).not_to redirect_to('/')
+         expect(response).to be_success
        end
      end    
    
@@ -61,14 +61,14 @@ describe CatalogController do
     describe "#show not logged-in" do
        it "should not allow users not logged in to see private documents" do
           get :show, :id=>"druid:bb047vy0535"
-          response.should redirect_to('/')
-          response.should_not be_success
+          expect(response).to redirect_to('/')
+          expect(response).not_to be_success
        end
        
        it "should  allow users not logged in to see public documents" do
            get :show, :id=>"druid:pt839dg9461"
-           response.should_not redirect_to('/')
-           response.should be_success
+           expect(response).not_to redirect_to('/')
+           expect(response).to be_success
         end
     end
     

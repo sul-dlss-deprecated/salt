@@ -7,31 +7,31 @@ describe Stanford::Repository do
   end
 
   it "should get a list of pids from fedora" do
-    @repo.repository.should_receive(:search).with('pid~druid*').and_return([double(:pid => 'first'), double(:pid => 'another')])
-    @repo.initialize_queue.should include("first", "another")
+    expect(@repo.repository).to receive(:search).with('pid~druid*').and_return([double(:pid => 'first'), double(:pid => 'another')])
+    expect(@repo.initialize_queue).to include("first", "another")
   end
 
   it "should get a list of datastream for an object from fedora" do
-    @repo.repository.should_receive(:find).with('fake:druid').and_return(double(:datastreams => {'first' => nil, 'another' => nil}))
-    @repo.get_datastreams("fake:druid").should include("first", "another")
+    expect(@repo.repository).to receive(:find).with('fake:druid').and_return(double(:datastreams => {'first' => nil, 'another' => nil}))
+    expect(@repo.get_datastreams("fake:druid")).to include("first", "another")
   end
 
   it "should get the datastream content from an object based on the dsid from fedora" do
     obj = double()
     ds = double(:content => 'Some content')
-    obj.should_receive(:datastreams).and_return('fakeStream' => ds)
-    @repo.repository.should_receive(:find).with('fake:druid').and_return(obj)
-    @repo.get_datastream("fake:druid", "fakeStream").should == "Some content"
+    expect(obj).to receive(:datastreams).and_return('fakeStream' => ds)
+    expect(@repo.repository).to receive(:find).with('fake:druid').and_return(obj)
+    expect(@repo.get_datastream("fake:druid", "fakeStream")).to eq("Some content")
   end
 
   it "#update_datastream" do
 
     ds = double()
-    ds.should_receive(:content=).with('<xml/>')
-    ds.should_receive(:mimeType=)
-    ds.should_receive(:save)
+    expect(ds).to receive(:content=).with('<xml/>')
+    expect(ds).to receive(:mimeType=)
+    expect(ds).to receive(:save)
     obj = double(:datastreams => { 'fakeStream' => ds})
-    @repo.repository.should_receive(:find).with('fake:druid').and_return(obj)
+    expect(@repo.repository).to receive(:find).with('fake:druid').and_return(obj)
 
     @repo.update_datastream("fake:druid", "fakeStream", "<xml/>")
   end

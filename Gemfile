@@ -48,7 +48,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', '~> 2.14.0'
+  gem 'rspec', '~> 3.3'
   gem 'rspec-rails'
   gem 'email_spec'
   gem 'database_cleaner'

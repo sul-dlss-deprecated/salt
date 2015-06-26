@@ -9,15 +9,15 @@ describe RegistrationsController do
   
   
    it "should use RegistrationsController" do
-      controller.should be_an_instance_of(RegistrationsController)
+      expect(controller).to be_an_instance_of(RegistrationsController)
    end
   
   it "should send an email when a new user is created" do 
     @request.env["devise.mapping"] = Devise.mappings[:user]
     
     mailer = double("UserMailer")
-    mailer.should_receive(:deliver).once
-    UserMailer.should_receive(:notification_email).once.and_return(mailer)
+    expect(mailer).to receive(:deliver).once
+    expect(UserMailer).to receive(:notification_email).once.and_return(mailer)
     
     post :create
   end

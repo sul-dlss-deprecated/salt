@@ -7,12 +7,12 @@ describe Stanford::ZoteroParser do
     
     it "should initalize correctly" do
       @zp = Stanford::ZoteroParser.new(fixture("zotero_export.xml"))
-      @zp.repository.should be_kind_of(Stanford::Repository)
-      @zp.xmlfile.path.should == fixture("zotero_export.xml").path
+      expect(@zp.repository).to be_kind_of(Stanford::Repository)
+      expect(@zp.xmlfile.path).to eq(fixture("zotero_export.xml").path)
     end
     
     it "should raise error if a file is not passed" do
-      lambda { Stanford::ZoteroParser.new }.should raise_exception
+      expect { Stanford::ZoteroParser.new }.to raise_exception
     end
   end
   
@@ -26,9 +26,9 @@ describe Stanford::ZoteroParser do
     
     it "should run the process_node and update_fedora methods for each node" do
       # fixture document has 20 documents with one memos, so it should run for each document
-      @zp.should_receive(:process_node).exactly(19).times.and_return(Nokogiri::XML("<foo/>"))
+      expect(@zp).to receive(:process_node).exactly(19).times.and_return(Nokogiri::XML("<foo/>"))
       # update fedora with the last node. 
-      @zp.should_receive(:update_fedora).at_least(:once)
+      expect(@zp).to receive(:update_fedora).at_least(:once)
       @zp.process_document
     end
     
@@ -83,7 +83,7 @@ describe Stanford::ZoteroParser do
     
      it "should update fedora with the proper values to the data stream" do
        xml = Nokogiri::XML(fixture("singleton_zotero_export.xml"))
-       @zp.repository.should_receive(:update_datastream).with('druid:dn211xc8708', "zotero", xml.to_xml )
+       expect(@zp.repository).to receive(:update_datastream).with('druid:dn211xc8708', "zotero", xml.to_xml )
        @zp.update_fedora(xml, "druid:dn211xc8708") 
      end
   end

@@ -11,12 +11,12 @@ describe Stanford::SolrCheckr do
       zi.save
       
       zcheck = Stanford::SolrCheckr.new(fixture('zotero_ds.xml').path, zi)
-      zcheck.should be_an_instance_of(Stanford::SolrCheckr)
+      expect(zcheck).to be_an_instance_of(Stanford::SolrCheckr)
       
     end
     
     it "should log an error if a file is not given" do
-      lambda { Stanford::SolrCheckr.new("notafile") }.should raise_error(ArgumentError)
+      expect { Stanford::SolrCheckr.new("notafile") }.to raise_error(ArgumentError)
     end
     
   end
@@ -27,13 +27,13 @@ describe Stanford::SolrCheckr do
     before(:each) do
       @zi = ZoteroIngest.new
       @zi.save
-      ZoteroIngest.should_receive(:update).at_least(1)
+      expect(ZoteroIngest).to receive(:update).at_least(1)
       @zcheck = Stanford::SolrCheckr.new(fixture('zotero_ds.xml').path, @zi)
       
     end
     
     it "should check the document given to it" do
-      @zcheck.should_receive(:check_document).once
+      expect(@zcheck).to receive(:check_document).once
       @zcheck.check_documents  
     end
   

@@ -11,7 +11,7 @@ describe UsersController do
 
    
    it "should use UsersController" do
-      controller.should be_an_instance_of(UsersController)
+      expect(controller).to be_an_instance_of(UsersController)
    end
    
   describe "#index non-admin" do #we have to put these in different describes to get factory girl to work
@@ -19,8 +19,8 @@ describe UsersController do
     
     it "should not allow non-admin users to see the page" do
       get :index
-      response.should redirect_to('/')
-      response.should_not be_success
+      expect(response).to redirect_to('/')
+      expect(response).not_to be_success
     end
   end
  
@@ -28,15 +28,15 @@ describe UsersController do
     login_admin
     it "should not allow non-admin users to see the page" do
       get :index
-      response.should_not redirect_to('/')
-      response.should be_success
+      expect(response).not_to redirect_to('/')
+      expect(response).to be_success
     end
     
     it "should show users awaiting approval" do
-      User.should_receive(:find_all_by_approved).with(false)
+      expect(User).to receive(:find_all_by_approved).with(false)
       get :index, {:approved => "false"}
-      response.should_not redirect_to('/')
-      response.should be_success
+      expect(response).not_to redirect_to('/')
+      expect(response).to be_success
       
     end
     
@@ -45,18 +45,18 @@ describe UsersController do
    describe "#edit admin" do
     login_admin
     it "should get the user by id for updating" do
-      User.should_receive(:find_by_id).with("1")
+      expect(User).to receive(:find_by_id).with("1")
       get :edit, :id=>1 
-      response.should_not redirect_to('/')
-      response.should be_success
+      expect(response).not_to redirect_to('/')
+      expect(response).to be_success
     end
    end
   
     describe "#edit non-admin" do
      it "should get the user by id for updating" do
        get :edit, :id=>1
-       response.should redirect_to('/')
-       response.should_not be_success
+       expect(response).to redirect_to('/')
+       expect(response).not_to be_success
      end
     end
   
@@ -65,8 +65,8 @@ describe UsersController do
     
     it "should not allow non-admin users to see the page" do
       get :show, :id=> 1
-      response.should redirect_to('/')
-      response.should_not be_success
+      expect(response).to redirect_to('/')
+      expect(response).not_to be_success
     end  
   end
   
@@ -74,8 +74,8 @@ describe UsersController do
      login_admin
      it "should not allow non-admin users to see the page" do
        get :show, :id => 1
-       response.should_not redirect_to('/')
-       response.should be_success
+       expect(response).not_to redirect_to('/')
+       expect(response).to be_success
      end
    end
    
@@ -84,20 +84,20 @@ describe UsersController do
      login_admin
      it "should update the user when given the proper infomation" do
         user = create(:not_approved)
-        User.should_receive(:find).with("666").and_return(user)
+        expect(User).to receive(:find).with("666").and_return(user)
         get :update, :id => 666, :approved => true, :email => "foobar@foofoo.com"
-        response.should redirect_to("/")
-        flash[:notice].should == "Successfully updated User."
+        expect(response).to redirect_to("/")
+        expect(flash[:notice]).to eq("Successfully updated User.")
      end
      
      it "should not update the user when given crap" do
        user = create(:not_approved)
-       User.should_receive(:find).with("666").and_return(user)
-       user.should_receive(:update_attributes).and_return(false)
+       expect(User).to receive(:find).with("666").and_return(user)
+       expect(user).to receive(:update_attributes).and_return(false)
        get :update, :id => 666, :approved => true, :email => "this is not an email."
-       response.should_not redirect_to("/")
-       response.should render_template("users/edit")
-       flash[:notice].should be_nil
+       expect(response).not_to redirect_to("/")
+       expect(response).to render_template("users/edit")
+       expect(flash[:notice]).to be_nil
      end
    end
    
@@ -105,8 +105,8 @@ describe UsersController do
      
      it "should redirect to root when not admin" do
        get :update, :id => 666, :approved => true, :email => "foobar@foofoo.com"
-       response.should redirect_to("/")
-       flash[:notice].should == "You currently do not have permissions to view this section. If this is an error, please contact the system administrator."
+       expect(response).to redirect_to("/")
+       expect(flash[:notice]).to eq("You currently do not have permissions to view this section. If this is an error, please contact the system administrator.")
      end
    end
    
@@ -116,18 +116,18 @@ describe UsersController do
      it "should log in a user if they've webauthed and have an account made" do
        user = create(:admin)
        request.env["WEBAUTH_USER"] = "mrbossman"
-       User.should_receive(:find_by_username).with("mrbossman").and_return(user)
+       expect(User).to receive(:find_by_username).with("mrbossman").and_return(user)
        get :show, :id => 1
-       response.should be_success 
+       expect(response).to be_success 
      end
      
      it "should not allow the user to do anything if there is no user in the database" do
        request.env["WEBAUTH_USER"] = "mrbossman"
-       User.should_receive(:find_by_username).with("mrbossman").and_return(nil)
+       expect(User).to receive(:find_by_username).with("mrbossman").and_return(nil)
        get :show, :id => 1
-       response.should_not be_success 
-       response.should redirect_to('/users/sign_up')
-       flash[:notice].should ==  "Hello mrbossman. You must first request a user account to access the content." 
+       expect(response).not_to be_success 
+       expect(response).to redirect_to('/users/sign_up')
+       expect(flash[:notice]).to eq("Hello mrbossman. You must first request a user account to access the content.") 
      end
      
    end

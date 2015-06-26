@@ -9,7 +9,7 @@ describe AssetController do
 
    
    it "should use AssetController" do
-      controller.should be_an_instance_of(AssetController)
+      expect(controller).to be_an_instance_of(AssetController)
    end
    
    
@@ -19,14 +19,14 @@ describe AssetController do
     
       it "should allow logged in users to see private documents" do
         get :show, :id=>"bb047vy0535"
-        response.should_not redirect_to('/')
-        response.should be_success
+        expect(response).not_to redirect_to('/')
+        expect(response).to be_success
       end
       
       # id's with 'druid:' prefix should redirect properly
       it "should redirect if id has a druid: prefix" do
         get :show, :id=> 'druid:bb047vy0535'
-        response.should redirect_to(:action=> 'show', :id => 'bb047vy0535')
+        expect(response).to redirect_to(:action=> 'show', :id => 'bb047vy0535')
       end
       
    end
@@ -36,27 +36,27 @@ describe AssetController do
     describe "#show private not allowed" do 
       it "should not allow users not logged in to see private documents" do     
          get :show, :id=>"bb047vy0535"
-         response.should redirect_to('/')
-         response.should_not be_success
+         expect(response).to redirect_to('/')
+         expect(response).not_to be_success
       end
       
         # id's with 'druid:' prefix should redirect when not logged in just like when logged in.
         it "should redirect if id has a druid: prefix" do
           get :show, :id=> 'druid:bb047vy0535'
-          response.should redirect_to(:action=> 'show', :id => 'bb047vy0535')
+          expect(response).to redirect_to(:action=> 'show', :id => 'bb047vy0535')
         end
       
       
       it "should allow users not logged in to see public documents" do 
          get :show, :id=>"pt839dg9461"
-         response.should_not redirect_to('/')
-         response.should be_success
+         expect(response).not_to redirect_to('/')
+         expect(response).to be_success
       end
       
       # id's with 'druid:' prefix should redirect just like one without the prefix
       it "should redirect if id has a druid: prefix" do
           get :show, :id=> 'druid:pt839dg9461'
-          response.should redirect_to(:action=> 'show', :id => 'pt839dg9461')
+          expect(response).to redirect_to(:action=> 'show', :id => 'pt839dg9461')
       end
     
     
@@ -69,8 +69,8 @@ describe AssetController do
     it "should allow logged in users to see private pages" do
         sign_in @user
         get :show_page, :id=>"bb047vy0535", :page => "00001"
-        response.should_not redirect_to('/')
-        response.should be_success
+        expect(response).not_to redirect_to('/')
+        expect(response).to be_success
     end
   end
  
@@ -78,14 +78,14 @@ describe AssetController do
  
     it "should not allow users not logged in to see private documents" do
        get :show_page, :id=>"bb047vy0535", :page => "00001"
-       response.should redirect_to('/')
-       response.should_not be_success
+       expect(response).to redirect_to('/')
+       expect(response).not_to be_success
     end
     
     it "should allow users not logged in to see public documents" do 
          get :show_page, :id=>"pt839dg9461", :page => "00001"
-         response.should_not redirect_to('/')
-         response.should be_success
+         expect(response).not_to redirect_to('/')
+         expect(response).to be_success
     end
      
   end
@@ -95,22 +95,22 @@ describe AssetController do
     #http://salt-app-dev.stanford.edu/assets/js/GnuBook/GnuBook.js   
     it "should pass through requests for javascript for the embedded flipbook " do
           get :get_flipbook_asset, :file=> "GnuBook/GnuBook.js"
-          response.should_not redirect_to('/')
-          response.should be_success
+          expect(response).not_to redirect_to('/')
+          expect(response).to be_success
     end
   
     #http://salt-app-dev.stanford.edu/assets/css/GnuBookEmbed.css
     it "should pass through requests for css for the embedded flipbook " do
           get :get_flipbook_asset, :file=> "GnuBookEmbed.css", :format => :css
-          response.should_not redirect_to('/')
-          response.should be_success
+          expect(response).not_to redirect_to('/')
+          expect(response).to be_success
     end
       
     #http://salt-app-dev.stanford.edu/assets/images/toolbar_bg.png  
     it "should pass through requests for css for the embedded flipbook " do
           get :get_flipbook_asset, :file=> "toolbar_bg.png", :format => :png
-          response.should_not redirect_to('/')
-          response.should be_success
+          expect(response).not_to redirect_to('/')
+          expect(response).to be_success
     end  
      
   end

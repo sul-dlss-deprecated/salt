@@ -20,28 +20,28 @@ describe ZoteroIngest do
     it "should do nothing if the filename is not set" do
       z = ZoteroIngest.new
       z.process_file
-      z.should_receive(:save).never 
+      expect(z).to receive(:save).never 
     end
     
     it "should process the file correctly" do
       @zi = ZoteroIngest.new(:filename => @file )
       
-      @zi.should_receive(:render_now).at_least(:once).and_return("1969-04-11_4:20")  #timestamp
-      @zi.should_receive(:update_index).once.and_return(true)
+      expect(@zi).to receive(:render_now).at_least(:once).and_return("1969-04-11_4:20")  #timestamp
+      expect(@zi).to receive(:update_index).once.and_return(true)
       
       
       zp = double("ZoteroParser")
-      zp.should_receive(:process_document).once
-      zp.should_receive(:processed_druids).twice.and_return(["test:druid"])
+      expect(zp).to receive(:process_document).once
+      expect(zp).to receive(:processed_druids).twice.and_return(["test:druid"])
       
       sc = double("SolrCheckr")
-      sc.should_receive(:check_documents).once
+      expect(sc).to receive(:check_documents).once
       
-      Stanford::ZoteroParser.should_receive(:new).with(@inprocess_file, @zi).and_return(zp)
-      Stanford::SolrCheckr.should_receive(:new).with(@inprocess_file, @zi).and_return(sc)
+      expect(Stanford::ZoteroParser).to receive(:new).with(@inprocess_file, @zi).and_return(zp)
+      expect(Stanford::SolrCheckr).to receive(:new).with(@inprocess_file, @zi).and_return(sc)
       
-      FileUtils.should_receive(:mv).with(@file, @inprocess_file ).once
-      FileUtils.should_receive(:mv).with(@inprocess_file , @completed_directory ).once
+      expect(FileUtils).to receive(:mv).with(@file, @inprocess_file ).once
+      expect(FileUtils).to receive(:mv).with(@inprocess_file , @completed_directory ).once
       
       @zi.process_file
     
@@ -49,11 +49,11 @@ describe ZoteroIngest do
     
     it "should move the file to the error directory is a problem occurs" do
       @zi = ZoteroIngest.new(:filename => @file )
-      @zi.should_receive(:render_now).at_least(:once).and_return("1969-04-11_4:20")  #timestamp
+      expect(@zi).to receive(:render_now).at_least(:once).and_return("1969-04-11_4:20")  #timestamp
     
       
-      FileUtils.should_receive(:mv).with(@file, @inprocess_file ).once
-      FileUtils.should_receive(:mv).with(@inprocess_file , @error_directory ).once
+      expect(FileUtils).to receive(:mv).with(@file, @inprocess_file ).once
+      expect(FileUtils).to receive(:mv).with(@inprocess_file , @error_directory ).once
       
       @zi.process_file
     end
@@ -67,10 +67,10 @@ describe ZoteroIngest do
       @zi = ZoteroIngest.new()
       druids = ["foo:bar", "bar:foo", "bar:bar", "foo:foo"]
       mock_indexer = double("Stanford::Indexer")
-      mock_indexer.should_receive(:process_queue).and_return(true)
-      Stanford::Indexer.should_receive(:new).with(druids, @zi).and_return(mock_indexer)  
+      expect(mock_indexer).to receive(:process_queue).and_return(true)
+      expect(Stanford::Indexer).to receive(:new).with(druids, @zi).and_return(mock_indexer)  
       
-      @zi.update_index(druids).should be_true 
+      expect(@zi.update_index(druids)).to be true 
     end
     
   end
