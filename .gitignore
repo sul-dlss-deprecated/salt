@@ -15,3 +15,5 @@ config/settings.local.yml
 config/settings/*.local.yml
 config/settings/*
 config/environments/*.local.yml
+.sass-cache
+public/assets
