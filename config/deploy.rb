@@ -30,7 +30,7 @@ set :deploy_to, '/home/lyberadmin/salt/'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/solr.yml config/fedora.yml public/.htaccess}
+set :linked_files, %w{config/database.yml config/solr.yml config/fedora.yml config/initializers/squash.rb public/.htaccess}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin config/settings log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system zotero_ingests}
@@ -42,6 +42,7 @@ set :linked_dirs, %w{bin config/settings log tmp/pids tmp/cache tmp/sockets vend
 # set :keep_releases, 5
 
 
+before 'deploy:compile_assets', 'squash:write_revision'
 
 namespace :salt do
   task :watcher do
