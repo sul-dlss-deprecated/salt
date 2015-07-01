@@ -45,6 +45,8 @@ set :bundle_audit_ignore, %w{CVE-2015-3226}
 
 before 'deploy:compile_assets', 'squash:write_revision'
 
+set :passenger_restart_with_touch, true
+
 namespace :salt do
   task :watcher do
     within release_path do
