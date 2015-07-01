@@ -65,6 +65,4 @@ group :deployment do
 end
 
 gem 'squash_ruby', require: 'squash/ruby'
-gem 'squash_rails', "1.3.3", require: 'squash/rails'
-
-
+gem 'squash_rails', require: 'squash/rails'
