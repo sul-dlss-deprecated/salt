@@ -16,6 +16,7 @@ gem 'json'
 gem 'active-fedora', '4.5.2'
 gem 'rubydora'
 gem 'rails_config'
+gem 'kaminari', '0.13.0'
 
 
 # Gems used only for assets and not required
